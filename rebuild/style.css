@@ -1,0 +1,99 @@
+/* ==== ШРИФТЫ: только Geometria Medium + Light ==== */
+@font-face{font-family:'Geometria';src:url('../assets/fonts/Geometria-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Geometria';src:url('../assets/fonts/Geometria-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+
+/* ==== ТОЧНЫЕ ЦВЕТА ИЗ FIGMA ==== */
+:root{
+  --wine:#BC294B;          /* основной бордовый бренда */
+  --wine-deep:#98123C;     /* тёмный акцент / подписи */
+  --wine-darker:#5E0023;   /* низ градиента плашек */
+  --violet:#745F9A;        /* постбиотики */
+  --violet-deep:#604283;
+  --gray:#58595B;          /* текст меню */
+  --gray2:#54565A;
+  --btn:#892245;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Geometria',system-ui,Arial,sans-serif;font-weight:300;color:#000;background:#fff;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:none}
+a{color:inherit;text-decoration:none}
+
+/* ==== FLUID-КОНТЕЙНЕР: база 1920px, единица cqw (1cqw = 1% ширины) ====
+   Перенос из Figma: любое значение в px → px/19.2 = cqw (при ширине 1920). */
+.stage{
+  container-type:inline-size;
+  position:relative;
+  width:100%;
+  max-width:1920px;
+  margin:0 auto;
+  background:#fff;
+  overflow:hidden;
+  font-weight:300;
+}
+.stage section{position:relative;width:100%}
+
+/* абсолютно позиционированный слой внутри секции */
+.abs{position:absolute}
+
+/* ==================== ЭКРАН 1: HERO + ПРЕИМУЩЕСТВА (0..1767) ==================== */
+.s1{height:92.031cqw}            /* 1767/19.2 */
+
+/* KV сцена (фон) */
+.s1 .kv{left:-0.208cqw;top:8.021cqw;width:100cqw;height:auto;z-index:1}
+/* пузырьки снизу (бледный фон) */
+.s1 .bubbles{left:-0.208cqw;top:55.885cqw;width:100cqw;height:auto;z-index:1;opacity:.35}
+/* капля-сфера справа сверху (полупрозрачная, за флаконом) */
+.s1 .drop{left:63.802cqw;top:11.875cqw;width:17.969cqw;height:auto;z-index:3;opacity:.72}
+/* красный шар у заголовка */
+.s1 .sph-title{left:17.188cqw;top:7.188cqw;width:9.271cqw;height:auto;z-index:4}
+
+/* заголовок hero: Light 48px #BC294B, КАПСОМ */
+.s1 .hero-title{left:27.188cqw;top:9.010cqw;width:57cqw;z-index:5;
+  font-weight:300;font-size:2.5cqw;line-height:1.28;color:var(--wine);text-transform:uppercase}
+.s1 .hero-title b{font-weight:300}
+
+/* баннер «Пептидная забота» */
+.s1 .banner{left:18.75cqw;top:17.917cqw;width:57.813cqw;height:5.729cqw;z-index:4;
+  background:linear-gradient(90deg,var(--wine-darker),var(--wine-deep));
+  display:flex;align-items:center}
+.s1 .banner span{color:#fff;font-weight:500;font-size:1.875cqw;padding-left:3.073cqw;letter-spacing:.01em;text-transform:uppercase}
+
+/* флакон (стартовая позиция; едет вниз по скроллу) */
+.s1 .bottle{left:70.417cqw;top:18.125cqw;width:11.875cqw;height:auto;z-index:5;
+  filter:drop-shadow(0 1cqw 1.5cqw rgba(94,0,35,.18));will-change:transform}
+
+/* ---- карточка преимуществ ---- */
+.s1 .adv-card{left:13.021cqw;top:57.240cqw;width:73.958cqw;height:29.688cqw;z-index:5;
+  background:linear-gradient(120deg,var(--wine-deep),var(--wine-darker))}
+.s1 .sph-adv{left:20.625cqw;top:59.479cqw;width:6.198cqw;height:auto;z-index:7}
+.s1 .adv-title{left:27.344cqw;top:60.417cqw;width:55cqw;z-index:6;
+  color:#fff;font-weight:500;font-size:1.875cqw;line-height:1.25;text-transform:uppercase}
+.s1 .adv-note{left:27.552cqw;top:83.646cqw;z-index:6;color:#fff;font-weight:300;font-size:.729cqw;
+  border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:.1cqw}
+
+/* пункты преимуществ */
+.s1 .adv-item{z-index:6;color:#fff;font-weight:300;font-size:1.667cqw;line-height:1.28;left:27.188cqw;width:40cqw}
+.s1 .adv-item.i1{top:67.292cqw}
+.s1 .adv-item.i2{top:71.458cqw}
+.s1 .adv-item.i3{top:77.552cqw}
+/* иконки-кружки (белый круг + бордовая иконка) */
+.s1 .adv-ic{z-index:6;left:21.823cqw;width:3.906cqw;height:3.906cqw;border-radius:50%;background:#fff;
+  display:grid;place-items:center}
+.s1 .adv-ic.c1{top:66.302cqw}
+.s1 .adv-ic.c2{top:71.615cqw}
+.s1 .adv-ic.c3{top:77.708cqw}
+.s1 .adv-ic img{width:62%;height:62%;object-fit:contain}
+
+/* ---- хедер ---- */
+.hdr{position:absolute;top:0;left:0;width:100%;height:6.15cqw;z-index:20;display:block}
+.hdr .logo{position:absolute;left:19.531cqw;top:2.031cqw;width:4.583cqw;height:auto}
+.hdr nav a{position:absolute;top:3.385cqw;font-weight:500;font-size:1.042cqw;color:var(--gray);
+  white-space:nowrap;transition:color .2s}
+.hdr nav a:hover{color:var(--wine)}
+.hdr nav a.n1{left:27.240cqw}
+.hdr nav a.n2{left:37.813cqw}
+.hdr nav a.n3{left:47.344cqw}
+.hdr nav a.n4{left:55.521cqw}
+.hdr nav a.n5{left:64.375cqw}
