@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GELTEK HAIR — образец переноса (hero)</title>
+<title>GELTEK HAIR — Сыворотка укрепляющая для роста волос</title>
+<meta name="description" content="GELTEK HAIR — сыворотка укрепляющая для роста и против выпадения волос. Пептидная забота о ваших волосах. Эффективность доказана в клиническом исследовании.">
+<link rel="canonical" href="https://geltekhair.ru/">
+<link rel="icon" href="../assets/img/logos/geltek-hair.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GELTEK HAIR — Сыворотка укрепляющая для роста волос">
+<meta property="og:description" content="Пептидная забота о ваших волосах. Для улучшения роста и против выпадения волос.">
+<meta property="og:image" content="https://geltekhair.ru/assets/img/og.jpg">
+<meta property="og:locale" content="ru_RU">
+<meta name="theme-color" content="#BC294B">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,20 +20,32 @@
 
   <!-- ЭКРАН 1: HERO + ПРЕИМУЩЕСТВА -->
   <section class="s1">
-    <img class="abs kv" src="../assets/img/people/hero-kv.png" alt="">
-    <img class="abs bubbles" src="../assets/img/bg/bubbles.jpg" alt="">
-    <img class="abs drop" src="../assets/img/spheres/sphere-drop-1.png" alt="">
-    <img class="abs sph-title" src="../assets/img/spheres/sphere-red-2.png" alt="">
+    <img class="abs kv" src="../assets/img/fig/hero-kv.png" alt="">
+    <img class="abs bubbles" src="../assets/img/fig/bubbles.png" alt="">
 
-    <h1 class="abs hero-title"><b>GELTEK HAIR.</b> Сыворотка укрепляющая для роста волос</h1>
+    <!-- blur-патчи переходов (растворяют края KV-фото в белый) -->
+    <div class="abs patch p1"></div>
+    <div class="abs patch p2"></div>
+    <div class="abs patch p3"></div>
+    <div class="abs patch p4"></div>
+    <div class="abs patch p5"></div>
+    <div class="abs patch p6"></div>
+    <div class="abs patch p7"></div>
+    <div class="abs patch p8"></div>
+    <div class="abs patch p9"></div>
 
-    <div class="abs banner"><span>Пептидная забота о ваших волосах</span></div>
+    <!-- баннер «Пептидная забота» — стекло с маскированной каплей -->
+    <div class="abs banner">
+      <img class="banner-drop" src="../assets/img/fig/drop-red.png" alt="">
+      <span>Пептидная забота о ваших волосах</span>
+    </div>
 
-    <img class="abs bottle" src="../assets/img/products/serum-100.png" alt="">
+    <img class="abs bottle" src="../assets/img/fig/serum-100.png" alt="" data-scroll-y0="18.125" data-scroll-y1="52.76">
 
     <!-- преимущества -->
     <div class="abs adv-card"></div>
-    <img class="abs sph-adv" src="../assets/img/spheres/sphere-red-2.png" alt="">
+    <div class="abs sph-glow"></div>
+    <img class="abs sph-adv" src="../assets/img/fig/sphere-red.png" alt="">
     <h2 class="abs adv-title">Для улучшения роста<br>и против выпадения волос</h2>
 
     <div class="abs adv-ic c1"><img src="../assets/img/icons-wine/follicle.png" alt=""></div>
@@ -36,7 +57,10 @@
     <div class="abs adv-ic c3"><img src="../assets/img/icons-wine/microscope.png" alt=""></div>
     <p class="abs adv-item i3">Доказанная эффективность<br>в клиническом исследовании*</p>
 
-    <a class="abs adv-note" href="#">*Скачать исследование</a>
+    <a class="abs adv-note" href="../assets/docs/issledovanie-syvorotka-peptidy.pdf">*Скачать исследование</a>
+
+    <img class="abs sph-title" src="../assets/img/fig/sphere-red.png" alt="">
+    <h1 class="abs hero-title"><span class="b">GELTEK HAIR.</span> Сыворотка укрепляющая для роста волос</h1>
 
     <!-- хедер -->
     <header class="hdr">
@@ -51,6 +75,465 @@
     </header>
   </section>
 
+  <!-- ЭКРАН 2: ЖЕНЩИНАМ -->
+  <section class="s2">
+    <img class="abs bg" src="../assets/img/fig/woman.png" alt="">
+    <div class="abs glass card"></div>
+    <div class="abs ic-circ icon"><img src="../assets/img/icons-wine/woman.png" alt=""></div>
+    <p class="abs txt"><span class="b">Женщинам</span><br>рекомендуем использовать сыворотку при выпадении и истончении волос</p>
+  </section>
+
+  <!-- ЭКРАН 3: МУЖЧИНАМ -->
+  <section class="s3">
+    <img class="abs bg" src="../assets/img/fig/man.png" alt="">
+    <div class="abs glass card"></div>
+    <div class="abs ic-circ icon"><img src="../assets/img/icons-wine/man.png" alt=""></div>
+    <p class="abs txt"><span class="b">Мужчинам</span><br>при возрастном поредении и выпадении волос</p>
+  </section>
+
+  <!-- ЭКРАН 4: БЕРЕЖНЫЙ УХОД -->
+  <section class="s4">
+    <img class="abs bg" src="../assets/img/fig/demo.png" alt="">
+    <div class="abs glass card"></div>
+    <div class="abs ic-circ icon"><img src="../assets/img/icons-wine/care.png" alt=""></div>
+    <p class="abs txt"><span class="b">Бережный уход</span><br>при себорее, псориазе, дерматозах и нарушении себорегуляции, если заболевания приводят к выпадению волос</p>
+  </section>
+
+  <!-- ЭКРАН 5: КАК ДЕЙСТВУЕТ СЫВОРОТКА -->
+  <section class="s5">
+    <img class="abs kvbg" src="../assets/img/fig/geltek-kv-bg.png" alt="">
+    <div class="abs patch s5-patch"></div>
+    <div class="abs glass card"></div>
+
+    <div class="abs sph-glow title-glow"></div>
+    <img class="abs sph title-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs title">Как действует сыворотка</h2>
+
+    <!-- пилюля 1: пептидный комплекс -->
+    <div class="abs pill pill1"></div>
+    <div class="abs sph-glow p1-glow"></div>
+    <img class="abs sph p1-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h3 class="abs pill-title pill1-title">Пептидный комплекс</h3>
+
+    <p class="abs body body12">Уменьшает выпадение волос и продлевает фазу активного роста волоса<br><br>Стимулирует рост волос за счет улучшения кровотока в коже</p>
+    <div class="abs num-circ n1"><span>1</span></div>
+    <div class="abs num-circ n2"><span>2</span></div>
+
+    <!-- пилюля 2: растительные компоненты -->
+    <div class="abs pill pill2"></div>
+    <div class="abs sph-glow p2-glow"></div>
+    <img class="abs sph p2-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h3 class="abs pill-title pill2-title">Растительные компоненты усиливают<br>действие пептидного комплекса</h3>
+
+    <p class="abs body body36">Экстракты периллы плодоносящей и хауттюйнии сердцевидной оказывают противовоспалительный эффект<br><br>Экстракт зелёного чая в роли антиоксиданта предотвращает образование перхоти<br><br>Экстракт цветков клевера и олеаноловая кислота уменьшают воздействие андрогенов на волосяные фолликулы<br><br>Ниацинамид улучшает микроциркуляцию и дает себорегулирующий эффект</p>
+    <div class="abs num-circ n3"><span>3</span></div>
+    <div class="abs num-circ n4"><span>4</span></div>
+    <div class="abs num-circ n5"><span>5</span></div>
+    <div class="abs num-circ n6"><span>6</span></div>
+
+    <div class="abs man-wrap">
+      <div class="abs man-glow"></div>
+      <img class="abs man-ball" src="../assets/img/fig/man-ball.png" alt="">
+    </div>
+  </section>
+
+  <!-- ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ -->
+  <section class="s6">
+    <!-- заголовок -->
+    <img class="abs ball" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs title">Где купить сыворотку <span class="b">GELTEK HAIR</span></h2>
+
+    <!-- кнопки маркетплейсов -->
+    <a class="abs shopbtn b1" href="https://apteka.ru/product/geltek-syvorotka-dlya-rosta-volos-s-peptidami-ukreplyayushhaya-50-ml-6a0c58deab64e4a63ecdca05/" target="_blank" rel="noopener">
+      <img src="../assets/img/logos/apteka-white.png" alt="apteka.ru">
+    </a>
+    <a class="abs shopbtn b2" href="https://goldapple.ru/19000449273-with-peptides" target="_blank" rel="noopener">
+      <span class="zy-badge"><span class="zy-diamond"></span></span><span class="zy-txt">Золотое Яблоко</span>
+    </a>
+    <a class="abs shopbtn b3" href="https://www.wildberries.ru/catalog/489447740/detail.aspx?targetUrl=SN" target="_blank" rel="noopener">
+      <img class="wb-logo" src="../assets/img/logos/wildberries.svg" alt="Wildberries">
+    </a>
+    <a class="abs shopbtn b4" href="https://ozon.ru/t/5DObdNM" target="_blank" rel="noopener">
+      <span class="ozon-txt">OZON</span>
+    </a>
+
+    <!-- витрина продукта -->
+    <div class="abs plate"></div>
+    <div class="abs glowbox">
+      <div class="abs glowbox-light"></div>
+      <img class="abs glowbox-sphere" src="../assets/img/fig/sphere-big.png" alt="">
+    </div>
+    <div class="abs pinkglow"></div>
+    <img class="abs showcase-logo" src="../assets/img/logos/geltek-hair.svg" alt="GELTEK hair">
+    <img class="abs peptidman" src="../assets/img/fig/peptid-man.png" alt="">
+    <img class="abs pack50" src="../assets/img/fig/serum-50.png" alt="">
+    <img class="abs pack100" src="../assets/img/fig/serum-100.png" alt="">
+    <img class="abs decosphere" src="../assets/img/fig/sphere-red.png" alt="">
+
+    <div class="abs vol-glow g50"></div>
+    <img class="abs vol-sph s50" src="../assets/img/fig/sphere-red.png" alt="">
+    <span class="abs vol-txt t50">50 ml</span>
+    <div class="abs vol-glow g100"></div>
+    <img class="abs vol-sph s100" src="../assets/img/fig/sphere-red.png" alt="">
+    <span class="abs vol-txt t100">100 ml</span>
+
+    <!-- плавающие декоративные сферы фона -->
+    <img class="abs float f1" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs float f2" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs float f3" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs float f4" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs float f5" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs float f6" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs float f7" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs float f8" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs float f9" src="../assets/img/fig/sphere-red.png" alt="">
+  </section>
+
+  <!-- ЭКРАН 7: ДО/ПОСЛЕ -->
+  <section class="s7">
+    <div class="abs glass s7card"></div>
+
+    <div class="abs sph-glow s7-glow"></div>
+    <img class="abs sph s7-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs s7-title"><span class="b">Улучшает качество волос.</span><br>Эффективность доказана*<br>в клиническом исследовании</h2>
+
+    <!-- ДО -->
+    <div class="abs ba-ring ba-before"></div>
+    <div class="abs ba-mask ba-before-m"><img src="../assets/img/fig/before.png" alt="До"></div>
+    <div class="abs ba-dot ba-before-dot"></div>
+    <span class="abs ba-label ba-before-label">до</span>
+
+    <!-- ПОСЛЕ -->
+    <div class="abs ba-ring ba-after"></div>
+    <div class="abs ba-mask ba-after-m"><img src="../assets/img/fig/after.png" alt="После"></div>
+    <div class="abs ba-dot ba-after-dot"></div>
+    <span class="abs ba-label ba-after-label">после</span>
+
+    <!-- капля-разделитель по центру -->
+    <div class="abs ba-line"></div>
+    <div class="abs ba-glow1"></div>
+    <img class="abs ba-drop" src="../assets/img/fig/drop-small.png" alt="">
+    <div class="abs ba-glow2"></div>
+    <img class="abs ba-ball" src="../assets/img/fig/ball-5.png" alt="">
+
+    <a class="abs s7-note" href="../assets/docs/issledovanie-syvorotka-peptidy.pdf">*Скачать исследование</a>
+  </section>
+
+  <!-- ЭКРАН 8: ДОВЕРИЕ + ПРОИЗВОДСТВО -->
+  <section class="s8">
+    <img class="abs sph s8-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs s8-title">Доверие к <span class="b">GELTEK</span></h2>
+
+    <p class="abs s8-body">Это российский производитель профессиональной и уходовой косметики с 30-летней историей. Начав с производства медицинского геля, <span class="b">GELTEK</span> превратилась в крупную компанию с несколькими производствами в России, собственной лабораторией, клиникой эстетической медицины, центрами диагностики кожи в разных городах и широким ассортиментом продуктов. Производство соответствует строгим стандартам GMP, а качество продукции гарантируется постоянным внутренним и внешним контролем на всех этапах.</p>
+
+    <a class="abs s8-btn" href="https://geltek.ru/about/" target="_blank" rel="noopener">О компании</a>
+
+    <img class="abs s8-photo" src="../assets/img/fig/picture.png" alt="">
+    <div class="abs s8-shadow"></div>
+    <div class="abs s8-word s8-word1">GELTEK</div>
+    <div class="abs s8-word s8-word2">GELTEK</div>
+  </section>
+
+  <!-- ЭКРАН 9: ШАМПУНИ -->
+  <section class="s9">
+    <img class="abs s9-duo" src="../assets/img/fig/spheres-duo.png" alt="">
+    <h2 class="abs s9-title">Окружите волосы<br>полной заботой</h2>
+
+    <!-- ШАМПУНЬ НОРМАЛИЗУЮЩИЙ (красный) -->
+    <img class="abs sph r-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h3 class="abs subhat r-subhat">Шампунь нормализующий</h3>
+
+    <div class="abs banner r-banner">
+      <img class="banner-drop" src="../assets/img/fig/drop-red.png" alt="">
+      <span>Для комфорта кожи головы и для чувствительной кожи, склонной к перхоти шелушению и зуду</span>
+    </div>
+
+    <img class="abs pack r-norm30" src="../assets/img/fig/norm-30.png" alt="">
+    <img class="abs pack r-norm100" src="../assets/img/fig/norm-100.png" alt="">
+    <img class="abs pack r-norm390" src="../assets/img/fig/norm-390.png" alt="">
+
+    <div class="abs vol-glow r-g1"></div><img class="abs vol-sph r-s1" src="../assets/img/fig/sphere-red.png" alt=""><span class="abs vol-txt r-t1">30 ml</span>
+    <div class="abs vol-glow r-g2"></div><img class="abs vol-sph r-s2" src="../assets/img/fig/sphere-red.png" alt=""><span class="abs vol-txt r-t2">100 ml</span>
+    <div class="abs vol-glow r-g3"></div><img class="abs vol-sph r-s3" src="../assets/img/fig/sphere-red.png" alt=""><span class="abs vol-txt r-t3">390 ml</span>
+
+    <div class="abs r-band"><span class="wm">INTENSIVE</span></div>
+
+    <!-- ШАМПУНЬ УКРЕПЛЯЮЩИЙ С ПОСТБИОТИКАМИ (фиолетовый) -->
+    <img class="abs sph v-sph" src="../assets/img/fig/sphere-violet.png" alt="">
+    <h3 class="abs subhat v-subhat">Шампунь укрепляющий с постбиотиками</h3>
+
+    <div class="abs banner v-banner">
+      <img class="banner-drop" src="../assets/img/fig/drop-violet.png" alt="">
+      <span>Для поддержки здоровья кожи головы при склонности к выпадению волос</span>
+    </div>
+
+    <img class="abs pack v-post30" src="../assets/img/fig/post-30.png" alt="">
+    <img class="abs pack v-post100" src="../assets/img/fig/post-100.png" alt="">
+    <img class="abs pack v-post250" src="../assets/img/fig/post-250.png" alt="">
+    <img class="abs pack v-post390" src="../assets/img/fig/post-390.png" alt="">
+
+    <div class="abs vol-glow v-g1"></div><img class="abs vol-sph v-s1" src="../assets/img/fig/sphere-violet.png" alt=""><span class="abs vol-txt v-t1">30 ml</span>
+    <div class="abs vol-glow v-g2"></div><img class="abs vol-sph v-s2" src="../assets/img/fig/sphere-violet.png" alt=""><span class="abs vol-txt v-t2">100 ml</span>
+    <div class="abs vol-glow v-g3"></div><img class="abs vol-sph v-s3" src="../assets/img/fig/sphere-violet.png" alt=""><span class="abs vol-txt v-t3">250 ml</span>
+    <div class="abs vol-glow v-g4"></div><img class="abs vol-sph v-s4" src="../assets/img/fig/sphere-violet.png" alt=""><span class="abs vol-txt v-t4">390 ml</span>
+
+    <div class="abs v-band"><span class="wm">BIOME</span></div>
+  </section>
+
+  <!-- ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ -->
+  <section class="s10">
+    <img class="abs s10-photo" src="../assets/img/fig/hair.png" alt="">
+    <h2 class="abs s10-title">Для крепких<br>и густых волос!</h2>
+
+    <div class="abs s10-base"></div>
+    <h3 class="abs s10-cta">Сыворотка и шампуни <span class="b">GELTEK HAIR</span> идеальны для регулярного применения</h3>
+    <p class="abs s10-note">Отсутствуют противопоказания при беременности и грудном вскармливании</p>
+  </section>
+
+  <!-- ФУТЕР -->
+  <footer class="s-foot">
+    <img class="abs foot-logo" src="../assets/img/logos/geltek-main.svg" alt="GELTEK">
+    <p class="abs foot-text">ООО «Гельтек-Медика» ОГРН 1057746615904</p>
+    <a class="abs foot-vk" href="https://vk.ru/public54571981" target="_blank" rel="noopener" aria-label="ВКонтакте">
+      <svg viewBox="0 0 101 100" aria-hidden="true"><path fill="#fff" d="M17.3752 30.4169C17.9168 56.4169 30.9167 72.0418 53.7084 72.0418H55.0003V57.1668C63.3753 58.0001 69.7082 64.1252 72.2498 72.0418H84.0835C80.8335 60.2085 72.2914 53.6668 66.9581 51.1668C72.2914 48.0835 79.7915 40.5835 81.5831 30.4169H70.8328C68.4995 38.6669 61.5836 46.1668 55.0003 46.8751V30.4169H44.2499V59.2501C37.5833 57.5835 29.1668 49.5002 28.7918 30.4169H17.3752Z"/></svg>
+    </a>
+  </footer>
+
 </div>
+
+<!-- ==================== МОБИЛЬНАЯ ВЕРСТКА (база 320px, cqw = px/3.2) ==================== -->
+<div class="stage--mobile">
+
+  <header class="m-hdr">
+    <img class="m-hdr-logo" src="../assets/img/logos/geltek-hair.svg" alt="GELTEK hair">
+    <span class="m-burger"><i></i><i></i><i></i></span>
+  </header>
+
+  <!-- M-ЭКРАН 1: HERO + ПРЕИМУЩЕСТВА -->
+  <section class="m-s1">
+    <img class="abs m-kv" src="../assets/img/fig/hero-kv.png" alt="">
+    <div class="abs m-patch"></div>
+
+    <img class="abs m-sph m-title-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h1 class="abs m-hero-title"><span class="b">GELTEK HAIR.</span> Сыворотка укрепляющая для роста волос</h1>
+
+    <div class="abs m-banner">
+      <img class="banner-drop" src="../assets/img/fig/drop-red.png" alt="">
+      <span>Пептидная забота о ваших волосах</span>
+    </div>
+    <img class="abs m-bottle" src="../assets/img/fig/serum-100.png" alt="" data-scroll-y0="64.063" data-scroll-y1="98.698">
+
+    <div class="abs glass m-adv-card"></div>
+    <div class="abs m-sph-glow m-adv-glow"></div>
+    <img class="abs m-sph m-adv-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs m-adv-title">Для улучшения роста и против выпадения волос</h2>
+
+    <div class="abs m-ic-circ m-ic1"><img src="../assets/img/icons-wine/follicle.png" alt=""></div>
+    <p class="abs m-adv-item m-i1">Ингредиенты в высокой концентрации</p>
+
+    <div class="abs m-ic-circ m-ic2"><img src="../assets/img/icons-wine/skin.png" alt=""></div>
+    <p class="abs m-adv-item m-i2">Комплексный подход к борьбе с поредением волос</p>
+
+    <div class="abs m-ic-circ m-ic3"><img src="../assets/img/icons-wine/microscope.png" alt=""></div>
+    <p class="abs m-adv-item m-i3">Доказанная эффективность в клиническом исследовании*</p>
+
+    <a class="abs m-note" href="../assets/docs/issledovanie-syvorotka-peptidy.pdf">*Скачать исследование</a>
+  </section>
+
+  <!-- M-ЭКРАН 2: ЖЕНЩИНАМ -->
+  <section class="m-s2 m-card-screen">
+    <img class="abs m-photo" src="../assets/img/fig/woman.png" alt="">
+    <div class="abs glass m-card"></div>
+    <div class="abs m-ic-circ m-icon"><img src="../assets/img/icons-wine/woman.png" alt=""></div>
+    <p class="abs m-txt"><span class="b">Женщинам</span><br>рекомендуем использовать сыворотку при выпадении и истончении волос</p>
+  </section>
+
+  <!-- M-ЭКРАН 3: МУЖЧИНАМ -->
+  <section class="m-s3 m-card-screen">
+    <img class="abs m-photo" src="../assets/img/fig/man.png" alt="">
+    <div class="abs glass m-card"></div>
+    <div class="abs m-ic-circ m-icon"><img src="../assets/img/icons-wine/man.png" alt=""></div>
+    <p class="abs m-txt"><span class="b">Мужчинам</span><br>при возрастном поредении и выпадении волос</p>
+  </section>
+
+  <!-- M-ЭКРАН 4: БЕРЕЖНЫЙ УХОД -->
+  <section class="m-s4 m-card-screen">
+    <img class="abs m-photo" src="../assets/img/fig/demo.png" alt="">
+    <div class="abs glass m-card"></div>
+    <div class="abs m-ic-circ m-icon"><img src="../assets/img/icons-wine/care.png" alt=""></div>
+    <p class="abs m-txt"><span class="b">Бережный уход</span><br>при себорее, псориазе, дерматозах и нарушении себорегуляции, если заболевания приводят к выпадению волос</p>
+  </section>
+
+  <!-- M-ЭКРАН 5: КАК ДЕЙСТВУЕТ -->
+  <section class="m-s5">
+    <img class="abs m-s5-bg" src="../assets/img/fig/geltek-kv-bg.png" alt="">
+    <div class="abs m-s5-man-wrap">
+      <div class="abs m-s5-shadow"></div>
+      <img class="abs m-s5-man" src="../assets/img/fig/man-ball.png" alt="">
+    </div>
+    <div class="abs glass m-s5-card"></div>
+
+    <div class="abs m-sph-glow m-s5-title-glow"></div>
+    <img class="abs m-sph m-s5-title-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs m-s5-title">Как действует сыворотка</h2>
+
+    <div class="abs m-pill m-pill1"></div>
+    <div class="abs m-sph-glow m-p1-glow"></div>
+    <img class="abs m-sph m-p1-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h3 class="abs m-pill-title m-pill1-title">Пептидный комплекс</h3>
+
+    <div class="abs m-num-circ m-n1"><span>1</span></div>
+    <p class="abs m-body m-b1">Уменьшает выпадение волос и продлевает фазу активного роста волоса</p>
+    <div class="abs m-num-circ m-n2"><span>2</span></div>
+    <p class="abs m-body m-b2">Стимулирует рост волос за счет улучшения кровотока в коже</p>
+
+    <div class="abs m-pill m-pill2"></div>
+    <div class="abs m-sph-glow m-p2-glow"></div>
+    <img class="abs m-sph m-p2-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h3 class="abs m-pill-title m-pill2-title">Растительные компоненты усиливают действие пептидного комплекса</h3>
+
+    <div class="abs m-num-circ m-n3"><span>3</span></div>
+    <p class="abs m-body m-b3">Экстракты периллы плодоносящей и хауттюйнии сердцевидной оказывают противовоспалительный эффект</p>
+    <div class="abs m-num-circ m-n4"><span>4</span></div>
+    <p class="abs m-body m-b4">Экстракт зелёного чая в роли антиоксиданта предотвращает образование перхоти</p>
+    <div class="abs m-num-circ m-n5"><span>5</span></div>
+    <p class="abs m-body m-b5">Экстракт цветков клевера и олеаноловая кислота уменьшают воздействие андрогенов на волосяные фолликулы</p>
+    <div class="abs m-num-circ m-n6"><span>6</span></div>
+    <p class="abs m-body m-b6">Ниацинамид улучшает микроциркуляцию и дает себорегулирующий эффект</p>
+  </section>
+
+  <!-- M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ -->
+  <section class="m-s6">
+    <img class="abs m-sph m-s6-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs m-s6-title">Где купить сыворотку <span class="b">GELTEK HAIR</span></h2>
+
+    <div class="abs m-s6-glowbg"></div>
+    <img class="abs m-s6-fsph m-fs1" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs m-s6-fsph m-fs2" src="../assets/img/fig/sphere-red.png" alt="">
+    <img class="abs m-s6-fsph m-fs3" src="../assets/img/fig/sphere-red.png" alt="">
+
+    <div class="abs m-s6-plate"></div>
+    <div class="abs m-s6-glowbox">
+      <div class="abs m-s6-glowlight"></div>
+      <img class="abs m-s6-glowsph" src="../assets/img/fig/sphere-big.png" alt="">
+    </div>
+    <div class="abs m-s6-pinkglow"></div>
+    <img class="abs m-s6-logo" src="../assets/img/logos/geltek-hair.svg" alt="GELTEK hair">
+    <img class="abs m-s6-peptidman" src="../assets/img/fig/peptid-man.png" alt="">
+    <img class="abs m-s6-pack50" src="../assets/img/fig/serum-50.png" alt="">
+    <img class="abs m-s6-pack100" src="../assets/img/fig/serum-100.png" alt="">
+    <img class="abs m-s6-decosph" src="../assets/img/fig/sphere-red.png" alt="">
+    <div class="abs m-vol-glow m-vg50"></div><img class="abs m-vol-sph m-vs50" src="../assets/img/fig/sphere-red.png" alt=""><span class="abs m-vol-txt m-vt50">50 ml</span>
+    <div class="abs m-vol-glow m-vg100"></div><img class="abs m-vol-sph m-vs100" src="../assets/img/fig/sphere-red.png" alt=""><span class="abs m-vol-txt m-vt100">100 ml</span>
+
+    <a class="abs m-shopbtn m-btn1" href="https://apteka.ru/product/geltek-syvorotka-dlya-rosta-volos-s-peptidami-ukreplyayushhaya-50-ml-6a0c58deab64e4a63ecdca05/" target="_blank" rel="noopener">
+      <img src="../assets/img/logos/apteka-white.png" alt="apteka.ru">
+    </a>
+    <a class="abs m-shopbtn m-btn2" href="https://goldapple.ru/19000449273-with-peptides" target="_blank" rel="noopener">
+      <span class="zy-badge"><span class="zy-diamond"></span></span><span class="zy-txt">Золотое Яблоко</span>
+    </a>
+    <a class="abs m-shopbtn m-btn3" href="https://www.wildberries.ru/catalog/489447740/detail.aspx?targetUrl=SN" target="_blank" rel="noopener">
+      <img class="wb-logo" src="../assets/img/logos/wildberries.svg" alt="Wildberries">
+    </a>
+    <a class="abs m-shopbtn m-btn4" href="https://ozon.ru/t/5DObdNM" target="_blank" rel="noopener">
+      <span class="ozon-txt">OZON</span>
+    </a>
+  </section>
+
+  <!-- M-ЭКРАН 7: ДО/ПОСЛЕ -->
+  <section class="m-s7">
+    <div class="abs glass m-s7-card"></div>
+    <div class="abs m-sph-glow m-s7-glow"></div>
+    <img class="abs m-sph m-s7-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs m-s7-title"><span class="b">Улучшает качество волос.</span> Эффективность доказана* в клиническом исследовании</h2>
+
+    <div class="abs m-ba-ring m-ba-before"></div>
+    <div class="abs m-ba-mask m-ba-before-m"><img src="../assets/img/fig/before.png" alt="До"></div>
+    <div class="abs m-ba-dot m-ba-before-dot"></div>
+    <span class="abs m-ba-label m-ba-before-label">до</span>
+
+    <div class="abs m-ba-line"></div>
+    <div class="abs m-ba-glow1"></div>
+    <img class="abs m-ba-drop" src="../assets/img/fig/drop-small.png" alt="">
+    <div class="abs m-ba-glow2"></div>
+    <img class="abs m-ba-ball" src="../assets/img/fig/ball-5.png" alt="">
+
+    <div class="abs m-ba-ring m-ba-after"></div>
+    <div class="abs m-ba-mask m-ba-after-m"><img src="../assets/img/fig/after.png" alt="После"></div>
+    <div class="abs m-ba-dot m-ba-after-dot"></div>
+    <span class="abs m-ba-label m-ba-after-label">после</span>
+
+    <a class="abs m-s7-note" href="../assets/docs/issledovanie-syvorotka-peptidy.pdf">*Скачать исследование</a>
+  </section>
+
+  <!-- M-ЭКРАН 8: ДОВЕРИЕ + ПРОИЗВОДСТВО -->
+  <section class="m-s8">
+    <img class="abs m-sph m-s8-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h2 class="abs m-s8-title">Доверие к <span class="b">GELTEK</span></h2>
+    <p class="abs m-s8-body">Это российский производитель профессиональной и уходовой косметики с 30-летней историей. Начав с производства медицинского геля, <span class="b">GELTEK</span> превратилась в крупную компанию с несколькими производствами в России, собственной лабораторией, клиникой эстетической медицины, центрами диагностики кожи в разных городах и широким ассортиментом продуктов. Производство соответствует строгим стандартам GMP, а качество продукции гарантируется постоянным внутренним и внешним контролем на всех этапах.</p>
+    <a class="abs m-s8-btn" href="https://geltek.ru/about/" target="_blank" rel="noopener">О компании</a>
+
+    <img class="abs m-s8-photo" src="../assets/img/fig/picture.png" alt="">
+    <div class="abs m-s8-shadow"></div>
+    <div class="abs m-s8-word">GELTEK</div>
+  </section>
+
+  <!-- M-ЭКРАН 9: ШАМПУНИ -->
+  <section class="m-s9">
+    <img class="abs m-s9-duo" src="../assets/img/fig/spheres-duo.png" alt="">
+    <h2 class="abs m-s9-title">Окружите волосы полной заботой</h2>
+
+    <img class="abs m-sph m-r-sph" src="../assets/img/fig/sphere-red.png" alt="">
+    <h3 class="abs m-subhat m-r-subhat">Шампунь нормализующий</h3>
+    <div class="abs m-banner m-r-banner">
+      <img class="banner-drop" src="../assets/img/fig/drop-red.png" alt="">
+      <span>Для комфорта кожи головы и для чувствительной кожи, склонной к перхоти шелушению и зуду</span>
+    </div>
+    <div class="abs m-r-band"><span class="wm">INTENSIVE</span></div>
+    <img class="abs m-pack m-r-norm30" src="../assets/img/fig/norm-30.png" alt="">
+    <img class="abs m-pack m-r-norm100" src="../assets/img/fig/norm-100.png" alt="">
+    <img class="abs m-pack m-r-norm390" src="../assets/img/fig/norm-390.png" alt="">
+    <div class="abs m-vol-glow m-rg1"></div><img class="abs m-vol-sph m-rs1" src="../assets/img/fig/sphere-red.png" alt=""><span class="abs m-vol-txt m-rt1">30 ml</span>
+    <div class="abs m-vol-glow m-rg2"></div><img class="abs m-vol-sph m-rs2" src="../assets/img/fig/sphere-red.png" alt=""><span class="abs m-vol-txt m-rt2">100 ml</span>
+    <div class="abs m-vol-glow m-rg3"></div><img class="abs m-vol-sph m-rs3" src="../assets/img/fig/sphere-red.png" alt=""><span class="abs m-vol-txt m-rt3">390 ml</span>
+
+    <img class="abs m-sph m-v-sph" src="../assets/img/fig/sphere-violet.png" alt="">
+    <h3 class="abs m-subhat m-v-subhat">Шампунь укрепляющий с постбиотиками</h3>
+    <div class="abs m-banner m-v-banner">
+      <img class="banner-drop" src="../assets/img/fig/drop-violet.png" alt="">
+      <span>Для поддержки здоровья кожи головы при склонности к выпадению волос</span>
+    </div>
+    <div class="abs m-v-band"><span class="wm">BIOME</span></div>
+    <img class="abs m-pack m-v-post30" src="../assets/img/fig/post-30.png" alt="">
+    <img class="abs m-pack m-v-post100" src="../assets/img/fig/post-100.png" alt="">
+    <img class="abs m-pack m-v-post250" src="../assets/img/fig/post-250.png" alt="">
+    <img class="abs m-pack m-v-post390" src="../assets/img/fig/post-390.png" alt="">
+    <div class="abs m-vol-glow m-vg1"></div><img class="abs m-vol-sph m-vs1" src="../assets/img/fig/sphere-violet.png" alt=""><span class="abs m-vol-txt m-vt1">30 ml</span>
+    <div class="abs m-vol-glow m-vg2"></div><img class="abs m-vol-sph m-vs2" src="../assets/img/fig/sphere-violet.png" alt=""><span class="abs m-vol-txt m-vt2">100 ml</span>
+    <div class="abs m-vol-glow m-vg3"></div><img class="abs m-vol-sph m-vs3" src="../assets/img/fig/sphere-violet.png" alt=""><span class="abs m-vol-txt m-vt3">250 ml</span>
+    <div class="abs m-vol-glow m-vg4"></div><img class="abs m-vol-sph m-vs4" src="../assets/img/fig/sphere-violet.png" alt=""><span class="abs m-vol-txt m-vt4">390 ml</span>
+  </section>
+
+  <!-- M-ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ -->
+  <section class="m-s10">
+    <img class="abs m-s10-photo" src="../assets/img/fig/hair.png" alt="">
+    <h2 class="abs m-s10-title">Для крепких и густых волос!</h2>
+  </section>
+  <section class="m-base">
+    <h3 class="abs m-cta">Сыворотка и шампуни <span class="b">GELTEK HAIR</span> идеальны для регулярного применения</h3>
+    <p class="abs m-cta-note">Отсутствуют противопоказания при беременности и грудном вскармливании</p>
+  </section>
+
+  <footer class="m-foot">
+    <img class="abs m-foot-logo" src="../assets/img/logos/geltek-main.svg" alt="GELTEK">
+    <p class="abs m-foot-text">ООО «Гельтек-Медика» ОГРН 1057746615904</p>
+    <a class="abs m-foot-vk" href="https://vk.ru/public54571981" target="_blank" rel="noopener" aria-label="ВКонтакте">
+      <svg viewBox="0 0 101 100" aria-hidden="true"><path fill="#fff" d="M17.3752 30.4169C17.9168 56.4169 30.9167 72.0418 53.7084 72.0418H55.0003V57.1668C63.3753 58.0001 69.7082 64.1252 72.2498 72.0418H84.0835C80.8335 60.2085 72.2914 53.6668 66.9581 51.1668C72.2914 48.0835 79.7915 40.5835 81.5831 30.4169H70.8328C68.4995 38.6669 61.5836 46.1668 55.0003 46.8751V30.4169H44.2499V59.2501C37.5833 57.5835 29.1668 49.5002 28.7918 30.4169H17.3752Z"/></svg>
+    </a>
+  </footer>
+
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
