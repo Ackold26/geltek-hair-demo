@@ -1,0 +1,317 @@
+/* ==================== ШРИФТЫ ==================== */
+@font-face{font-family:'Geometria';src:url('../assets/fonts/Geometria-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Geometria';src:url('../assets/fonts/Geometria-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Geometria';src:url('../assets/fonts/Geometria-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Geometria';src:url('../assets/fonts/Geometria-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+
+/* ==================== ПЕРЕМЕННЫЕ ==================== */
+:root{
+  --wine:#8d1e44;
+  --wine-dark:#6b1635;
+  --wine-deep:#4f0f26;
+  --wine-bright:#b93759;
+  --violet:#634686;
+  --violet-dark:#4a2f73;
+  --gray:#58585b;
+  --ink:#3a3a3c;
+  --bg:#ffffff;
+  --bg-warm:#ece5e0;
+  --bg-soft:#f4f2f1;
+  --max:1180px;
+  --pad:40px;
+}
+
+/* ==================== БАЗА ==================== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Geometria',system-ui,Arial,sans-serif;
+  font-weight:300;color:var(--ink);background:var(--bg);
+  line-height:1.4;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+sup{font-size:.55em;vertical-align:super}
+b{font-weight:800}
+.container{max-width:var(--max);margin:0 auto;padding:0 var(--pad);width:100%}
+
+/* ==================== СФЕРЫ (декоративные шарики) ==================== */
+.sphere{display:inline-block;flex:0 0 auto;background-size:contain;background-repeat:no-repeat;background-position:center}
+.sphere--red{width:64px;height:64px;background-image:url('../assets/img/spheres/sphere-red-2.png')}
+.sphere--violet{width:40px;height:40px;background-image:url('../assets/img/spheres/sphere-violet.png')}
+.sphere--duo{width:78px;height:56px;background-image:url('../assets/img/spheres/two-spheres.png')}
+.sphere--sm{width:34px;height:34px}
+
+/* ==================== АНИМАЦИИ (reveal) ==================== */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
+.reveal.is-in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ==================== ХЕДЕР ==================== */
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);transition:box-shadow .3s}
+.header.is-scrolled{box-shadow:0 4px 24px rgba(80,15,38,.08)}
+.header__inner{display:flex;align-items:center;gap:48px;height:96px}
+.header__logo img{height:56px;width:auto}
+.nav{display:flex;gap:38px;margin-left:auto}
+.nav__link{font-weight:700;font-size:17px;color:var(--gray);letter-spacing:.2px;transition:color .25s;white-space:nowrap}
+.nav__link:hover,.nav__link.is-active{color:var(--wine)}
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:0;cursor:pointer;padding:8px;margin-left:auto;z-index:120}
+.burger span{width:30px;height:3px;background:var(--wine);border-radius:3px;transition:.3s}
+.burger.is-open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.burger.is-open span:nth-child(2){opacity:0}
+.burger.is-open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+
+/* ==================== HERO ==================== */
+.hero{position:relative;padding-top:24px;overflow:hidden}
+.hero__head{display:flex;align-items:center;gap:22px;margin-bottom:26px}
+.hero__sphere{width:78px;height:78px}
+.hero__title{font-size:34px;font-weight:300;color:var(--wine);line-height:1.15;max-width:640px}
+.hero__title b{font-weight:800}
+.hero__banner{background:linear-gradient(100deg,var(--wine-deep),var(--wine) 60%,var(--wine-bright));color:#fff;font-weight:800;font-size:26px;letter-spacing:.5px;padding:20px 40px;border-radius:2px;position:relative;z-index:2}
+.hero__stage{position:relative;margin-top:-10px}
+.hero__kv{width:100%;height:auto}
+/* флакон, едущий вниз по скроллу (позиционируется из JS) */
+.bottle-track{display:contents}
+.bottle{position:fixed;top:180px;right:max(24px,calc(50vw - 585px));width:172px;height:auto;z-index:6;opacity:0;pointer-events:none;filter:drop-shadow(0 22px 32px rgba(80,15,38,.2));will-change:top,opacity}
+
+/* ==================== ПРЕИМУЩЕСТВА ==================== */
+.advantages{padding:20px 0 70px;position:relative;z-index:4}
+.advantages__card{background:linear-gradient(120deg,var(--wine-dark),var(--wine) 70%,var(--wine-bright));color:#fff;border-radius:3px;padding:48px 54px;max-width:760px;box-shadow:0 30px 60px rgba(80,15,38,.18)}
+.advantages__head{display:flex;align-items:center;gap:20px;margin-bottom:34px}
+.advantages__title{font-size:28px;font-weight:800;line-height:1.2}
+.advantages__list{list-style:none;display:flex;flex-direction:column;gap:22px}
+.advantages__item{display:flex;align-items:center;gap:22px;font-size:19px}
+.advantages__item .ic{flex:0 0 auto;width:66px;height:66px;border:1.5px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center}
+.advantages__item .ic img{width:38px;height:38px}
+.advantages__note{display:inline-block;margin-top:26px;font-size:13px;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:1px}
+.advantages__note:hover{color:#fff}
+
+/* ==================== КОМУ ПОДОЙДЁТ ==================== */
+.audience{background:var(--bg-warm)}
+.aud{position:relative;display:flex;align-items:center;min-height:520px}
+.aud--rev{flex-direction:row-reverse}
+.aud__photo{position:absolute;inset:0;z-index:0}
+.aud__photo img{width:100%;height:100%;object-fit:cover}
+.aud--rev .aud__photo{}
+.aud__card{position:relative;z-index:2;margin-left:auto;margin-right:8%;width:min(420px,42%);background:linear-gradient(150deg,var(--wine),var(--wine-bright));color:#fff;padding:44px 40px;border-radius:3px;box-shadow:0 24px 50px rgba(80,15,38,.25)}
+.aud--rev .aud__card{margin-left:8%;margin-right:auto}
+.aud__card--dark{background:linear-gradient(150deg,var(--wine-dark),var(--wine))}
+.aud__icon{width:96px;height:96px;background:#fff;border-radius:50%;display:grid;place-items:center;margin-bottom:24px}
+.aud__icon img{width:60px;height:60px;filter:none}
+.aud__card p{font-size:20px;font-weight:300;line-height:1.45}
+.aud__card b{font-size:23px;display:inline-block;margin-bottom:4px}
+/* иконки в карточках должны быть бордовыми на белом круге */
+.aud__icon img{filter:brightness(0) saturate(100%) invert(13%) sepia(48%) saturate(3200%) hue-rotate(316deg) brightness(95%) contrast(95%)}
+
+/* ==================== КАК ДЕЙСТВУЕТ ==================== */
+.how{padding:60px 0;background:#fff}
+.how__card{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--wine-deep),var(--wine-dark) 45%,var(--wine-bright));color:#fff;border-radius:3px;padding:54px 60px}
+.how__head{display:flex;align-items:center;gap:20px;margin-bottom:34px}
+.how__title{font-size:30px;font-weight:800}
+.how__pill{display:inline-flex;align-items:center;gap:16px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.55);border-radius:60px;padding:14px 30px 14px 16px;font-weight:800;font-size:20px;margin:8px 0 20px}
+.how__pill--wide{max-width:680px;line-height:1.25}
+.how__list{list-style:none;display:flex;flex-direction:column;gap:16px;margin-bottom:14px;max-width:680px}
+.how__list li{display:flex;gap:20px;align-items:flex-start;font-size:18px;line-height:1.4;font-weight:300}
+.how__list .num{flex:0 0 auto;width:40px;height:40px;border:1.5px solid rgba(255,255,255,.55);border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:18px}
+.how__man{position:absolute;right:20px;bottom:0;width:210px;height:auto;opacity:.92;pointer-events:none}
+
+/* ==================== ГДЕ КУПИТЬ ==================== */
+.buy{padding:70px 0}
+.buy__head{display:flex;align-items:center;gap:20px;margin-bottom:40px}
+.buy__title{font-size:28px;font-weight:300;color:var(--wine)}
+.buy__title b{font-weight:800}
+.buy__grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.shop{height:150px;border-radius:3px;background:linear-gradient(135deg,var(--wine),var(--wine-bright));display:grid;place-items:center;transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s;box-shadow:0 16px 34px rgba(80,15,38,.16)}
+.shop:hover{transform:scale(.955);box-shadow:0 8px 20px rgba(80,15,38,.22)}
+.shop__logo--img{max-height:44px;width:auto;max-width:74%}
+.shop__logo--wl{filter:brightness(0) invert(1)}
+.shop__logo--wb{max-height:28px}
+.shop__logo--text{font-weight:800;font-size:42px;color:#fff;letter-spacing:1px}
+
+/* ==================== ПРОДУКТ ==================== */
+.product{padding:20px 0 60px}
+.product__panel{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;background:linear-gradient(120deg,#f3f0ef,#e9e3df);border-radius:4px;padding:50px 60px;position:relative;overflow:hidden}
+.product__brand img{width:170px;height:auto}
+.product__shots{display:flex;align-items:flex-end;justify-content:center;gap:20px}
+.product__shot--sm img{width:150px}
+.product__shot--lg img{width:212px}
+.product__sizes{display:flex;gap:60px;justify-content:flex-end;padding:22px 60px 0}
+.size{display:inline-flex;align-items:center;gap:12px;font-size:18px;color:var(--ink)}
+.dot{width:22px;height:22px;border-radius:50%;background-size:contain;background-repeat:no-repeat}
+.dot--red{background-image:url('../assets/img/spheres/sphere-red-1.png')}
+.dot--violet{background-image:url('../assets/img/spheres/sphere-violet.png')}
+
+/* ==================== ДО / ПОСЛЕ ==================== */
+.result{background:linear-gradient(135deg,var(--wine-dark),var(--wine) 60%,var(--wine-bright));color:#fff;padding:66px 0;position:relative;overflow:hidden}
+.result__head{display:flex;align-items:center;gap:22px;margin-bottom:44px}
+.result__title{font-size:28px;font-weight:800;line-height:1.25}
+.result__grid{display:flex;align-items:center;justify-content:center;gap:30px}
+.result__col{text-align:center}
+.result__circle{width:300px;height:300px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,.4);box-shadow:0 20px 40px rgba(0,0,0,.2)}
+.result__circle img{width:100%;height:100%;object-fit:cover}
+.result__col figcaption{margin-top:22px;font-size:20px;letter-spacing:3px;font-weight:300}
+.result__drop{width:150px;flex:0 0 auto}
+.result__drop img{width:100%}
+.result__note{display:inline-block;margin-top:40px;font-size:13px;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.35)}
+.floaty{animation:floaty 4s ease-in-out infinite}
+.floaty--delay{animation-delay:-2s}
+@keyframes floaty{0%,100%{transform:translateY(-8px)}50%{transform:translateY(8px)}}
+@media(prefers-reduced-motion:reduce){.floaty{animation:none}}
+
+/* ==================== ДОВЕРИЕ К GELTEK ==================== */
+.about{padding:70px 0 0}
+.about__head{display:flex;align-items:center;gap:22px;margin-bottom:30px}
+.about__title{font-size:30px;font-weight:300;color:var(--wine)}
+.about__title b{font-weight:800}
+.about__text{max-width:760px;padding-left:86px}
+.about__text p{font-size:17px;line-height:1.6;color:#4a4a4c;margin-bottom:30px}
+.btn{display:inline-block;background:linear-gradient(120deg,var(--wine),var(--wine-bright));color:#fff;font-weight:700;font-size:16px;padding:16px 40px;border-radius:40px;transition:transform .25s,box-shadow .25s;box-shadow:0 12px 26px rgba(80,15,38,.22)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(80,15,38,.3)}
+.about__factory{position:relative;height:340px;margin-top:44px;overflow:hidden;background:#1a1a1a url('../assets/img/people/production.jpg') center/cover no-repeat;display:grid;place-items:center}
+.about__factory::after{content:'';position:absolute;inset:0;background:rgba(20,10,15,.28)}
+.about__parallax{position:relative;z-index:2;font-size:clamp(70px,14vw,200px);font-weight:800;color:rgba(255,255,255,.85);letter-spacing:4px;will-change:transform}
+
+/* ==================== ШАМПУНИ ==================== */
+.shampoos{padding:70px 0}
+.shampoos__head{display:flex;align-items:center;gap:22px;margin-bottom:46px}
+.shampoos__title{font-size:30px;font-weight:800;color:var(--wine);line-height:1.15}
+.line{margin-bottom:60px}
+.line__title{display:flex;align-items:center;gap:16px;font-size:24px;font-weight:800;color:var(--wine);margin-bottom:24px}
+.line[data-theme=violet] .line__title{color:var(--violet)}
+.line__banner{background:linear-gradient(100deg,var(--wine),var(--wine-bright));color:#fff;font-size:18px;line-height:1.4;padding:22px 34px;border-radius:3px;max-width:60%;position:relative;z-index:2}
+.line__banner--violet{background:linear-gradient(100deg,var(--violet-dark),var(--violet))}
+.line__stage{position:relative;margin-top:-30px;padding:70px 50px 40px;border-radius:3px;display:flex;align-items:flex-end;justify-content:center;gap:40px;overflow:hidden}
+.line__stage--wine{background:linear-gradient(120deg,var(--wine-dark),var(--wine) 70%,var(--wine-bright))}
+.line__stage--violet{background:linear-gradient(120deg,var(--violet-dark),var(--violet))}
+.line__watermark{position:absolute;left:0;right:0;bottom:20px;text-align:center;font-size:120px;font-weight:800;color:rgba(255,255,255,.08);letter-spacing:10px;pointer-events:none;z-index:0;white-space:nowrap}
+.pack{position:relative;z-index:1;text-align:center;transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+.pack img{height:180px;width:auto;margin:0 auto;filter:drop-shadow(0 14px 22px rgba(0,0,0,.22))}
+.pack--big img{height:250px}
+.pack:hover{transform:scale(1.06) translateY(-6px)}
+.pack figcaption{margin-top:18px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px}
+.pack .dot{width:18px;height:18px}
+
+/* ==================== ДЛЯ КРЕПКИХ ВОЛОС ==================== */
+.strong{position:relative;height:520px;overflow:hidden;display:flex;align-items:center}
+.strong__bg{position:absolute;inset:-8% 0;z-index:0;will-change:transform}
+.strong__bg img{width:100%;height:116%;object-fit:cover}
+.strong::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,10,14,.55),rgba(20,10,14,.1) 55%,transparent);z-index:1}
+.strong .container{position:relative;z-index:2}
+.strong__title{font-size:clamp(34px,5vw,58px);font-weight:800;color:#fff;line-height:1.1;text-shadow:0 4px 30px rgba(0,0,0,.3)}
+
+/* ==================== ФИНАЛ ==================== */
+.outro{padding:70px 0 80px;text-align:center}
+.outro__title{font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--wine);line-height:1.25}
+.outro__sub{margin-top:18px;font-size:15px;color:#9a8a90}
+
+/* ==================== ФУТЕР ==================== */
+.footer{background:var(--bg-soft);padding:30px 0}
+.footer__inner{display:flex;align-items:center;gap:26px}
+.footer__logo{height:24px;width:auto;opacity:.85}
+.footer__legal{font-size:13px;color:#9a9a9c}
+.footer__vk{margin-left:auto;width:44px;height:44px;border-radius:50%;background:var(--wine-dark);display:grid;place-items:center;transition:transform .25s,background .25s}
+.footer__vk:hover{transform:scale(1.08);background:var(--wine)}
+
+/* ==================== ПЛАНШЕТ ==================== */
+@media(max-width:1024px){
+  :root{--pad:28px}
+  .hero__title{font-size:28px}
+  .bottle-track{right:20px;width:110px}
+  .bottle{width:110px;top:110px}
+  .how__man{width:150px}
+  .aud__card{width:min(380px,52%);margin-right:5%}
+  .aud--rev .aud__card{margin-left:5%}
+  .result__circle{width:230px;height:230px}
+  .result__drop{width:110px}
+  .line__banner{max-width:75%}
+  .line__watermark{font-size:90px}
+}
+
+/* ==================== МОБИЛЬНЫЙ ==================== */
+@media(max-width:720px){
+  :root{--pad:18px}
+  .header__inner{height:74px;gap:0}
+  .header__logo img{height:46px}
+  .burger{display:flex}
+  .nav{position:fixed;top:0;right:0;height:100vh;width:74%;max-width:320px;background:var(--bg-soft);flex-direction:column;gap:0;padding:100px 30px 30px;margin:0;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);box-shadow:-10px 0 40px rgba(80,15,38,.12)}
+  .nav.is-open{transform:translateX(0)}
+  .nav__link{font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.06);width:100%}
+  .nav__link:first-child{color:var(--wine)}
+
+  .hero__head{gap:14px;margin-bottom:18px}
+  .hero__sphere{width:56px;height:56px}
+  .hero__title{font-size:24px}
+  .hero__banner{font-size:18px;padding:14px 20px}
+  .bottle-track{display:none}
+
+  .advantages__card{padding:32px 24px}
+  .advantages__title{font-size:21px}
+  .advantages__item{font-size:16px;gap:16px}
+  .advantages__item .ic{width:54px;height:54px}
+  .advantages__item .ic img{width:30px;height:30px}
+
+  .aud{flex-direction:column;min-height:0}
+  .aud--rev{flex-direction:column}
+  .aud__photo{position:relative;height:320px}
+  .aud__card,.aud--rev .aud__card{width:calc(100% - 36px);margin:-60px 18px 30px;position:relative}
+  .aud__card p{font-size:17px}
+  .aud__icon{width:76px;height:76px;margin-bottom:16px}
+  .aud__icon img{width:46px;height:46px}
+
+  .how{padding:34px 0}
+  .how__card{padding:32px 22px}
+  .how__title{font-size:22px}
+  .how__pill{font-size:16px;padding:12px 20px 12px 12px}
+  .how__pill--wide{font-size:16px}
+  .how__list li{font-size:16px;gap:14px}
+  .how__list .num{width:34px;height:34px;font-size:16px}
+  .how__man{display:none}
+
+  .buy{padding:44px 0}
+  .buy__title{font-size:22px}
+  .buy__grid{grid-template-columns:1fr;gap:14px}
+  .shop{height:110px}
+  .shop__logo--text{font-size:34px}
+  .shop__logo--img{max-height:36px}
+
+  .product__panel{grid-template-columns:1fr;padding:34px 24px;gap:20px;text-align:center}
+  .product__brand img{margin:0 auto}
+  .product__shot--sm img{width:100px}
+  .product__shot--lg img{width:140px}
+  .product__sizes{justify-content:center;gap:40px;padding:20px 0 0}
+
+  .result{padding:44px 0}
+  .result__title{font-size:21px}
+  .result__grid{gap:10px}
+  .result__circle{width:132px;height:132px;border-width:2px}
+  .result__col figcaption{font-size:15px;margin-top:12px}
+  .result__drop{width:64px}
+
+  .about{padding:44px 0 0}
+  .about__title{font-size:23px}
+  .about__head{gap:14px;margin-bottom:20px}
+  .about__text{padding-left:0}
+  .about__text p{font-size:15px}
+  .about__factory{height:200px}
+
+  .shampoos{padding:44px 0}
+  .shampoos__title{font-size:22px}
+  .line__title{font-size:19px}
+  .line__banner{max-width:100%;font-size:15px;padding:16px 20px}
+  .line__stage{gap:14px;padding:50px 14px 28px;flex-wrap:wrap}
+  .pack img{height:96px}
+  .pack--big img{height:130px}
+  .pack figcaption{font-size:13px;margin-top:10px}
+  .line__watermark{font-size:52px}
+
+  .strong{height:340px}
+  .strong__title{font-size:30px}
+
+  .outro{padding:44px 0}
+
+  .footer__inner{flex-wrap:wrap;gap:14px}
+  .footer__legal{font-size:12px;order:3;width:100%}
+  .footer__vk{margin-left:auto;width:40px;height:40px}
+}
+
+.sphere--sm{width:34px;height:34px}
