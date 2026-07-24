@@ -6,9 +6,9 @@
   /* Ведут на поиск бренда внутри каждого магазина — открывают актуальные
      карточки Geltek Hair даже при смене прямых URL товаров. */
   var SHOP_URLS = {
-    apteka:    'https://apteka.ru/search/?q=geltek%20hair',                  // TODO: заменить на полную карточку (ссылка обрезалась при вставке)
+    apteka:    'https://apteka.ru/product/geltek-syvorotka-dlya-rosta-volos-s-peptidami-ukreplyayushhaya-50-ml-6a0c58deab64e4a63ecdca05/', // карточка сыворотки
     goldapple: 'https://goldapple.ru/19000449273-with-peptides',             // карточка сыворотки
-    wb:        'https://www.wildberries.ru/catalog/489447740/detail.aspx',   // карточка сыворотки
+    wb:        'https://www.wildberries.ru/catalog/489447740/detail.aspx?targetUrl=SN', // карточка сыворотки
     ozon:      'https://ozon.ru/t/5DObdNM'                                    // карточка сыворотки
   };
   var RESEARCH_URL = 'assets/docs/issledovanie-syvorotka-peptidy.pdf'; // PDF исследования — положить файл в assets/docs/
