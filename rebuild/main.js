@@ -61,6 +61,14 @@
         var cqw = y0 + (y1 - y0) * progress;
         var w = stage ? stage.getBoundingClientRect().width : window.innerWidth;
         b.style.top = (w * cqw / 100).toFixed(1) + 'px';
+
+        // необязательная непрозрачность конечного состояния (147:30 «Pack 100ml» opacity 0.3)
+        var op0attr = b.getAttribute('data-scroll-op0');
+        if (op0attr !== null) {
+          var op0 = parseFloat(op0attr);
+          var op1 = parseFloat(b.getAttribute('data-scroll-op1'));
+          b.style.opacity = (op0 + (op1 - op0) * progress).toFixed(3);
+        }
       });
       ticking = false;
     }
