@@ -244,8 +244,10 @@ a{color:inherit;text-decoration:none}
 .s6{height:84.896cqw}              /* 1630/19.2 */
 
 .s6 .ball{left:17.396cqw;top:3.646cqw;width:9.271cqw;height:9.375cqw;z-index:2}
+/* E7 (замечание 1 клиента): в эталоне это Medium (500), не Light — один из трёх заголовков
+   кегля 48 с весом 500 («Как действует сыворотка», этот, «Окружите волосы полной заботой») */
 .s6 .title{left:27.656cqw;top:7.031cqw;width:53.958cqw;z-index:2;color:var(--wine);
-  font-weight:300;font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
+  font-weight:500;font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
 .s6 .title .b{font-weight:500}
 
 /* кнопки маркетплейсов — GLASS-градиент, 90% */
@@ -371,6 +373,9 @@ a{color:inherit;text-decoration:none}
   letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;pointer-events:none}
 .s8 .s8-word1{top:34.479cqw}
 .s8 .s8-word2{top:42.448cqw;opacity:.3}
+/* E1: логотип 137:359, статичный в конечной позиции параллакса (559,9995 абс. = 42.448cqw
+   относительно s8), непрозрачность 1.0, центр совпадает с центром фото-подложки 137:355 */
+.s8 .s8-logo{left:29.115cqw;top:42.448cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1}
 
 /* ==================== ЭКРАН 9: ШАМПУНИ (10398..12246) ==================== */
 .s9{height:96.25cqw}              /* 1848/19.2 */
@@ -620,7 +625,7 @@ a{color:inherit;text-decoration:none}
 /* ==================== M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ ==================== */
 .m-s6{height:363.125cqw}
 .m-s6 .m-s6-sph{left:4.063cqw;top:0;width:19.063cqw;height:19.375cqw;z-index:2}
-.m-s6 .m-s6-title{left:23.75cqw;top:3.125cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:300;
+.m-s6 .m-s6-title{left:23.75cqw;top:3.125cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s6 .m-s6-title .b{font-weight:500}
 
