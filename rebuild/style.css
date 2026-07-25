@@ -101,8 +101,12 @@ a{color:inherit;text-decoration:none}
   mix-blend-mode:luminosity;pointer-events:none}
 
 /* флакон (стартовая позиция; едет вниз по скроллу). z-index:10 — выше карточки преимуществ
-   (147:30 «Pack 100ml» zi=69 в эталоне рисуется поверх красного блока 147:29 zi=26/27) */
-.s1 .bottle{left:70.417cqw;top:18.125cqw;width:11.875cqw;height:auto;z-index:10;
+   (147:30 «Pack 100ml» zi=69 в эталоне рисуется поверх красного блока 147:29 zi=26/27).
+   Проверка (тимлид, пункт 4 доработки): прогон serum-100.png через figma_crop.py с матрицей
+   147:30/137:20 дал обрезанный фрагмент этикетки (не флакон целиком) — значит файл уже
+   изолированный кроп, а не сырой исходник. Поэтому явная height:33.021cqw (634px) вместо auto —
+   вертикальное сжатие ~10% (аспект файла 0.3245 → целевой 0.3596) заложено самим макетом. */
+.s1 .bottle{left:70.417cqw;top:18.125cqw;width:11.875cqw;height:33.021cqw;z-index:10;
   filter:drop-shadow(0 1cqw 1.5cqw rgba(94,0,35,.18));will-change:transform,opacity}
 
 /* ---- карточка преимуществ — GLASS ---- */
@@ -451,17 +455,16 @@ a{color:inherit;text-decoration:none}
 /* --- фоновые полосы с водяными знаками названий линеек --- */
 .s9 .r-band{left:-0.677cqw;top:28.177cqw;width:101.042cqw;height:21.354cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
-/* E2: «Intensive» в макете — векторный логотип из 9 контуров (137:450), не текст; точных путей
-   контуров нет (SVG-экспорт недоступен, см. QUESTIONS.md) — приближение текстом, размер/позиция
-   подогнаны под габарит группы 1432.8x193.9 при 248.7,10936.0 (opacity каждого контура 0.5) */
-.s9 .r-band .wm{position:absolute;left:13.63cqw;top:-0.156cqw;color:#9B274C;opacity:.5;font-weight:500;
-  font-size:10.099cqw;letter-spacing:.01em;text-transform:uppercase;white-space:nowrap}
+/* E2 (доработка): «Intensive» — точный вектор из 9 контуров (137:450), извлечён из геометрии узла
+   (fillGeometry) в обход лимита на растровый экспорт. Непрозрачность 0.5 запечена в сами контуры
+   SVG (fill-opacity на каждом path), габарит группы 1432.8x193.9 при 248.7,10936.0 */
+.s9 .wm-svg{position:absolute;display:block}
+.s9 .wm-intensive{left:13.63cqw;top:-0.156cqw;width:74.625cqw;height:10.099cqw}
 .s9 .v-band{left:-0.208cqw;top:75.052cqw;width:100.573cqw;height:21.198cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,#604283 15%,#745F9A 100%)}
-/* E3: «Biome» тоже векторный логотип (137:394, 5 контуров) — то же приближение текстом,
-   габарит группы 875.8x190.8 при 246.0,11837.6 */
-.s9 .v-band .wm{position:absolute;left:13.021cqw;top:-0.073cqw;color:#715B97;font-weight:500;
-  font-size:9.938cqw;letter-spacing:.01em;text-transform:uppercase;white-space:nowrap}
+/* E3 (доработка): «Biome» — точный вектор из 5 контуров (137:394), непрозрачность у узлов/заливок
+   не задана (полная) — подтверждено тимлидом при приёмке. Габарит 875.8x190.8 при 246.0,11837.6 */
+.s9 .wm-biome{left:13.021cqw;top:-0.073cqw;width:45.615cqw;height:9.938cqw}
 
 /* ==================== ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ (12246..13535) ==================== */
 .s10{height:67.135cqw}              /* 1289/19.2 */
