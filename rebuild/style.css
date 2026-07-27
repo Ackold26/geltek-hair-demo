@@ -16,6 +16,9 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* N3 (27.07, 2я порция): страховка от горизонтальной прокрутки после .deco-layer (width:100vw) —
+   clip вместо hidden, т.к. hidden сломал бы position:sticky (сейчас его нет, но так безопаснее) */
+html,body{overflow-x:clip}
 /* E7: в макете только Light(300)/Medium(500) — запрет синтеза не даёт браузеру подделать
    отсутствующее начертание (Bold/ExtraBold не подключены и не должны подключаться) */
 body{font-family:'Geometria',system-ui,Arial,sans-serif;font-weight:300;color:#000;background:#fff;
@@ -66,7 +69,12 @@ a{color:inherit;text-decoration:none}
 
 /* KV сцена (фон). Кроп по матрице 137:3 запечён физически (hero-kv-crop.png,
    scripts/figma_crop.py) — 1920x1006, поэтому object-fit:cover лишь страхует округление */
-.s1 .kv{left:-0.208cqw;top:8.021cqw;width:100cqw;height:52.396cqw;object-fit:cover;z-index:1}
+.s1 .kv{left:-0.208cqw;top:8.021cqw;width:100cqw;height:52.396cqw;object-fit:cover;z-index:1;
+  /* N4 (27.07, 2я порция): растворяем нижнюю кромку самой картинки — патчи p7/p8/p9 (blur 1:1 к
+     макету) стык смягчили, но не убрали: у KV резкий физический нижний край. Маска — поверх макета,
+     по прямой просьбе дизайнера "усилить переход"; 70% — стартовая точка, требует сверки с эталоном */
+  -webkit-mask-image:linear-gradient(180deg,#000 70%,rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(180deg,#000 70%,rgba(0,0,0,0) 100%)}
 /* пузырьки снизу — наложение luminosity, едва заметны. Кроп 137:4 запечён (bubbles-crop.png, 1920x694) */
 .s1 .bubbles{left:-0.208cqw;top:55.885cqw;width:100cqw;height:36.146cqw;object-fit:cover;z-index:1;opacity:.13;mix-blend-mode:luminosity}
 
@@ -137,7 +145,9 @@ a{color:inherit;text-decoration:none}
 
 /* ---- хедер ---- */
 .hdr{position:absolute;top:0;left:0;width:100%;height:6.15cqw;z-index:20;display:block}
-.hdr .logo{position:absolute;left:19.531cqw;top:2.031cqw;width:4.583cqw;height:auto}
+/* D4 (доработка после приёмки): логотип обёрнут в ссылку — позиционирование перенесено на .logo-link */
+.hdr .logo-link{position:absolute;left:19.531cqw;top:2.031cqw;width:4.583cqw;display:block}
+.hdr .logo-link .logo{display:block;width:100%;height:auto}
 .hdr nav a{position:absolute;top:3.385cqw;font-weight:500;font-size:1.042cqw;color:var(--gray);
   white-space:nowrap;transition:color .2s}
 .hdr nav a:hover{color:var(--wine)}
@@ -299,17 +309,32 @@ a{color:inherit;text-decoration:none}
 .s6 .s100{left:69.063cqw;top:78.646cqw}
 .s6 .t100{left:71.927cqw;top:79.115cqw}
 
-/* плавающие декоративные сферы фона */
+/* плавающие декоративные сферы фона.
+   N3 (27.07, 2я порция): .deco-layer — слой 100vw, отцентрованный по окну (left:50%+translateX(-50%)),
+   обрезка идёт по краю окна вместо рамки .stage (max-width:1920px) — на широких экранах сферы f6/f7
+   (выходящие за 0..100cqw) больше не срезаются. Левый край .deco-layer всегда совпадает с левым краем
+   ОКНА (это следует из width:100vw + центрирование — по построению), а не с левым краем .stage, поэтому
+   left каждой сферы пересчитан как calc(base + (100vw-100cqw)/2): при viewport<=1920 100vw=100cqw и
+   поправка равна 0 (ничего не меняется — совпадает с исходной картой), при viewport>1920 поправка
+   компенсирует ровно тот боковой отступ, что появляется у .stage при центрировании — без неё сферы
+   съезжали бы влево относительно плашки/витрины на величину этого отступа. base-значения — те же
+   left, что были в карте, не поменяны. */
+.s6 .deco-layer{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100vw;max-width:none;
+  height:100%;overflow:hidden;pointer-events:none;z-index:5}
+/* .deco-par — отдельный слой ВНУТРИ .deco-layer только под JS-параллакс (data-par пишет transform
+   через style.transform); если повесить data-par на сам .deco-layer, инлайн-transform затрёт
+   translateX(-50%) центрирования выше и сломает обрезку по краю окна (N3) */
+.s6 .deco-par{position:absolute;top:0;left:0;width:100%;height:100%}
 .s6 .float{z-index:5;pointer-events:none}
-.s6 .f1{left:-3.073cqw;top:55.729cqw;width:10.469cqw;height:auto;filter:blur(.26cqw)}
-.s6 .f2{left:13.906cqw;top:62.813cqw;width:7.188cqw;height:auto;filter:blur(.26cqw)}
-.s6 .f3{left:89.219cqw;top:48.229cqw;width:8.906cqw;height:auto;filter:blur(.26cqw)}
-.s6 .f4{left:11.302cqw;top:44.896cqw;width:4.583cqw;height:auto;filter:blur(.26cqw);opacity:.8}
-.s6 .f5{left:29.063cqw;top:68.49cqw;width:16.667cqw;height:auto;filter:blur(.26cqw)}
-.s6 .f6{left:94.115cqw;top:65.885cqw;width:11.719cqw;height:auto;filter:blur(.26cqw)}
-.s6 .f7{left:-13.646cqw;top:69.844cqw;width:33.646cqw;height:auto;filter:blur(.521cqw)}
-.s6 .f8{left:84.427cqw;top:61.25cqw;width:5.365cqw;height:auto;filter:blur(.26cqw);opacity:.8}
-.s6 .f9{left:74.583cqw;top:74.167cqw;width:25.521cqw;height:auto;filter:blur(.521cqw)}
+.s6 .f1{left:calc(-3.073cqw + (100vw - 100cqw)/2);top:55.729cqw;width:10.469cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f2{left:calc(13.906cqw + (100vw - 100cqw)/2);top:62.813cqw;width:7.188cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f3{left:calc(89.219cqw + (100vw - 100cqw)/2);top:48.229cqw;width:8.906cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f4{left:calc(11.302cqw + (100vw - 100cqw)/2);top:44.896cqw;width:4.583cqw;height:auto;filter:blur(.26cqw);opacity:.8}
+.s6 .f5{left:calc(29.063cqw + (100vw - 100cqw)/2);top:68.49cqw;width:16.667cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f6{left:calc(94.115cqw + (100vw - 100cqw)/2);top:65.885cqw;width:11.719cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f7{left:calc(-13.646cqw + (100vw - 100cqw)/2);top:69.844cqw;width:33.646cqw;height:auto;filter:blur(.521cqw)}
+.s6 .f8{left:calc(84.427cqw + (100vw - 100cqw)/2);top:61.25cqw;width:5.365cqw;height:auto;filter:blur(.26cqw);opacity:.8}
+.s6 .f9{left:calc(74.583cqw + (100vw - 100cqw)/2);top:74.167cqw;width:25.521cqw;height:auto;filter:blur(.521cqw)}
 
 /* ==================== ЭКРАН 7: ДО/ПОСЛЕ (8213..9180) ==================== */
 .s7{height:50.365cqw}              /* 967/19.2 */
@@ -375,14 +400,12 @@ a{color:inherit;text-decoration:none}
 .s8 .s8-photo{left:-0.104cqw;top:34.635cqw;width:100cqw;height:21.615cqw;object-fit:cover;z-index:1}
 .s8 .s8-shadow{left:5cqw;top:38.073cqw;width:90.156cqw;height:15.208cqw;border-radius:50%;
   background:#D9D9D9;filter:blur(2.604cqw);mix-blend-mode:multiply;z-index:1}
-/* гигантский водяной знак "GELTEK" поверх фото производства (двойное эхо: сплошной + 30% ниже) */
-.s8 .s8-word{left:29.115cqw;width:41.771cqw;z-index:2;color:#fff;font-weight:500;font-size:6cqw;
-  letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;pointer-events:none}
-.s8 .s8-word1{top:34.479cqw}
-.s8 .s8-word2{top:42.448cqw;opacity:.3}
-/* E1: логотип 137:359, статичный в конечной позиции параллакса (559,9995 абс. = 42.448cqw
-   относительно s8), непрозрачность 1.0, центр совпадает с центром фото-подложки 137:355 */
-.s8 .s8-logo{left:29.115cqw;top:42.448cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1}
+/* D1 (доработка после приёмки, 27.07 вечер): текстовая имитация водяного знака "GELTEK"
+   (.s8-word/.s8-word1) убрана — накладывалась на векторный логотип и читалась дизайнером как
+   дублирование. Логотип 137:359 теперь один и движется (data-scroll-y0/y1 в разметке): исходная
+   позиция y0=34.479cqw (top ниже, база для JS-фолбэка/reduced-motion), конечная y1=42.448cqw
+   (559,9995 абс. — центр совпадает с центром фото-подложки 137:355, как и было в статичном E1) */
+.s8 .s8-logo{left:29.115cqw;top:34.479cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1}
 
 /* ==================== ЭКРАН 9: ШАМПУНИ (10398..12246) ==================== */
 .s9{height:96.25cqw}              /* 1848/19.2 */
@@ -414,7 +437,10 @@ a{color:inherit;text-decoration:none}
 /* B5/B6: позиции/ширины уже совпадали с картой день-в-день, но height:auto опирался на
    собственный аспект PNG-файлов (у всех разный) — «по общей нижней линии» ломалось на 15-40px.
    Явные высоты из карты (низ 30/100/390 ≈11201-11205 в красном, ≈12098-12105 в фиолетовом) */
-.s9 .pack{z-index:3}
+/* N5 (п.11/12 карты, узлы-аннотации 137:577/137:578): наведение курсора — упаковки чуть увеличиваются.
+   1.04 подобрано так, чтобы соседняя упаковка линейки не задевалась (проверено на 1920 и 1280) */
+.s9 .pack{z-index:3;transition:transform .25s}
+.s9 .pack:hover{transform:scale(1.04)}
 .s9 .r-norm30{left:42.031cqw;top:26.25cqw;width:6.51cqw;height:15.677cqw}
 .s9 .r-norm100{left:52.292cqw;top:22.552cqw;width:9.219cqw;height:19.271cqw}
 .s9 .r-norm390{left:65.729cqw;top:16.875cqw;width:12.552cqw;height:25.156cqw}
@@ -517,11 +543,26 @@ a{color:inherit;text-decoration:none}
 .stage--mobile .m-pack{height:auto}
 
 /* ---- хедер (центрированный лого + гамбургер) ---- */
-.m-hdr{height:21.25cqw;background:#fff;display:block}
-.m-hdr-logo{position:absolute;left:43.438cqw;top:4.688cqw;width:13.125cqw;height:auto}
+.m-hdr{height:21.25cqw;background:#fff;display:block;position:relative}
+/* D4 (доработка после приёмки): логотип обёрнут в ссылку — позиционирование на .m-hdr-logo-link */
+.m-hdr-logo-link{position:absolute;left:43.438cqw;top:4.688cqw;width:13.125cqw;display:block}
+.m-hdr-logo-link .m-hdr-logo{display:block;width:100%;height:auto}
 .m-burger{position:absolute;left:87.188cqw;top:9.688cqw;width:7.813cqw;height:5.313cqw;
-  display:flex;flex-direction:column;justify-content:space-between}
+  display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:31}
 .m-burger i{display:block;height:1px;background:#000}
+
+/* D3 (доработка после приёмки): выпадающее меню — фрейм 188:155 (spec_v2_menu.json), 159x177 при
+   базе 320 (cqw=px/3.2). Панель #F4F4F4, правый край выровнен под бургер (left 87.188+7.813=95cqw
+   от левого края → 5cqw от правого; собственного положения панели относительно экрана в спеке нет,
+   это моё инженерное решение — якорь под бургером логичен для выпадающего меню, отмечено в отчёте).
+   Порядок и текст пунктов — как в спеке (отличается от порядка в десктопной шапке, не выравнивала).
+   Открывается/закрывается классом .menu-open на .m-hdr (main.js, тот же бургер) */
+.m-menu{position:absolute;top:100%;right:5cqw;width:49.688cqw;z-index:30;
+  background:#F4F4F4;padding:8.438cqw 6.25cqw 6.25cqw;
+  display:none;flex-direction:column;gap:3.125cqw}
+.m-hdr.menu-open .m-menu{display:flex}
+.m-menu a{color:var(--gray);font-weight:500;font-size:4.375cqw;line-height:1.26;white-space:nowrap;transition:color .2s}
+.m-menu a:hover,.m-menu a:active{color:var(--wine)}
 
 /* ==================== M-ЭКРАН 1: HERO + ПРЕИМУЩЕСТВА ==================== */
 .m-s1{height:321.25cqw}

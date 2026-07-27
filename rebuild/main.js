@@ -31,52 +31,101 @@
   }
 
   /* ---------- Хедер: подсветка активного пункта при наведении уже в CSS ---------- */
-  /* ---------- Бургер мобильного хедера (пока просто индикатор, без выпадающего меню) ---------- */
+  /* ---------- Бургер мобильного хедера + выпадающее меню (D3, доработка после приёмки) ---------- */
   var burger = document.querySelector('.m-burger');
-  if (burger) {
-    burger.addEventListener('click', function () {
+  var mHdr = burger ? burger.closest('.m-hdr') : null;
+  if (burger && mHdr) {
+    burger.addEventListener('click', function (e) {
+      e.stopPropagation();
       burger.classList.toggle('is-open');
+      mHdr.classList.toggle('menu-open');
+    });
+    /* клик по пункту меню — закрыть после перехода */
+    mHdr.querySelectorAll('.m-menu a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        burger.classList.remove('is-open');
+        mHdr.classList.remove('menu-open');
+      });
+    });
+    /* клик вне меню — закрыть */
+    document.addEventListener('click', function (e) {
+      if (mHdr.classList.contains('menu-open') && !mHdr.contains(e.target)) {
+        burger.classList.remove('is-open');
+        mHdr.classList.remove('menu-open');
+      }
     });
   }
 
-  /* ---------- Флакон, едущий по скроллу внутри hero (desktop .bottle + mobile .m-bottle) ---------- */
-  var bottles = document.querySelectorAll('.bottle[data-scroll-y0], .m-bottle[data-scroll-y0]');
-  if (bottles.length && !reduceMotion) {
+  /* ---------- Единый обработчик прокрутки: два типа эффектов на элементах секций ----------
+     - data-scroll-y0/y1 — абсолютная интерполяция top: флакон hero (N1), логотип GELTEK
+       в блоке «Доверие» (N2, доработан в D1 — теперь один векторный элемент вместо текст+вектор);
+     - data-par="<амплитуда в cqw>" — относительное смещение translateY от -амплитуда/2 до
+       +амплитуда/2 (декоративный «лёгкий эффект движения» экранов 2/3/4/5/6/7/10, N5). Амплитуда
+       в разметке — исходное значение из длины стрелки макета (px/19.2), потолок 3cqw — из карты —
+       применяет сам обработчик (Math.min), а не заранее подставленное на глаз число;
+     - data-dim="<начальная яркость 0..1>" — вторая половина аннотаций экранов 2/3/4/10 (D5,
+       доработка после приёмки): «+ уходит лёгкое затемнение изображения» — фото стартует чуть
+       темнее (brightness(data-dim)) и высветляется до нормального (brightness(1)) по мере
+       прохождения секции через экран, по той же progress, что и соседний data-par.
+
+     Прогресс прохождения секции через экран считается двумя формулами:
+     - первый экран (.s1/.m-s1): флакон не должен быть смещён/полупрозрачным на старте страницы
+       (было — прогресс уже 0.36 при scrollY=0), поэтому прогресс считаем от начала страницы:
+       0 — секция не прокручена (элемент в исходной позиции), 1 — секция ушла вверх на свою высоту;
+     - остальные секции: прежняя формула «прохождения через экран» (0 — верх секции у нижнего
+       края экрана, 1 — низ секции у верхнего края). ---------- */
+  var PAR_MAX = 3; // потолок амплитуды параллакса, cqw (карта REPAIR_MAP_2707_v2, N5)
+  var scrollEls = document.querySelectorAll(
+    '.bottle[data-scroll-y0], .m-bottle[data-scroll-y0], .s8-logo[data-scroll-y0], [data-par], [data-dim]'
+  );
+  if (scrollEls.length && !reduceMotion) {
     var ticking = false;
 
-    function updateBottles() {
-      bottles.forEach(function (b) {
-        var section = b.closest('section');
+    function sectionProgress(section, vh) {
+      var rect = section.getBoundingClientRect();
+      var firstScreen = section.classList.contains('s1') || section.classList.contains('m-s1');
+      var p = firstScreen ? (-rect.top / rect.height) : ((vh - rect.top) / (rect.height + vh));
+      return Math.max(0, Math.min(1, p));
+    }
+
+    function updateScroll() {
+      var vh = window.innerHeight;
+      scrollEls.forEach(function (el) {
+        var section = el.closest('section');
         if (!section) return;
-        var stage = b.closest('.stage,.stage--mobile');
-        var rect = section.getBoundingClientRect();
-        var vh = window.innerHeight;
-        // прогресс прохождения секции: 0 — верх секции у нижнего края экрана, 1 — низ секции у верхнего края
-        var total = rect.height + vh;
-        var progress = (vh - rect.top) / total;
-        progress = Math.max(0, Math.min(1, progress));
-
-        var y0 = parseFloat(b.getAttribute('data-scroll-y0'));
-        var y1 = parseFloat(b.getAttribute('data-scroll-y1'));
-        var cqw = y0 + (y1 - y0) * progress;
+        var stage = el.closest('.stage,.stage--mobile');
         var w = stage ? stage.getBoundingClientRect().width : window.innerWidth;
-        b.style.top = (w * cqw / 100).toFixed(1) + 'px';
+        var progress = sectionProgress(section, vh);
 
-        // необязательная непрозрачность конечного состояния (147:30 «Pack 100ml» opacity 0.3)
-        var op0attr = b.getAttribute('data-scroll-op0');
-        if (op0attr !== null) {
-          var op0 = parseFloat(op0attr);
-          var op1 = parseFloat(b.getAttribute('data-scroll-op1'));
-          b.style.opacity = (op0 + (op1 - op0) * progress).toFixed(3);
+        var y0attr = el.getAttribute('data-scroll-y0');
+        if (y0attr !== null) {
+          var y0 = parseFloat(y0attr);
+          var y1 = parseFloat(el.getAttribute('data-scroll-y1'));
+          var cqw = y0 + (y1 - y0) * progress;
+          el.style.top = (w * cqw / 100).toFixed(1) + 'px';
+        }
+
+        var parAttr = el.getAttribute('data-par');
+        if (parAttr !== null) {
+          var amp = Math.min(PAR_MAX, parseFloat(parAttr));
+          var offsetCqw = -amp / 2 + amp * progress;
+          el.style.transform = 'translateY(' + (w * offsetCqw / 100).toFixed(2) + 'px)';
+        }
+
+        var dimAttr = el.getAttribute('data-dim');
+        if (dimAttr !== null) {
+          var dim0 = parseFloat(dimAttr);
+          var brightness = dim0 + (1 - dim0) * progress;
+          el.style.filter = 'brightness(' + brightness.toFixed(3) + ')';
         }
       });
       ticking = false;
     }
 
     window.addEventListener('scroll', function () {
-      if (!ticking) { window.requestAnimationFrame(updateBottles); ticking = true; }
+      if (!ticking) { window.requestAnimationFrame(updateScroll); ticking = true; }
     }, { passive: true });
-    window.addEventListener('resize', updateBottles);
-    updateBottles();
+    window.addEventListener('resize', updateScroll);
+    updateScroll();
   }
 })();
