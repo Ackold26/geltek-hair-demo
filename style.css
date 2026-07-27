@@ -398,13 +398,12 @@ a{color:inherit;text-decoration:none}
 .s8 .s8-photo{left:-0.104cqw;top:34.635cqw;width:100cqw;height:21.615cqw;object-fit:cover;z-index:1}
 .s8 .s8-shadow{left:5cqw;top:38.073cqw;width:90.156cqw;height:15.208cqw;border-radius:50%;
   background:#D9D9D9;filter:blur(2.604cqw);mix-blend-mode:multiply;z-index:1}
-/* гигантский водяной знак "GELTEK" поверх фото производства (двойное эхо: сплошной + 30% ниже) */
-.s8 .s8-word{left:29.115cqw;width:41.771cqw;z-index:2;color:#fff;font-weight:500;font-size:6cqw;
-  letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;pointer-events:none}
-.s8 .s8-word1{top:34.479cqw}
-/* E1: логотип 137:359, статичный в конечной позиции параллакса (559,9995 абс. = 42.448cqw
-   относительно s8), непрозрачность 1.0, центр совпадает с центром фото-подложки 137:355 */
-.s8 .s8-logo{left:29.115cqw;top:42.448cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1}
+/* D1 (доработка после приёмки, 27.07 вечер): текстовая имитация водяного знака "GELTEK"
+   (.s8-word/.s8-word1) убрана — накладывалась на векторный логотип и читалась дизайнером как
+   дублирование. Логотип 137:359 теперь один и движется (data-scroll-y0/y1 в разметке): исходная
+   позиция y0=34.479cqw (top ниже, база для JS-фолбэка/reduced-motion), конечная y1=42.448cqw
+   (559,9995 абс. — центр совпадает с центром фото-подложки 137:355, как и было в статичном E1) */
+.s8 .s8-logo{left:29.115cqw;top:34.479cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1}
 
 /* ==================== ЭКРАН 9: ШАМПУНИ (10398..12246) ==================== */
 .s9{height:96.25cqw}              /* 1848/19.2 */
