@@ -40,7 +40,10 @@ a{color:inherit;text-decoration:none}
   max-width:1920px;
   margin:0 auto;
   background:#fff;
-  overflow:hidden;
+  /* было overflow:hidden — оно обрезало слой декора .deco-layer (width:100vw) по рамке 1920
+     и обесценивало вынос сфер за края на широких экранах (проверено пикселями: левое поле
+     было полностью белым). Горизонтальную прокрутку держит html,body{overflow-x:clip}. */
+  overflow:visible;
   font-weight:300;
 }
 .stage section{position:relative;width:100%}

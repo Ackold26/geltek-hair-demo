@@ -335,14 +335,16 @@
 </div>
 
 <!-- ==================== МОБИЛЬНАЯ ВЕРСТКА (база 320px, cqw = px/3.2) ==================== -->
-<div class="stage--mobile">
+<div class="stage--mobile" id="m-top">
 
   <!-- D3/D4 (доработка после приёмки): мобильное меню по фрейму 188:155 (spec_v2_menu.json,
        159x177, cqw=px/3.2) — порядок/текст пунктов взяты из спеки как есть (там он отличается
        от порядка в десктопной шапке, не выравнивала специально). Логотип обёрнут в ссылку (D4). -->
   <header class="m-hdr">
-    <a class="m-hdr-logo-link" href="#top"><img class="m-hdr-logo" src="assets/img/logos/geltek-hair.svg" alt="GELTEK hair"></a>
-    <span class="m-burger"><i></i><i></i><i></i></span>
+    <!-- якорь #top живёт на десктопном .stage, который при мобильной ширине display:none —
+         для мобильной ветки нужен собственный: id="m-top" на .stage--mobile -->
+    <a class="m-hdr-logo-link" href="#m-top"><img class="m-hdr-logo" src="assets/img/logos/geltek-hair.svg" alt="GELTEK hair"></a>
+    <span class="m-burger" role="button" tabindex="0" aria-label="Меню" aria-expanded="false"><i></i><i></i><i></i></span>
     <nav class="m-menu">
       <a href="#m-s5">Как работает</a>
       <a href="#m-s6">Где купить</a>

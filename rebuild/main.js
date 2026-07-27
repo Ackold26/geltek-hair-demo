@@ -5,10 +5,14 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- Появление блоков при скролле (reveal) ---------- */
+  /* Элементы с data-par (движение по прокрутке из аннотаций макета) в этот список НЕ входят:
+     обработчик прокрутки пишет им inline-transform, который перебивает transform класса .reveal —
+     появление «выездом» не отрабатывало бы, оставался бы только fade. Движение из макета важнее
+     нашей добавки-появления, поэтому у .s2/.s3/.s4 .card и .s10-title остаётся только параллакс. */
   var revealSelectors = [
-    '.s1 .adv-card', '.s2 .card', '.s3 .card', '.s4 .card', '.s5 .card',
+    '.s1 .adv-card', '.s5 .card',
     '.s6 .plate', '.s6 .shopbtn', '.s7 .s7card', '.s8 .s8-btn', '.s8 .s8-photo',
-    '.s9 .r-banner', '.s9 .v-banner', '.s10 .s10-title',
+    '.s9 .r-banner', '.s9 .v-banner',
     '.m-adv-card', '.m-card-screen .m-card', '.m-s5-card', '.m-s7-card',
     '.m-shopbtn', '.m-s8-btn', '.m-r-banner', '.m-v-banner'
   ];
@@ -35,23 +39,38 @@
   var burger = document.querySelector('.m-burger');
   var mHdr = burger ? burger.closest('.m-hdr') : null;
   if (burger && mHdr) {
+    /* переключение вынесено в функцию: одно поведение для мыши и клавиатуры,
+       aria-expanded держится в актуальном состоянии для программ чтения с экрана */
+    function toggleMenu(force) {
+      var open = (typeof force === 'boolean') ? force : !mHdr.classList.contains('menu-open');
+      burger.classList.toggle('is-open', open);
+      mHdr.classList.toggle('menu-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
     burger.addEventListener('click', function (e) {
       e.stopPropagation();
-      burger.classList.toggle('is-open');
-      mHdr.classList.toggle('menu-open');
+      toggleMenu();
+    });
+    /* клавиатура: бургер — span с role="button", сам по себе Enter/Space не обрабатывает */
+    burger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+      } else if (e.key === 'Escape') {
+        toggleMenu(false);
+      }
     });
     /* клик по пункту меню — закрыть после перехода */
     mHdr.querySelectorAll('.m-menu a').forEach(function (a) {
       a.addEventListener('click', function () {
-        burger.classList.remove('is-open');
-        mHdr.classList.remove('menu-open');
+        toggleMenu(false);
       });
     });
     /* клик вне меню — закрыть */
     document.addEventListener('click', function (e) {
       if (mHdr.classList.contains('menu-open') && !mHdr.contains(e.target)) {
-        burger.classList.remove('is-open');
-        mHdr.classList.remove('menu-open');
+        toggleMenu(false);
       }
     });
   }
