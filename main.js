@@ -31,21 +31,42 @@
   }
 
   /* ---------- Хедер: подсветка активного пункта при наведении уже в CSS ---------- */
-  /* ---------- Бургер мобильного хедера (пока просто индикатор, без выпадающего меню) ---------- */
+  /* ---------- Бургер мобильного хедера + выпадающее меню (D3, доработка после приёмки) ---------- */
   var burger = document.querySelector('.m-burger');
-  if (burger) {
-    burger.addEventListener('click', function () {
+  var mHdr = burger ? burger.closest('.m-hdr') : null;
+  if (burger && mHdr) {
+    burger.addEventListener('click', function (e) {
+      e.stopPropagation();
       burger.classList.toggle('is-open');
+      mHdr.classList.toggle('menu-open');
+    });
+    /* клик по пункту меню — закрыть после перехода */
+    mHdr.querySelectorAll('.m-menu a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        burger.classList.remove('is-open');
+        mHdr.classList.remove('menu-open');
+      });
+    });
+    /* клик вне меню — закрыть */
+    document.addEventListener('click', function (e) {
+      if (mHdr.classList.contains('menu-open') && !mHdr.contains(e.target)) {
+        burger.classList.remove('is-open');
+        mHdr.classList.remove('menu-open');
+      }
     });
   }
 
   /* ---------- Единый обработчик прокрутки: два типа эффектов на элементах секций ----------
-     - data-scroll-y0/y1 — абсолютная интерполяция top: флакон hero (N1), надпись GELTEK
-       в блоке «Доверие» (N2);
+     - data-scroll-y0/y1 — абсолютная интерполяция top: флакон hero (N1), логотип GELTEK
+       в блоке «Доверие» (N2, доработан в D1 — теперь один векторный элемент вместо текст+вектор);
      - data-par="<амплитуда в cqw>" — относительное смещение translateY от -амплитуда/2 до
        +амплитуда/2 (декоративный «лёгкий эффект движения» экранов 2/3/4/5/6/7/10, N5). Амплитуда
        в разметке — исходное значение из длины стрелки макета (px/19.2), потолок 3cqw — из карты —
-       применяет сам обработчик (Math.min), а не заранее подставленное на глаз число.
+       применяет сам обработчик (Math.min), а не заранее подставленное на глаз число;
+     - data-dim="<начальная яркость 0..1>" — вторая половина аннотаций экранов 2/3/4/10 (D5,
+       доработка после приёмки): «+ уходит лёгкое затемнение изображения» — фото стартует чуть
+       темнее (brightness(data-dim)) и высветляется до нормального (brightness(1)) по мере
+       прохождения секции через экран, по той же progress, что и соседний data-par.
 
      Прогресс прохождения секции через экран считается двумя формулами:
      - первый экран (.s1/.m-s1): флакон не должен быть смещён/полупрозрачным на старте страницы
@@ -55,7 +76,7 @@
        края экрана, 1 — низ секции у верхнего края). ---------- */
   var PAR_MAX = 3; // потолок амплитуды параллакса, cqw (карта REPAIR_MAP_2707_v2, N5)
   var scrollEls = document.querySelectorAll(
-    '.bottle[data-scroll-y0], .m-bottle[data-scroll-y0], .s8-word1[data-scroll-y0], [data-par]'
+    '.bottle[data-scroll-y0], .m-bottle[data-scroll-y0], .s8-logo[data-scroll-y0], [data-par], [data-dim]'
   );
   if (scrollEls.length && !reduceMotion) {
     var ticking = false;

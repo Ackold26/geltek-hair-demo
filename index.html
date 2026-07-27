@@ -336,9 +336,19 @@
 <!-- ==================== МОБИЛЬНАЯ ВЕРСТКА (база 320px, cqw = px/3.2) ==================== -->
 <div class="stage--mobile">
 
+  <!-- D3/D4 (доработка после приёмки): мобильное меню по фрейму 188:155 (spec_v2_menu.json,
+       159x177, cqw=px/3.2) — порядок/текст пунктов взяты из спеки как есть (там он отличается
+       от порядка в десктопной шапке, не выравнивала специально). Логотип обёрнут в ссылку (D4). -->
   <header class="m-hdr">
-    <img class="m-hdr-logo" src="assets/img/logos/geltek-hair.svg" alt="GELTEK hair">
+    <a class="m-hdr-logo-link" href="#top"><img class="m-hdr-logo" src="assets/img/logos/geltek-hair.svg" alt="GELTEK hair"></a>
     <span class="m-burger"><i></i><i></i><i></i></span>
+    <nav class="m-menu">
+      <a href="#m-s5">Как работает</a>
+      <a href="#m-s6">Где купить</a>
+      <a href="#m-s8">О компании</a>
+      <a href="#m-s9">Шампуни</a>
+      <a href="#m-s2">Кому подойдет</a>
+    </nav>
   </header>
 
   <!-- M-ЭКРАН 1: HERO + ПРЕИМУЩЕСТВА -->
@@ -373,7 +383,7 @@
   </section>
 
   <!-- M-ЭКРАН 2: ЖЕНЩИНАМ -->
-  <section class="m-s2 m-card-screen" data-fig="181:1849">
+  <section class="m-s2 m-card-screen" data-fig="181:1849" id="m-s2">
     <img class="abs m-photo" src="assets/img/fig/woman-crop-m.png" alt="" data-fig="181:1849">
     <div class="abs glass m-card"></div>
     <div class="abs m-ic-circ m-icon"><img src="assets/img/icons-wine/woman.png" alt=""></div>
@@ -397,7 +407,7 @@
   </section>
 
   <!-- M-ЭКРАН 5: КАК ДЕЙСТВУЕТ -->
-  <section class="m-s5" data-fig="181:2081">
+  <section class="m-s5" data-fig="181:2081" id="m-s5">
     <img class="abs m-s5-bg" src="assets/img/fig/geltek-kv-bg-crop-m.png" alt="" data-fig="181:2081">
     <div class="abs m-s5-shadow"></div>
     <div class="abs m-s5-man-wrap"><img class="abs m-s5-man" src="assets/img/fig/man-ball.png" alt=""></div>
@@ -433,7 +443,7 @@
   </section>
 
   <!-- M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ -->
-  <section class="m-s6">
+  <section class="m-s6" id="m-s6">
     <img class="abs m-sph m-s6-sph" src="assets/img/fig/sphere-red.png" alt="">
     <h2 class="abs m-s6-title">Где купить сыворотку <span class="b">GELTEK HAIR</span></h2>
 
@@ -497,7 +507,7 @@
   </section>
 
   <!-- M-ЭКРАН 8: ДОВЕРИЕ + ПРОИЗВОДСТВО -->
-  <section class="m-s8">
+  <section class="m-s8" id="m-s8">
     <img class="abs m-sph m-s8-sph" src="assets/img/fig/sphere-red.png" alt="">
     <h2 class="abs m-s8-title">Доверие к <span class="b">GELTEK</span></h2>
     <p class="abs m-s8-body">Это российский производитель профессиональной и уходовой косметики с 30-летней историей. Начав с производства медицинского геля, <span class="b">GELTEK</span> превратилась в крупную компанию с несколькими производствами в России, собственной лабораторией, клиникой эстетической медицины, центрами диагностики кожи в разных городах и широким ассортиментом продуктов. Производство соответствует строгим стандартам GMP, а качество продукции гарантируется постоянным внутренним и внешним контролем на всех этапах.</p>
@@ -509,7 +519,7 @@
   </section>
 
   <!-- M-ЭКРАН 9: ШАМПУНИ -->
-  <section class="m-s9">
+  <section class="m-s9" id="m-s9">
     <img class="abs m-s9-duo" src="assets/img/fig/spheres-duo.png" alt="">
     <h2 class="abs m-s9-title">Окружите волосы полной заботой</h2>
 
