@@ -78,30 +78,36 @@
   <!-- ЭКРАН 2: ЖЕНЩИНАМ -->
   <section class="s2" data-fig="137:75">
     <img class="abs bg" src="assets/img/fig/woman.png" alt="" data-fig="137:77">
-    <div class="abs glass card"></div>
-    <div class="abs ic-circ icon"><img src="assets/img/icons-wine/woman.png" alt=""></div>
-    <p class="abs txt"><span class="b">Женщинам</span><br>рекомендуем использовать сыворотку при выпадении и истончении волос</p>
+    <!-- N5 (п.3 карты, узел-аннотация 137:581): «лёгкий эффект движения за счёт смещения блоков
+         с текстом» — data-par на карточку/иконку/текст одинаковой амплитудой, чтобы плашка двигалась
+         одним блоком (второй эффект аннотации — исчезающее затемнение фото — вне скоупа карты, в отчёт) -->
+    <div class="abs glass card" data-par="24.531"></div>
+    <div class="abs ic-circ icon" data-par="24.531"><img src="assets/img/icons-wine/woman.png" alt=""></div>
+    <p class="abs txt" data-par="24.531"><span class="b">Женщинам</span><br>рекомендуем использовать сыворотку при выпадении и истончении волос</p>
   </section>
 
   <!-- ЭКРАН 3: МУЖЧИНАМ -->
   <section class="s3" data-fig="137:110">
     <img class="abs bg" src="assets/img/fig/man-crop.png" alt="" data-fig="137:112">
-    <div class="abs glass card"></div>
-    <div class="abs ic-circ icon"><img src="assets/img/icons-wine/man.png" alt=""></div>
-    <p class="abs txt"><span class="b">Мужчинам</span><br>при возрастном поредении и выпадении волос</p>
+    <!-- N5 (п.4 карты, узел-аннотация 137:550) — тот же механизм, что и s2 -->
+    <div class="abs glass card" data-par="24.531"></div>
+    <div class="abs ic-circ icon" data-par="24.531"><img src="assets/img/icons-wine/man.png" alt=""></div>
+    <p class="abs txt" data-par="24.531"><span class="b">Мужчинам</span><br>при возрастном поредении и выпадении волос</p>
   </section>
 
   <!-- ЭКРАН 4: БЕРЕЖНЫЙ УХОД -->
   <section class="s4" data-fig="137:147">
     <img class="abs bg" src="assets/img/fig/demo-crop.png" alt="" data-fig="137:148">
-    <div class="abs glass card"></div>
-    <div class="abs ic-circ icon"><img src="assets/img/icons-wine/care.png" alt=""></div>
-    <p class="abs txt"><span class="b">Бережный уход</span><br>при себорее, псориазе, дерматозах и нарушении себорегуляции, если заболевания приводят к выпадению волос</p>
+    <!-- N5 (п.5 карты, узел-аннотация 137:580) — тот же механизм, что и s2/s3 -->
+    <div class="abs glass card" data-par="24.531"></div>
+    <div class="abs ic-circ icon" data-par="24.531"><img src="assets/img/icons-wine/care.png" alt=""></div>
+    <p class="abs txt" data-par="24.531"><span class="b">Бережный уход</span><br>при себорее, псориазе, дерматозах и нарушении себорегуляции, если заболевания приводят к выпадению волос</p>
   </section>
 
   <!-- ЭКРАН 5: КАК ДЕЙСТВУЕТ СЫВОРОТКА -->
   <section class="s5" data-fig="137:165">
-    <img class="abs kvbg" src="assets/img/fig/geltek-kv-bg-crop.png" alt="" data-fig="137:168">
+    <!-- N5 (п.6 карты, узел-аннотация 137:563): «эффект параллакса фона» -->
+    <img class="abs kvbg" src="assets/img/fig/geltek-kv-bg-crop.png" alt="" data-fig="137:168" data-par="27.031">
     <div class="abs patch s5-patch"></div>
     <div class="abs glass card"></div>
 
@@ -213,13 +219,15 @@
 
     <!-- ДО -->
     <div class="abs ba-ring ba-before"></div>
-    <div class="abs ba-mask ba-before-m"><img src="assets/img/fig/before.png" alt="До"></div>
+    <!-- N5 (п.9 карты, узел-аннотация 137:565): «лёгкое движение изображений вверх-вниз» — data-par
+         на само фото внутри маски-круга (кольцо/точка/подпись остаются на месте) -->
+    <div class="abs ba-mask ba-before-m"><img src="assets/img/fig/before.png" alt="До" data-par="12.969"></div>
     <div class="abs ba-dot ba-before-dot"></div>
     <span class="abs ba-label ba-before-label">до</span>
 
     <!-- ПОСЛЕ -->
     <div class="abs ba-ring ba-after"></div>
-    <div class="abs ba-mask ba-after-m"><img src="assets/img/fig/after.png" alt="После"></div>
+    <div class="abs ba-mask ba-after-m"><img src="assets/img/fig/after.png" alt="После" data-par="12.969"></div>
     <div class="abs ba-dot ba-after-dot"></div>
     <span class="abs ba-label ba-after-label">после</span>
 
@@ -302,7 +310,8 @@
   <!-- ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ -->
   <section class="s10" data-fig="137:476">
     <img class="abs s10-photo" src="assets/img/fig/hair.png" alt="">
-    <h2 class="abs s10-title">Для крепких<br>и густых волос!</h2>
+    <!-- N5 (п.13 карты, узел-аннотация 137:579): «лёгкое движение при прокрутке» -->
+    <h2 class="abs s10-title" data-par="10.208">Для крепких<br>и густых волос!</h2>
 
     <div class="abs s10-base"></div>
     <h3 class="abs s10-cta">Сыворотка и шампуни <span class="b">GELTEK HAIR</span> идеальны для регулярного применения</h3>
