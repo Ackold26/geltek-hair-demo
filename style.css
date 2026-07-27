@@ -541,7 +541,7 @@ a{color:inherit;text-decoration:none}
   mix-blend-mode:luminosity;pointer-events:none}
 .m-s1 .m-banner span{position:relative;z-index:1;display:block;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;padding:6cqw 30cqw 6cqw 9.375cqw;text-transform:uppercase}
-.m-s1 .m-bottle{left:66.875cqw;top:64.063cqw;width:27.813cqw;height:auto;z-index:5;
+.m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5;
   filter:drop-shadow(0 1cqw 1.5cqw rgba(94,0,35,.18))}
 
 .m-s1 .m-adv-card{left:-0.313cqw;top:148.75cqw;width:100.625cqw;height:166.875cqw;z-index:3;
