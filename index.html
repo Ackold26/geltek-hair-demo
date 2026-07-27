@@ -177,16 +177,30 @@
     <img class="abs vol-sph s100" src="assets/img/fig/sphere-red.png" alt="">
     <span class="abs vol-txt t100">100 ml</span>
 
-    <!-- плавающие декоративные сферы фона (137:674 «spheres», группа A2) -->
-    <img class="abs float f1" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:299">
-    <img class="abs float f2" src="assets/img/fig/sphere-red.png" alt="" data-fig="215:2">
-    <img class="abs float f3" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:295">
-    <img class="abs float f4" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:296">
-    <img class="abs float f5" src="assets/img/fig/sphere-red.png" alt="" data-fig="206:368">
-    <img class="abs float f6" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:297">
-    <img class="abs float f7" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:298">
-    <img class="abs float f8" src="assets/img/fig/sphere-red.png" alt="" data-fig="206:372">
-    <img class="abs float f9" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:294">
+    <!-- плавающие декоративные сферы фона (137:674 «spheres», группа A2).
+         N3 (27.07, 2я порция): обёрнуты в .deco-layer — слой шириной 100vw, отцентрованный по окну,
+         чтобы обрезка шла по краю ОКНА, а не по рамке .stage (max-width:1920px) — иначе сферы f6/f7,
+         выходящие за границы 0..100cqw, срезались бы на широких экранах. left каждой сферы получил
+         компенсацию calc(...+(100vw-100cqw)/2), чтобы после переноса в контейнер с другим левым краем
+         положение относительно плашки/витрины не изменилось при viewport>1920 (без неё сферы съехали
+         бы влево на величину бокового отступа .stage — подробности в отчёте).
+         N5 (п.8 карты): параллакс группы шариков — data-par ОБЯЗАТЕЛЬНО на внутренней .deco-par, а не
+         на .deco-layer: main.js пишет параллакс через el.style.transform, и если повесить его на сам
+         .deco-layer, инлайн-стиль затрёт CSS-центрирование translateX(-50%) и сломает N3 (поймано при
+         проверке через Playwright — deco-layer уехал на 960px вместо центрирования по окну). -->
+    <div class="abs deco-layer">
+      <div class="deco-par" data-par="12.969">
+        <img class="abs float f1" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:299">
+        <img class="abs float f2" src="assets/img/fig/sphere-red.png" alt="" data-fig="215:2">
+        <img class="abs float f3" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:295">
+        <img class="abs float f4" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:296">
+        <img class="abs float f5" src="assets/img/fig/sphere-red.png" alt="" data-fig="206:368">
+        <img class="abs float f6" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:297">
+        <img class="abs float f7" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:298">
+        <img class="abs float f8" src="assets/img/fig/sphere-red.png" alt="" data-fig="206:372">
+        <img class="abs float f9" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:294">
+      </div>
+    </div>
   </section>
 
   <!-- ЭКРАН 7: ДО/ПОСЛЕ -->
