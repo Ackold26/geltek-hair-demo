@@ -111,6 +111,13 @@
           var offsetCqw = -amp / 2 + amp * progress;
           el.style.transform = 'translateY(' + (w * offsetCqw / 100).toFixed(2) + 'px)';
         }
+
+        var dimAttr = el.getAttribute('data-dim');
+        if (dimAttr !== null) {
+          var dim0 = parseFloat(dimAttr);
+          var brightness = dim0 + (1 - dim0) * progress;
+          el.style.filter = 'brightness(' + brightness.toFixed(3) + ')';
+        }
       });
       ticking = false;
     }
