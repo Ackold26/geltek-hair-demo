@@ -77,9 +77,9 @@ a{color:inherit;text-decoration:none}
 .s1 .patch.p4{left:67.76cqw;top:22.083cqw;width:51.458cqw;height:28.49cqw;filter:blur(3.125cqw);opacity:.9}
 .s1 .patch.p5{left:69.167cqw;top:21.979cqw;width:51.458cqw;height:28.49cqw;filter:blur(3.125cqw);opacity:.9}
 .s1 .patch.p6{left:74.531cqw;top:27.396cqw;width:51.458cqw;height:28.49cqw;filter:blur(3.125cqw);opacity:.9}
-.s1 .patch.p7{left:-9.792cqw;top:56.823cqw;width:118.073cqw;height:10.938cqw;filter:blur(2.083cqw);opacity:.8}
-.s1 .patch.p8{left:-9.792cqw;top:53.125cqw;width:118.073cqw;height:10.938cqw;filter:blur(2.604cqw);opacity:1}
-.s1 .patch.p9{left:-6.042cqw;top:54.115cqw;width:118.073cqw;height:28.75cqw;filter:blur(2.083cqw);opacity:.5}
+.s1 .patch.p7{left:-9.792cqw;top:56.823cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(4.167cqw);opacity:.8}
+.s1 .patch.p8{left:-9.792cqw;top:53.125cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(5.208cqw);opacity:1}
+.s1 .patch.p9{left:-6.042cqw;top:54.115cqw;width:118.073cqw;height:28.75cqw;border-radius:0;filter:blur(4.167cqw);opacity:.5}
 
 /* красный шар у заголовка */
 .s1 .sph-title{left:17.188cqw;top:7.188cqw;width:9.271cqw;height:auto;z-index:4}
@@ -272,16 +272,16 @@ a{color:inherit;text-decoration:none}
 
 /* витрина продукта */
 .s6 .plate{left:18.646cqw;top:49.531cqw;width:62.396cqw;height:24.635cqw;z-index:1;
-  background:linear-gradient(135deg,#F8F8F8,#CACACA)}
-.s6 .glowbox{left:23.802cqw;top:49.531cqw;width:57.344cqw;height:24.583cqw;z-index:1;overflow:hidden;
-  background:radial-gradient(ellipse at 70% 55%,rgba(188,41,75,.85) 0%,rgba(141,14,44,.55) 45%,rgba(141,14,44,0) 78%)}
+  background:linear-gradient(180deg,#F8F8F8 0%,#CACACA 186.15%)}
+.s6 .glowbox{left:23.802cqw;top:49.531cqw;width:57.344cqw;height:24.583cqw;z-index:1;overflow:hidden}
 .s6 .glowbox-light{left:20.885cqw;top:-11.51cqw;width:50.104cqw;height:50.104cqw;border-radius:50%;
-  background:#fff;filter:blur(2.604cqw)}
-.s6 .glowbox-sphere{left:19.792cqw;top:-11.458cqw;width:48.229cqw;height:48.229cqw;filter:blur(.495cqw)}
-.s6 .pinkglow{left:53.438cqw;top:66.146cqw;width:14.219cqw;height:13.802cqw;border-radius:50%;
-  background:#E96882;filter:blur(3.385cqw);z-index:1}
+  background:#fff;filter:blur(5.208cqw)}
+.s6 .glowbox-sphere{left:19.792cqw;top:-11.458cqw;width:48.229cqw;height:48.229cqw;filter:blur(.99cqw)}
+.s6 .pinkglow-clip{left:47.396cqw;top:58.49cqw;width:33.646cqw;height:15.625cqw;overflow:hidden;z-index:1}
+.s6 .pinkglow{position:absolute;left:6.042cqw;top:7.656cqw;width:14.219cqw;height:13.802cqw;
+  border-radius:50%;background:#E96882;filter:blur(3.385cqw)}
 .s6 .showcase-logo{left:28.229cqw;top:54.688cqw;width:12.917cqw;height:auto;z-index:3}
-.s6 .peptidman{left:55.104cqw;top:67.344cqw;width:5.208cqw;height:auto;z-index:3}
+.s6 .peptidman{left:55.104cqw;top:67.344cqw;width:5.208cqw;height:11.25cqw;z-index:3}
 /* 137:306/137:307 (B4): раньше height:auto опирался на собственный аспект PNG (0.4256/0.3245),
    что ломало выравнивание «по общей нижней линии» — теперь явные w/h из карты (низ обоих 8079.2/8079.3) */
 .s6 .pack50{left:58.229cqw;top:59.031cqw;width:8.729cqw;height:18.896cqw;z-index:3}
@@ -541,7 +541,7 @@ a{color:inherit;text-decoration:none}
   mix-blend-mode:luminosity;pointer-events:none}
 .m-s1 .m-banner span{position:relative;z-index:1;display:block;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;padding:6cqw 30cqw 6cqw 9.375cqw;text-transform:uppercase}
-.m-s1 .m-bottle{left:66.875cqw;top:64.063cqw;width:27.813cqw;height:auto;z-index:5;
+.m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5;
   filter:drop-shadow(0 1cqw 1.5cqw rgba(94,0,35,.18))}
 
 .m-s1 .m-adv-card{left:-0.313cqw;top:148.75cqw;width:100.625cqw;height:166.875cqw;z-index:3;
@@ -589,8 +589,8 @@ a{color:inherit;text-decoration:none}
 .m-s5{height:501.875cqw}
 .m-s5 .m-s5-bg{left:-0.938cqw;top:0;width:102.813cqw;height:106.875cqw;object-fit:cover;z-index:1}
 .m-s5 .m-s5-man-wrap{left:26.25cqw;top:19.375cqw;width:71.875cqw;height:97.5cqw;z-index:4}
-.m-s5 .m-s5-shadow{left:15.938cqw;top:82.813cqw;width:33.75cqw;height:6.25cqw;border-radius:50%;
-  background:#D9D9D9;filter:blur(2cqw);mix-blend-mode:multiply}
+.m-s5 .m-s5-shadow{left:42.188cqw;top:102.188cqw;width:33.75cqw;height:6.25cqw;border-radius:50%;
+  background:#D9D9D9;filter:blur(2cqw);mix-blend-mode:multiply;z-index:1}
 .m-s5 .m-s5-man{left:0;top:0;width:100%;height:auto}
 .m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:396.25cqw;z-index:2;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
@@ -642,17 +642,17 @@ a{color:inherit;text-decoration:none}
 
 .m-s6 .m-s6-plate{left:8.438cqw;top:31.563cqw;width:82.5cqw;height:126.875cqw;z-index:1;
   background:linear-gradient(135deg,#F8F8F8,#CACACA)}
-.m-s6 .m-s6-glowbox{left:8.438cqw;top:40.625cqw;width:82.5cqw;height:117.813cqw;z-index:1;overflow:hidden;
-  background:radial-gradient(ellipse at 65% 45%,rgba(188,41,75,.85) 0%,rgba(141,14,44,.55) 45%,rgba(141,14,44,0) 78%)}
+.m-s6 .m-s6-glowbox{left:8.438cqw;top:40.625cqw;width:82.5cqw;height:117.813cqw;z-index:1;overflow:hidden}
 .m-s6 .m-s6-glowlight{left:8.125cqw;top:44.688cqw;width:158.438cqw;height:158.438cqw;border-radius:50%;
-  background:#fff;filter:blur(4cqw)}
-.m-s6 .m-s6-glowsph{left:-17.813cqw;top:38.438cqw;width:129.063cqw;height:129.063cqw;filter:blur(.8cqw)}
-.m-s6 .m-s6-pinkglow{left:13.438cqw;top:135.625cqw;width:35.625cqw;height:34.063cqw;border-radius:50%;
-  background:#E96882;filter:blur(2.5cqw);z-index:1}
+  background:#fff;filter:blur(14.29cqw)}
+.m-s6 .m-s6-glowsph{left:-17.813cqw;top:38.438cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw)}
+.m-s6 .m-s6-pinkglow-clip{left:8.344cqw;top:48.938cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
+.m-s6 .m-s6-pinkglow{position:absolute;left:4.938cqw;top:86.813cqw;width:35.656cqw;height:34.125cqw;
+  border-radius:50%;background:rgba(233,104,130,.8);filter:blur(2.5cqw)}
 .m-s6 .m-s6-logo{left:34.063cqw;top:42.5cqw;width:29.688cqw;height:auto;z-index:3}
-.m-s6 .m-s6-peptidman{left:19.063cqw;top:134.063cqw;width:17.5cqw;height:auto;z-index:3}
-.m-s6 .m-s6-pack50{left:29.375cqw;top:108.438cqw;width:26.875cqw;z-index:3}
-.m-s6 .m-s6-pack100{left:53.125cqw;top:88.125cqw;width:28.438cqw;z-index:3}
+.m-s6 .m-s6-peptidman{left:19.063cqw;top:134.063cqw;width:17.438cqw;height:37.688cqw;z-index:3}
+.m-s6 .m-s6-pack50 {left:29.469cqw;top:108.469cqw;width:26.969cqw;height:58.375cqw;z-index:3}
+.m-s6 .m-s6-pack100{left:53.25cqw; top:88.125cqw; width:28.375cqw;height:78.75cqw; z-index:3}
 .m-s6 .m-s6-decosph{left:70.938cqw;top:152.813cqw;width:18.75cqw;height:auto;z-index:3}
 .m-s6 .m-vg50{left:39.375cqw;top:169.375cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
 .m-s6 .m-vs50{left:39.063cqw;top:169.063cqw;width:5.625cqw;height:auto;z-index:4}
@@ -755,13 +755,13 @@ a{color:inherit;text-decoration:none}
 .m-s9 .m-v-banner .banner-drop{left:48.438cqw;top:-67.813cqw;width:143.438cqw;height:auto}
 
 .m-s9 .m-pack{z-index:3}
-.m-s9 .m-r-norm30{left:11.875cqw;top:82.5cqw;width:14.688cqw}
-.m-s9 .m-r-norm100{left:35.313cqw;top:75.313cqw;width:20.625cqw}
-.m-s9 .m-r-norm390{left:60.625cqw;top:59.375cqw;width:29.375cqw}
-.m-s9 .m-v-post30{left:3.125cqw;top:221.563cqw;width:15.938cqw}
-.m-s9 .m-v-post100{left:23.438cqw;top:213.75cqw;width:18.75cqw}
-.m-s9 .m-v-post250{left:45.938cqw;top:207.188cqw;width:21.25cqw}
-.m-s9 .m-v-post390{left:70.938cqw;top:198.438cqw;width:25.313cqw}
+.m-s9 .m-r-norm30 {left:11.906cqw;top:82.5cqw;   width:14.719cqw;height:35.5cqw}
+.m-s9 .m-r-norm100{left:35.219cqw;top:75.188cqw; width:20.531cqw;height:42.938cqw}
+.m-s9 .m-r-norm390{left:60.625cqw;top:59.219cqw; width:29.375cqw;height:58.844cqw}
+.m-s9 .m-v-post30 {left:3.125cqw; top:221.406cqw;width:15.969cqw;height:35.813cqw}
+.m-s9 .m-v-post100{left:23.438cqw;top:213.594cqw;width:18.688cqw;height:44.406cqw}
+.m-s9 .m-v-post250{left:45.938cqw;top:206.938cqw;width:21.313cqw;height:50.844cqw}
+.m-s9 .m-v-post390{left:70.938cqw;top:198.281cqw;width:25.406cqw;height:59.281cqw}
 
 .m-s9 .m-vol-glow{width:4.688cqw;height:4.688cqw;z-index:3}
 .m-s9 .m-vol-sph{width:5.625cqw;height:auto;z-index:4}
