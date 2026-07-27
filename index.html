@@ -40,7 +40,7 @@
       <span>Пептидная забота о ваших волосах</span>
     </div>
 
-    <img class="abs bottle" src="assets/img/fig/serum-100.png" alt="" data-fig="147:30" data-scroll-y0="18.125" data-scroll-y1="52.76" data-scroll-op0="1" data-scroll-op1="0.3">
+    <img class="abs bottle" src="assets/img/fig/serum-100.png" alt="" data-fig="147:30" data-scroll-y0="18.125" data-scroll-y1="52.76">
 
     <!-- преимущества -->
     <div class="abs adv-card"></div>
@@ -230,8 +230,10 @@
 
     <img class="abs s8-photo" src="assets/img/fig/picture-crop.png" alt="" data-fig="137:355">
     <div class="abs s8-shadow"></div>
-    <div class="abs s8-word s8-word1">GELTEK</div>
-    <div class="abs s8-word s8-word2">GELTEK</div>
+    <!-- N2 (27.07, 2я порция): в макете два состояния ОДНОГО логотипа (137:359 исходное / 137:373
+         конечное, opacity .3 у конечного — иллюстрация конечного положения, не отдельный эффект) —
+         оставлен один элемент, движение вниз через тот же механизм data-scroll-y0/y1, что и флакон. -->
+    <div class="abs s8-word s8-word1" data-scroll-y0="34.479" data-scroll-y1="42.448">GELTEK</div>
     <!-- E1: статичный логотип в конечной позиции параллакса (559,9995), непрозрачность 1.0.
          Вариант с движением при скролле — вопрос без ответа (см. QUESTIONS.md), пока статично. -->
     <img class="abs s8-logo" src="assets/img/fig/geltek-logo.svg" alt="GELTEK" data-fig="137:359">
