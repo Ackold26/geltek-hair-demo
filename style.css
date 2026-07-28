@@ -16,10 +16,10 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-/* N3 (27.07, 2я порция): страховка от горизонтальной прокрутки после .deco-layer (width:100vw) —
-   clip вместо hidden, т.к. hidden сломал бы position:sticky (сейчас его нет, но так безопаснее) */
+/* Страховка от горизонтальной прокрутки после .deco-layer (width:100vw) — clip вместо hidden,
+   т.к. hidden сломал бы position:sticky (сейчас его нет, но так безопаснее) */
 html,body{overflow-x:clip}
-/* E7: в макете только Light(300)/Medium(500) — запрет синтеза не даёт браузеру подделать
+/* В макете только Light(300)/Medium(500) — запрет синтеза не даёт браузеру подделать
    отсутствующее начертание (Bold/ExtraBold не подключены и не должны подключаться) */
 body{font-family:'Geometria',system-ui,Arial,sans-serif;font-weight:300;color:#000;background:#fff;
   -webkit-font-smoothing:antialiased;font-synthesis:none}
@@ -40,9 +40,9 @@ a{color:inherit;text-decoration:none}
   max-width:1920px;
   margin:0 auto;
   background:#fff;
-  /* было overflow:hidden — оно обрезало слой декора .deco-layer (width:100vw) по рамке 1920
-     и обесценивало вынос сфер за края на широких экранах (проверено пикселями: левое поле
-     было полностью белым). Горизонтальную прокрутку держит html,body{overflow-x:clip}. */
+  /* overflow:visible — hidden обрезал бы слой декора .deco-layer (width:100vw) по рамке 1920
+     и обесценивал бы вынос сфер за края на широких экранах (левое поле стало бы полностью белым).
+     Горизонтальную прокрутку держит html,body{overflow-x:clip}. */
   overflow:visible;
   font-weight:300;
 }
@@ -73,18 +73,17 @@ a{color:inherit;text-decoration:none}
 /* KV сцена (фон). Кроп по матрице 137:3 запечён физически (hero-kv-crop.png,
    scripts/figma_crop.py) — 1920x1006, поэтому object-fit:cover лишь страхует округление */
 .s1 .kv{left:-0.208cqw;top:8.021cqw;width:100cqw;height:52.396cqw;object-fit:cover;z-index:1;
-  /* N4 (27.07, 2я порция): растворяем нижнюю кромку самой картинки — патчи p7/p8/p9 (blur 1:1 к
-     макету) стык смягчили, но не убрали: у KV резкий физический нижний край. Маска — поверх макета,
-     по прямой просьбе дизайнера "усилить переход"; 70% — стартовая точка, требует сверки с эталоном */
+  /* Растворяем нижнюю кромку самой картинки — патчи p7/p8/p9 (blur 1:1 к макету) смягчают стык,
+     но не убирают его: у KV резкий физический нижний край. Маска добавлена поверх макета для
+     усиления перехода; 70% — подобранное значение. */
   -webkit-mask-image:linear-gradient(180deg,#000 70%,rgba(0,0,0,0) 100%);
   mask-image:linear-gradient(180deg,#000 70%,rgba(0,0,0,0) 100%)}
 /* пузырьки снизу — наложение luminosity, едва заметны. Кроп 137:4 запечён (bubbles-crop.png, 1920x694) */
 .s1 .bubbles{left:-0.208cqw;top:55.885cqw;width:100cqw;height:36.146cqw;object-fit:cover;z-index:1;opacity:.13;mix-blend-mode:luminosity}
 
 /* ---- blur-патчи переходов (растворяют края KV-фото в белый, "wt blur patch") ---- */
-/* N2 (28.07, 2я порция): у p1-p6 размытие в макете (137:8/10/9/11 + 147:47/137:5) вдвое больше
-   нашего — наследие правила «Figma blur ÷ 2» (уже подводило 27.07 на нижних патчах p7-p9,
-   там радиус давно вернули 1:1). Радиусы p1/p3 100→5.208cqw, p2/p4/p5/p6 120→6.25cqw, 1:1 к макету. */
+/* У p1-p6 размытие в макете (137:8/10/9/11 + 147:47/137:5) переносится 1:1: радиусы p1/p3
+   100→5.208cqw, p2/p4/p5/p6 120→6.25cqw. */
 .s1 .patch.p1{left:41.302cqw;top:-12.813cqw;width:33.229cqw;height:38.125cqw;filter:blur(5.208cqw);opacity:.95}
 .s1 .patch.p2{left:71.146cqw;top:8.438cqw;width:34.063cqw;height:43.438cqw;filter:blur(6.25cqw);opacity:.9}
 .s1 .patch.p3{left:51.146cqw;top:5.469cqw;width:33.229cqw;height:11.406cqw;filter:blur(5.208cqw);opacity:.95}
@@ -114,14 +113,14 @@ a{color:inherit;text-decoration:none}
 .s1 .banner .banner-drop{position:absolute;left:45.052cqw;top:-6.042cqw;width:17.969cqw;height:17.708cqw;
   mix-blend-mode:luminosity;pointer-events:none}
 
-/* флакон (стартовая позиция; едет вниз по скроллу). z-index:10 — выше карточки преимуществ
+/* Флакон (стартовая позиция; едет вниз по скроллу). z-index:10 — выше карточки преимуществ
    (147:30 «Pack 100ml» zi=69 в эталоне рисуется поверх красного блока 147:29 zi=26/27).
-   Проверка (тимлид, пункт 4 доработки): прогон serum-100.png через figma_crop.py с матрицей
-   147:30/137:20 дал обрезанный фрагмент этикетки (не флакон целиком) — значит файл уже
-   изолированный кроп, а не сырой исходник. Поэтому явная height:33.021cqw (634px) вместо auto —
-   вертикальное сжатие ~10% (аспект файла 0.3245 → целевой 0.3596) заложено самим макетом. */
-/* N2 (28.07, 2я порция): в узле 137:20 макета — только цветокоррекция, свечения/тени нет —
-   drop-shadow снят, will-change оставлен (нужен для параллакса флакона) */
+   Прогон serum-100.png через figma_crop.py с матрицей 147:30/137:20 даёт обрезанный фрагмент
+   этикетки (не флакон целиком) — значит файл уже изолированный кроп, а не сырой исходник.
+   Поэтому явная height:33.021cqw (634px) вместо auto — вертикальное сжатие ~10% (аспект файла
+   0.3245 → целевой 0.3596) заложено самим макетом. */
+/* В узле 137:20 макета — только цветокоррекция, свечения/тени нет — drop-shadow не задан,
+   will-change оставлен (нужен для параллакса флакона) */
 .s1 .bottle{left:70.417cqw;top:18.125cqw;width:11.875cqw;height:33.021cqw;z-index:10;
   will-change:transform,opacity}
 
@@ -153,7 +152,7 @@ a{color:inherit;text-decoration:none}
 
 /* ---- хедер ---- */
 .hdr{position:absolute;top:0;left:0;width:100%;height:6.15cqw;z-index:20;display:block}
-/* D4 (доработка после приёмки): логотип обёрнут в ссылку — позиционирование перенесено на .logo-link */
+/* Логотип обёрнут в ссылку — позиционирование перенесено на .logo-link */
 .hdr .logo-link{position:absolute;left:19.531cqw;top:2.031cqw;width:4.583cqw;display:block}
 .hdr .logo-link .logo{display:block;width:100%;height:auto}
 .hdr nav a{position:absolute;top:3.385cqw;font-weight:500;font-size:1.042cqw;color:var(--gray);
@@ -193,9 +192,9 @@ a{color:inherit;text-decoration:none}
 
 /* ==================== ЭКРАН 4: БЕРЕЖНЫЙ УХОД (3927..5006) ==================== */
 .s4{height:56.406cqw}              /* 1083/19.2 */
-/* 137:148 «demo part» — раньше height:auto растягивал фото до ~1326px (аспект файла 1.45),
-   секция всего 1083px → лишние ~243px спадали в s5, из-за чего красный блок s5 перекрывал
-   хвост фото s4 (замечание А3). Кроп по матрице запечён физически (demo-crop.png, 1924x1083) */
+/* 137:148 «demo part» — height:auto растягивал бы фото до ~1326px (аспект файла 1.45) при секции
+   высотой 1083px, лишние ~243px спадали бы в s5, и красный блок s5 перекрывал бы хвост фото s4.
+   Кроп по матрице запечён физически (demo-crop.png, 1924x1083) */
 .s4 .bg{left:-0.104cqw;top:0;width:100.208cqw;height:56.406cqw;object-fit:cover;z-index:1}
 .s4 .card{left:51.875cqw;top:8.281cqw;width:29.427cqw;height:35.573cqw;z-index:2}
 .s4 .icon{left:61.302cqw;top:12.344cqw;width:10.052cqw;height:10.052cqw;z-index:3}
@@ -205,8 +204,8 @@ a{color:inherit;text-decoration:none}
 
 /* ==================== ЭКРАН 5: КАК ДЕЙСТВУЕТ СЫВОРОТКА (5006..6583) ==================== */
 /* margin-top:-0.208cqw (-4px): s5 должна начинаться на 4px раньше конца s4 (белая
-   подложка 137:166 рисуется поверх нижнего края фото s4, А3) — без этого сдвига
-   числовая сверка показала систематическое расхождение +4px во ВСЕХ секциях ниже s4 */
+   подложка 137:166 рисуется поверх нижнего края фото s4) — без этого сдвига возникает
+   систематическое расхождение +4px во всех секциях ниже s4 */
 .s5{height:82.135cqw;margin-top:-0.208cqw}              /* 1577(1579)/19.2 ≈ высота Geltek KV bg */
 /* 137:168 — кроп по матрице запечён физически (geltek-kv-bg-crop.png, 1920x1579);
    верхняя ~10.7% полоса матрицы уходит за границы исходника — в PIL это прозрачный
@@ -252,23 +251,20 @@ a{color:inherit;text-decoration:none}
 .s5 .n5{left:20.104cqw;top:57.865cqw}
 .s5 .n6{left:20.26cqw;top:64.219cqw}
 
-/* G (28.07, приёмка): .man-wrap растянут на весь бокс 137:235 (576x654 = 30cqw x 34.063cqw) —
-   картинка внутри заполняет контейнер целиком, а не только нижний man-ball.
-   N3 (28.07, 2я порция, регрессия): высота контейнера была уменьшена до 30.417cqw (обрезка по
-   низу плашки) и резала фигуру по ногам — дизайнер настояла на целой фигуре, высота возвращена
-   к полному размеру бокса 34.063cqw. */
+/* Высота контейнера 34.063cqw — полный бокс узла 137:235 (576x654). Меньшее значение обрезает
+   фигуру по ногам. .man-wrap растянут на весь бокс — картинка внутри заполняет контейнер целиком,
+   а не только нижний man-ball. */
 .s5 .man-wrap{left:56.771cqw;top:42.76cqw;width:30cqw;height:34.063cqw;z-index:4;overflow:hidden}
-/* N3 (28.07, 2я порция): .man-glow (137:238, декоративное красное пятно) убран целиком по
-   требованию дизайнера — размытие 10.417cqw (увеличенное днём с 5.208cqw) сделало его видимым
-   красным пятном в правом нижнем углу плашки. */
+/* .man-glow (137:238, декоративное красное пятно) не используется — при размытии 10.417cqw
+   пятно становится видимым красным пятном в правом нижнем углу плашки. */
 .s5 .man-ball{left:0;top:0;width:30cqw;height:34.063cqw;object-fit:cover}
 
 /* ==================== ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ (6583..8213) ==================== */
 .s6{height:84.896cqw}              /* 1630/19.2 */
 
 .s6 .ball{left:17.396cqw;top:3.646cqw;width:9.271cqw;height:9.375cqw;z-index:2}
-/* E7 (замечание 1 клиента): в эталоне это Medium (500), не Light — один из трёх заголовков
-   кегля 48 с весом 500 («Как действует сыворотка», этот, «Окружите волосы полной заботой») */
+/* В эталоне это Medium (500), не Light — один из трёх заголовков кегля 48 с весом 500
+   («Как действует сыворотка», этот, «Окружите волосы полной заботой») */
 .s6 .title{left:27.656cqw;top:7.031cqw;width:53.958cqw;z-index:2;color:var(--wine);
   font-weight:500;font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
 .s6 .title .b{font-weight:500}
@@ -293,9 +289,9 @@ a{color:inherit;text-decoration:none}
 .s6 .plate{left:18.646cqw;top:49.531cqw;width:62.396cqw;height:24.635cqw;z-index:1;
   background:linear-gradient(180deg,#F8F8F8 0%,#CACACA 186.15%)}
 .s6 .glowbox{left:23.802cqw;top:49.531cqw;width:57.344cqw;height:24.583cqw;z-index:1;overflow:hidden}
-/* B (28.07): 137:258 «light» — белый эллипс 962x962, LAYER_BLUR 100, лежит ПОД картинкой-сферой
-   внутри маски 137:255. Слой в макете есть, наши числа ему соответствуют — возвращён после
-   ошибочного удаления. Причина «белого пятна» была не в нём, а в отсутствии поворота сферы. */
+/* 137:258 «light» — белый эллипс 962x962, LAYER_BLUR 100, лежит под картинкой-сферой внутри
+   маски 137:255. Слой предусмотрен макетом. Причина «белого пятна» — не в этом слое, а в
+   отсутствии поворота сферы (см. .glowbox-sphere ниже). */
 .s6 .glowbox-light{left:20.885cqw;top:-11.51cqw;width:50.104cqw;height:50.104cqw;border-radius:50%;
   background:#fff;filter:blur(5.208cqw)}
 /* 137:259 «sphere»: rotation -75° — картинка несимметричная, без поворота тёмная сторона уходит
@@ -307,8 +303,9 @@ a{color:inherit;text-decoration:none}
   border-radius:50%;background:#E96882;filter:blur(6.771cqw)}
 .s6 .showcase-logo{left:28.229cqw;top:54.688cqw;width:12.917cqw;height:auto;z-index:3}
 .s6 .peptidman{left:55.104cqw;top:67.344cqw;width:5.208cqw;height:11.25cqw;z-index:3;transform:scaleX(-1)}
-/* 137:306/137:307 (B4): раньше height:auto опирался на собственный аспект PNG (0.4256/0.3245),
-   что ломало выравнивание «по общей нижней линии» — теперь явные w/h из карты (низ обоих 8079.2/8079.3) */
+/* 137:306/137:307 — явные w/h из карты (низ обоих 8079.2/8079.3) вместо height:auto: auto
+   опирался бы на собственный аспект PNG (0.4256/0.3245), что ломает выравнивание «по общей
+   нижней линии» */
 .s6 .pack50{left:58.229cqw;top:59.031cqw;width:8.729cqw;height:18.896cqw;z-index:3}
 .s6 .pack100{left:67.76cqw;top:52.448cqw;width:9.177cqw;height:25.484cqw;z-index:3}
 
@@ -323,21 +320,20 @@ a{color:inherit;text-decoration:none}
 .s6 .s100{left:69.063cqw;top:78.646cqw}
 .s6 .t100{left:71.927cqw;top:79.115cqw}
 
-/* плавающие декоративные сферы фона.
-   N3 (27.07, 2я порция): .deco-layer — слой 100vw, отцентрованный по окну (left:50%+translateX(-50%)),
-   обрезка идёт по краю окна вместо рамки .stage (max-width:1920px) — на широких экранах сферы f6/f7
-   (выходящие за 0..100cqw) больше не срезаются. Левый край .deco-layer всегда совпадает с левым краем
-   ОКНА (это следует из width:100vw + центрирование — по построению), а не с левым краем .stage, поэтому
-   left каждой сферы пересчитан как calc(base + (100vw-100cqw)/2): при viewport<=1920 100vw=100cqw и
-   поправка равна 0 (ничего не меняется — совпадает с исходной картой), при viewport>1920 поправка
-   компенсирует ровно тот боковой отступ, что появляется у .stage при центрировании — без неё сферы
-   съезжали бы влево относительно плашки/витрины на величину этого отступа. base-значения — те же
-   left, что были в карте, не поменяны. */
+/* Плавающие декоративные сферы фона.
+   .deco-layer — слой 100vw, отцентрованный по окну (left:50%+translateX(-50%)), обрезка идёт по
+   краю окна вместо рамки .stage (max-width:1920px) — на широких экранах сферы f6/f7 (выходящие за
+   0..100cqw) не срезаются. Левый край .deco-layer всегда совпадает с левым краем окна (это следует
+   из width:100vw + центрирование), а не с левым краем .stage, поэтому left каждой сферы пересчитан
+   как calc(base + (100vw-100cqw)/2): при viewport<=1920 100vw=100cqw и поправка равна 0, при
+   viewport>1920 поправка компенсирует ровно тот боковой отступ, что появляется у .stage при
+   центрировании — без неё сферы съезжали бы влево относительно плашки/витрины на величину этого
+   отступа. */
 .s6 .deco-layer{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100vw;max-width:none;
   height:100%;overflow:hidden;pointer-events:none;z-index:5}
-/* .deco-par — отдельный слой ВНУТРИ .deco-layer только под JS-параллакс (data-par пишет transform
+/* .deco-par — отдельный слой внутри .deco-layer только под JS-параллакс (data-par пишет transform
    через style.transform); если повесить data-par на сам .deco-layer, инлайн-transform затрёт
-   translateX(-50%) центрирования выше и сломает обрезку по краю окна (N3) */
+   translateX(-50%) центрирования выше и сломает обрезку по краю окна */
 .s6 .deco-par{position:absolute;top:0;left:0;width:100%;height:100%}
 .s6 .float{z-index:5;pointer-events:none}
 .s6 .f1{left:calc(-3.073cqw + (100vw - 100cqw)/2);top:55.729cqw;width:10.469cqw;height:auto;filter:blur(.26cqw)}
@@ -346,8 +342,8 @@ a{color:inherit;text-decoration:none}
 .s6 .f4{left:calc(11.302cqw + (100vw - 100cqw)/2);top:44.896cqw;width:4.583cqw;height:auto;filter:blur(.26cqw);opacity:.8}
 .s6 .f5{left:calc(29.063cqw + (100vw - 100cqw)/2);top:68.49cqw;width:16.667cqw;height:auto;filter:blur(.26cqw)}
 .s6 .f6{left:calc(94.115cqw + (100vw - 100cqw)/2);top:65.885cqw;width:11.719cqw;height:auto;filter:blur(.26cqw)}
-/* N1 (28.07, 2я порция): f7 вынесен из .deco-layer в разметке — свой z-index выше .s7 .s7card
-   (6), чтобы шар был виден целиком, а не обрезался по нижней границе .s6 */
+/* f7 вынесен из .deco-layer в разметке — свой z-index выше .s7 .s7card (6), чтобы шар был виден
+   целиком, а не обрезался по нижней границе .s6 */
 .s6 .f7{left:calc(-13.646cqw + (100vw - 100cqw)/2);top:69.844cqw;width:33.646cqw;height:auto;filter:blur(.521cqw);z-index:7}
 .s6 .f8{left:calc(84.427cqw + (100vw - 100cqw)/2);top:61.25cqw;width:5.365cqw;height:auto;filter:blur(.26cqw);opacity:.8}
 .s6 .f9{left:calc(74.583cqw + (100vw - 100cqw)/2);top:74.167cqw;width:25.521cqw;height:auto;filter:blur(.521cqw)}
@@ -410,17 +406,16 @@ a{color:inherit;text-decoration:none}
 .s8 .s8-btn:hover{opacity:.85}
 
 .s8{overflow:hidden}
-/* 137:355: было растянуто до 553px (28.803cqw), закрывая штатный 138px-й зазор до s9 (D3) —
-   теперь точная высота узла 415px (21.615cqw) + физический кроп по матрице, раз E1 (логотип
-   поверх этого фото) реализуется — иначе центр фото не совпадал бы с центром логотипа */
+/* 137:355: точная высота узла 415px (21.615cqw) + физический кроп по матрице — большее значение
+   закрывало бы штатный 138px-й зазор до s9, а поскольку логотип рисуется поверх этого фото,
+   центр фото должен совпадать с центром логотипа */
 .s8 .s8-photo{left:-0.104cqw;top:34.635cqw;width:100cqw;height:21.615cqw;object-fit:cover;z-index:1}
 .s8 .s8-shadow{left:5cqw;top:38.073cqw;width:90.156cqw;height:15.208cqw;border-radius:50%;
   background:#D9D9D9;filter:blur(2.604cqw);mix-blend-mode:multiply;z-index:1}
-/* D1 (доработка после приёмки, 27.07 вечер): текстовая имитация водяного знака "GELTEK"
-   (.s8-word/.s8-word1) убрана — накладывалась на векторный логотип и читалась дизайнером как
-   дублирование. Логотип 137:359 теперь один и движется (data-scroll-y0/y1 в разметке): исходная
-   позиция y0=34.479cqw (top ниже, база для JS-фолбэка/reduced-motion), конечная y1=42.448cqw
-   (559,9995 абс. — центр совпадает с центром фото-подложки 137:355, как и было в статичном E1) */
+/* Текстовая имитация водяного знака "GELTEK" (.s8-word/.s8-word1) не используется — накладывалась
+   бы на векторный логотип. Логотип 137:359 — один элемент, движется (data-scroll-y0/y1 в
+   разметке): исходная позиция y0=34.479cqw (top ниже, база для JS-фолбэка/reduced-motion),
+   конечная y1=42.448cqw (559,9995 абс. — центр совпадает с центром фото-подложки 137:355). */
 .s8 .s8-logo{left:29.115cqw;top:34.479cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1}
 
 /* ==================== ЭКРАН 9: ШАМПУНИ (10398..12246) ==================== */
@@ -450,11 +445,11 @@ a{color:inherit;text-decoration:none}
 .s9 .v-banner .banner-drop{left:37.708cqw;top:-12.292cqw;width:25.833cqw;height:21.094cqw}
 
 /* --- флаконы --- */
-/* B5/B6: позиции/ширины уже совпадали с картой день-в-день, но height:auto опирался на
-   собственный аспект PNG-файлов (у всех разный) — «по общей нижней линии» ломалось на 15-40px.
-   Явные высоты из карты (низ 30/100/390 ≈11201-11205 в красном, ≈12098-12105 в фиолетовом) */
-/* N5 (п.11/12 карты, узлы-аннотации 137:577/137:578): наведение курсора — упаковки чуть увеличиваются.
-   1.04 подобрано так, чтобы соседняя упаковка линейки не задевалась (проверено на 1920 и 1280) */
+/* Явные высоты (низ 30/100/390 ≈11201-11205 в красном, ≈12098-12105 в фиолетовом) вместо
+   height:auto: auto опирался бы на собственный аспект PNG-файлов (у всех разный), из-за чего
+   «по общей нижней линии» ломалось бы на 15-40px. */
+/* Узлы-аннотации 137:577/137:578: наведение курсора — упаковки чуть увеличиваются. 1.04 подобрано
+   так, чтобы соседняя упаковка линейки не задевалась (проверено на 1920 и 1280) */
 .s9 .pack{z-index:3;transition:transform .25s}
 .s9 .pack:hover{transform:scale(1.04)}
 .s9 .r-norm30{left:42.031cqw;top:26.25cqw;width:6.51cqw;height:15.677cqw}
@@ -497,15 +492,15 @@ a{color:inherit;text-decoration:none}
 /* --- фоновые полосы с водяными знаками названий линеек --- */
 .s9 .r-band{left:-0.677cqw;top:28.177cqw;width:101.042cqw;height:21.354cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
-/* E2 (доработка): «Intensive» — точный вектор из 9 контуров (137:450), извлечён из геометрии узла
-   (fillGeometry) в обход лимита на растровый экспорт. Непрозрачность 0.5 запечена в сами контуры
-   SVG (fill-opacity на каждом path), габарит группы 1432.8x193.9 при 248.7,10936.0 */
+/* «Intensive» — точный вектор из 9 контуров (137:450), извлечён из геометрии узла (fillGeometry)
+   в обход лимита на растровый экспорт. Непрозрачность 0.5 запечена в сами контуры SVG
+   (fill-opacity на каждом path), габарит группы 1432.8x193.9 при 248.7,10936.0 */
 .s9 .wm-svg{position:absolute;display:block}
 .s9 .wm-intensive{left:13.63cqw;top:-0.156cqw;width:74.625cqw;height:10.099cqw}
 .s9 .v-band{left:-0.208cqw;top:75.052cqw;width:100.573cqw;height:21.198cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,#604283 15%,#745F9A 100%)}
-/* E3 (доработка): «Biome» — точный вектор из 5 контуров (137:394), непрозрачность у узлов/заливок
-   не задана (полная) — подтверждено тимлидом при приёмке. Габарит 875.8x190.8 при 246.0,11837.6 */
+/* «Biome» — точный вектор из 5 контуров (137:394), непрозрачность у узлов/заливок не задана
+   (полная). Габарит 875.8x190.8 при 246.0,11837.6 */
 .s9 .wm-biome{left:13.021cqw;top:-0.073cqw;width:45.615cqw;height:9.938cqw}
 
 /* ==================== ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ (12246..13535) ==================== */
@@ -560,19 +555,18 @@ a{color:inherit;text-decoration:none}
 
 /* ---- хедер (центрированный лого + гамбургер) ---- */
 .m-hdr{height:21.25cqw;background:#fff;display:block;position:relative}
-/* D4 (доработка после приёмки): логотип обёрнут в ссылку — позиционирование на .m-hdr-logo-link */
+/* Логотип обёрнут в ссылку — позиционирование на .m-hdr-logo-link */
 .m-hdr-logo-link{position:absolute;left:43.438cqw;top:4.688cqw;width:13.125cqw;display:block}
 .m-hdr-logo-link .m-hdr-logo{display:block;width:100%;height:auto}
 .m-burger{position:absolute;left:87.188cqw;top:9.688cqw;width:7.813cqw;height:5.313cqw;
   display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:31}
 .m-burger i{display:block;height:1px;background:#000}
 
-/* D3 (доработка после приёмки): выпадающее меню — фрейм 188:155 (spec_v2_menu.json), 159x177 при
-   базе 320 (cqw=px/3.2). Панель #F4F4F4, правый край выровнен под бургер (left 87.188+7.813=95cqw
-   от левого края → 5cqw от правого; собственного положения панели относительно экрана в спеке нет,
-   это моё инженерное решение — якорь под бургером логичен для выпадающего меню, отмечено в отчёте).
-   Порядок и текст пунктов — как в спеке (отличается от порядка в десктопной шапке, не выравнивала).
-   Открывается/закрывается классом .menu-open на .m-hdr (main.js, тот же бургер) */
+/* Выпадающее меню — фрейм 188:155 (spec_v2_menu.json), 159x177 при базе 320 (cqw=px/3.2). Панель
+   #F4F4F4, правый край выровнен под бургер (left 87.188+7.813=95cqw от левого края → 5cqw от
+   правого; собственного положения панели относительно экрана в спеке нет — якорь под бургером
+   логичен для выпадающего меню). Порядок и текст пунктов — как в спеке (отличается от порядка в
+   десктопной шапке). Открывается/закрывается классом .menu-open на .m-hdr (main.js, тот же бургер) */
 .m-menu{position:absolute;top:100%;right:5cqw;width:49.688cqw;z-index:30;
   background:#F4F4F4;padding:8.438cqw 6.25cqw 6.25cqw;
   display:none;flex-direction:column;gap:3.125cqw}
@@ -598,7 +592,7 @@ a{color:inherit;text-decoration:none}
   mix-blend-mode:luminosity;pointer-events:none}
 .m-s1 .m-banner span{position:relative;z-index:1;display:block;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;padding:6cqw 30cqw 6cqw 9.375cqw;text-transform:uppercase}
-/* N2 (28.07, 2я порция): drop-shadow снят — см. .s1 .bottle выше */
+/* drop-shadow не задан — см. .s1 .bottle выше */
 .m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5}
 
 .m-s1 .m-adv-card{left:-0.313cqw;top:150cqw;width:100.625cqw;height:166.875cqw;z-index:3;
@@ -697,8 +691,8 @@ a{color:inherit;text-decoration:none}
 .m-s6 .m-fs2{left:-9.688cqw;top:75.625cqw;width:29.375cqw}
 .m-s6 .m-fs3{left:13.75cqw;top:44.063cqw;width:16.563cqw}
 
-/* N6 (28.07, 2я порция): 188:158 «glow», родитель 186:3798 (−61.7/4722) — секция начинается на
-   4596 (конец экрана 5 по спеку mobile), пересчёт: left=(-61.7)/3.2, top=(4852-4596)/3.2 */
+/* 188:158 «glow», родитель 186:3798 (−61.7/4722) — секция начинается на 4596 (конец экрана 5 по
+   спеку mobile), пересчёт: left=(-61.7)/3.2, top=(4852-4596)/3.2 */
 .m-s6 .m-s6-edgeglow{left:-19.281cqw;top:80cqw;width:40.625cqw;height:39.063cqw;border-radius:50%;
   background:#E96882;filter:blur(13.957cqw);mix-blend-mode:screen;z-index:2}
 .m-s6 .m-s6-plate{left:8.438cqw;top:31.563cqw;width:82.5cqw;height:126.875cqw;z-index:1;
@@ -871,12 +865,9 @@ a{color:inherit;text-decoration:none}
 .m-base .m-cta{left:8.75cqw;top:9.375cqw;width:83.125cqw;z-index:1;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-base .m-cta .b{font-weight:500}
-/* N5 (28.07, 2я порция): дизайнер подтвердила 14px вместо 12px */
-/* N5 (28.07, приёмка + правка Антона «сделай в 2 строки»): дизайнер просила кегль 14px, но при
-   нём две строки физически не помещаются — самая короткая разбивка («Отсутствуют противопоказания» /
-   «при беременности и грудном вскармливании») требует 314px, а на экране 320 при макетном левом
-   отступе 28 доступно 292. Взят максимальный кегль, при котором две строки реальны: 13px,
-   левый отступ сдвинут с 28 до 20, бокс 292px (правый край 312, поле 8). */
+/* Кегль 13px и бокс 292px подобраны так, чтобы надпись укладывалась в две строки: при 14px
+   самая короткая разбивка («Отсутствуют противопоказания» / «при беременности и грудном
+   вскармливании») требует 314px, а на экране 320 при левом отступе 20 доступно 292. */
 .m-base .m-cta-note{left:6.25cqw;top:40.313cqw;width:91.25cqw;z-index:1;color:var(--wine);font-weight:300;
   font-size:4.063cqw;line-height:1.2}
 
