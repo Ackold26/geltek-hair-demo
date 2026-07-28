@@ -247,15 +247,20 @@ a{color:inherit;text-decoration:none}
 .s5 .n5{left:20.104cqw;top:57.865cqw}
 .s5 .n6{left:20.26cqw;top:64.219cqw}
 
-/* бисерный человечек справа — обрезан маской, со свечением. 137:235 «конверт» 576x654 (не 576x584 —
-   это была только высота маски-подложки 137:236): при высоте 654 правый край окна совпадает с
-   правым краем красного блока (0px), а низ выходит на 70px ниже блока — так в макете (B3) */
-.s5 .man-wrap{left:56.771cqw;top:42.76cqw;width:30cqw;height:34.063cqw;z-index:4;overflow:hidden}
-.s5 .man-glow{left:10.052cqw;top:12.552cqw;width:39.844cqw;height:39.844cqw;border-radius:50%;
-  background:#BD3A5A;filter:blur(5.208cqw)}
-/* 137:239 «man-ball 1»: заливка IMAGE FILL (не STRETCH) — cover без искажения пропорции 0.7376;
-   ширина/высота уже точно 357x484, не хватало только object-fit:cover (раньше растягивало) */
-.s5 .man-ball{left:9.063cqw;top:8.854cqw;width:18.594cqw;height:25.208cqw;object-fit:cover}
+/* G (28.07, приёмка): .man-wrap раньше был размером всего человечка (137:235, 576x654), но БЕЗ
+   реальной обрезки — картинка внутри стояла в боксе 137:239 (357x484, только нижний "man-ball"),
+   отчего человечек выходил маленьким и смещённым в правый нижний угол плашки (см. acc_s5.png).
+   По макету 137:235 обрезан маской 137:236 ровно по низу плашки (6411 = 5827+584) — высота
+   обрезающего контейнера теперь 584px = 30.417cqw, а сама картинка растянута на весь бокс 137:235. */
+.s5 .man-wrap{left:56.771cqw;top:42.76cqw;width:30cqw;height:30.417cqw;z-index:4;overflow:hidden}
+/* 137:238 «Ellipse 6» — декоративное пятно, В МАКЕТЕ НЕ входит в маску 137:236 и уходит на 422px
+   ниже плашки (6833), поэтому вынесено из .man-wrap (который теперь обрезает по 6411) и позиционируется
+   напрямую от .s5; box 1283/6068,765x765 → left 66.823cqw/top 55.313cqw от базы секции (5006) */
+.s5 .man-glow{left:66.823cqw;top:55.313cqw;width:39.844cqw;height:39.844cqw;border-radius:50%;
+  background:#BD3A5A;filter:blur(10.417cqw);z-index:3}
+/* картинка человечка растянута на весь бокс 137:235 (576x654 = 30cqw x 34.063cqw), обрезается
+   контейнером .man-wrap (584px) — воспроизводит маску 137:236 */
+.s5 .man-ball{left:0;top:0;width:30cqw;height:34.063cqw;object-fit:cover}
 
 /* ==================== ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ (6583..8213) ==================== */
 .s6{height:84.896cqw}              /* 1630/19.2 */
@@ -287,19 +292,24 @@ a{color:inherit;text-decoration:none}
 .s6 .plate{left:18.646cqw;top:49.531cqw;width:62.396cqw;height:24.635cqw;z-index:1;
   background:linear-gradient(180deg,#F8F8F8 0%,#CACACA 186.15%)}
 .s6 .glowbox{left:23.802cqw;top:49.531cqw;width:57.344cqw;height:24.583cqw;z-index:1;overflow:hidden}
+/* B (28.07): 137:258 «light» — белый эллипс 962x962, LAYER_BLUR 100, лежит ПОД картинкой-сферой
+   внутри маски 137:255. Слой в макете есть, наши числа ему соответствуют — возвращён после
+   ошибочного удаления. Причина «белого пятна» была не в нём, а в отсутствии поворота сферы. */
 .s6 .glowbox-light{left:20.885cqw;top:-11.51cqw;width:50.104cqw;height:50.104cqw;border-radius:50%;
   background:#fff;filter:blur(5.208cqw)}
-.s6 .glowbox-sphere{left:19.792cqw;top:-11.458cqw;width:48.229cqw;height:48.229cqw;filter:blur(.99cqw)}
+/* 137:259 «sphere»: rotation -75° — картинка несимметричная, без поворота тёмная сторона уходит
+   в сторону и за флаконами остаётся светлая зона (это и читалось как «белое пятно») */
+.s6 .glowbox-sphere{left:19.792cqw;top:-11.458cqw;width:48.229cqw;height:48.229cqw;filter:blur(.99cqw);
+  transform:rotate(-75deg)}
 .s6 .pinkglow-clip{left:47.396cqw;top:58.49cqw;width:33.646cqw;height:15.625cqw;overflow:hidden;z-index:1}
 .s6 .pinkglow{position:absolute;left:6.042cqw;top:7.656cqw;width:14.219cqw;height:13.802cqw;
-  border-radius:50%;background:#E96882;filter:blur(3.385cqw)}
+  border-radius:50%;background:#E96882;filter:blur(6.771cqw)}
 .s6 .showcase-logo{left:28.229cqw;top:54.688cqw;width:12.917cqw;height:auto;z-index:3}
-.s6 .peptidman{left:55.104cqw;top:67.344cqw;width:5.208cqw;height:11.25cqw;z-index:3}
+.s6 .peptidman{left:55.104cqw;top:67.344cqw;width:5.208cqw;height:11.25cqw;z-index:3;transform:scaleX(-1)}
 /* 137:306/137:307 (B4): раньше height:auto опирался на собственный аспект PNG (0.4256/0.3245),
    что ломало выравнивание «по общей нижней линии» — теперь явные w/h из карты (низ обоих 8079.2/8079.3) */
 .s6 .pack50{left:58.229cqw;top:59.031cqw;width:8.729cqw;height:18.896cqw;z-index:3}
 .s6 .pack100{left:67.76cqw;top:52.448cqw;width:9.177cqw;height:25.484cqw;z-index:3}
-.s6 .decosphere{left:72.604cqw;top:73.438cqw;width:6.042cqw;height:auto;z-index:3}
 
 .s6 .vol-glow{width:2.083cqw;height:2.083cqw;border-radius:50%;background:#CC4363;opacity:.5;
   filter:blur(.26cqw);z-index:3}
@@ -505,8 +515,8 @@ a{color:inherit;text-decoration:none}
 .s10 .s10-cta{left:18.594cqw;top:54.844cqw;width:68.229cqw;z-index:4;color:var(--wine);font-weight:300;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
 .s10 .s10-cta .b{font-weight:500}
-.s10 .s10-note{left:18.698cqw;top:61.51cqw;width:31.406cqw;z-index:4;color:var(--wine);font-weight:300;
-  font-size:.833cqw;line-height:1.1875;white-space:nowrap}
+.s10 .s10-note{left:18.698cqw;top:61.51cqw;width:35.313cqw;z-index:4;color:var(--wine);font-weight:300;
+  font-size:.9375cqw;line-height:1.1875;white-space:nowrap}
 
 /* ==================== ФУТЕР (13535..13667) ==================== */
 .s-foot{position:relative;width:100%;height:6.875cqw;background:#F4F4F4}
@@ -568,7 +578,7 @@ a{color:inherit;text-decoration:none}
 .m-menu a:hover,.m-menu a:active{color:var(--wine)}
 
 /* ==================== M-ЭКРАН 1: HERO + ПРЕИМУЩЕСТВА ==================== */
-.m-s1{height:321.25cqw}
+.m-s1{height:316.875cqw}
 .m-s1 .m-kv{left:-18.75cqw;top:71.25cqw;width:141.563cqw;height:79.375cqw;object-fit:cover;z-index:1}
 .m-s1 .m-patch{left:69.375cqw;top:67.5cqw;width:38.438cqw;height:81.875cqw;border-radius:50%;
   background:#fff;filter:blur(2cqw);opacity:.9;z-index:2}
@@ -588,7 +598,7 @@ a{color:inherit;text-decoration:none}
 .m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5;
   filter:drop-shadow(0 1cqw 1.5cqw rgba(94,0,35,.18))}
 
-.m-s1 .m-adv-card{left:-0.313cqw;top:148.75cqw;width:100.625cqw;height:166.875cqw;z-index:3;
+.m-s1 .m-adv-card{left:-0.313cqw;top:150cqw;width:100.625cqw;height:166.875cqw;z-index:3;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 .m-s1 .m-adv-glow{left:5.625cqw;top:158.125cqw;width:16.25cqw;height:16.25cqw;filter:blur(1.6cqw)}
 .m-s1 .m-adv-sph{left:4.063cqw;top:156.25cqw;width:19.375cqw;height:19.688cqw;z-index:5}
@@ -674,8 +684,8 @@ a{color:inherit;text-decoration:none}
 
 /* ==================== M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ ==================== */
 .m-s6{height:363.125cqw}
-.m-s6 .m-s6-sph{left:4.063cqw;top:0;width:19.063cqw;height:19.375cqw;z-index:2}
-.m-s6 .m-s6-title{left:23.75cqw;top:3.125cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:500;
+.m-s6 .m-s6-sph{left:4.063cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
+.m-s6 .m-s6-title{left:23.75cqw;top:10.938cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s6 .m-s6-title .b{font-weight:500}
 
@@ -687,17 +697,17 @@ a{color:inherit;text-decoration:none}
 .m-s6 .m-s6-plate{left:8.438cqw;top:31.563cqw;width:82.5cqw;height:126.875cqw;z-index:1;
   background:linear-gradient(135deg,#F8F8F8,#CACACA)}
 .m-s6 .m-s6-glowbox{left:8.438cqw;top:40.625cqw;width:82.5cqw;height:117.813cqw;z-index:1;overflow:hidden}
-.m-s6 .m-s6-glowlight{left:8.125cqw;top:44.688cqw;width:158.438cqw;height:158.438cqw;border-radius:50%;
+.m-s6 .m-s6-glowlight{left:8.125cqw;top:44.688cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
   background:#fff;filter:blur(14.29cqw)}
-.m-s6 .m-s6-glowsph{left:-17.813cqw;top:38.438cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw)}
+.m-s6 .m-s6-glowsph{left:-17.813cqw;top:38.438cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
+  transform:rotate(180deg)}
 .m-s6 .m-s6-pinkglow-clip{left:8.344cqw;top:48.938cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
 .m-s6 .m-s6-pinkglow{position:absolute;left:4.938cqw;top:86.813cqw;width:35.656cqw;height:34.125cqw;
-  border-radius:50%;background:rgba(233,104,130,.8);filter:blur(2.5cqw)}
+  border-radius:50%;background:rgba(233,104,130,.8);filter:blur(20.157cqw)}
 .m-s6 .m-s6-logo{left:34.063cqw;top:42.5cqw;width:29.688cqw;height:auto;z-index:3}
-.m-s6 .m-s6-peptidman{left:19.063cqw;top:134.063cqw;width:17.438cqw;height:37.688cqw;z-index:3}
+.m-s6 .m-s6-peptidman{left:19.063cqw;top:134.063cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
 .m-s6 .m-s6-pack50 {left:29.469cqw;top:108.469cqw;width:26.969cqw;height:58.375cqw;z-index:3}
 .m-s6 .m-s6-pack100{left:53.25cqw; top:88.125cqw; width:28.375cqw;height:78.75cqw; z-index:3}
-.m-s6 .m-s6-decosph{left:70.938cqw;top:152.813cqw;width:18.75cqw;height:auto;z-index:3}
 .m-s6 .m-vg50{left:39.375cqw;top:169.375cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
 .m-s6 .m-vs50{left:39.063cqw;top:169.063cqw;width:5.625cqw;height:auto;z-index:4}
 .m-s6 .m-vt50{left:44.688cqw;top:170.625cqw;font-size:2.5cqw;color:#98123C;z-index:4}
@@ -757,8 +767,8 @@ a{color:inherit;text-decoration:none}
 
 /* ==================== M-ЭКРАН 8: ДОВЕРИЕ + ПРОИЗВОДСТВО ==================== */
 .m-s8{height:269.688cqw}
-.m-s8 .m-s8-sph{left:4.375cqw;top:0;width:19.063cqw;height:19.375cqw;z-index:2}
-.m-s8 .m-s8-title{left:24.063cqw;top:7.188cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:300;
+.m-s8 .m-s8-sph{left:4.375cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
+.m-s8 .m-s8-title{left:24.063cqw;top:15cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s8 .m-s8-title .b{font-weight:500}
 .m-s8 .m-s8-body{left:13.438cqw;top:25.313cqw;width:78.125cqw;z-index:2;color:var(--gray2);font-weight:300;
@@ -775,7 +785,7 @@ a{color:inherit;text-decoration:none}
 
 /* ==================== M-ЭКРАН 9: ШАМПУНИ ==================== */
 .m-s9{height:279.063cqw}
-.m-s9 .m-s9-title{left:23.75cqw;top:0;width:68.125cqw;z-index:2;color:var(--wine);font-weight:500;
+.m-s9 .m-s9-title{left:23.75cqw;top:8.125cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s9 .m-s9-duo{left:5cqw;top:.625cqw;width:17.813cqw;height:12.5cqw;z-index:2}
 
