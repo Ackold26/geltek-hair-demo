@@ -141,7 +141,6 @@
     <div class="abs num-circ n5"><span>5</span></div>
     <div class="abs num-circ n6"><span>6</span></div>
 
-    <div class="abs man-glow"></div>
     <div class="abs man-wrap" data-fig="137:235">
       <img class="abs man-ball" src="assets/img/fig/man-ball.png" alt="" data-fig="137:235">
     </div>
@@ -205,11 +204,14 @@
         <img class="abs float f4" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:296">
         <img class="abs float f5" src="assets/img/fig/sphere-red.png" alt="" data-fig="206:368">
         <img class="abs float f6" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:297">
-        <img class="abs float f7" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:298">
         <img class="abs float f8" src="assets/img/fig/sphere-red.png" alt="" data-fig="206:372">
         <img class="abs float f9" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:294">
       </div>
     </div>
+    <!-- N1 (28.07, 2я порция): f7 вынесен из .deco-layer (overflow:hidden по высоте .s6 обрезал
+         шар снизу) — на прямом ребёнке .s6 своя параллакс-разметка (data-par как у .deco-par) и
+         z-index выше .s7 .s7card, чтобы шар был виден целиком поверх плашки следующей секции. -->
+    <img class="abs float f7" src="assets/img/fig/sphere-red.png" alt="" data-fig="137:298" data-par="12.969">
   </section>
 
   <!-- ЭКРАН 7: ДО/ПОСЛЕ -->
@@ -318,7 +320,9 @@
     <h2 class="abs s10-title" data-par="10.208">Для крепких<br>и густых волос!</h2>
 
     <div class="abs s10-base"></div>
-    <h3 class="abs s10-cta">Сыворотка и шампуни <span class="b">GELTEK HAIR</span> идеальны для регулярного применения</h3>
+    <!-- N4 (28.07, 2я порция): узел 137:486 макета — Geometria-Light 300 без выделения; убран
+         span.b, перенос строки после "GELTEK HAIR" (два пробела в макете отмечали место переноса) -->
+    <h3 class="abs s10-cta">Сыворотка и шампуни GELTEK HAIR<br>идеальны для регулярного применения</h3>
     <p class="abs s10-note" data-fig="183:2612">Отсутствуют противопоказания при беременности и грудном вскармливании</p>
   </section>
 
@@ -455,6 +459,9 @@
     <img class="abs m-s6-fsph m-fs3" src="assets/img/fig/sphere-red.png" alt="">
 
     <div class="abs m-s6-plate"></div>
+    <!-- N6 (28.07, 2я порция): 188:158 «glow» — дизайнер подтвердила добавить; лежит у левого
+         края вне маски витрины, флаконов не касается (правый край 68.3 < левый край флаконов 94.3) -->
+    <div class="abs m-s6-edgeglow"></div>
     <div class="abs m-s6-glowbox">
       <div class="abs m-s6-glowlight"></div>
       <img class="abs m-s6-glowsph" src="assets/img/fig/sphere-big.png" alt="">

@@ -82,12 +82,15 @@ a{color:inherit;text-decoration:none}
 .s1 .bubbles{left:-0.208cqw;top:55.885cqw;width:100cqw;height:36.146cqw;object-fit:cover;z-index:1;opacity:.13;mix-blend-mode:luminosity}
 
 /* ---- blur-патчи переходов (растворяют края KV-фото в белый, "wt blur patch") ---- */
-.s1 .patch.p1{left:41.302cqw;top:-12.813cqw;width:33.229cqw;height:38.125cqw;filter:blur(2.604cqw);opacity:.95}
-.s1 .patch.p2{left:71.146cqw;top:8.438cqw;width:34.063cqw;height:43.438cqw;filter:blur(3.125cqw);opacity:.9}
-.s1 .patch.p3{left:51.146cqw;top:5.469cqw;width:33.229cqw;height:11.406cqw;filter:blur(2.604cqw);opacity:.95}
-.s1 .patch.p4{left:67.76cqw;top:22.083cqw;width:51.458cqw;height:28.49cqw;filter:blur(3.125cqw);opacity:.9}
-.s1 .patch.p5{left:69.167cqw;top:21.979cqw;width:51.458cqw;height:28.49cqw;filter:blur(3.125cqw);opacity:.9}
-.s1 .patch.p6{left:74.531cqw;top:27.396cqw;width:51.458cqw;height:28.49cqw;filter:blur(3.125cqw);opacity:.9}
+/* N2 (28.07, 2я порция): у p1-p6 размытие в макете (137:8/10/9/11 + 147:47/137:5) вдвое больше
+   нашего — наследие правила «Figma blur ÷ 2» (уже подводило 27.07 на нижних патчах p7-p9,
+   там радиус давно вернули 1:1). Радиусы p1/p3 100→5.208cqw, p2/p4/p5/p6 120→6.25cqw, 1:1 к макету. */
+.s1 .patch.p1{left:41.302cqw;top:-12.813cqw;width:33.229cqw;height:38.125cqw;filter:blur(5.208cqw);opacity:.95}
+.s1 .patch.p2{left:71.146cqw;top:8.438cqw;width:34.063cqw;height:43.438cqw;filter:blur(6.25cqw);opacity:.9}
+.s1 .patch.p3{left:51.146cqw;top:5.469cqw;width:33.229cqw;height:11.406cqw;filter:blur(5.208cqw);opacity:.95}
+.s1 .patch.p4{left:67.76cqw;top:22.083cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
+.s1 .patch.p5{left:69.167cqw;top:21.979cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
+.s1 .patch.p6{left:74.531cqw;top:27.396cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
 .s1 .patch.p7{left:-9.792cqw;top:56.823cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(4.167cqw);opacity:.8}
 .s1 .patch.p8{left:-9.792cqw;top:53.125cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(5.208cqw);opacity:1}
 .s1 .patch.p9{left:-6.042cqw;top:54.115cqw;width:118.073cqw;height:28.75cqw;border-radius:0;filter:blur(4.167cqw);opacity:.5}
@@ -117,8 +120,10 @@ a{color:inherit;text-decoration:none}
    147:30/137:20 дал обрезанный фрагмент этикетки (не флакон целиком) — значит файл уже
    изолированный кроп, а не сырой исходник. Поэтому явная height:33.021cqw (634px) вместо auto —
    вертикальное сжатие ~10% (аспект файла 0.3245 → целевой 0.3596) заложено самим макетом. */
+/* N2 (28.07, 2я порция): в узле 137:20 макета — только цветокоррекция, свечения/тени нет —
+   drop-shadow снят, will-change оставлен (нужен для параллакса флакона) */
 .s1 .bottle{left:70.417cqw;top:18.125cqw;width:11.875cqw;height:33.021cqw;z-index:10;
-  filter:drop-shadow(0 1cqw 1.5cqw rgba(94,0,35,.18));will-change:transform,opacity}
+  will-change:transform,opacity}
 
 /* ---- карточка преимуществ — GLASS ---- */
 .s1 .adv-card{left:13.021cqw;top:57.240cqw;width:73.958cqw;height:29.688cqw;z-index:5;
@@ -247,19 +252,15 @@ a{color:inherit;text-decoration:none}
 .s5 .n5{left:20.104cqw;top:57.865cqw}
 .s5 .n6{left:20.26cqw;top:64.219cqw}
 
-/* G (28.07, приёмка): .man-wrap раньше был размером всего человечка (137:235, 576x654), но БЕЗ
-   реальной обрезки — картинка внутри стояла в боксе 137:239 (357x484, только нижний "man-ball"),
-   отчего человечек выходил маленьким и смещённым в правый нижний угол плашки (см. acc_s5.png).
-   По макету 137:235 обрезан маской 137:236 ровно по низу плашки (6411 = 5827+584) — высота
-   обрезающего контейнера теперь 584px = 30.417cqw, а сама картинка растянута на весь бокс 137:235. */
-.s5 .man-wrap{left:56.771cqw;top:42.76cqw;width:30cqw;height:30.417cqw;z-index:4;overflow:hidden}
-/* 137:238 «Ellipse 6» — декоративное пятно, В МАКЕТЕ НЕ входит в маску 137:236 и уходит на 422px
-   ниже плашки (6833), поэтому вынесено из .man-wrap (который теперь обрезает по 6411) и позиционируется
-   напрямую от .s5; box 1283/6068,765x765 → left 66.823cqw/top 55.313cqw от базы секции (5006) */
-.s5 .man-glow{left:66.823cqw;top:55.313cqw;width:39.844cqw;height:39.844cqw;border-radius:50%;
-  background:#BD3A5A;filter:blur(10.417cqw);z-index:3}
-/* картинка человечка растянута на весь бокс 137:235 (576x654 = 30cqw x 34.063cqw), обрезается
-   контейнером .man-wrap (584px) — воспроизводит маску 137:236 */
+/* G (28.07, приёмка): .man-wrap растянут на весь бокс 137:235 (576x654 = 30cqw x 34.063cqw) —
+   картинка внутри заполняет контейнер целиком, а не только нижний man-ball.
+   N3 (28.07, 2я порция, регрессия): высота контейнера была уменьшена до 30.417cqw (обрезка по
+   низу плашки) и резала фигуру по ногам — дизайнер настояла на целой фигуре, высота возвращена
+   к полному размеру бокса 34.063cqw. */
+.s5 .man-wrap{left:56.771cqw;top:42.76cqw;width:30cqw;height:34.063cqw;z-index:4;overflow:hidden}
+/* N3 (28.07, 2я порция): .man-glow (137:238, декоративное красное пятно) убран целиком по
+   требованию дизайнера — размытие 10.417cqw (увеличенное днём с 5.208cqw) сделало его видимым
+   красным пятном в правом нижнем углу плашки. */
 .s5 .man-ball{left:0;top:0;width:30cqw;height:34.063cqw;object-fit:cover}
 
 /* ==================== ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ (6583..8213) ==================== */
@@ -345,7 +346,9 @@ a{color:inherit;text-decoration:none}
 .s6 .f4{left:calc(11.302cqw + (100vw - 100cqw)/2);top:44.896cqw;width:4.583cqw;height:auto;filter:blur(.26cqw);opacity:.8}
 .s6 .f5{left:calc(29.063cqw + (100vw - 100cqw)/2);top:68.49cqw;width:16.667cqw;height:auto;filter:blur(.26cqw)}
 .s6 .f6{left:calc(94.115cqw + (100vw - 100cqw)/2);top:65.885cqw;width:11.719cqw;height:auto;filter:blur(.26cqw)}
-.s6 .f7{left:calc(-13.646cqw + (100vw - 100cqw)/2);top:69.844cqw;width:33.646cqw;height:auto;filter:blur(.521cqw)}
+/* N1 (28.07, 2я порция): f7 вынесен из .deco-layer в разметке — свой z-index выше .s7 .s7card
+   (6), чтобы шар был виден целиком, а не обрезался по нижней границе .s6 */
+.s6 .f7{left:calc(-13.646cqw + (100vw - 100cqw)/2);top:69.844cqw;width:33.646cqw;height:auto;filter:blur(.521cqw);z-index:7}
 .s6 .f8{left:calc(84.427cqw + (100vw - 100cqw)/2);top:61.25cqw;width:5.365cqw;height:auto;filter:blur(.26cqw);opacity:.8}
 .s6 .f9{left:calc(74.583cqw + (100vw - 100cqw)/2);top:74.167cqw;width:25.521cqw;height:auto;filter:blur(.521cqw)}
 
@@ -595,8 +598,8 @@ a{color:inherit;text-decoration:none}
   mix-blend-mode:luminosity;pointer-events:none}
 .m-s1 .m-banner span{position:relative;z-index:1;display:block;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;padding:6cqw 30cqw 6cqw 9.375cqw;text-transform:uppercase}
-.m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5;
-  filter:drop-shadow(0 1cqw 1.5cqw rgba(94,0,35,.18))}
+/* N2 (28.07, 2я порция): drop-shadow снят — см. .s1 .bottle выше */
+.m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5}
 
 .m-s1 .m-adv-card{left:-0.313cqw;top:150cqw;width:100.625cqw;height:166.875cqw;z-index:3;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
@@ -694,6 +697,10 @@ a{color:inherit;text-decoration:none}
 .m-s6 .m-fs2{left:-9.688cqw;top:75.625cqw;width:29.375cqw}
 .m-s6 .m-fs3{left:13.75cqw;top:44.063cqw;width:16.563cqw}
 
+/* N6 (28.07, 2я порция): 188:158 «glow», родитель 186:3798 (−61.7/4722) — секция начинается на
+   4596 (конец экрана 5 по спеку mobile), пересчёт: left=(-61.7)/3.2, top=(4852-4596)/3.2 */
+.m-s6 .m-s6-edgeglow{left:-19.281cqw;top:80cqw;width:40.625cqw;height:39.063cqw;border-radius:50%;
+  background:#E96882;filter:blur(13.957cqw);mix-blend-mode:screen;z-index:2}
 .m-s6 .m-s6-plate{left:8.438cqw;top:31.563cqw;width:82.5cqw;height:126.875cqw;z-index:1;
   background:linear-gradient(135deg,#F8F8F8,#CACACA)}
 .m-s6 .m-s6-glowbox{left:8.438cqw;top:40.625cqw;width:82.5cqw;height:117.813cqw;z-index:1;overflow:hidden}
@@ -864,8 +871,12 @@ a{color:inherit;text-decoration:none}
 .m-base .m-cta{left:8.75cqw;top:9.375cqw;width:83.125cqw;z-index:1;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-base .m-cta .b{font-weight:500}
-.m-base .m-cta-note{left:8.75cqw;top:40.313cqw;width:58.75cqw;z-index:1;color:var(--wine);font-weight:300;
-  font-size:3.75cqw;line-height:1.2}
+/* N5 (28.07, 2я порция): дизайнер подтвердила 14px вместо 12px */
+/* N5 (28.07, приёмка): кегль поднят до 14px по решению дизайнера, но в макетном боксе 188px
+   строка при таком кегле ломается на 4 строки вместо двух. Бокс расширен до 250px (справа
+   свободно до края экрана 320) — так сохраняется двухстрочная компоновка макета. */
+.m-base .m-cta-note{left:8.75cqw;top:40.313cqw;width:78.125cqw;z-index:1;color:var(--wine);font-weight:300;
+  font-size:4.375cqw;line-height:1.2}
 
 .m-foot{height:28.125cqw;background:#F4F4F4}
 .m-foot-logo{left:9.063cqw;top:10.625cqw;width:20.938cqw;height:auto}
