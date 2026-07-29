@@ -78,7 +78,7 @@ a{color:inherit;text-decoration:none}
      усиления перехода; 70% — подобранное значение. */
   -webkit-mask-image:linear-gradient(180deg,#000 70%,rgba(0,0,0,0) 100%);
   mask-image:linear-gradient(180deg,#000 70%,rgba(0,0,0,0) 100%)}
-/* пузырьки снизу — наложение luminosity, едва заметны. Кроп 137:4 запечён (bubbles-crop.png, 1920x694) */
+/* пузырьки снизу — наложение luminosity, едва заметны. Кроп 137:4 запечён (bubbles-crop.jpg, 1920x694) */
 .s1 .bubbles{left:-0.208cqw;top:55.885cqw;width:100cqw;height:36.146cqw;object-fit:cover;z-index:1;opacity:.13;mix-blend-mode:luminosity}
 
 /* ---- blur-патчи переходов (растворяют края KV-фото в белый, "wt blur patch") ---- */
@@ -90,9 +90,12 @@ a{color:inherit;text-decoration:none}
 .s1 .patch.p4{left:67.76cqw;top:22.083cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
 .s1 .patch.p5{left:69.167cqw;top:21.979cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
 .s1 .patch.p6{left:74.531cqw;top:27.396cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
-.s1 .patch.p7{left:-9.792cqw;top:56.823cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(4.167cqw);opacity:.8}
+/* Опасity p7/p9 снижена сверх макета по прямой просьбе клиента («картинка должна быть чёткой без
+   засветов») — оба слоя размывали белым низ фотографии. p8 не тронут — держит стык с белым фоном
+   без резкого края. */
+.s1 .patch.p7{left:-9.792cqw;top:56.823cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(4.167cqw);opacity:.5}
 .s1 .patch.p8{left:-9.792cqw;top:53.125cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(5.208cqw);opacity:1}
-.s1 .patch.p9{left:-6.042cqw;top:54.115cqw;width:118.073cqw;height:28.75cqw;border-radius:0;filter:blur(4.167cqw);opacity:.5}
+.s1 .patch.p9{left:-6.042cqw;top:54.115cqw;width:118.073cqw;height:28.75cqw;border-radius:0;filter:blur(4.167cqw);opacity:.28}
 
 /* красный шар у заголовка */
 .s1 .sph-title{left:17.188cqw;top:7.188cqw;width:9.271cqw;height:auto;z-index:4}
@@ -150,19 +153,32 @@ a{color:inherit;text-decoration:none}
 .s1 .adv-ic.c3{top:77.708cqw}
 .s1 .adv-ic img{width:62%;height:62%;object-fit:contain}
 
-/* ---- хедер ---- */
-.hdr{position:absolute;top:0;left:0;width:100%;height:6.15cqw;z-index:20;display:block}
+/* ---- хедер ----
+   position:fixed — по замечанию клиента шапка остаётся на месте при прокрутке, контент уходит
+   под неё; left:50%+translateX(-50%)+max-width повторяют центровку .stage (margin:0 auto), чтобы
+   на экранах шире 1920px зафиксированная шапка не съезжала к левому краю окна мимо контента.
+   cqw у потомков по-прежнему считается от .stage (контейнер задаётся положением в DOM, а не
+   position), поэтому на fixed это не влияет. */
+.hdr{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1920px;
+  height:6.15cqw;z-index:20;display:block;
+  /* Фон нужен именно закреплённой шапке: она проезжает над цветными секциями, и без подложки
+     серые пункты меню теряют читаемость. В макете фон задан у мобильной шапки (179:31, #FFFFFF);
+     здесь тот же белый с лёгкой прозрачностью и размытием подложки, чтобы полоса не выглядела
+     глухой. Высота 6.15cqw — как в макете. */
+  background:rgba(255,255,255,.92);backdrop-filter:blur(.625cqw);-webkit-backdrop-filter:blur(.625cqw)}
 /* Логотип обёрнут в ссылку — позиционирование перенесено на .logo-link */
 .hdr .logo-link{position:absolute;left:19.531cqw;top:2.031cqw;width:4.583cqw;display:block}
 .hdr .logo-link .logo{display:block;width:100%;height:auto}
-.hdr nav a{position:absolute;top:3.385cqw;font-weight:500;font-size:1.042cqw;color:var(--gray);
+/* Кегль пунктов меню 25px (было 20) — по замечанию клиента; координаты и top пересчитаны из
+   обновлённого макета (520/780/1016/1219/1439, top 67 → 3.490cqw) */
+.hdr nav a{position:absolute;top:3.490cqw;font-weight:500;font-size:1.302cqw;color:var(--gray);
   white-space:nowrap;transition:color .2s}
 .hdr nav a:hover{color:var(--wine)}
-.hdr nav a.n1{left:27.240cqw}
-.hdr nav a.n2{left:37.813cqw}
-.hdr nav a.n3{left:47.344cqw}
-.hdr nav a.n4{left:55.521cqw}
-.hdr nav a.n5{left:64.375cqw}
+.hdr nav a.n1{left:27.083cqw}
+.hdr nav a.n2{left:40.625cqw}
+.hdr nav a.n3{left:52.917cqw}
+.hdr nav a.n4{left:63.490cqw}
+.hdr nav a.n5{left:74.948cqw}
 
 /* ==================== ЭКРАН 2: ЖЕНЩИНАМ (1767..2847) ==================== */
 .s2{height:56.25cqw}              /* 1080/19.2 */
@@ -179,7 +195,7 @@ a{color:inherit;text-decoration:none}
 
 /* ==================== ЭКРАН 3: МУЖЧИНАМ (2847..3927) ==================== */
 .s3{height:56.25cqw}              /* 1080/19.2 */
-/* 137:112 — кроп по матрице запечён физически (man-crop.png, 1920x1080, formula:
+/* 137:112 — кроп по матрице запечён физически (man-crop.jpg, 1920x1080, formula:
    background-size 157.26% 138.24% / position 24.25% 29.54% — эквивалент уже в пикселях файла) */
 .s3 .bg{left:-0.208cqw;top:0;width:100cqw;height:56.25cqw;object-fit:cover;z-index:1}
 .s3 .card{left:18.802cqw;top:8.229cqw;width:29.375cqw;height:29.01cqw;z-index:2}
@@ -194,7 +210,7 @@ a{color:inherit;text-decoration:none}
 .s4{height:56.406cqw}              /* 1083/19.2 */
 /* 137:148 «demo part» — height:auto растягивал бы фото до ~1326px (аспект файла 1.45) при секции
    высотой 1083px, лишние ~243px спадали бы в s5, и красный блок s5 перекрывал бы хвост фото s4.
-   Кроп по матрице запечён физически (demo-crop.png, 1924x1083) */
+   Кроп по матрице запечён физически (demo-crop.jpg, 1924x1083) */
 .s4 .bg{left:-0.104cqw;top:0;width:100.208cqw;height:56.406cqw;object-fit:cover;z-index:1}
 .s4 .card{left:51.875cqw;top:8.281cqw;width:29.427cqw;height:35.573cqw;z-index:2}
 .s4 .icon{left:61.302cqw;top:12.344cqw;width:10.052cqw;height:10.052cqw;z-index:3}
@@ -202,65 +218,73 @@ a{color:inherit;text-decoration:none}
   font-size:1.667cqw;line-height:1.25}
 .s4 .txt .b{font-weight:500}
 
-/* ==================== ЭКРАН 5: КАК ДЕЙСТВУЕТ СЫВОРОТКА (5006..6583) ==================== */
+/* ==================== ЭКРАН 5: КАК ДЕЙСТВУЕТ СЫВОРОТКА (4880..6630) ==================== */
 /* margin-top:-0.208cqw (-4px): s5 должна начинаться на 4px раньше конца s4 (белая
    подложка 137:166 рисуется поверх нижнего края фото s4) — без этого сдвига возникает
    систематическое расхождение +4px во всех секциях ниже s4 */
-.s5{height:82.135cqw;margin-top:-0.208cqw}              /* 1577(1579)/19.2 ≈ высота Geltek KV bg */
-/* 137:168 — кроп по матрице запечён физически (geltek-kv-bg-crop.png, 1920x1579);
-   верхняя ~10.7% полоса матрицы уходит за границы исходника — в PIL это прозрачный
-   край (RGBA 0,0,0,0), поэтому там проступает белый фон страницы — это и есть
-   штатная белая подложка 137:166, без отдельного элемента */
-.s5 .kvbg{left:-0.208cqw;top:0;width:100cqw;height:82.24cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
+.s5{height:74.792cqw;margin-top:-0.208cqw}              /* 1436/19.2 */
+/* 137:168 — кв-фон выведен выше начала секции: в макете подложка стартует на 130px
+   раньше секции 5 (top отрицательный) и заканчивается чуть ниже её нижнего края —
+   нижний край перекрывается уже секцией 6, идущей следом в потоке */
+.s5 .kvbg{left:-0.208cqw;top:-6.771cqw;width:100cqw;height:82.24cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
+/* 137:166 — сплошная белая подложка под кв-фоном (сама секция уже, чем фон) */
+.s5 .white-bg{left:-0.208cqw;top:-0.208cqw;width:100.208cqw;height:75.677cqw;background:#fff;z-index:0}
 .s5 .s5-patch{left:74.531cqw;top:41.146cqw;width:34.063cqw;height:43.438cqw;filter:blur(3.125cqw);opacity:.9}
-.s5 .card{left:12.604cqw;top:5.313cqw;width:74.167cqw;height:67.865cqw;z-index:3}
+/* фон плашки сделан непрозрачным (без альфы reusable .glass): полупрозрачная версия
+   пропускала через backdrop-filter яркую верхнюю часть кв-фона, что читалось как
+   светлая полоса за заголовком и текстом пилюли 1 */
+.s5 .card{left:12.865cqw;top:5.104cqw;width:73.906cqw;height:61.562cqw;z-index:3;background:linear-gradient(120deg,#98123c,#5e0023)}
 
 /* цветное свечение под сферами (#CC4363, blur r50→1.302cqw) */
 .s5 .sph-glow{border-radius:50%;background:#CC4363;opacity:.5;filter:blur(1.302cqw);z-index:4}
 .s5 .sph{z-index:5}
 
-.s5 .title-glow{left:18.021cqw;top:7.708cqw;width:7.917cqw;height:7.917cqw}
-.s5 .title-sph{left:17.135cqw;top:6.875cqw;width:9.479cqw;height:9.583cqw}
-.s5 .title{left:27.448cqw;top:10.208cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
+.s5 .title-glow{left:18.038cqw;top:7.518cqw;width:7.932cqw;height:7.932cqw}
+.s5 .title-sph{left:17.135cqw;top:6.667cqw;width:9.497cqw;height:9.582cqw}
+.s5 .title{left:27.448cqw;top:10cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
 
-/* пилюли-контейнеры заголовков (только контур) */
+/* пилюли-контейнеры заголовков (только контур, ширина — по рамке 137:221/229,
+   без учёта шарика, который выступает за рамку отдельным слоем) */
 .s5 .pill{border:1px solid rgba(255,255,255,.4);border-radius:3.359cqw;z-index:4}
-.s5 .pill1{left:18.542cqw;top:17.083cqw;width:36.458cqw;height:6.719cqw}
-.s5 .pill2{left:18.542cqw;top:36.719cqw;width:56.094cqw;height:6.719cqw}
+.s5 .pill1{left:18.802cqw;top:16.875cqw;width:32.015cqw;height:5.9cqw}
+.s5 .pill2{left:18.802cqw;top:34.117cqw;width:49.257cqw;height:5.9cqw}
 
-.s5 .p1-glow{left:19.479cqw;top:17.917cqw;width:5.156cqw;height:5.156cqw}
-.s5 .p1-sph{left:18.958cqw;top:17.344cqw;width:6.198cqw;height:6.25cqw}
-.s5 .pill1-title{left:25.677cqw;top:19.375cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
-  font-size:1.875cqw;line-height:1.25;text-transform:uppercase}
+.s5 .p1-glow{left:19.624cqw;top:17.59cqw;width:4.53cqw;height:4.53cqw}
+.s5 .p1-sph{left:19.168cqw;top:17.104cqw;width:5.424cqw;height:5.472cqw}
+.s5 .pill1-title{left:24.948cqw;top:18.906cqw;width:29.01cqw;z-index:4;color:#fff;font-weight:500;
+  font-size:1.615cqw;line-height:1.25;text-transform:uppercase}
 
-.s5 .p2-glow{left:19.531cqw;top:37.604cqw;width:5.156cqw;height:5.156cqw;mix-blend-mode:screen}
-.s5 .p2-sph{left:19.01cqw;top:37.031cqw;width:6.198cqw;height:6.25cqw}
-.s5 .pill2-title{left:25.781cqw;top:37.76cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
-  font-size:1.875cqw;line-height:1.25;text-transform:uppercase}
+.s5 .p2-glow{left:19.67cqw;top:34.878cqw;width:4.53cqw;height:4.53cqw;mix-blend-mode:screen}
+.s5 .p2-sph{left:19.214cqw;top:34.392cqw;width:5.424cqw;height:5.472cqw}
+.s5 .pill2-title{left:25.159cqw;top:35.24cqw;width:47.382cqw;z-index:4;color:#fff;font-weight:500;
+  font-size:1.615cqw;line-height:1.25;text-transform:uppercase}
 
-.s5 .body{z-index:4;color:#fff;font-weight:300;font-size:1.667cqw;line-height:1.25}
-.s5 .body12{left:25.729cqw;top:25.781cqw;width:55.313cqw}
-.s5 .body36{left:25.729cqw;top:45.365cqw;width:55.313cqw}
+.s5 .body{z-index:4;color:#fff;font-weight:300;font-size:1.458cqw;line-height:1.258}
+.s5 .body12{left:24.905cqw;top:24.513cqw;width:48.571cqw}
+.s5 .body36{left:24.905cqw;top:41.97cqw;width:48.571cqw}
 
-.s5 .num-circ{width:3.906cqw;height:3.906cqw;z-index:5}
-.s5 .n1{left:20.208cqw;top:25.573cqw}
-.s5 .n2{left:20.156cqw;top:31.094cqw}
-.s5 .n3{left:20.052cqw;top:45.625cqw}
-.s5 .n4{left:20cqw;top:51.719cqw}
-.s5 .n5{left:20.104cqw;top:57.865cqw}
-.s5 .n6{left:20.26cqw;top:64.219cqw}
+.s5 .num-circ{width:3.43cqw;height:3.43cqw;font-size:2.188cqw;z-index:5}
+.s5 .n1{left:20.057cqw;top:24.33cqw}
+.s5 .n2{left:20.011cqw;top:29.178cqw}
+.s5 .n3{left:19.92cqw;top:41.938cqw}
+.s5 .n4{left:19.874cqw;top:47.289cqw}
+.s5 .n5{left:19.966cqw;top:52.686cqw}
+.s5 .n6{left:20.103cqw;top:58.266cqw}
 
-/* Высота контейнера 34.063cqw — полный бокс узла 137:235 (576x654). Меньшее значение обрезает
-   фигуру по ногам. .man-wrap растянут на весь бокс — картинка внутри заполняет контейнер целиком,
-   а не только нижний man-ball. */
-.s5 .man-wrap{left:56.771cqw;top:42.76cqw;width:30cqw;height:34.063cqw;z-index:4;overflow:hidden}
+/* обёртка 137:235: ширина/лево/верх — бокс группы (30cqw/56.771cqw/36.25cqw), а высота —
+   не полный бокс группы (654), а обрезающая маска 137:237 (576×584 = 30×30.417cqw):
+   в макете фигура обрезана снизу вровень с нижним краем бордовой плашки */
+.s5 .man-wrap{left:56.771cqw;top:36.25cqw;width:30cqw;height:30.417cqw;z-index:4;overflow:hidden}
 /* .man-glow (137:238, декоративное красное пятно) не используется — при размытии 10.417cqw
    пятно становится видимым красным пятном в правом нижнем углу плашки. */
-.s5 .man-ball{left:0;top:0;width:30cqw;height:34.063cqw;object-fit:cover}
+/* картинка внутри — ровно по боксу растра 137:239 (20.312×27.448cqw), позиция по таблице;
+   object-fit:cover — в спецификации узла scaleMode:"FILL", обрезка по краям (в т.ч. снизу,
+   маской обёртки) заложена макетом */
+.s5 .man-ball{left:7.396cqw;top:6.615cqw;width:20.312cqw;height:27.448cqw;object-fit:cover}
 
 /* ==================== ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ (6583..8213) ==================== */
-.s6{height:84.896cqw}              /* 1630/19.2 */
+.s6{height:85.312cqw}              /* 1638/19.2 */
 
 .s6 .ball{left:17.396cqw;top:3.646cqw;width:9.271cqw;height:9.375cqw;z-index:2}
 /* В эталоне это Medium (500), не Light — один из трёх заголовков кегля 48 с весом 500
@@ -280,20 +304,23 @@ a{color:inherit;text-decoration:none}
 .s6 .shopbtn.b4{left:50.469cqw;top:32.344cqw}
 .s6 .shopbtn img{max-width:70%;max-height:60%;object-fit:contain}
 .s6 .wb-logo{width:15.313cqw;height:auto;filter:brightness(0) invert(1)}
-.s6 .zy-badge{width:3.49cqw;height:3.49cqw;border-radius:22%;background:#fff;display:grid;place-items:center;margin-right:.9cqw}
-.s6 .zy-diamond{width:46%;height:46%;background:#BA4460;transform:rotate(45deg);border-radius:2px}
+/* Значок «Золотое яблоко» и логотип OZON — векторы из макета (137:246/247, 137:263), взамен
+   CSS-ромба и текстовой имитации. Ширина — точный перевод бокса figma (px/19.2) */
+.s6 .zy-logo{width:3.494cqw;height:auto;margin-right:.9cqw}
 .s6 .zy-txt{color:#fff;font-weight:500;font-size:1.5cqw}
-.s6 .ozon-txt{color:#fff;font-weight:500;font-size:2.2cqw;letter-spacing:.03em}
+.s6 .ozon-logo{width:10.006cqw;height:auto}
 
 /* витрина продукта */
 .s6 .plate{left:18.646cqw;top:49.531cqw;width:62.396cqw;height:24.635cqw;z-index:1;
   background:linear-gradient(180deg,#F8F8F8 0%,#CACACA 186.15%)}
 .s6 .glowbox{left:23.802cqw;top:49.531cqw;width:57.344cqw;height:24.583cqw;z-index:1;overflow:hidden}
-/* 137:258 «light» — белый эллипс 962x962, LAYER_BLUR 100, лежит под картинкой-сферой внутри
-   маски 137:255. Слой предусмотрен макетом. Причина «белого пятна» — не в этом слое, а в
-   отсутствии поворота сферы (см. .glowbox-sphere ниже). */
-.s6 .glowbox-light{left:20.885cqw;top:-11.51cqw;width:50.104cqw;height:50.104cqw;border-radius:50%;
-  background:#fff;filter:blur(5.208cqw)}
+/* 137:258 «light» — белый эллипс 962x962, LAYER_BLUR 100, лежал под картинкой-сферой внутри маски
+   137:255 (.glowbox, overflow:hidden). Слой предусмотрен макетом, но круг почти вдвое больше
+   клиппера .glowbox по высоте: даже с мягкой заливкой (пробовали radial-gradient вместо
+   filter:blur) он неизбежно обрезался overflow:hidden жёсткой линией — читалось как светлый
+   полупрозрачный «квадрат» за флаконом 50 мл и человечком. Проверено попарным сравнением
+   скриншотов с этим слоем и без — без него переход плашки в сферу чище и совпадает с эталоном
+   (ref_s6.jpg), поэтому слой убран из разметки полностью (см. index.html, .s6 .glowbox). */
 /* 137:259 «sphere»: rotation -75° — картинка несимметричная, без поворота тёмная сторона уходит
    в сторону и за флаконами остаётся светлая зона (это и читалось как «белое пятно») */
 .s6 .glowbox-sphere{left:19.792cqw;top:-11.458cqw;width:48.229cqw;height:48.229cqw;filter:blur(.99cqw);
@@ -342,9 +369,10 @@ a{color:inherit;text-decoration:none}
 .s6 .f4{left:calc(11.302cqw + (100vw - 100cqw)/2);top:44.896cqw;width:4.583cqw;height:auto;filter:blur(.26cqw);opacity:.8}
 .s6 .f5{left:calc(29.063cqw + (100vw - 100cqw)/2);top:68.49cqw;width:16.667cqw;height:auto;filter:blur(.26cqw)}
 .s6 .f6{left:calc(94.115cqw + (100vw - 100cqw)/2);top:65.885cqw;width:11.719cqw;height:auto;filter:blur(.26cqw)}
-/* f7 вынесен из .deco-layer в разметке — свой z-index выше .s7 .s7card (6), чтобы шар был виден
-   целиком, а не обрезался по нижней границе .s6 */
-.s6 .f7{left:calc(-13.646cqw + (100vw - 100cqw)/2);top:69.844cqw;width:33.646cqw;height:auto;filter:blur(.521cqw);z-index:7}
+/* f7 вынесен из .deco-layer в разметке, чтобы не обрезаться по нижней границе .s6 (overflow:hidden
+   у .deco-layer). z-index ниже .s7 .s7card (6) — по замечанию клиента шар должен уходить под
+   бордовую плашку следующего экрана, а не рисоваться поверх неё */
+.s6 .f7{left:calc(-13.646cqw + (100vw - 100cqw)/2);top:69.844cqw;width:33.646cqw;height:auto;filter:blur(.521cqw);z-index:5}
 .s6 .f8{left:calc(84.427cqw + (100vw - 100cqw)/2);top:61.25cqw;width:5.365cqw;height:auto;filter:blur(.26cqw);opacity:.8}
 .s6 .f9{left:calc(74.583cqw + (100vw - 100cqw)/2);top:74.167cqw;width:25.521cqw;height:auto;filter:blur(.521cqw)}
 
@@ -504,7 +532,7 @@ a{color:inherit;text-decoration:none}
 .s9 .wm-biome{left:13.021cqw;top:-0.073cqw;width:45.615cqw;height:9.938cqw}
 
 /* ==================== ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ (12246..13535) ==================== */
-.s10{height:67.135cqw}              /* 1289/19.2 */
+.s10{height:58.490cqw}              /* 1123/19.2 */
 .s10 .s10-photo{left:-0.104cqw;top:0;width:100.104cqw;height:auto;z-index:1}
 .s10 .s10-title{left:18.49cqw;top:19.896cqw;width:51.667cqw;z-index:2;color:#fff;font-weight:500;
   font-size:3.333cqw;line-height:1.266;text-transform:uppercase}
@@ -517,7 +545,7 @@ a{color:inherit;text-decoration:none}
   font-size:.9375cqw;line-height:1.1875;white-space:nowrap}
 
 /* ==================== ФУТЕР (13535..13667) ==================== */
-.s-foot{position:relative;width:100%;height:6.875cqw;background:#F4F4F4}
+.s-foot{position:relative;width:100%;height:15.365cqw;background:#F4F4F4}
 .s-foot .foot-logo{left:18.75cqw;top:3.177cqw;width:4.688cqw;height:auto}
 .s-foot .foot-text{left:25.104cqw;top:3.125cqw;color:#000;font-weight:300;font-size:.625cqw;line-height:1.1667}
 /* 137:496/137:497 (бейдж 32x32) + 137:501 (монограмма 14x9, центр совпадает с центром бейджа
@@ -725,10 +753,12 @@ a{color:inherit;text-decoration:none}
 .m-s6 .m-btn4{top:320.625cqw}
 .m-s6 .m-shopbtn img{max-width:60%;max-height:55%;object-fit:contain}
 .m-s6 .wb-logo{width:46%;filter:brightness(0) invert(1)}
-.m-s6 .zy-badge{width:10cqw;height:10cqw;border-radius:22%;background:#fff;display:grid;place-items:center;margin-right:2.5cqw}
-.m-s6 .zy-diamond{width:46%;height:46%;background:#BA4460;transform:rotate(45deg);border-radius:2px}
+/* Значок «Золотое яблоко» и логотип OZON — те же векторы, что на десктопе (мобильная cqw=px/3.2).
+   У OZON явный width шире общего .m-shopbtn img{max-width:60%} (49.875cqw) — переопределяем
+   max-width тем же селектором, иначе лого обрежется по общему правилу */
+.m-s6 .zy-logo{width:20.966cqw;height:auto;margin-right:2.5cqw}
 .m-s6 .zy-txt{color:#fff;font-weight:500;font-size:4cqw}
-.m-s6 .ozon-txt{color:#fff;font-weight:500;font-size:6cqw;letter-spacing:.03em}
+.m-s6 .m-shopbtn img.ozon-logo{width:60.037cqw;max-width:60.037cqw;height:auto}
 
 /* ==================== M-ЭКРАН 7: ДО/ПОСЛЕ ==================== */
 .m-s7{height:260.625cqw}
