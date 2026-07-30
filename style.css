@@ -124,7 +124,7 @@ a{color:inherit;text-decoration:none}
 /* В узле 137:20 макета — только цветокоррекция, свечения/тени нет — drop-shadow не задан,
    will-change оставлен (нужен для параллакса флакона) */
 .s1 .bottle{left:70.417cqw;top:18.125cqw;width:11.875cqw;height:33.021cqw;z-index:10;
-  will-change:transform,opacity}
+  object-fit:contain;will-change:transform,opacity}
 
 /* ---- карточка преимуществ — GLASS ---- */
 .s1 .adv-card{left:13.021cqw;top:57.240cqw;width:73.958cqw;height:29.688cqw;z-index:5;
@@ -165,10 +165,10 @@ a{color:inherit;text-decoration:none}
    здесь тот же белый с лёгкой прозрачностью и размытием подложки, чтобы полоса не выглядела
    глухой. Подложка вынесена в псевдоэлемент: по горизонтали она тянется на всю ширину окна
    (width:100vw с компенсацией бокового отступа контейнера) — на экранах шире 1920px полоса
-   продолжается до краёв окна, а не обрывается по рамке макета; снизу выходит на 10px за габарит
-   шапки, иначе логотип (39..118px при высоте шапки 118px) упирается в кромку. Габарит самой
+   продолжается до краёв окна, а не обрывается по рамке макета; снизу выходит на 20px за габарит
+   шапки (по просьбе заказчика), иначе логотип (39..118px при высоте шапки 118px) упирается в кромку. Габарит самой
    .hdr не менялся, поэтому координаты логотипа и пунктов меню остаются макетными. */
-.hdr::before{content:'';position:absolute;left:calc(-1*(100vw - 100%)/2);width:100vw;top:0;bottom:-0.521cqw;z-index:-1;
+.hdr::before{content:'';position:absolute;left:calc(-1*(100vw - 100%)/2);width:100vw;top:0;bottom:-1.042cqw;z-index:-1;
   background:rgba(255,255,255,.92);backdrop-filter:blur(.625cqw);-webkit-backdrop-filter:blur(.625cqw)}
 /* Логотип обёрнут в ссылку — позиционирование перенесено на .logo-link */
 .hdr .logo-link{position:absolute;left:19.531cqw;top:2.031cqw;width:4.583cqw;display:block}
@@ -187,7 +187,7 @@ a{color:inherit;text-decoration:none}
 /* ==================== ЭКРАН 2: ЖЕНЩИНАМ (1767..2847) ==================== */
 .s2{height:56.25cqw}              /* 1080/19.2 */
 /* 137:77 — imageTransform ОТСУТСТВУЕТ (штатная заливка FILL) → просто cover/center, без кастомного кропа */
-.s2 .bg{left:-0.208cqw;top:0;width:100cqw;height:56.25cqw;object-fit:cover;object-position:center;z-index:1}
+.s2 .bg{left:0;top:0;width:100cqw;height:56.25cqw;object-fit:cover;object-position:center;z-index:1}
 .s2 .card{left:51.667cqw;top:8.333cqw;width:29.375cqw;height:31.094cqw;z-index:2}
 .s2 .icon{left:61.042cqw;top:12.344cqw;width:10.052cqw;height:10.052cqw;z-index:3}
 /* 137:87: точный размер 133.5x115.6 (соотношение 1.155) вместо доли круга — запрещает
@@ -201,7 +201,7 @@ a{color:inherit;text-decoration:none}
 .s3{height:56.25cqw}              /* 1080/19.2 */
 /* 137:112 — кроп по матрице запечён физически (man-crop.jpg, 1920x1080, formula:
    background-size 157.26% 138.24% / position 24.25% 29.54% — эквивалент уже в пикселях файла) */
-.s3 .bg{left:-0.208cqw;top:0;width:100cqw;height:56.25cqw;object-fit:cover;z-index:1}
+.s3 .bg{left:0;top:0;width:100cqw;height:56.25cqw;object-fit:cover;z-index:1}
 .s3 .card{left:18.802cqw;top:8.229cqw;width:29.375cqw;height:29.01cqw;z-index:2}
 .s3 .icon{left:28.177cqw;top:12.24cqw;width:10.052cqw;height:10.052cqw;z-index:3}
 /* 137:128: точный размер 136x121 (соотношение 1.124); смещение центра (+1.8,-4.0)px */
@@ -215,7 +215,10 @@ a{color:inherit;text-decoration:none}
 /* 137:148 «demo part» — height:auto растягивал бы фото до ~1326px (аспект файла 1.45) при секции
    высотой 1083px, лишние ~243px спадали бы в s5, и красный блок s5 перекрывал бы хвост фото s4.
    Кроп по матрице запечён физически (demo-crop.jpg, 1924x1083) */
-.s4 .bg{left:-0.104cqw;top:0;width:100.208cqw;height:56.406cqw;object-fit:cover;z-index:1}
+/* Края фотографий экранов 2/3/4 сведены к рамке страницы (0…1920): в макете сами снимки стоят
+   вразнобой (-4…1916 у женщины и мужчины, -1.6…1922 у фона со сплэшем), и это скрыто границей
+   фрейма. Без выравнивания нижнее фото выступает относительно верхнего на 2–6px. */
+.s4 .bg{left:0;top:0;width:100cqw;height:56.406cqw;object-fit:cover;z-index:1}
 .s4 .card{left:51.875cqw;top:8.281cqw;width:29.427cqw;height:35.573cqw;z-index:2}
 .s4 .icon{left:61.302cqw;top:12.344cqw;width:10.052cqw;height:10.052cqw;z-index:3}
 .s4 .txt{left:55.208cqw;top:24.844cqw;width:22.76cqw;z-index:3;color:#fff;font-weight:300;
@@ -230,16 +233,13 @@ a{color:inherit;text-decoration:none}
 /* 137:168 — кв-фон выведен выше начала секции: в макете подложка стартует на 130px
    раньше секции 5 (top отрицательный) и заканчивается чуть ниже её нижнего края —
    нижний край перекрывается уже секцией 6, идущей следом в потоке */
-/* Направление параллакса развёрнуто по замечанию клиента «фоновое изображение внизу бордовой
-   плашки видно не полностью»: прежде фон уезжал ВВЕРХ на 130px и к концу прокрутки под плашкой
-   оставалось 39px фона вместо макетных 168. Теперь стартовая позиция макетная (137:168, верх
-   на 130px выше секции), а data-par="4" опускает фон на 77px по мере прохождения секции —
-   полоса под плашкой только растёт. Опускать сильнее нельзя: снизу до шара заголовка витрины
-   (6516) остаётся 45px, а сверху фон обязан перекрывать начало секции (запас 49px), иначе он
-   заедет на фотографию предыдущего экрана серой полосой. */
-.s5 .kvbg{left:-0.208cqw;top:-6.771cqw;width:100cqw;height:82.24cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
+/* Фон витрины стоит неподвижно в макетном положении (137:168, 4880…6459). Движение по прокрутке
+   снято: сдвиг вверх оставлял под бордовой плашкой 39px фона вместо макетных 168, а сдвиг вниз
+   подводил нижнюю кромку вплотную к шару заголовка «Где купить» (6516). Оба варианта вызвали
+   замечания заказчика, поэтому единственное положение, удовлетворяющее обоим, — макетное. */
+.s5 .kvbg{left:0;top:-6.771cqw;width:100cqw;height:82.24cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
 /* 137:166 — сплошная белая подложка под кв-фоном (сама секция уже, чем фон) */
-.s5 .white-bg{left:-0.208cqw;top:-0.208cqw;width:100.208cqw;height:75.677cqw;background:#fff;z-index:0}
+.s5 .white-bg{left:0;top:-0.208cqw;width:100cqw;height:75.677cqw;background:#fff;z-index:0}
 .s5 .s5-patch{left:74.531cqw;top:41.146cqw;width:34.063cqw;height:43.438cqw;filter:blur(3.125cqw);opacity:.9}
 /* фон плашки сделан непрозрачным (без альфы reusable .glass): полупрозрачная версия
    пропускала через backdrop-filter яркую верхнюю часть кв-фона, что читалось как
@@ -353,8 +353,8 @@ a{color:inherit;text-decoration:none}
 /* 137:306/137:307 — явные w/h из карты (низ обоих 8079.2/8079.3) вместо height:auto: auto
    опирался бы на собственный аспект PNG (0.4256/0.3245), что ломает выравнивание «по общей
    нижней линии» */
-.s6 .pack50{left:58.229cqw;top:59.031cqw;width:8.729cqw;height:18.896cqw;z-index:3}
-.s6 .pack100{left:67.76cqw;top:52.448cqw;width:9.177cqw;height:25.484cqw;z-index:3}
+.s6 .pack50{left:58.229cqw;top:59.031cqw;width:8.729cqw;height:18.896cqw;z-index:3;object-fit:contain}
+.s6 .pack100{left:67.76cqw;top:52.448cqw;width:9.177cqw;height:25.484cqw;z-index:3;object-fit:contain}
 
 .s6 .vol-glow{width:2.083cqw;height:2.083cqw;border-radius:50%;background:#CC4363;opacity:.5;
   filter:blur(.26cqw);z-index:3}
@@ -498,7 +498,12 @@ a{color:inherit;text-decoration:none}
    «по общей нижней линии» ломалось бы на 15-40px. */
 /* Узлы-аннотации 137:577/137:578: наведение курсора — упаковки чуть увеличиваются. 1.04 подобрано
    так, чтобы соседняя упаковка линейки не задевалась (проверено на 1920 и 1280) */
-.s9 .pack{z-index:3;transition:transform .25s}
+/* object-fit:contain — заливки упаковок в макете имеют режим «кроп» (scaleMode STRETCH с
+   imageTransform), который сохраняет пропорции исходника, а не растягивает его на бокс. Наши
+   файлы — уже вырезанные упаковки, поэтому при заданных w и h они сплющивались: у флакона
+   390 мл тело выходило 238px против 192 в эталоне. Вписывание по высоте оставляет нижнюю
+   линию на месте (низы упаковок выровнены макетом) и убирает искажение. */
+.s9 .pack{z-index:3;transition:transform .25s;object-fit:contain}
 .s9 .pack:hover{transform:scale(1.04)}
 .s9 .r-norm30{left:42.031cqw;top:26.25cqw;width:6.51cqw;height:15.677cqw}
 .s9 .r-norm100{left:52.292cqw;top:22.552cqw;width:9.219cqw;height:19.271cqw}
@@ -552,12 +557,12 @@ a{color:inherit;text-decoration:none}
 .s9 .wm-biome{left:13.021cqw;top:-0.073cqw;width:45.615cqw;height:9.938cqw}
 
 /* ==================== ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ (12246..13535) ==================== */
-/* overflow:hidden у экранов 9 и 10: цветные полосы шире рамки макета (137:391 — 1931px при
-   ширине фрейма 1920, красная полоса — 1940) и в Figma обрезаются его границей. Без обрезки на
-   экранах шире 1920px выступы видны по краям как цветные уголки под фотографией с волосами,
-   которая ровно 1920 (137:477). */
-.s10{height:58.490cqw;overflow:hidden}              /* 1123/19.2 */
-.s10 .s10-photo{left:-0.104cqw;top:0;width:100.104cqw;height:auto;z-index:1}
+/* Экран 10 НЕ обрезается по высоте: базовая белая плашка, вторая строка финального заголовка и
+   подпись о противопоказаниях лежат ниже границы секции (137:484 начинается внутри экрана 10 и
+   продолжается до подвала). Ширина фотографии сведена к рамке макета (0..1920), чтобы на экранах
+   шире 1920px под ней не выступали края цветных полос предыдущего экрана. */
+.s10{height:58.490cqw}              /* 1123/19.2 */
+.s10 .s10-photo{left:0;top:0;width:100cqw;height:auto;z-index:1}
 .s10 .s10-title{left:18.49cqw;top:19.896cqw;width:51.667cqw;z-index:2;color:#fff;font-weight:500;
   font-size:3.333cqw;line-height:1.266;text-transform:uppercase}
 
@@ -651,7 +656,7 @@ a{color:inherit;text-decoration:none}
 .m-s1 .m-banner span{position:relative;z-index:1;display:block;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;padding:6cqw 30cqw 6cqw 9.375cqw;text-transform:uppercase}
 /* drop-shadow не задан — см. .s1 .bottle выше */
-.m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5}
+.m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5;object-fit:contain}
 
 .m-s1 .m-adv-card{left:-0.313cqw;top:150cqw;width:100.625cqw;height:166.875cqw;z-index:3;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
@@ -765,8 +770,8 @@ a{color:inherit;text-decoration:none}
   border-radius:50%;background:rgba(233,104,130,.8);filter:blur(20.157cqw)}
 .m-s6 .m-s6-logo{left:34.063cqw;top:42.5cqw;width:29.688cqw;height:auto;z-index:3}
 .m-s6 .m-s6-peptidman{left:19.063cqw;top:134.063cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
-.m-s6 .m-s6-pack50 {left:29.469cqw;top:108.469cqw;width:26.969cqw;height:58.375cqw;z-index:3}
-.m-s6 .m-s6-pack100{left:53.25cqw; top:88.125cqw; width:28.375cqw;height:78.75cqw; z-index:3}
+.m-s6 .m-s6-pack50 {left:29.469cqw;top:108.469cqw;width:26.969cqw;height:58.375cqw;z-index:3;object-fit:contain}
+.m-s6 .m-s6-pack100{left:53.25cqw; top:88.125cqw; width:28.375cqw;height:78.75cqw; z-index:3;object-fit:contain}
 .m-s6 .m-vg50{left:39.375cqw;top:169.375cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
 .m-s6 .m-vs50{left:39.063cqw;top:169.063cqw;width:5.625cqw;height:auto;z-index:4}
 .m-s6 .m-vt50{left:44.688cqw;top:170.625cqw;font-size:2.5cqw;color:#98123C;z-index:4}
