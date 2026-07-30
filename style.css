@@ -72,12 +72,11 @@ a{color:inherit;text-decoration:none}
 
 /* KV сцена (фон). Кроп по матрице 137:3 запечён физически (hero-kv-crop.png,
    scripts/figma_crop.py) — 1920x1006, поэтому object-fit:cover лишь страхует округление */
-.s1 .kv{left:-0.208cqw;top:8.021cqw;width:100cqw;height:52.396cqw;object-fit:cover;z-index:1;
-  /* Растворяем нижнюю кромку самой картинки — патчи p7/p8/p9 (blur 1:1 к макету) смягчают стык,
-     но не убирают его: у KV резкий физический нижний край. Маска добавлена поверх макета для
-     усиления перехода; 70% — подобранное значение. */
-  -webkit-mask-image:linear-gradient(180deg,#000 70%,rgba(0,0,0,0) 100%);
-  mask-image:linear-gradient(180deg,#000 70%,rgba(0,0,0,0) 100%)}
+/* Маска-растворение нижней кромки (mask-image с гашением от 70% высоты) снята по замечанию
+   клиента «картинка должна быть чёткой без засветов»: она выбеливала нижние 300px фотографии —
+   поверхность под шариками теряла детали задолго до стыка. Переход в белый обеспечивают патчи
+   p7/p8/p9 из макета, они закрывают физический край картинки. */
+.s1 .kv{left:-0.208cqw;top:8.021cqw;width:100cqw;height:52.396cqw;object-fit:cover;z-index:1}
 /* пузырьки снизу — наложение luminosity, едва заметны. Кроп 137:4 запечён (bubbles-crop.jpg, 1920x694) */
 .s1 .bubbles{left:-0.208cqw;top:55.885cqw;width:100cqw;height:36.146cqw;object-fit:cover;z-index:1;opacity:.13;mix-blend-mode:luminosity}
 
@@ -90,9 +89,9 @@ a{color:inherit;text-decoration:none}
 .s1 .patch.p4{left:67.76cqw;top:22.083cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
 .s1 .patch.p5{left:69.167cqw;top:21.979cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
 .s1 .patch.p6{left:74.531cqw;top:27.396cqw;width:51.458cqw;height:28.49cqw;filter:blur(6.25cqw);opacity:.9}
-/* Опасity p7/p9 снижена сверх макета по прямой просьбе клиента («картинка должна быть чёткой без
-   засветов») — оба слоя размывали белым низ фотографии. p8 не тронут — держит стык с белым фоном
-   без резкого края. */
+/* Непрозрачность p7/p9 снижена против макета (0.8→0.5 и 0.5→0.28) по просьбе клиента: оба слоя
+   размывали белым низ фотографии. p8 оставлен макетным — он держит стык с белым фоном, при
+   ослаблении нижняя кромка фото начинает проступать полосой. */
 .s1 .patch.p7{left:-9.792cqw;top:56.823cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(4.167cqw);opacity:.5}
 .s1 .patch.p8{left:-9.792cqw;top:53.125cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(5.208cqw);opacity:1}
 .s1 .patch.p9{left:-6.042cqw;top:54.115cqw;width:118.073cqw;height:28.75cqw;border-radius:0;filter:blur(4.167cqw);opacity:.28}
@@ -160,11 +159,15 @@ a{color:inherit;text-decoration:none}
    cqw у потомков по-прежнему считается от .stage (контейнер задаётся положением в DOM, а не
    position), поэтому на fixed это не влияет. */
 .hdr{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1920px;
-  height:6.15cqw;z-index:20;display:block;
-  /* Фон нужен именно закреплённой шапке: она проезжает над цветными секциями, и без подложки
-     серые пункты меню теряют читаемость. В макете фон задан у мобильной шапки (179:31, #FFFFFF);
-     здесь тот же белый с лёгкой прозрачностью и размытием подложки, чтобы полоса не выглядела
-     глухой. Высота 6.15cqw — как в макете. */
+  height:6.15cqw;z-index:20;display:block}
+/* Фон нужен именно закреплённой шапке: она проезжает над цветными секциями, и без подложки
+   серые пункты меню теряют читаемость. В макете фон задан у мобильной шапки (179:31, #FFFFFF);
+   здесь тот же белый с лёгкой прозрачностью и размытием подложки, чтобы полоса не выглядела
+   глухой. Подложка вынесена в псевдоэлемент и выходит за габарит шапки: на 5px в стороны —
+   KV-картинка стоит на x=-4 (137:3) и её край выглядывал слева из-под плашки, и на 10px вниз —
+   логотип занимает 39..118px при высоте шапки 118px и упирался в нижнюю кромку. Габарит самой
+   .hdr не менялся, поэтому координаты логотипа и пунктов меню остаются макетными. */
+.hdr::before{content:'';position:absolute;left:-0.26cqw;right:-0.26cqw;top:0;bottom:-0.521cqw;z-index:-1;
   background:rgba(255,255,255,.92);backdrop-filter:blur(.625cqw);-webkit-backdrop-filter:blur(.625cqw)}
 /* Логотип обёрнут в ссылку — позиционирование перенесено на .logo-link */
 .hdr .logo-link{position:absolute;left:19.531cqw;top:2.031cqw;width:4.583cqw;display:block}
@@ -226,6 +229,13 @@ a{color:inherit;text-decoration:none}
 /* 137:168 — кв-фон выведен выше начала секции: в макете подложка стартует на 130px
    раньше секции 5 (top отрицательный) и заканчивается чуть ниже её нижнего края —
    нижний край перекрывается уже секцией 6, идущей следом в потоке */
+/* Направление параллакса развёрнуто по замечанию клиента «фоновое изображение внизу бордовой
+   плашки видно не полностью»: прежде фон уезжал ВВЕРХ на 130px и к концу прокрутки под плашкой
+   оставалось 39px фона вместо макетных 168. Теперь стартовая позиция макетная (137:168, верх
+   на 130px выше секции), а data-par="4" опускает фон на 77px по мере прохождения секции —
+   полоса под плашкой только растёт. Опускать сильнее нельзя: снизу до шара заголовка витрины
+   (6516) остаётся 45px, а сверху фон обязан перекрывать начало секции (запас 49px), иначе он
+   заедет на фотографию предыдущего экрана серой полосой. */
 .s5 .kvbg{left:-0.208cqw;top:-6.771cqw;width:100cqw;height:82.24cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
 /* 137:166 — сплошная белая подложка под кв-фоном (сама секция уже, чем фон) */
 .s5 .white-bg{left:-0.208cqw;top:-0.208cqw;width:100.208cqw;height:75.677cqw;background:#fff;z-index:0}
@@ -272,10 +282,11 @@ a{color:inherit;text-decoration:none}
 .s5 .n5{left:19.966cqw;top:52.686cqw}
 .s5 .n6{left:20.103cqw;top:58.266cqw}
 
-/* обёртка 137:235: ширина/лево/верх — бокс группы (30cqw/56.771cqw/36.25cqw), а высота —
-   не полный бокс группы (654), а обрезающая маска 137:237 (576×584 = 30×30.417cqw):
-   в макете фигура обрезана снизу вровень с нижним краем бордовой плашки */
-.s5 .man-wrap{left:56.771cqw;top:36.25cqw;width:30cqw;height:30.417cqw;z-index:4;overflow:hidden}
+/* обёртка 137:235 — полный бокс группы (576×654 = 30×34.062cqw). Обрезки нет: маска 137:237
+   (576×584) охватывает только группу 137:236 с декоративным красным эллипсом 137:238, а сама
+   картинка 137:239 лежит рядом с маской, прямым ребёнком группы, и в макете видна целиком —
+   её низ (6360) на 70px ниже нижней кромки бордовой плашки (6290) */
+.s5 .man-wrap{left:56.771cqw;top:36.25cqw;width:30cqw;height:34.062cqw;z-index:4}
 /* .man-glow (137:238, декоративное красное пятно) не используется — при размытии 10.417cqw
    пятно становится видимым красным пятном в правом нижнем углу плашки. */
 /* картинка внутри — ровно по боксу растра 137:239 (20.312×27.448cqw), позиция по таблице;
@@ -302,12 +313,17 @@ a{color:inherit;text-decoration:none}
 .s6 .shopbtn.b2{left:50.469cqw;top:15.521cqw}
 .s6 .shopbtn.b3{left:18.698cqw;top:32.344cqw}
 .s6 .shopbtn.b4{left:50.469cqw;top:32.344cqw}
-.s6 .shopbtn img{max-width:70%;max-height:60%;object-fit:contain}
+/* Размеры логотипов заданы явно — точным переводом боксов из макета (px/19.2), а не долей от
+   плитки: общее правило max-width:70% растягивало логотип apteka.ru до 411px против макетных
+   248,7 (137:273). Значения: apteka 248,7×52,2 (137:273), wildberries 294,2×42,7 (137:268),
+   OZON 192,1×41,0 (137:263), значок «Золотого яблока» 67,1×66,0 (137:246). */
+.s6 .shopbtn img{object-fit:contain}
+.s6 .shopbtn.b1 img{width:12.953cqw;height:auto}
 .s6 .wb-logo{width:15.313cqw;height:auto;filter:brightness(0) invert(1)}
-/* Значок «Золотое яблоко» и логотип OZON — векторы из макета (137:246/247, 137:263), взамен
-   CSS-ромба и текстовой имитации. Ширина — точный перевод бокса figma (px/19.2) */
-.s6 .zy-logo{width:3.494cqw;height:auto;margin-right:.9cqw}
-.s6 .zy-txt{color:#fff;font-weight:500;font-size:1.5cqw}
+/* Надпись «Золотое Яблоко»: в макете это вектор 137:245 габаритом 321,9x32,1 — набор Geometria
+   приведён к той же ширине подбором кегля, отступ от значка 13,8px как у макета */
+.s6 .zy-logo{width:3.494cqw;height:auto;margin-right:.719cqw}
+.s6 .zy-txt{color:#fff;font-weight:500;font-size:2.064cqw}
 .s6 .ozon-logo{width:10.006cqw;height:auto}
 
 /* витрина продукта */
@@ -544,8 +560,14 @@ a{color:inherit;text-decoration:none}
 .s10 .s10-note{left:18.698cqw;top:61.51cqw;width:35.313cqw;z-index:4;color:var(--wine);font-weight:300;
   font-size:.9375cqw;line-height:1.1875;white-space:nowrap}
 
-/* ==================== ФУТЕР (13535..13667) ==================== */
-.s-foot{position:relative;width:100%;height:15.365cqw;background:#F4F4F4}
+/* ==================== ФУТЕР (13406..13538) ==================== */
+/* Высота 132px (6.875cqw) — как у узла 137:487, вместо прежних 295px «на добор» общей длины
+   страницы. Отступ сверху 8.646cqw закрывает разрыв между низом экрана 10 (13240) и началом
+   подвала (13406): в макете этот промежуток занят белой базой 137:484, которая начинается ещё
+   внутри экрана 10 (.s10-base, top 50.521cqw + 16.615cqw = 67.136cqw при высоте секции
+   58.49cqw). Без отступа база ложилась поверх подвала и закрывала логотип, реквизиты и значок
+   ВКонтакте — подвал выглядел пустой серой полосой. */
+.s-foot{position:relative;width:100%;height:6.875cqw;margin-top:8.646cqw;background:#F4F4F4}
 .s-foot .foot-logo{left:18.75cqw;top:3.177cqw;width:4.688cqw;height:auto}
 .s-foot .foot-text{left:25.104cqw;top:3.125cqw;color:#000;font-weight:300;font-size:.625cqw;line-height:1.1667}
 /* 137:496/137:497 (бейдж 32x32) + 137:501 (монограмма 14x9, центр совпадает с центром бейджа
@@ -751,14 +773,17 @@ a{color:inherit;text-decoration:none}
 .m-s6 .m-btn2{top:229.688cqw}
 .m-s6 .m-btn3{top:275.313cqw}
 .m-s6 .m-btn4{top:320.625cqw}
-.m-s6 .m-shopbtn img{max-width:60%;max-height:55%;object-fit:contain}
-.m-s6 .wb-logo{width:46%;filter:brightness(0) invert(1)}
-/* Значок «Золотое яблоко» и логотип OZON — те же векторы, что на десктопе (мобильная cqw=px/3.2).
-   У OZON явный width шире общего .m-shopbtn img{max-width:60%} (49.875cqw) — переопределяем
-   max-width тем же селектором, иначе лого обрежется по общему правилу */
-.m-s6 .zy-logo{width:20.966cqw;height:auto;margin-right:2.5cqw}
-.m-s6 .zy-txt{color:#fff;font-weight:500;font-size:4cqw}
-.m-s6 .m-shopbtn img.ozon-logo{width:60.037cqw;max-width:60.037cqw;height:auto}
+/* Размеры логотипов — точный перевод боксов мобильного фрейма (cqw = px/3.2), а не доля от
+   плитки: apteka.ru 112,5×23,9 (195:77), wildberries 133,1×19,5 (195:88), OZON 86,9×18,7
+   (195:92), значок «Золотого яблока» 30,4×30,2 (195:84). Прежние доли (60% / 46%) давали
+   apteka 160px и OZON 192px вместо макетных 112 и 87. */
+.m-s6 .m-shopbtn img{object-fit:contain}
+.m-s6 .m-btn1 img{width:35.156cqw;height:auto}
+.m-s6 .wb-logo{width:41.594cqw;height:auto;filter:brightness(0) invert(1)}
+/* Надпись — вектор 195:83 габаритом 145,6x14,7; кегль подобран под ту же ширину */
+.m-s6 .zy-logo{width:9.5cqw;height:auto;margin-right:1.938cqw}
+.m-s6 .zy-txt{color:#fff;font-weight:500;font-size:5.65cqw}
+.m-s6 .m-shopbtn img.ozon-logo{width:27.156cqw;height:auto}
 
 /* ==================== M-ЭКРАН 7: ДО/ПОСЛЕ ==================== */
 .m-s7{height:260.625cqw}
