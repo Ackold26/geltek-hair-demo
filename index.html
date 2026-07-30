@@ -40,9 +40,11 @@
       <span>Пептидная забота о ваших волосах</span>
     </div>
 
-    <!-- скорость движения флакона +20% по просьбе клиента: путь 665→798px (data-scroll-y1
-         52.76→59.688), координата старта не менялась -->
-    <img class="abs bottle" src="assets/img/fig/serum-100.png" alt="" data-fig="147:30" data-scroll-y0="18.125" data-scroll-y1="59.688">
+    <!-- Движение флакона по прокрутке. Конечная точка задана заказчиком: нижний край флакона
+         останавливается на 30px выше нижней кромки бордовой плашки преимуществ (её низ 1669,
+         высота флакона 634 → top 1005 = 52.344cqw). Скорость выше базовой на 30%
+         (data-scroll-speed): путь пройден к 77% прохождения секции, дальше флакон стоит. -->
+    <img class="abs bottle" src="assets/img/fig/serum-100.png" alt="" data-fig="147:30" data-scroll-y0="18.125" data-scroll-y1="52.344" data-scroll-speed="1.3">
 
     <!-- преимущества -->
     <div class="abs adv-card"></div>
@@ -179,7 +181,6 @@
            идёт только за счёт собственного градиента картинки .glowbox-sphere -->
       <img class="abs glowbox-sphere" src="assets/img/fig/sphere-big.png" alt="">
     </div>
-    <div class="abs pinkglow-clip"><div class="pinkglow"></div></div>
     <img class="abs showcase-logo" src="assets/img/logos/geltek-hair.svg" alt="GELTEK hair">
     <img class="abs peptidman" src="assets/img/fig/peptid-man-one.png" alt="">
     <img class="abs pack50" src="assets/img/fig/serum-50.png" alt="" data-fig="137:306">

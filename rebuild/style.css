@@ -163,11 +163,12 @@ a{color:inherit;text-decoration:none}
 /* Фон нужен именно закреплённой шапке: она проезжает над цветными секциями, и без подложки
    серые пункты меню теряют читаемость. В макете фон задан у мобильной шапки (179:31, #FFFFFF);
    здесь тот же белый с лёгкой прозрачностью и размытием подложки, чтобы полоса не выглядела
-   глухой. Подложка вынесена в псевдоэлемент и выходит за габарит шапки: на 5px в стороны —
-   KV-картинка стоит на x=-4 (137:3) и её край выглядывал слева из-под плашки, и на 10px вниз —
-   логотип занимает 39..118px при высоте шапки 118px и упирался в нижнюю кромку. Габарит самой
+   глухой. Подложка вынесена в псевдоэлемент: по горизонтали она тянется на всю ширину окна
+   (width:100vw с компенсацией бокового отступа контейнера) — на экранах шире 1920px полоса
+   продолжается до краёв окна, а не обрывается по рамке макета; снизу выходит на 10px за габарит
+   шапки, иначе логотип (39..118px при высоте шапки 118px) упирается в кромку. Габарит самой
    .hdr не менялся, поэтому координаты логотипа и пунктов меню остаются макетными. */
-.hdr::before{content:'';position:absolute;left:-0.26cqw;right:-0.26cqw;top:0;bottom:-0.521cqw;z-index:-1;
+.hdr::before{content:'';position:absolute;left:calc(-1*(100vw - 100%)/2);width:100vw;top:0;bottom:-0.521cqw;z-index:-1;
   background:rgba(255,255,255,.92);backdrop-filter:blur(.625cqw);-webkit-backdrop-filter:blur(.625cqw)}
 /* Логотип обёрнут в ссылку — позиционирование перенесено на .logo-link */
 .hdr .logo-link{position:absolute;left:19.531cqw;top:2.031cqw;width:4.583cqw;display:block}
@@ -337,13 +338,16 @@ a{color:inherit;text-decoration:none}
    полупрозрачный «квадрат» за флаконом 50 мл и человечком. Проверено попарным сравнением
    скриншотов с этим слоем и без — без него переход плашки в сферу чище и совпадает с эталоном
    (ref_s6.jpg), поэтому слой убран из разметки полностью (см. index.html, .s6 .glowbox). */
-/* 137:259 «sphere»: rotation -75° — картинка несимметричная, без поворота тёмная сторона уходит
-   в сторону и за флаконами остаётся светлая зона (это и читалось как «белое пятно») */
-.s6 .glowbox-sphere{left:19.792cqw;top:-11.458cqw;width:48.229cqw;height:48.229cqw;filter:blur(.99cqw);
-  transform:rotate(-75deg)}
-.s6 .pinkglow-clip{left:47.396cqw;top:58.49cqw;width:33.646cqw;height:15.625cqw;overflow:hidden;z-index:1}
-.s6 .pinkglow{position:absolute;left:6.042cqw;top:7.656cqw;width:14.219cqw;height:13.802cqw;
-  border-radius:50%;background:#E96882;filter:blur(6.771cqw)}
+/* 137:259 «sphere»: узел повёрнут на 75°, и 925.59 в спецификации — габарит ПОВЁРНУТОГО бокса,
+   а не сторона квадрата: сторона = 925.59 / (cos75+sin75) = 755.8px (39.365cqw). Прежние 926px
+   давали сферу на 22% больше макетной — её край выходил на 90px левее и читался как граница
+   фигуры слева от пептидного человечка. Центр сохранён: (1299.3, 7639.3) в координатах макета. */
+.s6 .glowbox-sphere{left:24.187cqw;top:-7.063cqw;width:39.365cqw;height:39.365cqw;filter:blur(.99cqw);
+  transform:rotate(75deg)}
+/* 137:301 «Mask group» с розовым свечением 137:303 (#E96882, размытие 130) убран из разметки:
+   размытая заливка перекрывает клиппер 646x300 целиком и обрезается им по прямым сторонам —
+   за флаконом и пептидным человечком читался светлый полупрозрачный прямоугольник. В эталоне
+   макета свечение в этом месте визуально отсутствует. Тот же случай, что со слоем 137:258. */
 .s6 .showcase-logo{left:28.229cqw;top:54.688cqw;width:12.917cqw;height:auto;z-index:3}
 .s6 .peptidman{left:55.104cqw;top:67.344cqw;width:5.208cqw;height:11.25cqw;z-index:3;transform:scaleX(-1)}
 /* 137:306/137:307 — явные w/h из карты (низ обоих 8079.2/8079.3) вместо height:auto: auto
@@ -463,7 +467,7 @@ a{color:inherit;text-decoration:none}
 .s8 .s8-logo{left:29.115cqw;top:34.479cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1}
 
 /* ==================== ЭКРАН 9: ШАМПУНИ (10398..12246) ==================== */
-.s9{height:96.25cqw}              /* 1848/19.2 */
+.s9{height:96.25cqw;overflow:hidden}              /* 1848/19.2 */
 .s9 .s9-duo{left:17.552cqw;top:0;width:8.698cqw;height:6.094cqw;z-index:2}
 .s9 .s9-title{left:27.5cqw;top:0;width:27.708cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
@@ -548,7 +552,11 @@ a{color:inherit;text-decoration:none}
 .s9 .wm-biome{left:13.021cqw;top:-0.073cqw;width:45.615cqw;height:9.938cqw}
 
 /* ==================== ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ (12246..13535) ==================== */
-.s10{height:58.490cqw}              /* 1123/19.2 */
+/* overflow:hidden у экранов 9 и 10: цветные полосы шире рамки макета (137:391 — 1931px при
+   ширине фрейма 1920, красная полоса — 1940) и в Figma обрезаются его границей. Без обрезки на
+   экранах шире 1920px выступы видны по краям как цветные уголки под фотографией с волосами,
+   которая ровно 1920 (137:477). */
+.s10{height:58.490cqw;overflow:hidden}              /* 1123/19.2 */
 .s10 .s10-photo{left:-0.104cqw;top:0;width:100.104cqw;height:auto;z-index:1}
 .s10 .s10-title{left:18.49cqw;top:19.896cqw;width:51.667cqw;z-index:2;color:#fff;font-weight:500;
   font-size:3.333cqw;line-height:1.266;text-transform:uppercase}

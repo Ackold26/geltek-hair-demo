@@ -125,7 +125,12 @@
         if (y0attr !== null) {
           var y0 = parseFloat(y0attr);
           var y1 = parseFloat(el.getAttribute('data-scroll-y1'));
-          var cqw = y0 + (y1 - y0) * progress;
+          /* data-scroll-speed — множитель скорости: элемент проходит весь путь за 1/speed доли
+             прокрутки секции и дальше стоит на конечной отметке (у флакона первого экрана
+             конечная точка задана заказчиком, а скорость поднята на 30%) */
+          var speed = parseFloat(el.getAttribute('data-scroll-speed')) || 1;
+          var p = Math.min(1, progress * speed);
+          var cqw = y0 + (y1 - y0) * p;
           el.style.top = (w * cqw / 100).toFixed(1) + 'px';
         }
 
