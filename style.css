@@ -255,33 +255,41 @@ a{color:inherit;text-decoration:none}
 .s5 .title{left:27.448cqw;top:10cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
 
-/* пилюли-контейнеры заголовков (только контур, ширина — по рамке 137:221/229,
-   без учёта шарика, который выступает за рамку отдельным слоем) */
-.s5 .pill{border:1px solid rgba(255,255,255,.4);border-radius:3.359cqw;z-index:4}
-.s5 .pill1{left:18.802cqw;top:16.875cqw;width:32.015cqw;height:5.9cqw}
-.s5 .pill2{left:18.802cqw;top:34.117cqw;width:49.257cqw;height:5.9cqw}
-
-.s5 .p1-glow{left:19.624cqw;top:17.59cqw;width:4.53cqw;height:4.53cqw}
-.s5 .p1-sph{left:19.168cqw;top:17.104cqw;width:5.424cqw;height:5.472cqw}
-.s5 .pill1-title{left:24.948cqw;top:18.906cqw;width:29.01cqw;z-index:4;color:#fff;font-weight:500;
+/* Рамки-пилюли вокруг заголовков (137:221/229) убраны по замечанию заказчика от 31.07: в
+   обновлённом макете заголовки идут строкой с шариком-маркером. Благодаря этому текстовый блок
+   стал компактнее по высоте, а сама бордовая плашка осталась прежней — так и просил заказчик.
+   Вертикальные координаты элементов блока сняты с обновлённого макета (эталон 1:1, замер по
+   строкам текста и центрам кружков), горизонтальные и кегли — прежние, из нашей вёрстки. */
+.s5 .p1-glow{left:19.624cqw;top:15.104cqw;width:4.53cqw;height:4.53cqw}
+.s5 .p1-sph{left:19.168cqw;top:14.635cqw;width:5.424cqw;height:5.472cqw}
+.s5 .pill1-title{left:24.948cqw;top:16.458cqw;width:29.01cqw;z-index:4;color:#fff;font-weight:500;
   font-size:1.615cqw;line-height:1.25;text-transform:uppercase}
 
-.s5 .p2-glow{left:19.67cqw;top:34.878cqw;width:4.53cqw;height:4.53cqw;mix-blend-mode:screen}
-.s5 .p2-sph{left:19.214cqw;top:34.392cqw;width:5.424cqw;height:5.472cqw}
-.s5 .pill2-title{left:25.159cqw;top:35.24cqw;width:47.382cqw;z-index:4;color:#fff;font-weight:500;
+.s5 .p2-glow{left:19.67cqw;top:30.156cqw;width:4.53cqw;height:4.53cqw;mix-blend-mode:screen}
+.s5 .p2-sph{left:19.214cqw;top:29.688cqw;width:5.424cqw;height:5.472cqw}
+.s5 .pill2-title{left:25.159cqw;top:31.51cqw;width:47.382cqw;z-index:4;color:#fff;font-weight:500;
   font-size:1.615cqw;line-height:1.25;text-transform:uppercase}
 
-.s5 .body{z-index:4;color:#fff;font-weight:300;font-size:1.458cqw;line-height:1.258}
-.s5 .body12{left:24.905cqw;top:24.513cqw;width:48.571cqw}
-.s5 .body36{left:24.905cqw;top:41.97cqw;width:48.571cqw}
+/* Пункты: каждый — самостоятельный абзац со своей координатой (в обновлённом макете расстояния
+   между ними заданы позициями, а не пустой строкой внутри общего текста) */
+.s5 .body{z-index:4;color:#fff;font-weight:300;font-size:1.458cqw;line-height:1.258;
+  left:24.905cqw;width:48.571cqw}
+.s5 .b1{top:20.521cqw}
+.s5 .b2{top:26.042cqw}
+.s5 .b3{top:37.656cqw}
+.s5 .b4{top:43.75cqw}
+.s5 .b5{top:49.896cqw}
+.s5 .b6{top:56.25cqw}
 
+/* Кружки с номерами центрируются по первой строке своего пункта: в макете центр кружка стабильно
+   на 36px ниже верха текста (проверено по всем шести пунктам эталона) */
 .s5 .num-circ{width:3.43cqw;height:3.43cqw;font-size:2.188cqw;z-index:5}
-.s5 .n1{left:20.057cqw;top:24.33cqw}
-.s5 .n2{left:20.011cqw;top:29.178cqw}
-.s5 .n3{left:19.92cqw;top:41.938cqw}
-.s5 .n4{left:19.874cqw;top:47.289cqw}
-.s5 .n5{left:19.966cqw;top:52.686cqw}
-.s5 .n6{left:20.103cqw;top:58.266cqw}
+.s5 .n1{left:20.057cqw;top:20.677cqw}
+.s5 .n2{left:20.011cqw;top:26.198cqw}
+.s5 .n3{left:19.92cqw;top:37.813cqw}
+.s5 .n4{left:19.874cqw;top:43.906cqw}
+.s5 .n5{left:19.966cqw;top:50.052cqw}
+.s5 .n6{left:20.103cqw;top:56.406cqw}
 
 /* обёртка 137:235 — полный бокс группы (576×654 = 30×34.062cqw). Обрезки нет: маска 137:237
    (576×584) охватывает только группу 137:236 с декоративным красным эллипсом 137:238, а сама
