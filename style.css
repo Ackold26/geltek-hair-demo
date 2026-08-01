@@ -574,7 +574,8 @@ a{color:inherit;text-decoration:none}
    продолжается до подвала). Ширина фотографии сведена к рамке макета (0..1920), чтобы на экранах
    шире 1920px под ней не выступали края цветных полос предыдущего экрана. */
 .s10{height:58.490cqw}              /* 1123/19.2 */
-.s10 .s10-photo{left:0;top:0;width:100cqw;height:auto;z-index:1}
+/* Затемнение 20% — постоянное, как слой затемнения над фотографией в макете */
+.s10 .s10-photo{left:0;top:0;width:100cqw;height:auto;z-index:1;filter:brightness(.8)}
 .s10 .s10-title{left:18.49cqw;top:19.896cqw;width:51.667cqw;z-index:2;color:#fff;font-weight:500;
   font-size:3.333cqw;line-height:1.266;text-transform:uppercase}
 
@@ -663,12 +664,16 @@ a{color:inherit;text-decoration:none}
 .m-s1 .m-banner{left:4.375cqw;top:32.813cqw;width:90.938cqw;height:44.688cqw;z-index:4;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9));
   backdrop-filter:blur(1.6cqw);-webkit-backdrop-filter:blur(1.6cqw)}
+/* Цветокоррекция заливки узла 179:1311 (экспозиция −0,15, света −0,65, тени −0,78): без неё
+   изображение выходит светлее макета. Значения подобраны сравнением со снимком макета */
 .m-s1 .m-banner .banner-drop{position:absolute;left:49.375cqw;top:-13.438cqw;width:70.625cqw;height:auto;
-  mix-blend-mode:luminosity;pointer-events:none}
+  mix-blend-mode:luminosity;pointer-events:none;filter:brightness(.584) saturate(1.4)}
 .m-s1 .m-banner span{position:relative;z-index:1;display:block;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;padding:6cqw 30cqw 6cqw 9.375cqw;text-transform:uppercase}
 /* drop-shadow не задан — см. .s1 .bottle выше */
-.m-s1 .m-bottle{left:66.875cqw;top:57.5cqw;width:27.813cqw;height:77.813cqw;z-index:5;object-fit:contain}
+/* Исходное положение — по узлу 179:1273 (y=277 в макете); ход подобран так, чтобы низ флакона
+   не доходил до плашки преимуществ (её верх — 150cqw) */
+.m-s1 .m-bottle{left:66.875cqw;top:64.063cqw;width:27.813cqw;height:77.813cqw;z-index:5;object-fit:contain}
 
 .m-s1 .m-adv-card{left:-0.313cqw;top:150cqw;width:100.625cqw;height:166.875cqw;z-index:3;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
@@ -736,11 +741,14 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-pill2{left:5cqw;top:251.563cqw;width:90cqw;height:36.563cqw;border-radius:9.375cqw}
 .m-s5 .m-p2-glow{left:5.938cqw;top:255cqw;width:15.313cqw;height:15.313cqw}
 .m-s5 .m-p2-sph{left:5.938cqw;top:255cqw;width:15.313cqw;height:15.313cqw;z-index:5}
+/* Межбуквенное 0,45 px при кегле 15 (узел 181:2209) — от него зависит разбивка на строки */
 .m-s5 .m-pill2-title{left:24.063cqw;top:255cqw;width:68.125cqw;z-index:4;color:#fff;font-weight:500;
-  font-size:4.688cqw;line-height:1.25;text-transform:uppercase}
+  font-size:4.688cqw;line-height:1.25;text-transform:uppercase;letter-spacing:.03em}
 
 .m-s5 .m-num-circ{width:13.438cqw;height:13.438cqw;font-size:8.75cqw;z-index:5}
-.m-s5 .m-body{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25}
+/* Пункты списка в макете выровнены по центру (узлы 181:2162, 181:2175, 181:2221, 181:2227,
+   181:2234, 181:2240 — textAlignHorizontal CENTER) */
+.m-s5 .m-body{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center}
 .m-s5 .m-n1{left:43.438cqw;top:160.313cqw}
 .m-s5 .m-b1{left:5cqw;top:178.438cqw;width:90cqw}
 .m-s5 .m-n2{left:43.438cqw;top:205cqw}
@@ -755,16 +763,21 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-b6{left:14.688cqw;top:460.313cqw;width:70.625cqw}
 
 /* ==================== M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ ==================== */
-.m-s6{height:363.125cqw}
+/* Высота с запасом 29,4 px под плиткой OZON — зазор до следующего экрана по макету
+   (низ узла 195:89 = 5782,6; экран 7 начинается на 5812) */
+.m-s6{height:372.313cqw}
 .m-s6 .m-s6-sph{left:4.063cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
-.m-s6 .m-s6-title{left:23.75cqw;top:10.938cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:500;
+/* Узел 181:2258: «Где купить сыворотку» — Light 300, «GELTEK Hair» — Medium 500 */
+.m-s6 .m-s6-title{left:23.75cqw;top:10.938cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s6 .m-s6-title .b{font-weight:500}
 
-.m-s6 .m-s6-fsph{z-index:1;pointer-events:none;height:auto}
-.m-s6 .m-fs1{left:75.313cqw;top:42.5cqw;width:40.313cqw}
-.m-s6 .m-fs2{left:-9.688cqw;top:75.625cqw;width:29.375cqw}
-.m-s6 .m-fs3{left:13.75cqw;top:44.063cqw;width:16.563cqw}
+/* Группа шаров 186:3801 в макете лежит поверх витрины (zi 414–417 против 378–392), координаты —
+   по узлам 186:3802 / 186:3803 / 186:3805 */
+.m-s6 .m-s6-fsph{z-index:4;pointer-events:none;height:auto}
+.m-s6 .m-fs1{left:75.313cqw;top:50.313cqw;width:40.313cqw}
+.m-s6 .m-fs2{left:-9.688cqw;top:83.406cqw;width:29.375cqw}
+.m-s6 .m-fs3{left:13.75cqw;top:51.875cqw;width:16.563cqw}
 
 /* 188:158 «glow», родитель 186:3798 (−61.7/4722) — секция начинается на 4596 (конец экрана 5 по
    спеку mobile), пересчёт: left=(-61.7)/3.2, top=(4852-4596)/3.2 */
@@ -847,90 +860,97 @@ a{color:inherit;text-decoration:none}
 .m-s7 .m-s7-note{left:8.125cqw;top:248.438cqw;z-index:2;color:#fff;font-weight:300;font-size:3.125cqw}
 
 /* ==================== M-ЭКРАН 8: ДОВЕРИЕ + ПРОИЗВОДСТВО ==================== */
-.m-s8{height:269.688cqw}
+/* Содержимое ниже заголовка приведено к координатам макета (узлы 184:2614 текст, 184:2616
+   кнопка, 184:2620 фотография, 184:2621 логотип): раньше вся группа стояла на 25 px выше,
+   отчего текст почти упирался в заголовок и в кнопку */
+.m-s8{height:277.5cqw}
 .m-s8 .m-s8-sph{left:4.375cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
 .m-s8 .m-s8-title{left:24.063cqw;top:15cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s8 .m-s8-title .b{font-weight:500}
-.m-s8 .m-s8-body{left:13.438cqw;top:25.313cqw;width:78.125cqw;z-index:2;color:var(--gray2);font-weight:300;
+.m-s8 .m-s8-body{left:13.438cqw;top:33.125cqw;width:78.125cqw;z-index:2;color:var(--gray2);font-weight:300;
   font-size:4.688cqw;line-height:1.25}
 .m-s8 .m-s8-body .b{font-weight:500}
-.m-s8 .m-s8-btn{left:26.563cqw;top:141.875cqw;width:46.563cqw;height:11.875cqw;z-index:2;border-radius:5.938cqw;
+.m-s8 .m-s8-btn{left:26.563cqw;top:149.688cqw;width:46.563cqw;height:11.875cqw;z-index:2;border-radius:5.938cqw;
   background:var(--btn);color:#fff;font-weight:500;font-size:3.125cqw;text-transform:uppercase;
   display:flex;align-items:center;justify-content:center}
-.m-s8 .m-s8-photo{left:-0.625cqw;top:161.563cqw;width:100.938cqw;height:108.125cqw;object-fit:cover;z-index:1}
-.m-s8 .m-s8-shadow{left:-20.938cqw;top:205cqw;width:144.063cqw;height:42.5cqw;border-radius:50%;
+.m-s8 .m-s8-photo{left:-0.625cqw;top:169.375cqw;width:100.938cqw;height:108.125cqw;object-fit:cover;z-index:1}
+.m-s8 .m-s8-shadow{left:-20.938cqw;top:212.813cqw;width:144.063cqw;height:42.5cqw;border-radius:50%;
   background:#D9D9D9;filter:blur(2.5cqw);mix-blend-mode:multiply;z-index:1}
-.m-s8 .m-s8-word{left:8.125cqw;top:209.375cqw;width:86.25cqw;z-index:2;color:#fff;font-weight:500;
-  font-size:11cqw;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
+/* Габарит надписи по узлу 184:2621 — 276×40 px, то есть 86.25×12.5cqw: кегль подобран по высоте
+   прописных, разрядка — по ширине набора */
+.m-s8 .m-s8-word{left:8.125cqw;top:217.188cqw;width:86.25cqw;z-index:2;color:#fff;font-weight:500;
+  font-size:16.875cqw;line-height:1;letter-spacing:.251em;text-transform:uppercase;white-space:nowrap}
 
 /* ==================== M-ЭКРАН 9: ШАМПУНИ ==================== */
-.m-s9{height:279.063cqw}
+.m-s9{height:287.188cqw}
 .m-s9 .m-s9-title{left:23.75cqw;top:8.125cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s9 .m-s9-duo{left:5cqw;top:.625cqw;width:17.813cqw;height:12.5cqw;z-index:2}
 
 .m-s9 .m-subhat{z-index:2;font-weight:500;line-height:1.25;text-transform:uppercase}
-.m-s9 .m-r-subhat{left:23.75cqw;top:19.063cqw;width:65cqw;color:var(--wine);font-size:4.688cqw}
-.m-s9 .m-v-subhat{left:23.75cqw;top:149.688cqw;width:62.188cqw;color:var(--violet);font-size:4.688cqw}
+.m-s9 .m-r-subhat{left:23.75cqw;top:27.188cqw;width:65cqw;color:var(--wine);font-size:4.688cqw}
+.m-s9 .m-v-subhat{left:23.75cqw;top:157.813cqw;width:62.188cqw;color:var(--violet);font-size:4.688cqw}
 .m-s9 .m-sph{z-index:2}
-.m-s9 .m-r-sph{left:15.313cqw;top:18.75cqw;width:6.25cqw;height:auto}
-.m-s9 .m-v-sph{left:15.313cqw;top:149.375cqw;width:6.25cqw;height:auto}
+.m-s9 .m-r-sph{left:15.313cqw;top:26.875cqw;width:6.25cqw;height:auto}
+.m-s9 .m-v-sph{left:15.313cqw;top:157.500cqw;width:6.25cqw;height:auto}
 
 .m-s9 .m-banner{z-index:2;overflow:hidden;position:absolute;display:flex;align-items:center}
 .m-s9 .m-banner .banner-drop{position:absolute;mix-blend-mode:luminosity;pointer-events:none}
 .m-s9 .m-banner span{position:relative;z-index:1;color:#fff;font-weight:300;font-size:3.75cqw;
   line-height:1.3;padding:2cqw 40cqw 2cqw 9.063cqw}
-.m-s9 .m-r-banner{left:4.375cqw;top:33.75cqw;width:90.938cqw;height:47.188cqw;
+.m-s9 .m-r-banner{left:4.375cqw;top:41.875cqw;width:90.938cqw;height:47.188cqw;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
-.m-s9 .m-r-banner .banner-drop{left:50.625cqw;top:-5cqw;width:55.313cqw;height:auto}
-.m-s9 .m-v-banner{left:4.375cqw;top:173.125cqw;width:90.938cqw;height:46.875cqw;
+/* Цветокоррекция заливки узла 184:2652 (экспозиция −0,26, света −0,65, тени −0,9) */
+.m-s9 .m-r-banner .banner-drop{left:50.625cqw;top:-5cqw;width:55.313cqw;height:auto;
+  filter:brightness(.566) saturate(1.533)}
+.m-s9 .m-v-banner{left:4.375cqw;top:181.250cqw;width:90.938cqw;height:46.875cqw;
   background:linear-gradient(90deg,rgba(96,66,131,1),rgba(116,95,154,1))}
 .m-s9 .m-v-banner span{font-size:3.125cqw;padding:2cqw 45cqw 2cqw 9.063cqw}
 .m-s9 .m-v-banner .banner-drop{left:48.438cqw;top:-67.813cqw;width:143.438cqw;height:auto}
 
 .m-s9 .m-pack{z-index:3}
-.m-s9 .m-r-norm30 {left:11.906cqw;top:82.5cqw;   width:14.719cqw;height:35.5cqw}
-.m-s9 .m-r-norm100{left:35.219cqw;top:75.188cqw; width:20.531cqw;height:42.938cqw}
-.m-s9 .m-r-norm390{left:60.625cqw;top:59.219cqw; width:29.375cqw;height:58.844cqw}
-.m-s9 .m-v-post30 {left:3.125cqw; top:221.406cqw;width:15.969cqw;height:35.813cqw}
-.m-s9 .m-v-post100{left:23.438cqw;top:213.594cqw;width:18.688cqw;height:44.406cqw}
-.m-s9 .m-v-post250{left:45.938cqw;top:206.938cqw;width:21.313cqw;height:50.844cqw}
-.m-s9 .m-v-post390{left:70.938cqw;top:198.281cqw;width:25.406cqw;height:59.281cqw}
+.m-s9 .m-r-norm30 {left:11.906cqw;top:90.625cqw;   width:14.719cqw;height:35.5cqw}
+.m-s9 .m-r-norm100{left:35.219cqw;top:83.313cqw; width:20.531cqw;height:42.938cqw}
+.m-s9 .m-r-norm390{left:60.625cqw;top:67.344cqw; width:29.375cqw;height:58.844cqw}
+.m-s9 .m-v-post30 {left:3.125cqw; top:229.531cqw;width:15.969cqw;height:35.813cqw}
+.m-s9 .m-v-post100{left:23.438cqw;top:221.719cqw;width:18.688cqw;height:44.406cqw}
+.m-s9 .m-v-post250{left:45.938cqw;top:215.063cqw;width:21.313cqw;height:50.844cqw}
+.m-s9 .m-v-post390{left:70.938cqw;top:206.406cqw;width:25.406cqw;height:59.281cqw}
 
 .m-s9 .m-vol-glow{width:4.688cqw;height:4.688cqw;z-index:3}
 .m-s9 .m-vol-sph{width:5.625cqw;height:auto;z-index:4}
 .m-s9 .m-vol-txt{font-size:2.5cqw;z-index:4}
 .m-s9 .m-rg1,.m-s9 .m-rg2,.m-s9 .m-rg3{background:#CC4363}
-.m-s9 .m-rg1{left:13.438cqw;top:123.125cqw}
-.m-s9 .m-rs1{left:12.813cqw;top:122.5cqw}
-.m-s9 .m-rt1{left:19.375cqw;top:123.438cqw;color:#fff}
-.m-s9 .m-rg2{left:38.125cqw;top:123.125cqw}
-.m-s9 .m-rs2{left:37.813cqw;top:122.813cqw}
-.m-s9 .m-rt2{left:44.063cqw;top:123.75cqw;color:#fff}
-.m-s9 .m-rg3{left:67.188cqw;top:122.813cqw}
-.m-s9 .m-rs3{left:66.563cqw;top:122.5cqw}
-.m-s9 .m-rt3{left:73.125cqw;top:123.438cqw;color:#fff}
+.m-s9 .m-rg1{left:13.438cqw;top:131.250cqw}
+.m-s9 .m-rs1{left:12.813cqw;top:130.625cqw}
+.m-s9 .m-rt1{left:19.375cqw;top:131.563cqw;color:#fff}
+.m-s9 .m-rg2{left:38.125cqw;top:131.250cqw}
+.m-s9 .m-rs2{left:37.813cqw;top:130.938cqw}
+.m-s9 .m-rt2{left:44.063cqw;top:131.875cqw;color:#fff}
+.m-s9 .m-rg3{left:67.188cqw;top:130.938cqw}
+.m-s9 .m-rs3{left:66.563cqw;top:130.625cqw}
+.m-s9 .m-rt3{left:73.125cqw;top:131.563cqw;color:#fff}
 
 .m-s9 .m-vg1,.m-s9 .m-vg2,.m-s9 .m-vg3,.m-s9 .m-vg4{background:#8E6CC8}
-.m-s9 .m-vg1{left:5cqw;top:260.938cqw}
-.m-s9 .m-vs1{left:4.688cqw;top:260.938cqw}
-.m-s9 .m-vt1{left:10.938cqw;top:262.5cqw;color:#fff}
-.m-s9 .m-vg2{left:26.875cqw;top:261.563cqw}
-.m-s9 .m-vs2{left:26.25cqw;top:261.25cqw}
-.m-s9 .m-vt2{left:32.5cqw;top:262.5cqw;color:#fff}
-.m-s9 .m-vg3{left:48.75cqw;top:261.563cqw}
-.m-s9 .m-vs3{left:48.125cqw;top:260.938cqw}
-.m-s9 .m-vt3{left:54.688cqw;top:262.5cqw;color:#fff}
-.m-s9 .m-vg4{left:75.625cqw;top:261.563cqw}
-.m-s9 .m-vs4{left:75cqw;top:260.938cqw}
-.m-s9 .m-vt4{left:81.563cqw;top:262.188cqw;color:#fff}
+.m-s9 .m-vg1{left:5cqw;top:269.063cqw}
+.m-s9 .m-vs1{left:4.688cqw;top:269.063cqw}
+.m-s9 .m-vt1{left:10.938cqw;top:270.625cqw;color:#fff}
+.m-s9 .m-vg2{left:26.875cqw;top:269.688cqw}
+.m-s9 .m-vs2{left:26.25cqw;top:269.375cqw}
+.m-s9 .m-vt2{left:32.5cqw;top:270.625cqw;color:#fff}
+.m-s9 .m-vg3{left:48.75cqw;top:269.688cqw}
+.m-s9 .m-vs3{left:48.125cqw;top:269.063cqw}
+.m-s9 .m-vt3{left:54.688cqw;top:270.625cqw;color:#fff}
+.m-s9 .m-vg4{left:75.625cqw;top:269.688cqw}
+.m-s9 .m-vs4{left:75cqw;top:269.063cqw}
+.m-s9 .m-vt4{left:81.563cqw;top:270.313cqw;color:#fff}
 
-.m-s9 .m-r-band{left:-22.188cqw;top:97.5cqw;width:122.813cqw;height:43.75cqw;z-index:1;overflow:hidden;
+.m-s9 .m-r-band{left:-22.188cqw;top:105.625cqw;width:122.813cqw;height:43.75cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 .m-s9 .m-r-band .wm{position:absolute;left:16.563cqw;top:2cqw;color:#9B274C;opacity:.5;font-weight:500;
   font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
-.m-s9 .m-v-band{left:0;top:235.938cqw;width:100.625cqw;height:43.125cqw;z-index:1;overflow:hidden;
+.m-s9 .m-v-band{left:0;top:244.063cqw;width:100.625cqw;height:43.125cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,#604283,#745F9A)}
 .m-s9 .m-v-band .wm{position:absolute;left:7.5cqw;top:2cqw;color:#715B97;font-weight:500;
   font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
