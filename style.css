@@ -221,7 +221,9 @@ a{color:inherit;text-decoration:none}
 .s4 .bg{left:0;top:0;width:100cqw;height:56.406cqw;object-fit:cover;z-index:1}
 .s4 .card{left:51.875cqw;top:8.281cqw;width:29.427cqw;height:35.573cqw;z-index:2}
 .s4 .icon{left:61.302cqw;top:12.344cqw;width:10.052cqw;height:10.052cqw;z-index:3}
-.s4 .txt{left:55.208cqw;top:24.844cqw;width:22.76cqw;z-index:3;color:#fff;font-weight:300;
+/* ширина бокса чуть больше макетных 437px: строка «плотности и толщины волос» набирается
+   в 439px и без запаса разрывалась на две — в макете она идёт цельной строкой */
+.s4 .txt{left:55.208cqw;top:24.844cqw;width:23.542cqw;z-index:3;color:#fff;font-weight:300;
   font-size:1.667cqw;line-height:1.25}
 .s4 .txt .b{font-weight:500}
 
@@ -244,58 +246,61 @@ a{color:inherit;text-decoration:none}
 /* фон плашки сделан непрозрачным (без альфы reusable .glass): полупрозрачная версия
    пропускала через backdrop-filter яркую верхнюю часть кв-фона, что читалось как
    светлая полоса за заголовком и текстом пилюли 1 */
-.s5 .card{left:12.865cqw;top:5.104cqw;width:73.906cqw;height:61.562cqw;z-index:3;background:linear-gradient(120deg,#98123c,#5e0023)}
+/* Высота плашки 1070px (было 1182): блок содержимого приведён к компактной раскладке макета,
+   чтобы целиком помещаться на экране монитора */
+.s5 .card{left:12.865cqw;top:5.104cqw;width:73.906cqw;height:55.729cqw;z-index:3;background:linear-gradient(120deg,#98123c,#5e0023)}
 
 /* цветное свечение под сферами (#CC4363, blur r50→1.302cqw) */
 .s5 .sph-glow{border-radius:50%;background:#CC4363;opacity:.5;filter:blur(1.302cqw);z-index:4}
 .s5 .sph{z-index:5}
 
-.s5 .title-glow{left:18.038cqw;top:7.518cqw;width:7.932cqw;height:7.932cqw}
-.s5 .title-sph{left:17.135cqw;top:6.667cqw;width:9.497cqw;height:9.582cqw}
-.s5 .title{left:27.448cqw;top:10cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
+.s5 .title-glow{left:19.31cqw;top:7.495cqw;width:6.742cqw;height:6.742cqw}
+.s5 .title-sph{left:18.542cqw;top:6.771cqw;width:8.073cqw;height:8.145cqw}
+.s5 .title{left:27.448cqw;top:9.167cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
 
-/* Рамки-пилюли вокруг заголовков (137:221/229) убраны: в обновлённом макете заголовки идут
-   строкой с шариком-маркером. Благодаря этому текстовый блок стал компактнее по высоте, размер
-   бордовой плашки при этом сохранён прежним. Вертикальные координаты элементов блока сняты с
-   обновлённого макета (замер по строкам текста и центрам кружков), горизонтальные и кегли —
-   прежние. */
-.s5 .p1-glow{left:19.624cqw;top:15.104cqw;width:4.53cqw;height:4.53cqw}
-.s5 .p1-sph{left:19.168cqw;top:14.635cqw;width:5.424cqw;height:5.472cqw}
-.s5 .pill1-title{left:24.948cqw;top:16.458cqw;width:29.01cqw;z-index:4;color:#fff;font-weight:500;
-  font-size:1.615cqw;line-height:1.25;text-transform:uppercase}
+/* Рамки-пилюли вокруг заголовков (137:221/229): контур капсулы, шарик-маркер лежит внутри
+   рамки слева, текст — правее шарика */
+.s5 .pill{border:1px solid rgba(255,255,255,.4);z-index:4}
+.s5 .pill1{left:23.073cqw;top:14.219cqw;width:28.646cqw;height:4.844cqw;border-radius:2.422cqw}
+.s5 .pill2{left:23.073cqw;top:28.646cqw;width:43.49cqw;height:5.885cqw;border-radius:2.943cqw}
 
-.s5 .p2-glow{left:19.67cqw;top:30.156cqw;width:4.53cqw;height:4.53cqw;mix-blend-mode:screen}
-.s5 .p2-sph{left:19.214cqw;top:29.688cqw;width:5.424cqw;height:5.472cqw}
-.s5 .pill2-title{left:25.159cqw;top:31.51cqw;width:47.382cqw;z-index:4;color:#fff;font-weight:500;
-  font-size:1.615cqw;line-height:1.25;text-transform:uppercase}
+.s5 .p1-glow{left:24.232cqw;top:14.727cqw;width:3.828cqw;height:3.828cqw}
+.s5 .p1-sph{left:23.854cqw;top:14.349cqw;width:4.583cqw;height:4.625cqw}
+.s5 .pill1-title{left:30.104cqw;top:15.719cqw;width:30cqw;z-index:4;color:#fff;font-weight:500;
+  font-size:1.406cqw;line-height:1.25;text-transform:uppercase}
 
-/* Пункты: каждый — самостоятельный абзац со своей координатой (в обновлённом макете расстояния
-   между ними заданы позициями, а не пустой строкой внутри общего текста) */
-.s5 .body{z-index:4;color:#fff;font-weight:300;font-size:1.458cqw;line-height:1.258;
-  left:24.905cqw;width:48.571cqw}
-.s5 .b1{top:20.521cqw}
-.s5 .b2{top:26.042cqw}
-.s5 .b3{top:37.656cqw}
-.s5 .b4{top:43.75cqw}
-.s5 .b5{top:49.896cqw}
-.s5 .b6{top:56.25cqw}
+.s5 .p2-glow{left:24.232cqw;top:29.675cqw;width:3.828cqw;height:3.828cqw;mix-blend-mode:screen}
+.s5 .p2-sph{left:23.854cqw;top:29.297cqw;width:4.583cqw;height:4.625cqw}
+.s5 .pill2-title{left:30.104cqw;top:30.302cqw;width:34cqw;z-index:4;color:#fff;font-weight:500;
+  font-size:1.406cqw;line-height:1.25;text-transform:uppercase}
 
-/* Кружки с номерами центрируются по первой строке своего пункта: в макете центр кружка стабильно
-   на 36px ниже верха текста (одинаково во всех шести пунктах макета) */
-.s5 .num-circ{width:3.43cqw;height:3.43cqw;font-size:2.188cqw;z-index:5}
-.s5 .n1{left:20.057cqw;top:20.677cqw}
-.s5 .n2{left:20.011cqw;top:26.198cqw}
-.s5 .n3{left:19.92cqw;top:37.813cqw}
-.s5 .n4{left:19.874cqw;top:43.906cqw}
-.s5 .n5{left:19.966cqw;top:50.052cqw}
-.s5 .n6{left:20.103cqw;top:56.406cqw}
+/* Пункты: каждый — самостоятельный абзац со своей координатой (расстояния между ними заданы
+   позициями, а не пустой строкой внутри общего текста) */
+.s5 .body{z-index:4;color:#fff;font-weight:300;font-size:1.25cqw;line-height:1.258;
+  left:30.313cqw;width:38.802cqw}
+.s5 .b1{top:20.646cqw}
+.s5 .b2{top:24.818cqw}
+.s5 .b3{top:36.005cqw}
+.s5 .b4{top:40.745cqw}
+.s5 .b5{top:45.484cqw}
+.s5 .b6{top:50.318cqw}
+
+/* Кружки с номерами центрируются по первой строке своего пункта */
+.s5 .num-circ{width:2.844cqw;height:2.844cqw;font-size:1.818cqw;z-index:5}
+.s5 .n1{left:19.375cqw;top:20.839cqw}
+.s5 .n2{left:19.375cqw;top:25.01cqw}
+.s5 .n3{left:19.375cqw;top:36.198cqw}
+.s5 .n4{left:19.375cqw;top:40.938cqw}
+.s5 .n5{left:19.375cqw;top:45.677cqw}
+.s5 .n6{left:19.375cqw;top:50.51cqw}
 
 /* обёртка 137:235 — полный бокс группы (576×654 = 30×34.062cqw). Обрезки нет: маска 137:237
    (576×584) охватывает только группу 137:236 с декоративным красным эллипсом 137:238, а сама
    картинка 137:239 лежит рядом с маской, прямым ребёнком группы, и в макете видна целиком —
    её низ (6360) на 70px ниже нижней кромки бордовой плашки (6290) */
-.s5 .man-wrap{left:56.771cqw;top:36.25cqw;width:30cqw;height:34.062cqw;z-index:4}
+/* фигура поднята вслед за уменьшившейся плашкой — её низ остаётся у нижней кромки плашки */
+.s5 .man-wrap{left:56.771cqw;top:26.771cqw;width:30cqw;height:34.062cqw;z-index:4}
 /* .man-glow (137:238, декоративное красное пятно) не используется — при размытии 10.417cqw
    пятно становится видимым красным пятном в правом нижнем углу плашки. */
 /* картинка внутри — ровно по боксу растра 137:239 (20.312×27.448cqw), позиция по таблице;
@@ -487,7 +492,9 @@ a{color:inherit;text-decoration:none}
 
 /* --- подзаголовки продуктовых блоков --- */
 .s9 .subhat{z-index:2;font-weight:500;font-size:1.875cqw;line-height:1.25;text-transform:uppercase}
-.s9 .r-subhat{left:27.552cqw;top:9.271cqw;width:30.885cqw;color:var(--wine)}
+/* подзаголовок в две строки (137:443): ширина бокса увеличена под вторую строку
+   «ДЛЯ КОМФОРТА КОЖИ ГОЛОВЫ» — она длиннее первой; перенос задан разметкой */
+.s9 .r-subhat{left:27.552cqw;top:9.271cqw;width:34.375cqw;color:var(--wine)}
 .s9 .v-subhat{left:27.552cqw;top:55.625cqw;width:48.594cqw;color:var(--violet)}
 .s9 .sph{z-index:2}
 .s9 .r-sph{left:23.49cqw;top:8.646cqw;width:3.229cqw;height:3.281cqw}
@@ -498,13 +505,16 @@ a{color:inherit;text-decoration:none}
 .s9 .banner .banner-drop{position:absolute;mix-blend-mode:luminosity;pointer-events:none}
 .s9 .banner span{position:relative;z-index:1;color:#fff;font-weight:300;font-size:1.458cqw;
   line-height:1.357;padding:0 20cqw 0 5.521cqw}
-/* Узел 137:441: ширина текстового бокса 1187px и жёсткий перенос (U+2028) после слова
-   «чувствительной» — две строки. Правый отступ общего правила сузил бы строку до 643px
-   и дал бы третью строку, поэтому здесь он снят. */
+/* Узел 137:441: переносы строк заданы разметкой. Правый отступ общего правила сузил бы
+   строку до 643px и добавил бы лишние переносы, поэтому здесь он снят. */
 .s9 .r-banner span{padding-right:0}
-.s9 .r-banner{left:22.031cqw;top:13.229cqw;width:59.01cqw;height:8.49cqw;
+/* Текст плашки в четыре строки: плашка выше прежней (236 вместо 163) и опущена
+   на 44px — верхний край держит прежний отступ от подзаголовка, ставшего двухстрочным */
+.s9 .r-banner{left:22.031cqw;top:15.521cqw;width:59.01cqw;height:12.292cqw;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 0%,rgba(94,0,35,.9) 45%,rgba(152,18,60,.9) 100%)}
-.s9 .r-banner .banner-drop{left:41.25cqw;top:-8.906cqw;width:20.938cqw;height:20.677cqw}
+/* капля 138:41 остаётся в прежнем положении по странице: смещение вверх увеличено
+   ровно на величину сдвига плашки */
+.s9 .r-banner .banner-drop{left:41.25cqw;top:-11.198cqw;width:20.938cqw;height:20.677cqw}
 .s9 .v-banner{left:22.031cqw;top:59.688cqw;width:59.01cqw;height:8.438cqw;
   background:linear-gradient(90deg,rgba(96,66,131,1) 0%,rgba(96,66,131,1) 70%,rgba(116,95,154,1) 100%)}
 .s9 .v-banner .banner-drop{left:37.708cqw;top:-12.292cqw;width:25.833cqw;height:21.094cqw}
@@ -898,7 +908,9 @@ a{color:inherit;text-decoration:none}
 .m-s9 .m-s9-duo{left:5cqw;top:8.75cqw;width:17.813cqw;height:12.5cqw;z-index:2}
 
 .m-s9 .m-subhat{z-index:2;font-weight:500;line-height:1.25;text-transform:uppercase}
-.m-s9 .m-r-subhat{left:23.75cqw;top:27.188cqw;width:65cqw;color:var(--wine);font-size:4.688cqw}
+/* подзаголовок в две строки: кегль на ступень мельче макетного и бокс до правого поля —
+   строка «ДЛЯ КОМФОРТА КОЖИ ГОЛОВЫ» длиннее первой и в макетный бокс не помещается */
+.m-s9 .m-r-subhat{left:23.75cqw;top:27.188cqw;width:75cqw;color:var(--wine);font-size:4.375cqw}
 .m-s9 .m-v-subhat{left:23.75cqw;top:157.813cqw;width:62.188cqw;color:var(--violet);font-size:4.688cqw}
 .m-s9 .m-sph{z-index:2}
 .m-s9 .m-r-sph{left:15.313cqw;top:26.875cqw;width:6.25cqw;height:auto}
