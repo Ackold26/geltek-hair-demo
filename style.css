@@ -497,6 +497,10 @@ a{color:inherit;text-decoration:none}
 .s9 .banner .banner-drop{position:absolute;mix-blend-mode:luminosity;pointer-events:none}
 .s9 .banner span{position:relative;z-index:1;color:#fff;font-weight:300;font-size:1.458cqw;
   line-height:1.357;padding:0 20cqw 0 5.521cqw}
+/* Узел 137:441: ширина текстового бокса 1187px и жёсткий перенос (U+2028) после слова
+   «чувствительной» — две строки. Правый отступ общего правила сузил бы строку до 643px
+   и дал бы третью строку, поэтому здесь он снят. */
+.s9 .r-banner span{padding-right:0}
 .s9 .r-banner{left:22.031cqw;top:13.229cqw;width:59.01cqw;height:8.49cqw;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 0%,rgba(94,0,35,.9) 45%,rgba(152,18,60,.9) 100%)}
 .s9 .r-banner .banner-drop{left:41.25cqw;top:-8.906cqw;width:20.938cqw;height:20.677cqw}
@@ -886,7 +890,10 @@ a{color:inherit;text-decoration:none}
 .m-s9{height:287.188cqw}
 .m-s9 .m-s9-title{left:23.75cqw;top:8.125cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
-.m-s9 .m-s9-duo{left:5cqw;top:.625cqw;width:17.813cqw;height:12.5cqw;z-index:2}
+/* Узлы 184:2645 и 184:2643: шары стоят на 2px ниже верха заголовка, центры совпадают.
+   Заголовок смещён вниз на 8.125cqw относительно макета, поэтому шары повторяют этот сдвиг
+   (.625 + 8.125), иначе они оказываются выше первой строки. */
+.m-s9 .m-s9-duo{left:5cqw;top:8.75cqw;width:17.813cqw;height:12.5cqw;z-index:2}
 
 .m-s9 .m-subhat{z-index:2;font-weight:500;line-height:1.25;text-transform:uppercase}
 .m-s9 .m-r-subhat{left:23.75cqw;top:27.188cqw;width:65cqw;color:var(--wine);font-size:4.688cqw}
