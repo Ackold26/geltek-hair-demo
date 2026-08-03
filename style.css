@@ -246,9 +246,9 @@ a{color:inherit;text-decoration:none}
 /* фон плашки сделан непрозрачным (без альфы reusable .glass): полупрозрачная версия
    пропускала через backdrop-filter яркую верхнюю часть кв-фона, что читалось как
    светлая полоса за заголовком и текстом пилюли 1 */
-/* Высота плашки 1070px (было 1182): блок содержимого приведён к компактной раскладке макета,
-   чтобы целиком помещаться на экране монитора */
-.s5 .card{left:12.865cqw;top:5.104cqw;width:73.906cqw;height:55.729cqw;z-index:3;background:linear-gradient(120deg,#98123c,#5e0023)}
+/* Высота плашки 1066px: блок содержимого приведён к компактной раскладке макета,
+   нижняя кромка проходит по подставке фигуры */
+.s5 .card{left:12.865cqw;top:5.104cqw;width:73.906cqw;height:55.521cqw;z-index:3;background:linear-gradient(120deg,#98123c,#5e0023)}
 
 /* цветное свечение под сферами (#CC4363, blur r50→1.302cqw) */
 .s5 .sph-glow{border-radius:50%;background:#CC4363;opacity:.5;filter:blur(1.302cqw);z-index:4}
@@ -286,21 +286,22 @@ a{color:inherit;text-decoration:none}
 .s5 .b5{top:45.484cqw}
 .s5 .b6{top:50.318cqw}
 
-/* Кружки с номерами центрируются по первой строке своего пункта */
+/* Кружки с номерами центрируются по первой строке своего пункта; по горизонтали их центры
+   совпадают с центрами шариков-маркеров в рамках-пилюлях */
 .s5 .num-circ{width:2.844cqw;height:2.844cqw;font-size:1.818cqw;z-index:5}
-.s5 .n1{left:19.375cqw;top:20.839cqw}
-.s5 .n2{left:19.375cqw;top:25.01cqw}
-.s5 .n3{left:19.375cqw;top:36.198cqw}
-.s5 .n4{left:19.375cqw;top:40.938cqw}
-.s5 .n5{left:19.375cqw;top:45.677cqw}
-.s5 .n6{left:19.375cqw;top:50.51cqw}
+.s5 .n1{left:25.521cqw;top:20.839cqw}
+.s5 .n2{left:25.521cqw;top:25.01cqw}
+.s5 .n3{left:25.521cqw;top:36.198cqw}
+.s5 .n4{left:25.521cqw;top:40.938cqw}
+.s5 .n5{left:25.521cqw;top:45.677cqw}
+.s5 .n6{left:25.521cqw;top:50.51cqw}
 
 /* обёртка 137:235 — полный бокс группы (576×654 = 30×34.062cqw). Обрезки нет: маска 137:237
    (576×584) охватывает только группу 137:236 с декоративным красным эллипсом 137:238, а сама
    картинка 137:239 лежит рядом с маской, прямым ребёнком группы, и в макете видна целиком —
    её низ (6360) на 70px ниже нижней кромки бордовой плашки (6290) */
-/* фигура поднята вслед за уменьшившейся плашкой — её низ остаётся у нижней кромки плашки */
-.s5 .man-wrap{left:56.771cqw;top:26.771cqw;width:30cqw;height:34.062cqw;z-index:4}
+/* фигура стоит так, что подставка приходится на нижнюю кромку плашки */
+.s5 .man-wrap{left:56.771cqw;top:29.063cqw;width:30cqw;height:34.062cqw;z-index:4}
 /* .man-glow (137:238, декоративное красное пятно) не используется — при размытии 10.417cqw
    пятно становится видимым красным пятном в правом нижнем углу плашки. */
 /* картинка внутри — ровно по боксу растра 137:239 (20.312×27.448cqw), позиция по таблице;
@@ -532,9 +533,11 @@ a{color:inherit;text-decoration:none}
    линию на месте (низы упаковок выровнены макетом) и убирает искажение. */
 .s9 .pack{z-index:3;transition:transform .25s;object-fit:contain}
 .s9 .pack:hover{transform:scale(1.04)}
-.s9 .r-norm30{left:42.031cqw;top:26.25cqw;width:6.51cqw;height:15.677cqw}
-.s9 .r-norm100{left:52.292cqw;top:22.552cqw;width:9.219cqw;height:19.271cqw}
-.s9 .r-norm390{left:65.729cqw;top:16.875cqw;width:12.552cqw;height:25.156cqw}
+/* Нижний блок красной линейки (упаковки, подписи объёмов и полоса) опущен на 43px:
+   так между плашкой с текстом и полосой держится макетный просвет */
+.s9 .r-norm30{left:42.031cqw;top:28.49cqw;width:6.51cqw;height:15.677cqw}
+.s9 .r-norm100{left:52.292cqw;top:24.792cqw;width:9.219cqw;height:19.271cqw}
+.s9 .r-norm390{left:65.729cqw;top:19.115cqw;width:12.552cqw;height:25.156cqw}
 .s9 .v-post30{left:31.094cqw;top:73.073cqw;width:6.927cqw;height:15.469cqw}
 .s9 .v-post100{left:41.51cqw;top:68.802cqw;width:8.49cqw;height:20.104cqw}
 .s9 .v-post250{left:54.167cqw;top:65.833cqw;width:9.583cqw;height:22.865cqw}
@@ -545,15 +548,15 @@ a{color:inherit;text-decoration:none}
 .s9 .vol-sph{width:2.448cqw;height:2.5cqw;z-index:4}
 .s9 .vol-txt{color:#fff;font-weight:300;font-size:1.25cqw;z-index:4}
 .s9 .r-g1,.s9 .r-g2,.s9 .r-g3{background:#CC4363}
-.s9 .r-g1{left:42.031cqw;top:43.646cqw}
-.s9 .r-s1{left:41.823cqw;top:43.438cqw}
-.s9 .r-t1{left:44.688cqw;top:43.906cqw}
-.s9 .r-g2{left:53.333cqw;top:43.646cqw}
-.s9 .r-s2{left:53.125cqw;top:43.438cqw}
-.s9 .r-t2{left:55.99cqw;top:43.906cqw}
-.s9 .r-g3{left:68.802cqw;top:43.646cqw}
-.s9 .r-s3{left:68.594cqw;top:43.438cqw}
-.s9 .r-t3{left:71.458cqw;top:43.906cqw}
+.s9 .r-g1{left:42.031cqw;top:45.886cqw}
+.s9 .r-s1{left:41.823cqw;top:45.678cqw}
+.s9 .r-t1{left:44.688cqw;top:46.146cqw}
+.s9 .r-g2{left:53.333cqw;top:45.886cqw}
+.s9 .r-s2{left:53.125cqw;top:45.678cqw}
+.s9 .r-t2{left:55.99cqw;top:46.146cqw}
+.s9 .r-g3{left:68.802cqw;top:45.886cqw}
+.s9 .r-s3{left:68.594cqw;top:45.678cqw}
+.s9 .r-t3{left:71.458cqw;top:46.146cqw}
 
 .s9 .v-g1,.s9 .v-g2,.s9 .v-g3,.s9 .v-g4{background:#8E6CC8}
 .s9 .v-g1{left:33.49cqw;top:90.26cqw}
@@ -570,7 +573,7 @@ a{color:inherit;text-decoration:none}
 .s9 .v-t4{left:70.677cqw;top:90.521cqw}
 
 /* --- фоновые полосы с водяными знаками названий линеек --- */
-.s9 .r-band{left:-0.677cqw;top:28.177cqw;width:101.042cqw;height:21.354cqw;z-index:1;overflow:hidden;
+.s9 .r-band{left:-0.677cqw;top:30.417cqw;width:101.042cqw;height:21.354cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 /* «Intensive» — точный вектор из 9 контуров (137:450), извлечён из геометрии узла (fillGeometry)
    в обход лимита на растровый экспорт. Непрозрачность 0.5 запечена в сами контуры SVG
