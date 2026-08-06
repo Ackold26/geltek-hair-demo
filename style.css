@@ -747,13 +747,30 @@ a{color:inherit;text-decoration:none}
 .m-s4 .m-txt{left:17.5cqw;top:153.125cqw;width:65cqw}
 
 /* ==================== M-ЭКРАН 5: КАК ДЕЙСТВУЕТ ==================== */
-.m-s5{height:501.875cqw}
+/* Блок раскрывается двумя группами: пункты пептидного комплекса и пункты растительных
+   компонентов. При загрузке обе группы свёрнуты. Элементы позиционированы абсолютно, поэтому
+   сворачивание задано переменными скрытой высоты: от --hA зависят положения всего, что лежит
+   ниже первой группы, от суммы обеих — высота плашки и самой секции (нижние секции идут в
+   потоке и поднимаются сами). */
+.m-s5{--hA:0cqw;--hB:0cqw}
+.m-s5.acc-a-closed{--hA:92cqw}
+.m-s5.acc-b-closed{--hB:183.8cqw}
+.m-s5.acc-a-closed .acc-a,.m-s5.acc-b-closed .acc-b{display:none}
+.m-s5{height:calc(501.875cqw - var(--hA) - var(--hB))}
+/* знак раскрытия внутри рамки-пилюли */
+.m-s5 .m-acc-sign{z-index:5;color:#fff;font-weight:300;font-size:6.25cqw;line-height:1;
+  display:grid;place-items:center;width:6.25cqw;height:6.25cqw;pointer-events:none}
+.m-s5 .m-acc-sign::before{content:'–'}
+.m-s5.acc-a-closed .m-acc-sign-a::before,.m-s5.acc-b-closed .m-acc-sign-b::before{content:'+'}
+.m-s5 .m-acc-sign-a{left:85.938cqw;top:141.094cqw}
+.m-s5 .m-acc-sign-b{left:85.938cqw;top:calc(266.719cqw - var(--hA))}
+.m-s5 [data-acc]{cursor:pointer}
 .m-s5 .m-s5-bg{left:-0.938cqw;top:0;width:102.813cqw;height:106.875cqw;object-fit:cover;z-index:1}
 .m-s5 .m-s5-man-wrap{left:26.25cqw;top:19.375cqw;width:71.875cqw;height:97.5cqw;z-index:4}
 .m-s5 .m-s5-shadow{left:42.188cqw;top:102.188cqw;width:33.75cqw;height:6.25cqw;border-radius:50%;
   background:#D9D9D9;filter:blur(2cqw);mix-blend-mode:multiply;z-index:1}
 .m-s5 .m-s5-man{left:0;top:0;width:100%;height:auto}
-.m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:396.25cqw;z-index:2;
+.m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:calc(396.25cqw - var(--hA) - var(--hB));z-index:2;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 
 .m-s5 .m-s5-title-glow{left:5.625cqw;top:113.438cqw;width:19.375cqw;height:19.375cqw}
@@ -768,11 +785,11 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-pill1-title{left:24.063cqw;top:141.563cqw;width:68.125cqw;z-index:4;color:#fff;font-weight:500;
   font-size:4.688cqw;line-height:1.25;text-transform:uppercase}
 
-.m-s5 .m-pill2{left:5cqw;top:251.563cqw;width:90cqw;height:36.563cqw;border-radius:9.375cqw}
-.m-s5 .m-p2-glow{left:5.938cqw;top:255cqw;width:15.313cqw;height:15.313cqw}
-.m-s5 .m-p2-sph{left:5.938cqw;top:255cqw;width:15.313cqw;height:15.313cqw;z-index:5}
+.m-s5 .m-pill2{left:5cqw;top:calc(251.563cqw - var(--hA));width:90cqw;height:36.563cqw;border-radius:9.375cqw}
+.m-s5 .m-p2-glow{left:5.938cqw;top:calc(255cqw - var(--hA));width:15.313cqw;height:15.313cqw}
+.m-s5 .m-p2-sph{left:5.938cqw;top:calc(255cqw - var(--hA));width:15.313cqw;height:15.313cqw;z-index:5}
 /* Межбуквенное 0,45 px при кегле 15 (узел 181:2209) — от него зависит разбивка на строки */
-.m-s5 .m-pill2-title{left:24.063cqw;top:255cqw;width:68.125cqw;z-index:4;color:#fff;font-weight:500;
+.m-s5 .m-pill2-title{left:24.063cqw;top:calc(255cqw - var(--hA));width:68.125cqw;z-index:4;color:#fff;font-weight:500;
   font-size:4.688cqw;line-height:1.25;text-transform:uppercase;letter-spacing:.03em}
 
 .m-s5 .m-num-circ{width:13.438cqw;height:13.438cqw;font-size:8.75cqw;z-index:5}
@@ -783,14 +800,14 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-b1{left:5cqw;top:178.438cqw;width:90cqw}
 .m-s5 .m-n2{left:43.438cqw;top:205cqw}
 .m-s5 .m-b2{left:14.688cqw;top:223.125cqw;width:70.625cqw}
-.m-s5 .m-n3{left:43.438cqw;top:295.938cqw}
-.m-s5 .m-b3{left:5cqw;top:314.063cqw;width:90cqw}
-.m-s5 .m-n4{left:43.438cqw;top:346.563cqw}
-.m-s5 .m-b4{left:14.688cqw;top:364.688cqw;width:70.625cqw}
-.m-s5 .m-n5{left:43.75cqw;top:391.25cqw}
-.m-s5 .m-b5{left:5.313cqw;top:409.375cqw;width:90cqw}
-.m-s5 .m-n6{left:43.438cqw;top:442.188cqw}
-.m-s5 .m-b6{left:14.688cqw;top:460.313cqw;width:70.625cqw}
+.m-s5 .m-n3{left:43.438cqw;top:calc(295.938cqw - var(--hA))}
+.m-s5 .m-b3{left:5cqw;top:calc(314.063cqw - var(--hA));width:90cqw}
+.m-s5 .m-n4{left:43.438cqw;top:calc(346.563cqw - var(--hA))}
+.m-s5 .m-b4{left:14.688cqw;top:calc(364.688cqw - var(--hA));width:70.625cqw}
+.m-s5 .m-n5{left:43.75cqw;top:calc(391.25cqw - var(--hA))}
+.m-s5 .m-b5{left:5.313cqw;top:calc(409.375cqw - var(--hA));width:90cqw}
+.m-s5 .m-n6{left:43.438cqw;top:calc(442.188cqw - var(--hA))}
+.m-s5 .m-b6{left:14.688cqw;top:calc(460.313cqw - var(--hA));width:70.625cqw}
 
 /* ==================== M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ ==================== */
 /* Высота с запасом 29,4 px под плиткой OZON — зазор до следующего экрана по макету

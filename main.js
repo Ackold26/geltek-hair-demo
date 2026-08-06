@@ -75,6 +75,32 @@
     });
   }
 
+  /* ---------- Мобильная: раскрывающиеся группы блока «Как действует сыворотка» ----------
+     Обе группы свёрнуты при загрузке (классы на секции заданы в разметке). Нажатие на рамку
+     заголовка или сам заголовок переключает свою группу; знак «+» меняется на «–» правилом CSS,
+     положение нижележащих элементов и высота плашки — переменными --hA/--hB. */
+  var accSec = document.querySelector('.m-s5');
+  if (accSec) {
+    var toggleAcc = function (key) {
+      var closed = accSec.classList.toggle('acc-' + key + '-closed');
+      accSec.querySelectorAll('[data-acc="' + key + '"]').forEach(function (n) {
+        n.setAttribute('aria-expanded', closed ? 'false' : 'true');
+      });
+    };
+    accSec.querySelectorAll('[data-acc]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        toggleAcc(el.getAttribute('data-acc'));
+      });
+      /* клавиатура: рамка и заголовок — не кнопки, Enter/Space сами не срабатывают */
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          toggleAcc(el.getAttribute('data-acc'));
+        }
+      });
+    });
+  }
+
   /* ---------- Единый обработчик прокрутки: два типа эффектов на элементах секций ----------
      - data-scroll-y0/y1 — абсолютная интерполяция top: флакон hero, логотип GELTEK в блоке
        «Доверие» (один векторный элемент, движется тем же механизмом);
