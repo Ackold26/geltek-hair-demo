@@ -548,6 +548,9 @@ a{color:inherit;text-decoration:none}
    линию на месте (низы упаковок выровнены макетом) и убирает искажение. */
 .s9 .pack{z-index:3;transition:transform .25s;object-fit:contain}
 .s9 .pack:hover{transform:scale(1.04)}
+/* Упаковки — ссылки на карточки товара: бокс задаёт ссылка, картинка занимает его целиком
+   с тем же вписыванием по высоте */
+.s9 a.pack img,.m-s9 a.m-pack img{display:block;width:100%;height:100%;object-fit:contain}
 /* Нижний блок красной линейки (упаковки, подписи объёмов и полоса) опущен на 43px:
    так между плашкой с текстом и полосой держится макетный просвет */
 .s9 .r-norm30{left:42.031cqw;top:28.49cqw;width:6.51cqw;height:15.677cqw}
