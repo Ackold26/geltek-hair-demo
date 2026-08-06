@@ -12,16 +12,9 @@
   --gray:#58595B;          /* текст меню */
   --gray2:#54565A;
   --btn:#892245;
-  /* Компенсация растеризации светлого текста на тёмных подложках. Тонкие штрихи Light
-     браузер отрисовывает плотнее макета (замер по эталону 1:1: в 1,55 раза больше «краски»
-     на бордовом фоне при полном совпадении на белом). Полупрозрачная обводка съедает
-     лишние полутона по краям штриха, ядро буквы остаётся нейтрально-белым: краска 1,02
-     от макетной. Обводка НЕЙТРАЛЬНАЯ (полупрозрачный чёрный), а не цветом подложки:
-     подложек несколько (бордовая, фиолетовая, фотографии), и обводка одним цветом
-     подкрашивает текст на всех остальных — замер даёт разброс каналов до 47 единиц
-     против 0,7 у нейтральной. Заголовки (Medium) не трогаются. */
-  --thin:.7px rgba(0,0,0,.5);
-  --thin-sm:.45px rgba(0,0,0,.45);
+  /* Основной светлый текст — чистый белый: по требованию заказчика цвет шрифта
+     в основном тексте на протяжении всего лендинга белый, без компенсирующей
+     обводки (она приглушала ядро штриха до 236 из 255). */
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -146,10 +139,10 @@ a{color:inherit;text-decoration:none}
   filter:drop-shadow(0 .2cqw .4cqw rgba(0,0,0,.25))}
 .s1 .adv-title{left:27.344cqw;top:60.417cqw;width:53.698cqw;z-index:6;
   color:#fff;font-weight:500;font-size:1.875cqw;line-height:1.25;text-transform:uppercase}
-.s1 .adv-note{left:27.552cqw;top:83.646cqw;z-index:6;color:#fff;font-weight:300;font-size:.729cqw;-webkit-text-stroke:var(--thin-sm)}
+.s1 .adv-note{left:27.552cqw;top:83.646cqw;z-index:6;color:#fff;font-weight:300;font-size:.729cqw}
 
 /* пункты преимуществ */
-.s1 .adv-item{z-index:6;color:#fff;font-weight:300;font-size:1.667cqw;line-height:1.25;left:27.188cqw;width:37.344cqw;-webkit-text-stroke:var(--thin)}
+.s1 .adv-item{z-index:6;color:#fff;font-weight:300;font-size:1.667cqw;line-height:1.25;left:27.188cqw;width:37.344cqw}
 .s1 .adv-item.i1{top:67.292cqw}
 .s1 .adv-item.i2{top:71.458cqw}
 .s1 .adv-item.i3{top:77.552cqw}
@@ -204,7 +197,7 @@ a{color:inherit;text-decoration:none}
    искажение пропорции; смещение центра относительно круга (-3.85,-2.5)px — так в макете */
 .s2 .icon img{width:6.953cqw;height:6.021cqw;transform:translate(-0.201cqw,-0.13cqw)}
 .s2 .txt{left:55cqw;top:24.844cqw;width:22.708cqw;z-index:3;color:#fff;font-weight:300;
-  font-size:1.667cqw;line-height:1.25;-webkit-text-stroke:var(--thin)}
+  font-size:1.667cqw;line-height:1.25}
 .s2 .txt .b{font-weight:500}
 
 /* ==================== ЭКРАН 3: МУЖЧИНАМ (2847..3927) ==================== */
@@ -217,7 +210,7 @@ a{color:inherit;text-decoration:none}
 /* 137:128: точный размер 136x121 (соотношение 1.124); смещение центра (+1.8,-4.0)px */
 .s3 .icon img{width:7.083cqw;height:6.302cqw;transform:translate(0.094cqw,-0.208cqw)}
 .s3 .txt{left:22.135cqw;top:24.74cqw;width:22.708cqw;z-index:3;color:#fff;font-weight:300;
-  font-size:1.667cqw;line-height:1.25;-webkit-text-stroke:var(--thin)}
+  font-size:1.667cqw;line-height:1.25}
 .s3 .txt .b{font-weight:500}
 
 /* ==================== ЭКРАН 4: БЕРЕЖНЫЙ УХОД (3927..5006) ==================== */
@@ -234,7 +227,7 @@ a{color:inherit;text-decoration:none}
 /* ширина бокса чуть больше макетных 437px: строка «плотности и толщины волос» набирается
    в 439px и без запаса разрывалась на две — в макете она идёт цельной строкой */
 .s4 .txt{left:55.208cqw;top:24.844cqw;width:23.542cqw;z-index:3;color:#fff;font-weight:300;
-  font-size:1.667cqw;line-height:1.25;-webkit-text-stroke:var(--thin)}
+  font-size:1.667cqw;line-height:1.25}
 .s4 .txt .b{font-weight:500}
 
 /* ==================== ЭКРАН 5: КАК ДЕЙСТВУЕТ СЫВОРОТКА (4880..6630) ==================== */
@@ -293,7 +286,7 @@ a{color:inherit;text-decoration:none}
 /* Основной текст пунктов в макете приглушён: пики его пикселей розовые (255,172,200) при
    белых 255 у кружков и заголовков рядом — то есть белый с непрозрачностью около 0.75 */
 .s5 .body{z-index:4;color:#fff;font-weight:300;font-size:.99cqw;line-height:1.32;
-  left:27.604cqw;width:32.5cqw;-webkit-text-stroke:var(--thin-sm)}
+  left:27.604cqw;width:32.5cqw}
 .s5 .b1{top:20.260cqw}
 .s5 .b2{top:23.906cqw}
 .s5 .b3{top:33.490cqw}
@@ -440,7 +433,7 @@ a{color:inherit;text-decoration:none}
   background:#B73050;opacity:.5;filter:blur(1.302cqw);z-index:7}
 .s7 .s7-sph{left:17.135cqw;top:3.906cqw;width:9.479cqw;height:9.583cqw;z-index:8}
 .s7 .s7-title{left:27.656cqw;top:5.781cqw;width:53.958cqw;z-index:7;color:#fff;font-weight:300;
-  font-size:2.5cqw;line-height:1.25;text-transform:uppercase;-webkit-text-stroke:var(--thin)}
+  font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
 .s7 .s7-title .b{font-weight:500}
 
 /* до/после — круги-медальоны */
@@ -456,7 +449,7 @@ a{color:inherit;text-decoration:none}
 .s7 .ba-before-dot{left:30.938cqw;top:27.188cqw}
 .s7 .ba-after-dot{left:68.125cqw;top:27.188cqw}
 .s7 .ba-label{z-index:9;color:#fff;font-weight:300;font-size:1.25cqw;text-transform:uppercase;
-  text-align:center;white-space:nowrap;-webkit-text-stroke:var(--thin)}
+  text-align:center;white-space:nowrap}
 .s7 .ba-before-label{left:31.094cqw;top:42.083cqw;width:3.698cqw}
 .s7 .ba-after-label{left:66.6cqw;top:42.083cqw;width:8cqw}
 
@@ -470,7 +463,7 @@ a{color:inherit;text-decoration:none}
 .s7 .ba-ball{left:46.406cqw;top:24.271cqw;width:9.74cqw;height:9.844cqw;z-index:11}
 
 .s7 .s7-note{left:18.698cqw;top:46.719cqw;z-index:7;color:#fff;font-weight:300;font-size:.729cqw;
-  padding-bottom:.1cqw;-webkit-text-stroke:var(--thin-sm)}
+  padding-bottom:.1cqw}
 
 /* ==================== ЭКРАН 8: ДОВЕРИЕ + ПРОИЗВОДСТВО (9180..10398) ==================== */
 .s8{height:63.438cqw}              /* 1218/19.2 */
@@ -520,7 +513,7 @@ a{color:inherit;text-decoration:none}
 .s9 .banner{z-index:2;overflow:hidden;position:absolute;display:flex;align-items:center}
 .s9 .banner .banner-drop{position:absolute;mix-blend-mode:luminosity;pointer-events:none}
 .s9 .banner span{position:relative;z-index:1;color:#fff;font-weight:300;font-size:1.458cqw;
-  line-height:1.357;padding:0 20cqw 0 5.521cqw;-webkit-text-stroke:var(--thin)}
+  line-height:1.357;padding:0 20cqw 0 5.521cqw}
 /* Узел 137:441: переносы строк заданы разметкой. Правый отступ общего правила сузил бы
    строку до 643px и добавил бы лишние переносы, поэтому здесь он снят. */
 .s9 .r-banner span{padding-right:0}
@@ -564,7 +557,7 @@ a{color:inherit;text-decoration:none}
 /* --- подписи объёма со свечением --- */
 .s9 .vol-glow{width:2.083cqw;height:2.083cqw;border-radius:50%;filter:blur(.26cqw);z-index:3;opacity:.5}
 .s9 .vol-sph{width:2.448cqw;height:2.5cqw;z-index:4}
-.s9 .vol-txt{color:#fff;font-weight:300;font-size:1.25cqw;z-index:4;-webkit-text-stroke:var(--thin)}
+.s9 .vol-txt{color:#fff;font-weight:300;font-size:1.25cqw;z-index:4}
 .s9 .r-g1,.s9 .r-g2,.s9 .r-g3{background:#CC4363}
 .s9 .r-g1{left:42.031cqw;top:45.886cqw}
 .s9 .r-s1{left:41.823cqw;top:45.678cqw}
@@ -662,7 +655,7 @@ a{color:inherit;text-decoration:none}
 .stage--mobile .m-num-circ{border-radius:50%;background:#fff;display:grid;place-items:center;
   font-weight:300;color:var(--wine);line-height:1}
 .stage--mobile .m-vol-glow{border-radius:50%;opacity:.5;filter:blur(.6cqw)}
-.stage--mobile .m-vol-txt{color:#fff;font-weight:300;-webkit-text-stroke:var(--thin)}
+.stage--mobile .m-vol-txt{color:#fff;font-weight:300}
 .stage--mobile .m-pack{height:auto}
 
 /* ---- хедер (центрированный лого + гамбургер) ---- */
@@ -722,17 +715,17 @@ a{color:inherit;text-decoration:none}
 .m-s1 .m-ic1{top:190.313cqw}
 .m-s1 .m-ic2{top:227.813cqw}
 .m-s1 .m-ic3{top:265.625cqw}
-.m-s1 .m-adv-item{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center;-webkit-text-stroke:var(--thin)}
+.m-s1 .m-adv-item{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center}
 .m-s1 .m-i1{left:4.375cqw;top:208.438cqw;width:90cqw}
 .m-s1 .m-i2{left:14.063cqw;top:245.938cqw;width:70.625cqw}
 .m-s1 .m-i3{left:14.063cqw;top:283.75cqw;width:70.625cqw}
 .m-s1 .m-note{left:4.375cqw;top:303.438cqw;width:90cqw;z-index:4;color:#fff;font-weight:300;
-  font-size:3.125cqw;text-align:center;display:block;width:max-content;margin:0 auto;right:0;-webkit-text-stroke:var(--thin-sm)}
+  font-size:3.125cqw;text-align:center;display:block;width:max-content;margin:0 auto;right:0}
 
 /* ==================== M-ЭКРАНЫ 2-4: карточки-плашки ==================== */
 .m-card-screen .m-photo{left:0;top:0;width:100cqw;height:105.625cqw;object-fit:cover;z-index:1}
 .m-card-screen .m-icon{z-index:3}
-.m-card-screen .m-txt{z-index:3;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center;-webkit-text-stroke:var(--thin)}
+.m-card-screen .m-txt{z-index:3;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center}
 .m-card-screen .m-txt .b{font-weight:500}
 
 .m-s2{height:199.375cqw}
@@ -785,7 +778,7 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-num-circ{width:13.438cqw;height:13.438cqw;font-size:8.75cqw;z-index:5}
 /* Пункты списка в макете выровнены по центру (узлы 181:2162, 181:2175, 181:2221, 181:2227,
    181:2234, 181:2240 — textAlignHorizontal CENTER) */
-.m-s5 .m-body{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center;-webkit-text-stroke:var(--thin)}
+.m-s5 .m-body{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center}
 .m-s5 .m-n1{left:43.438cqw;top:160.313cqw}
 .m-s5 .m-b1{left:5cqw;top:178.438cqw;width:90cqw}
 .m-s5 .m-n2{left:43.438cqw;top:205cqw}
@@ -867,7 +860,7 @@ a{color:inherit;text-decoration:none}
 .m-s7 .m-s7-glow{left:4.063cqw;top:7.188cqw;width:19.375cqw;height:19.375cqw}
 .m-s7 .m-s7-sph{left:4.063cqw;top:7.188cqw;width:19.375cqw;height:19.688cqw;z-index:3}
 .m-s7 .m-s7-title{left:23.75cqw;top:9.688cqw;width:67.813cqw;z-index:2;color:#fff;font-weight:300;
-  font-size:5.625cqw;line-height:1.25;text-transform:uppercase;-webkit-text-stroke:var(--thin)}
+  font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s7 .m-s7-title .b{font-weight:500}
 
 .m-s7 .m-ba-ring{width:55cqw;height:55cqw;border-radius:50%;background:#fff;z-index:2}
@@ -882,7 +875,7 @@ a{color:inherit;text-decoration:none}
 .m-s7 .m-ba-before-dot{left:46.563cqw;top:82.813cqw}
 .m-s7 .m-ba-after-dot{left:46.25cqw;top:199.688cqw}
 .m-s7 .m-ba-label{z-index:4;color:#fff;font-weight:300;font-size:3.75cqw;text-transform:uppercase;
-  text-align:center;white-space:nowrap;-webkit-text-stroke:var(--thin)}
+  text-align:center;white-space:nowrap}
 .m-s7 .m-ba-before-label{left:8.125cqw;top:120cqw;width:83.75cqw}
 .m-s7 .m-ba-after-label{left:8.125cqw;top:236.875cqw;width:84.063cqw}
 
@@ -894,7 +887,7 @@ a{color:inherit;text-decoration:none}
   background:#BF8A95;filter:blur(2.5cqw);mix-blend-mode:screen;z-index:5}
 .m-s7 .m-ba-ball{left:32.813cqw;top:132.813cqw;width:34.375cqw;height:34.688cqw;z-index:6}
 
-.m-s7 .m-s7-note{left:8.125cqw;top:248.438cqw;z-index:2;color:#fff;font-weight:300;font-size:3.125cqw;-webkit-text-stroke:var(--thin-sm)}
+.m-s7 .m-s7-note{left:8.125cqw;top:248.438cqw;z-index:2;color:#fff;font-weight:300;font-size:3.125cqw}
 
 /* ==================== M-ЭКРАН 8: ДОВЕРИЕ + ПРОИЗВОДСТВО ==================== */
 /* Содержимое ниже заголовка приведено к координатам макета (узлы 184:2614 текст, 184:2616
@@ -940,7 +933,7 @@ a{color:inherit;text-decoration:none}
 .m-s9 .m-banner{z-index:2;overflow:hidden;position:absolute;display:flex;align-items:center}
 .m-s9 .m-banner .banner-drop{position:absolute;mix-blend-mode:luminosity;pointer-events:none}
 .m-s9 .m-banner span{position:relative;z-index:1;color:#fff;font-weight:300;font-size:3.75cqw;
-  line-height:1.3;padding:2cqw 40cqw 2cqw 9.063cqw;-webkit-text-stroke:var(--thin)}
+  line-height:1.3;padding:2cqw 40cqw 2cqw 9.063cqw}
 .m-s9 .m-r-banner{left:4.375cqw;top:41.875cqw;width:90.938cqw;height:47.188cqw;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 /* Цветокоррекция заливки узла 184:2652 (экспозиция −0,26, света −0,65, тени −0,9) */
