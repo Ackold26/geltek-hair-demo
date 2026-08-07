@@ -547,8 +547,10 @@ a{color:inherit;text-decoration:none}
 .s9 .r-norm30{left:42.031cqw;top:28.49cqw;width:6.51cqw;height:15.677cqw}
 .s9 .r-norm100{left:52.292cqw;top:24.792cqw;width:9.219cqw;height:19.271cqw}
 .s9 .r-norm390{left:65.729cqw;top:19.115cqw;width:12.552cqw;height:25.156cqw}
-.s9 .v-post30{left:31.094cqw;top:73.073cqw;width:6.927cqw;height:15.469cqw}
-.s9 .v-post100{left:41.51cqw;top:68.802cqw;width:8.49cqw;height:20.104cqw}
+/* Упаковки 30 и 100 мл выровнены по макету: центр тюбика совпадает с центром пары
+   «шарик + подпись объёма» (в макете центры 711,5 и 913,5 px) */
+.s9 .v-post30{left:33.646cqw;top:73.073cqw;width:6.927cqw;height:15.469cqw}
+.s9 .v-post100{left:43.385cqw;top:68.802cqw;width:8.49cqw;height:20.104cqw}
 .s9 .v-post250{left:54.167cqw;top:65.833cqw;width:9.583cqw;height:22.865cqw}
 .s9 .v-post390{left:66.354cqw;top:62.656cqw;width:11.146cqw;height:26.042cqw}
 
