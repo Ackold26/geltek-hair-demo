@@ -196,7 +196,9 @@ a{color:inherit;text-decoration:none}
 /* 137:87: точный размер 133.5x115.6 (соотношение 1.155) вместо доли круга — запрещает
    искажение пропорции; смещение центра относительно круга (-3.85,-2.5)px — так в макете */
 .s2 .icon img{width:6.953cqw;height:6.021cqw;transform:translate(-0.201cqw,-0.13cqw)}
-.s2 .txt{left:55cqw;top:24.844cqw;width:22.708cqw;z-index:3;color:#fff;font-weight:300;
+/* Порядок строк задан переносами по макету; ширина работает только ограничителем —
+   строка «рекомендуем использовать» набирается на 2 px шире прежнего бокса */
+.s2 .txt{left:55cqw;top:24.844cqw;width:23.125cqw;z-index:3;color:#fff;font-weight:300;
   font-size:1.667cqw;line-height:1.25}
 .s2 .txt .b{font-weight:500}
 
