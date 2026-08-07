@@ -929,7 +929,7 @@ a{color:inherit;text-decoration:none}
   font-size:16.875cqw;line-height:1;letter-spacing:.251em;text-transform:uppercase;white-space:nowrap}
 
 /* ==================== M-ЭКРАН 9: ШАМПУНИ ==================== */
-.m-s9{height:287.188cqw}
+.m-s9{height:300.626cqw}
 .m-s9 .m-s9-title{left:23.75cqw;top:8.125cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 /* Узлы 184:2645 и 184:2643: шары стоят на 2px ниже верха заголовка, центры совпадают.
@@ -938,70 +938,72 @@ a{color:inherit;text-decoration:none}
 .m-s9 .m-s9-duo{left:5cqw;top:8.75cqw;width:17.813cqw;height:12.5cqw;z-index:2}
 
 .m-s9 .m-subhat{z-index:2;font-weight:500;line-height:1.25;text-transform:uppercase}
-/* подзаголовок в две строки: кегль на ступень мельче макетного и бокс до правого поля —
-   строка «ДЛЯ КОМФОРТА КОЖИ ГОЛОВЫ» длиннее первой и в макетный бокс не помещается */
-.m-s9 .m-r-subhat{left:23.75cqw;top:27.188cqw;width:75cqw;color:var(--wine);font-size:4.375cqw}
-.m-s9 .m-v-subhat{left:23.75cqw;top:157.813cqw;width:62.188cqw;color:var(--violet);font-size:4.688cqw}
+/* Подзаголовок в четыре строки, кегль и бокс по макету; порядок строк задан переносами */
+.m-s9 .m-r-subhat{left:23.75cqw;top:27.188cqw;width:65cqw;color:var(--wine);font-size:4.688cqw}
+.m-s9 .m-v-subhat{left:23.75cqw;top:171.251cqw;width:62.188cqw;color:var(--violet);font-size:4.688cqw}
 .m-s9 .m-sph{z-index:2}
 .m-s9 .m-r-sph{left:15.313cqw;top:26.875cqw;width:6.25cqw;height:auto}
-.m-s9 .m-v-sph{left:15.313cqw;top:157.500cqw;width:6.25cqw;height:auto}
+.m-s9 .m-v-sph{left:15.313cqw;top:170.938cqw;width:6.25cqw;height:auto}
 
 .m-s9 .m-banner{z-index:2;overflow:hidden;position:absolute;display:flex;align-items:center}
 .m-s9 .m-banner .banner-drop{position:absolute;mix-blend-mode:luminosity;pointer-events:none}
 .m-s9 .m-banner span{position:relative;z-index:1;color:#fff;font-weight:300;font-size:3.75cqw;
   line-height:1.3;padding:2cqw 40cqw 2cqw 9.063cqw}
-.m-s9 .m-r-banner{left:4.375cqw;top:41.875cqw;width:90.938cqw;height:47.188cqw;
+.m-s9 .m-r-banner{left:4.375cqw;top:55.313cqw;width:90.938cqw;height:47.188cqw;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
+/* Правый отступ — точечно: в общем правиле он рассчитан на другой баннер и переставляет
+   заданный макетом порядок строк */
+.m-s9 .m-r-banner span{padding-right:30cqw}
 /* Цветокоррекция заливки узла 184:2652 (экспозиция −0,26, света −0,65, тени −0,9) */
 .m-s9 .m-r-banner .banner-drop{left:50.625cqw;top:-5cqw;width:55.313cqw;height:auto;
   filter:brightness(.566) saturate(1.533)}
-.m-s9 .m-v-banner{left:4.375cqw;top:181.250cqw;width:90.938cqw;height:46.875cqw;
+.m-s9 .m-v-banner{left:4.375cqw;top:194.688cqw;width:90.938cqw;height:46.875cqw;
   background:linear-gradient(90deg,rgba(96,66,131,1),rgba(116,95,154,1))}
-.m-s9 .m-v-banner span{font-size:3.125cqw;padding:2cqw 45cqw 2cqw 9.063cqw}
+.m-s9 .m-v-banner span{font-size:3.125cqw;padding:2cqw 32cqw 2cqw 9.063cqw}
 .m-s9 .m-v-banner .banner-drop{left:48.438cqw;top:-67.813cqw;width:143.438cqw;height:auto}
 
 .m-s9 .m-pack{z-index:3}
-.m-s9 .m-r-norm30 {left:11.906cqw;top:90.625cqw;   width:14.719cqw;height:35.5cqw}
-.m-s9 .m-r-norm100{left:35.219cqw;top:83.313cqw; width:20.531cqw;height:42.938cqw}
-.m-s9 .m-r-norm390{left:60.625cqw;top:67.344cqw; width:29.375cqw;height:58.844cqw}
-.m-s9 .m-v-post30 {left:3.125cqw; top:229.531cqw;width:15.969cqw;height:35.813cqw}
-.m-s9 .m-v-post100{left:23.438cqw;top:221.719cqw;width:18.688cqw;height:44.406cqw}
-.m-s9 .m-v-post250{left:45.938cqw;top:215.063cqw;width:21.313cqw;height:50.844cqw}
-.m-s9 .m-v-post390{left:70.938cqw;top:206.406cqw;width:25.406cqw;height:59.281cqw}
+.m-s9 .m-r-norm30 {left:11.906cqw;top:104.063cqw;   width:14.719cqw;height:35.5cqw}
+.m-s9 .m-r-norm100{left:35.219cqw;top:96.751cqw; width:20.531cqw;height:42.938cqw}
+.m-s9 .m-r-norm390{left:60.625cqw;top:80.782cqw; width:29.375cqw;height:58.844cqw}
+.m-s9 .m-v-post30 {left:3.125cqw; top:242.969cqw;width:15.969cqw;height:35.813cqw}
+.m-s9 .m-v-post100{left:23.438cqw;top:235.157cqw;width:18.688cqw;height:44.406cqw}
+.m-s9 .m-v-post250{left:45.938cqw;top:228.501cqw;width:21.313cqw;height:50.844cqw}
+.m-s9 .m-v-post390{left:70.938cqw;top:219.844cqw;width:25.406cqw;height:59.281cqw}
 
 .m-s9 .m-vol-glow{width:4.688cqw;height:4.688cqw;z-index:3}
 .m-s9 .m-vol-sph{width:5.625cqw;height:auto;z-index:4}
 .m-s9 .m-vol-txt{font-size:2.5cqw;z-index:4}
 .m-s9 .m-rg1,.m-s9 .m-rg2,.m-s9 .m-rg3{background:#CC4363}
-.m-s9 .m-rg1{left:13.438cqw;top:131.250cqw}
-.m-s9 .m-rs1{left:12.813cqw;top:130.625cqw}
-.m-s9 .m-rt1{left:19.375cqw;top:131.563cqw;color:#fff}
-.m-s9 .m-rg2{left:38.125cqw;top:131.250cqw}
-.m-s9 .m-rs2{left:37.813cqw;top:130.938cqw}
-.m-s9 .m-rt2{left:44.063cqw;top:131.875cqw;color:#fff}
-.m-s9 .m-rg3{left:67.188cqw;top:130.938cqw}
-.m-s9 .m-rs3{left:66.563cqw;top:130.625cqw}
-.m-s9 .m-rt3{left:73.125cqw;top:131.563cqw;color:#fff}
+.m-s9 .m-rg1{left:13.438cqw;top:144.688cqw}
+.m-s9 .m-rs1{left:12.813cqw;top:144.063cqw}
+.m-s9 .m-rt1{left:19.375cqw;top:145.001cqw;color:#fff}
+.m-s9 .m-rg2{left:38.125cqw;top:144.688cqw}
+.m-s9 .m-rs2{left:37.813cqw;top:144.376cqw}
+.m-s9 .m-rt2{left:44.063cqw;top:145.313cqw;color:#fff}
+.m-s9 .m-rg3{left:67.188cqw;top:144.376cqw}
+.m-s9 .m-rs3{left:66.563cqw;top:144.063cqw}
+.m-s9 .m-rt3{left:73.125cqw;top:145.001cqw;color:#fff}
 
 .m-s9 .m-vg1,.m-s9 .m-vg2,.m-s9 .m-vg3,.m-s9 .m-vg4{background:#8E6CC8}
-.m-s9 .m-vg1{left:5cqw;top:269.063cqw}
-.m-s9 .m-vs1{left:4.688cqw;top:269.063cqw}
-.m-s9 .m-vt1{left:10.938cqw;top:270.625cqw;color:#fff}
-.m-s9 .m-vg2{left:26.875cqw;top:269.688cqw}
-.m-s9 .m-vs2{left:26.25cqw;top:269.375cqw}
-.m-s9 .m-vt2{left:32.5cqw;top:270.625cqw;color:#fff}
-.m-s9 .m-vg3{left:48.75cqw;top:269.688cqw}
-.m-s9 .m-vs3{left:48.125cqw;top:269.063cqw}
-.m-s9 .m-vt3{left:54.688cqw;top:270.625cqw;color:#fff}
-.m-s9 .m-vg4{left:75.625cqw;top:269.688cqw}
-.m-s9 .m-vs4{left:75cqw;top:269.063cqw}
-.m-s9 .m-vt4{left:81.563cqw;top:270.313cqw;color:#fff}
+.m-s9 .m-vg1{left:5cqw;top:282.501cqw}
+.m-s9 .m-vs1{left:4.688cqw;top:282.501cqw}
+.m-s9 .m-vt1{left:10.938cqw;top:284.063cqw;color:#fff}
+.m-s9 .m-vg2{left:26.875cqw;top:283.126cqw}
+.m-s9 .m-vs2{left:26.25cqw;top:282.813cqw}
+.m-s9 .m-vt2{left:32.5cqw;top:284.063cqw;color:#fff}
+.m-s9 .m-vg3{left:48.75cqw;top:283.126cqw}
+.m-s9 .m-vs3{left:48.125cqw;top:282.501cqw}
+.m-s9 .m-vt3{left:54.688cqw;top:284.063cqw;color:#fff}
+.m-s9 .m-vg4{left:75.625cqw;top:283.126cqw}
+.m-s9 .m-vs4{left:75cqw;top:282.501cqw}
+.m-s9 .m-vt4{left:81.563cqw;top:283.751cqw;color:#fff}
 
-.m-s9 .m-r-band{left:-22.188cqw;top:105.625cqw;width:122.813cqw;height:43.75cqw;z-index:1;overflow:hidden;
+.m-s9 .m-r-band{left:-22.188cqw;top:119.063cqw;width:122.813cqw;height:43.75cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 .m-s9 .m-r-band .wm{position:absolute;left:16.563cqw;top:2cqw;color:#9B274C;opacity:.5;font-weight:500;
   font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
-.m-s9 .m-v-band{left:0;top:244.063cqw;width:100.625cqw;height:43.125cqw;z-index:1;overflow:hidden;
+.m-s9 .m-v-band{left:0;top:257.501cqw;width:100.625cqw;height:43.125cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,#604283,#745F9A)}
 .m-s9 .m-v-band .wm{position:absolute;left:7.5cqw;top:2cqw;color:#715B97;font-weight:500;
   font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
