@@ -234,7 +234,7 @@ a{color:inherit;text-decoration:none}
 /* margin-top:-0.208cqw (-4px): s5 должна начинаться на 4px раньше конца s4 (белая
    подложка 137:166 рисуется поверх нижнего края фото s4) — без этого сдвига возникает
    систематическое расхождение +4px во всех секциях ниже s4 */
-.s5{height:74.792cqw;margin-top:-0.208cqw}              /* 1436/19.2 */
+.s5{height:61.302cqw;margin-top:-0.208cqw}              /* 1436/19.2 */
 /* 137:168 — кв-фон выведен выше начала секции: в макете подложка стартует на 130px
    раньше секции 5 (top отрицательный) и заканчивается чуть ниже её нижнего края —
    нижний край перекрывается уже секцией 6, идущей следом в потоке */
@@ -242,7 +242,7 @@ a{color:inherit;text-decoration:none}
    снято намеренно: сдвиг вверх оставлял под бордовой плашкой 39px фона вместо макетных 168, а
    сдвиг вниз подводил нижнюю кромку вплотную к шару заголовка «Где купить» (6516). Неподвижное
    макетное положение — единственное, при котором соблюдаются оба расстояния. */
-.s5 .kvbg{left:0;top:-6.771cqw;width:100cqw;height:82.24cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
+.s5 .kvbg{left:0;top:-6.771cqw;width:100cqw;height:68.073cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
 /* 137:166 — сплошная белая подложка под кв-фоном (сама секция уже, чем фон) */
 .s5 .white-bg{left:0;top:-0.208cqw;width:100cqw;height:75.677cqw;background:#fff;z-index:0}
 .s5 .s5-patch{left:74.531cqw;top:41.146cqw;width:34.063cqw;height:43.438cqw;filter:blur(3.125cqw);opacity:.9}
@@ -254,7 +254,7 @@ a{color:inherit;text-decoration:none}
    Градиент вертикальный, светлая сторона снизу (в макете ручки градиента идут снизу вверх).
    Цвета — результат наложения макетных #98123C и #5E0023 с непрозрачностью 0.9 на светлую
    подложку витрины: заливка остаётся непрозрачной, но тон совпадает с макетом */
-.s5 .card{left:12.865cqw;top:5.104cqw;width:73.906cqw;height:48.125cqw;z-index:3;background:linear-gradient(180deg,#6B1535,#9F254B)}
+.s5 .card{left:12.604cqw;top:5.313cqw;width:74.167cqw;height:46.146cqw;z-index:3;background:linear-gradient(180deg,#6B1535,#9F254B)}
 
 /* цветное свечение под сферами (#CC4363, blur r50→1.302cqw) */
 .s5 .sph-glow{border-radius:50%;background:#CC4363;opacity:.5;filter:blur(1.302cqw);z-index:4}
@@ -262,54 +262,52 @@ a{color:inherit;text-decoration:none}
 
 .s5 .title-glow{left:19.31cqw;top:7.495cqw;width:6.742cqw;height:6.742cqw}
 .s5 .title-sph{left:18.542cqw;top:6.771cqw;width:8.073cqw;height:8.145cqw}
-.s5 .title{left:27.448cqw;top:9.167cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
+.s5 .title{left:27.448cqw;top:9.375cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
 
 /* Рамки-пилюли вокруг заголовков (137:221/229): контур капсулы, шарик-маркер лежит внутри
    рамки слева, текст — правее шарика */
 .s5 .pill{border:1px solid rgba(255,255,255,.4);z-index:4}
-.s5 .pill1{left:21.198cqw;top:13.802cqw;width:26.563cqw;height:4.375cqw;border-radius:2.188cqw}
-.s5 .pill2{left:21.198cqw;top:26.615cqw;width:40cqw;height:5.313cqw;border-radius:2.656cqw}
+.s5 .pill1{left:21.198cqw;top:15.052cqw;width:26.563cqw;height:4.635cqw;border-radius:2.188cqw}
+.s5 .pill2{left:21.198cqw;top:25.156cqw;width:40cqw;height:4.635cqw;border-radius:2.656cqw}
 
-.s5 .p1-glow{left:22.357cqw;top:14.271cqw;width:3.359cqw;height:3.359cqw}
-.s5 .p1-sph{left:21.979cqw;top:13.958cqw;width:4.01cqw;height:4.049cqw}
-.s5 .pill1-title{left:27.604cqw;top:15.208cqw;width:30cqw;z-index:4;color:#fff;font-weight:500;
+.s5 .p1-glow{left:22.357cqw;top:15.521cqw;width:3.359cqw;height:3.359cqw}
+.s5 .p1-sph{left:21.979cqw;top:15.208cqw;width:4.01cqw;height:4.049cqw}
+.s5 .pill1-title{left:27.604cqw;top:16.406cqw;width:30cqw;z-index:4;color:#fff;font-weight:500;
   font-size:1.25cqw;line-height:1.25;text-transform:uppercase}
 
-.s5 .p2-glow{left:22.357cqw;top:27.708cqw;width:3.359cqw;height:3.359cqw;mix-blend-mode:screen}
-.s5 .p2-sph{left:21.979cqw;top:27.396cqw;width:4.01cqw;height:4.049cqw}
-.s5 .pill2-title{left:27.604cqw;top:28.333cqw;width:34cqw;z-index:4;color:#fff;font-weight:500;
+.s5 .p2-glow{left:22.357cqw;top:26.249cqw;width:3.359cqw;height:3.359cqw;mix-blend-mode:screen}
+.s5 .p2-sph{left:21.979cqw;top:25.937cqw;width:4.01cqw;height:4.049cqw}
+.s5 .pill2-title{left:27.604cqw;top:25.833cqw;width:34cqw;z-index:4;color:#fff;font-weight:500;
   font-size:1.25cqw;line-height:1.25;text-transform:uppercase}
 
 /* Пункты: каждый — самостоятельный абзац со своей координатой (расстояния между ними заданы
    позициями, а не пустой строкой внутри общего текста) */
 /* Основной текст пунктов в макете приглушён: пики его пикселей розовые (255,172,200) при
    белых 255 у кружков и заголовков рядом — то есть белый с непрозрачностью около 0.75 */
-.s5 .body{z-index:4;color:#fff;font-weight:300;font-size:.99cqw;line-height:1.32;
-  left:27.604cqw;width:32.5cqw}
-.s5 .b1{top:20.260cqw}
-.s5 .b2{top:23.906cqw}
-.s5 .b3{top:33.490cqw}
-.s5 .b4{top:37.500cqw}
-.s5 .b5{top:41.510cqw}
-.s5 .b6{top:45.729cqw}
+.s5 .body{z-index:4;color:#fff;font-weight:300;font-size:.99cqw;line-height:1.526;
+  left:27.604cqw;width:44cqw}
+.s5 .b1{top:20.885cqw}
+.s5 .b2{top:31.198cqw}
+.s5 .b3{top:35.677cqw}
+.s5 .b4{top:40.052cqw}
+.s5 .b5{top:44.219cqw}
 
 /* Кружки с номерами центрируются по первой строке своего пункта; по горизонтали их центры
    совпадают с центрами шариков-маркеров в рамках-пилюлях */
-.s5 .num-circ{width:2.5cqw;height:2.5cqw;font-size:1.615cqw;z-index:5}
-.s5 .n1{left:23.281cqw;top:20.417cqw}
-.s5 .n2{left:23.281cqw;top:24.063cqw}
-.s5 .n3{left:23.281cqw;top:33.646cqw}
-.s5 .n4{left:23.281cqw;top:37.656cqw}
-.s5 .n5{left:23.281cqw;top:41.667cqw}
-.s5 .n6{left:23.281cqw;top:45.885cqw}
+.s5 .num-circ{width:2.604cqw;height:2.604cqw;font-size:1.615cqw;z-index:5}
+.s5 .n1{left:23.75cqw;top:20.781cqw}
+.s5 .n2{left:23.75cqw;top:31.354cqw}
+.s5 .n3{left:23.75cqw;top:35.729cqw}
+.s5 .n4{left:23.75cqw;top:40.052cqw}
+.s5 .n5{left:23.75cqw;top:44.375cqw}
 
 /* обёртка 137:235 — полный бокс группы (576×654 = 30×34.062cqw). Обрезки нет: маска 137:237
    (576×584) охватывает только группу 137:236 с декоративным красным эллипсом 137:238, а сама
    картинка 137:239 лежит рядом с маской, прямым ребёнком группы, и в макете видна целиком —
    её низ (6360) на 70px ниже нижней кромки бордовой плашки (6290) */
 /* фигура опущена ниже кромки плашки: подставка и нижние шары выходят за неё, как в макете */
-.s5 .man-wrap{left:63.958cqw;top:26.042cqw;width:19.5cqw;height:22.14cqw;z-index:4}
+.s5 .man-wrap{left:63.958cqw;top:26.875cqw;width:19.5cqw;height:22.14cqw;z-index:4}
 /* .man-glow (137:238, декоративное красное пятно) не используется — при размытии 10.417cqw
    пятно становится видимым красным пятном в правом нижнем углу плашки. */
 /* картинка внутри — ровно по боксу растра 137:239 (20.312×27.448cqw), позиция по таблице;
@@ -570,12 +568,12 @@ a{color:inherit;text-decoration:none}
 .s9 .r-t3{left:71.458cqw;top:46.146cqw}
 
 .s9 .v-g1,.s9 .v-g2,.s9 .v-g3,.s9 .v-g4{background:#8E6CC8}
-.s9 .v-g1{left:33.49cqw;top:90.26cqw}
-.s9 .v-s1{left:33.281cqw;top:90.052cqw}
-.s9 .v-t1{left:36.146cqw;top:90.521cqw}
-.s9 .v-g2{left:44.792cqw;top:90.26cqw}
-.s9 .v-s2{left:44.583cqw;top:90.052cqw}
-.s9 .v-t2{left:47.448cqw;top:90.521cqw}
+.s9 .v-g1{left:33.75cqw;top:90.26cqw}
+.s9 .v-s1{left:33.541cqw;top:90.052cqw}
+.s9 .v-t1{left:36.406cqw;top:90.521cqw}
+.s9 .v-g2{left:43.959cqw;top:90.26cqw}
+.s9 .v-s2{left:43.75cqw;top:90.052cqw}
+.s9 .v-t2{left:46.615cqw;top:90.521cqw}
 .s9 .v-g3{left:55.26cqw;top:90.26cqw}
 .s9 .v-s3{left:55.052cqw;top:90.052cqw}
 .s9 .v-t3{left:57.917cqw;top:90.521cqw}
@@ -753,24 +751,24 @@ a{color:inherit;text-decoration:none}
    ниже первой группы, от суммы обеих — высота плашки и самой секции (нижние секции идут в
    потоке и поднимаются сами). */
 .m-s5{--hA:0cqw;--hB:0cqw}
-.m-s5.acc-a-closed{--hA:92cqw}
-.m-s5.acc-b-closed{--hB:183.8cqw}
+.m-s5.acc-a-closed{--hA:60.75cqw}
+.m-s5.acc-b-closed{--hB:197.1cqw}
 .m-s5.acc-a-closed .acc-a,.m-s5.acc-b-closed .acc-b{display:none}
-.m-s5{height:calc(501.875cqw - var(--hA) - var(--hB))}
+.m-s5{height:calc(483.925cqw - var(--hA) - var(--hB))}
 /* знак раскрытия внутри рамки-пилюли */
 .m-s5 .m-acc-sign{z-index:5;color:#fff;font-weight:300;font-size:6.25cqw;line-height:1;
   display:grid;place-items:center;width:6.25cqw;height:6.25cqw;pointer-events:none}
 .m-s5 .m-acc-sign::before{content:'–'}
 .m-s5.acc-a-closed .m-acc-sign-a::before,.m-s5.acc-b-closed .m-acc-sign-b::before{content:'+'}
 .m-s5 .m-acc-sign-a{left:85.938cqw;top:141.094cqw}
-.m-s5 .m-acc-sign-b{left:85.938cqw;top:calc(266.719cqw - var(--hA))}
+.m-s5 .m-acc-sign-b{left:85.938cqw;top:calc(235.469cqw - var(--hA))}
 .m-s5 [data-acc]{cursor:pointer}
 .m-s5 .m-s5-bg{left:-0.938cqw;top:0;width:102.813cqw;height:106.875cqw;object-fit:cover;z-index:1}
 .m-s5 .m-s5-man-wrap{left:26.25cqw;top:19.375cqw;width:71.875cqw;height:97.5cqw;z-index:4}
 .m-s5 .m-s5-shadow{left:42.188cqw;top:102.188cqw;width:33.75cqw;height:6.25cqw;border-radius:50%;
   background:#D9D9D9;filter:blur(2cqw);mix-blend-mode:multiply;z-index:1}
 .m-s5 .m-s5-man{left:0;top:0;width:100%;height:auto}
-.m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:calc(396.25cqw - var(--hA) - var(--hB));z-index:2;
+.m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:calc(378.3cqw - var(--hA) - var(--hB));z-index:2;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 
 .m-s5 .m-s5-title-glow{left:5.625cqw;top:113.438cqw;width:19.375cqw;height:19.375cqw}
@@ -785,11 +783,11 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-pill1-title{left:24.063cqw;top:141.563cqw;width:68.125cqw;z-index:4;color:#fff;font-weight:500;
   font-size:4.688cqw;line-height:1.25;text-transform:uppercase}
 
-.m-s5 .m-pill2{left:5cqw;top:calc(251.563cqw - var(--hA));width:90cqw;height:36.563cqw;border-radius:9.375cqw}
-.m-s5 .m-p2-glow{left:5.938cqw;top:calc(255cqw - var(--hA));width:15.313cqw;height:15.313cqw}
-.m-s5 .m-p2-sph{left:5.938cqw;top:calc(255cqw - var(--hA));width:15.313cqw;height:15.313cqw;z-index:5}
+.m-s5 .m-pill2{left:5cqw;top:calc(220.313cqw - var(--hA));width:90cqw;height:36.563cqw;border-radius:9.375cqw}
+.m-s5 .m-p2-glow{left:5.938cqw;top:calc(223.75cqw - var(--hA));width:15.313cqw;height:15.313cqw}
+.m-s5 .m-p2-sph{left:5.938cqw;top:calc(223.75cqw - var(--hA));width:15.313cqw;height:15.313cqw;z-index:5}
 /* Межбуквенное 0,45 px при кегле 15 (узел 181:2209) — от него зависит разбивка на строки */
-.m-s5 .m-pill2-title{left:24.063cqw;top:calc(255cqw - var(--hA));width:68.125cqw;z-index:4;color:#fff;font-weight:500;
+.m-s5 .m-pill2-title{left:24.063cqw;top:calc(223.75cqw - var(--hA));width:68.125cqw;z-index:4;color:#fff;font-weight:500;
   font-size:4.688cqw;line-height:1.25;text-transform:uppercase;letter-spacing:.03em}
 
 .m-s5 .m-num-circ{width:13.438cqw;height:13.438cqw;font-size:8.75cqw;z-index:5}
@@ -798,16 +796,14 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-body{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center}
 .m-s5 .m-n1{left:43.438cqw;top:160.313cqw}
 .m-s5 .m-b1{left:5cqw;top:178.438cqw;width:90cqw}
-.m-s5 .m-n2{left:43.438cqw;top:205cqw}
-.m-s5 .m-b2{left:14.688cqw;top:223.125cqw;width:70.625cqw}
-.m-s5 .m-n3{left:43.438cqw;top:calc(295.938cqw - var(--hA))}
-.m-s5 .m-b3{left:5cqw;top:calc(314.063cqw - var(--hA));width:90cqw}
-.m-s5 .m-n4{left:43.438cqw;top:calc(346.563cqw - var(--hA))}
-.m-s5 .m-b4{left:14.688cqw;top:calc(364.688cqw - var(--hA));width:70.625cqw}
-.m-s5 .m-n5{left:43.75cqw;top:calc(391.25cqw - var(--hA))}
-.m-s5 .m-b5{left:5.313cqw;top:calc(409.375cqw - var(--hA));width:90cqw}
-.m-s5 .m-n6{left:43.438cqw;top:calc(442.188cqw - var(--hA))}
-.m-s5 .m-b6{left:14.688cqw;top:calc(460.313cqw - var(--hA));width:70.625cqw}
+.m-s5 .m-n2{left:43.438cqw;top:calc(264.688cqw - var(--hA))}
+.m-s5 .m-b2{left:5cqw;top:calc(282.813cqw - var(--hA));width:90cqw}
+.m-s5 .m-n3{left:43.438cqw;top:calc(315.313cqw - var(--hA))}
+.m-s5 .m-b3{left:14.688cqw;top:calc(333.438cqw - var(--hA));width:70.625cqw}
+.m-s5 .m-n4{left:43.75cqw;top:calc(360cqw - var(--hA))}
+.m-s5 .m-b4{left:5.313cqw;top:calc(378.125cqw - var(--hA));width:90cqw}
+.m-s5 .m-n5{left:43.438cqw;top:calc(410.938cqw - var(--hA))}
+.m-s5 .m-b5{left:14.688cqw;top:calc(429.063cqw - var(--hA));width:70.625cqw}
 
 /* ==================== M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ ==================== */
 /* Высота с запасом 29,4 px под плиткой OZON — зазор до следующего экрана по макету
