@@ -756,9 +756,9 @@ a{color:inherit;text-decoration:none}
    потоке и поднимаются сами). */
 .m-s5{--hA:0cqw;--hB:0cqw}
 .m-s5.acc-a-closed{--hA:60.75cqw}
-.m-s5.acc-b-closed{--hB:197.1cqw}
+.m-s5.acc-b-closed{--hB:193.662cqw}
 .m-s5.acc-a-closed .acc-a,.m-s5.acc-b-closed .acc-b{display:none}
-.m-s5{height:calc(483.925cqw - var(--hA) - var(--hB))}
+.m-s5{height:calc(464.862cqw - var(--hA) - var(--hB))}
 /* знак раскрытия внутри рамки-пилюли */
 .m-s5 .m-acc-sign{z-index:5;color:#fff;font-weight:300;font-size:6.25cqw;line-height:1;
   display:grid;place-items:center;width:6.25cqw;height:6.25cqw;pointer-events:none}
@@ -772,7 +772,7 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-s5-shadow{left:42.188cqw;top:102.188cqw;width:33.75cqw;height:6.25cqw;border-radius:50%;
   background:#D9D9D9;filter:blur(2cqw);mix-blend-mode:multiply;z-index:1}
 .m-s5 .m-s5-man{left:0;top:0;width:100%;height:auto}
-.m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:calc(378.3cqw - var(--hA) - var(--hB));z-index:2;
+.m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:calc(362.362cqw - var(--hA) - var(--hB));z-index:2;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 
 .m-s5 .m-s5-title-glow{left:5.625cqw;top:113.438cqw;width:19.375cqw;height:19.375cqw}
@@ -811,7 +811,7 @@ a{color:inherit;text-decoration:none}
 
 /* ==================== M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ ==================== */
 /* Высота секции не меняется: зазор до следующего экрана держится по макету */
-.m-s6{height:372.313cqw}
+.m-s6{height:379.501cqw}
 .m-s6 .m-s6-sph{left:4.063cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
 /* Узел 181:2258: «Где купить сыворотку» — Light 300, «GELTEK Hair» — Medium 500 */
 .m-s6 .m-s6-title{left:23.75cqw;top:10.938cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:300;
@@ -931,7 +931,7 @@ a{color:inherit;text-decoration:none}
   font-size:16.875cqw;line-height:1;letter-spacing:.251em;text-transform:uppercase;white-space:nowrap}
 
 /* ==================== M-ЭКРАН 9: ШАМПУНИ ==================== */
-.m-s9{height:300.626cqw}
+.m-s9{height:303.126cqw}
 .m-s9 .m-s9-title{left:23.75cqw;top:8.125cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 /* Узлы 184:2645 и 184:2643: шары стоят на 2px ниже верха заголовка, центры совпадают.
@@ -1005,7 +1005,7 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 .m-s9 .m-r-band .wm{position:absolute;left:16.563cqw;top:2cqw;color:#9B274C;opacity:.5;font-weight:500;
   font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
-.m-s9 .m-v-band{left:0;top:257.501cqw;width:100.625cqw;height:43.125cqw;z-index:1;overflow:hidden;
+.m-s9 .m-v-band{left:0;top:257.501cqw;width:100.625cqw;height:45cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,#604283,#745F9A)}
 .m-s9 .m-v-band .wm{position:absolute;left:7.5cqw;top:2cqw;color:#715B97;font-weight:500;
   font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
