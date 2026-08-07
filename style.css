@@ -808,8 +808,7 @@ a{color:inherit;text-decoration:none}
 .m-s5 .m-b5{left:14.688cqw;top:calc(429.063cqw - var(--hA));width:70.625cqw}
 
 /* ==================== M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ ==================== */
-/* Высота с запасом 29,4 px под плиткой OZON — зазор до следующего экрана по макету
-   (низ узла 195:89 = 5782,6; экран 7 начинается на 5812) */
+/* Высота секции не меняется: зазор до следующего экрана держится по макету */
 .m-s6{height:372.313cqw}
 .m-s6 .m-s6-sph{left:4.063cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
 /* Узел 181:2258: «Где купить сыворотку» — Light 300, «GELTEK Hair» — Medium 500 */
@@ -820,42 +819,44 @@ a{color:inherit;text-decoration:none}
 /* Группа шаров 186:3801 в макете лежит поверх витрины (zi 414–417 против 378–392), координаты —
    по узлам 186:3802 / 186:3803 / 186:3805 */
 .m-s6 .m-s6-fsph{z-index:4;pointer-events:none;height:auto}
-.m-s6 .m-fs1{left:75.313cqw;top:50.313cqw;width:40.313cqw}
-.m-s6 .m-fs2{left:-9.688cqw;top:83.406cqw;width:29.375cqw}
-.m-s6 .m-fs3{left:13.75cqw;top:51.875cqw;width:16.563cqw}
+.m-s6 .m-fs1{left:75.313cqw;top:237.688cqw;width:40.313cqw}
+.m-s6 .m-fs2{left:-9.688cqw;top:270.781cqw;width:29.375cqw}
+.m-s6 .m-fs3{left:13.75cqw;top:239.25cqw;width:16.563cqw}
 
 /* 188:158 «glow», родитель 186:3798 (−61.7/4722) — секция начинается на 4596 (конец экрана 5 по
    спеку mobile), пересчёт: left=(-61.7)/3.2, top=(4852-4596)/3.2 */
-.m-s6 .m-s6-edgeglow{left:-19.281cqw;top:80cqw;width:40.625cqw;height:39.063cqw;border-radius:50%;
+.m-s6 .m-s6-edgeglow{left:-19.281cqw;top:267.375cqw;width:40.625cqw;height:39.063cqw;border-radius:50%;
   background:#E96882;filter:blur(13.957cqw);mix-blend-mode:screen;z-index:2}
-.m-s6 .m-s6-plate{left:8.438cqw;top:31.563cqw;width:82.5cqw;height:126.875cqw;z-index:1;
+.m-s6 .m-s6-plate{left:8.438cqw;top:218.938cqw;width:82.5cqw;height:126.875cqw;z-index:1;
   background:linear-gradient(135deg,#F8F8F8,#CACACA)}
-.m-s6 .m-s6-glowbox{left:8.438cqw;top:40.625cqw;width:82.5cqw;height:117.813cqw;z-index:1;overflow:hidden}
-.m-s6 .m-s6-glowlight{left:8.125cqw;top:44.688cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
+.m-s6 .m-s6-glowbox{left:8.438cqw;top:228cqw;width:82.5cqw;height:117.813cqw;z-index:1;overflow:hidden}
+.m-s6 .m-s6-glowlight{left:8.125cqw;top:232.063cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
   background:#fff;filter:blur(14.29cqw)}
-.m-s6 .m-s6-glowsph{left:-17.813cqw;top:38.438cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
+.m-s6 .m-s6-glowsph{left:-17.813cqw;top:225.813cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
   transform:rotate(180deg)}
-.m-s6 .m-s6-pinkglow-clip{left:8.344cqw;top:48.938cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
+.m-s6 .m-s6-pinkglow-clip{left:8.344cqw;top:236.313cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
 .m-s6 .m-s6-pinkglow{position:absolute;left:4.938cqw;top:86.813cqw;width:35.656cqw;height:34.125cqw;
   border-radius:50%;background:rgba(233,104,130,.8);filter:blur(20.157cqw)}
-.m-s6 .m-s6-logo{left:34.063cqw;top:42.5cqw;width:29.688cqw;height:auto;z-index:3}
-.m-s6 .m-s6-peptidman{left:19.063cqw;top:134.063cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
-.m-s6 .m-s6-pack50 {left:29.469cqw;top:108.469cqw;width:26.969cqw;height:58.375cqw;z-index:3;object-fit:contain}
-.m-s6 .m-s6-pack100{left:53.25cqw; top:88.125cqw; width:28.375cqw;height:78.75cqw; z-index:3;object-fit:contain}
-.m-s6 .m-vg50{left:39.375cqw;top:169.375cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
-.m-s6 .m-vs50{left:39.063cqw;top:169.063cqw;width:5.625cqw;height:auto;z-index:4}
-.m-s6 .m-vt50{left:44.688cqw;top:170.625cqw;font-size:2.5cqw;color:#98123C;z-index:4}
-.m-s6 .m-vg100{left:61.25cqw;top:169.375cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
-.m-s6 .m-vs100{left:60.938cqw;top:169.063cqw;width:5.625cqw;height:auto;z-index:4}
-.m-s6 .m-vt100{left:66.563cqw;top:170.625cqw;font-size:2.5cqw;color:#98123C;z-index:4}
+.m-s6 .m-s6-logo{left:34.063cqw;top:229.875cqw;width:29.688cqw;height:auto;z-index:3}
+.m-s6 .m-s6-peptidman{left:19.063cqw;top:321.438cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
+.m-s6 .m-s6-pack50 {left:29.469cqw;top:295.844cqw;width:26.969cqw;height:58.375cqw;z-index:3;object-fit:contain}
+.m-s6 .m-s6-pack100{left:53.25cqw; top:275.5cqw; width:28.375cqw;height:78.75cqw; z-index:3;object-fit:contain}
+.m-s6 .m-vg50{left:39.375cqw;top:356.75cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
+.m-s6 .m-vs50{left:39.063cqw;top:356.438cqw;width:5.625cqw;height:auto;z-index:4}
+.m-s6 .m-vt50{left:44.688cqw;top:358cqw;font-size:2.5cqw;color:#98123C;z-index:4}
+.m-s6 .m-vg100{left:61.25cqw;top:356.75cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
+.m-s6 .m-vs100{left:60.938cqw;top:356.438cqw;width:5.625cqw;height:auto;z-index:4}
+.m-s6 .m-vt100{left:66.563cqw;top:358cqw;font-size:2.5cqw;color:#98123C;z-index:4}
 
 .m-s6 .m-shopbtn{width:83.125cqw;height:42.5cqw;left:9.063cqw;z-index:2;display:flex;
   align-items:center;justify-content:center;
   background:linear-gradient(135deg,rgba(152,18,60,.9) 0%,rgba(152,18,60,.9) 50%,rgba(94,0,35,.9) 100%)}
-.m-s6 .m-btn1{top:184.375cqw}
-.m-s6 .m-btn2{top:229.688cqw}
-.m-s6 .m-btn3{top:275.313cqw}
-.m-s6 .m-btn4{top:320.625cqw}
+/* Плитки магазинов идут сразу под заголовком (зазор 32 px по макету), витрина с продуктом —
+   под ними */
+.m-s6 .m-btn1{top:39.563cqw}
+.m-s6 .m-btn2{top:84.876cqw}
+.m-s6 .m-btn3{top:130.501cqw}
+.m-s6 .m-btn4{top:175.813cqw}
 /* Размеры логотипов — точный перевод боксов мобильного фрейма (cqw = px/3.2), а не доля от
    плитки: apteka.ru 112,5×23,9 (195:77), wildberries 133,1×19,5 (195:88), OZON 86,9×18,7
    (195:92), значок «Золотого яблока» 30,4×30,2 (195:84). Прежние доли (60% / 46%) давали
