@@ -27,6 +27,8 @@ body{font-family:'Geometria',system-ui,Arial,sans-serif;font-weight:300;color:#0
   -webkit-font-smoothing:antialiased;font-synthesis:none}
 img{display:block;max-width:none}
 a{color:inherit;text-decoration:none}
+/* сноска-звёздочка: в макете мельче и приподнята над строкой, а не в размер основного текста */
+sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 
 /* ==== reveal: плавное появление блоков при скролле (main.js добавляет is-in) ==== */
 .reveal{opacity:0;transform:translateY(2.5cqw);transition:opacity .7s ease-out,transform .7s ease-out}
@@ -151,7 +153,12 @@ a{color:inherit;text-decoration:none}
 .s1 .adv-ic.c1{top:66.302cqw}
 .s1 .adv-ic.c2{top:71.615cqw}
 .s1 .adv-ic.c3{top:77.708cqw}
-.s1 .adv-ic img{width:62%;height:62%;object-fit:contain}
+/* доля иконки от круга у каждой разная (59%/84%/60%), единый процент 62% на все три
+   занижал вторую иконку почти на четверть — размеры сверены с Figma-спекой 11.08 */
+.s1 .adv-ic img{object-fit:contain}
+.s1 .adv-ic.c1 img{width:2.24cqw;height:3.073cqw}
+.s1 .adv-ic.c2 img{width:3.281cqw;height:3.229cqw}
+.s1 .adv-ic.c3 img{width:2.292cqw;height:2.344cqw}
 
 /* ---- хедер ----
    position:fixed — согласованное отступление от макета: шапка остаётся на месте при прокрутке,
@@ -225,6 +232,9 @@ a{color:inherit;text-decoration:none}
 .s4 .bg{left:0;top:0;width:100cqw;height:56.406cqw;object-fit:cover;z-index:1}
 .s4 .card{left:51.875cqw;top:8.281cqw;width:29.427cqw;height:35.573cqw;z-index:2}
 .s4 .icon{left:61.302cqw;top:12.344cqw;width:10.052cqw;height:10.052cqw;z-index:3}
+/* точный размер иконки от круга (54%×64%), сверено с Figma-спекой 11.08 — раньше опиралась
+   на общее правило .ic-circ img{62%} и была занижена по ширине */
+.s4 .icon img{width:5.427cqw;height:6.417cqw;object-fit:contain}
 /* ширина бокса чуть больше макетных 437px: строка «плотности и толщины волос» набирается
    в 439px и без запаса разрывалась на две — в макете она идёт цельной строкой */
 .s4 .txt{left:55.208cqw;top:24.844cqw;width:23.542cqw;z-index:3;color:#fff;font-weight:300;
@@ -269,16 +279,19 @@ a{color:inherit;text-decoration:none}
 /* Рамки-пилюли вокруг заголовков (137:221/229): контур капсулы, шарик-маркер лежит внутри
    рамки слева, текст — правее шарика */
 .s5 .pill{border:1px solid rgba(255,255,255,.4);z-index:4}
-.s5 .pill1{left:21.198cqw;top:15.052cqw;width:26.563cqw;height:4.635cqw;border-radius:2.188cqw}
-.s5 .pill2{left:21.198cqw;top:25.156cqw;width:40cqw;height:4.635cqw;border-radius:2.656cqw}
+/* left/width сверены с Figma-спекой 11.08 (отдельный узел «bullets», вне группы screen 5) —
+   были на 28px левее и уже, чем в макете, из-за чего пилюли не совпадали по краю с кружками
+   и текстом пунктов ниже */
+.s5 .pill1{left:22.656cqw;top:15.052cqw;width:27.354cqw;height:4.635cqw;border-radius:2.188cqw}
+.s5 .pill2{left:22.656cqw;top:25.156cqw;width:41.813cqw;height:4.635cqw;border-radius:2.656cqw}
 
-.s5 .p1-glow{left:22.357cqw;top:15.521cqw;width:3.359cqw;height:3.359cqw}
-.s5 .p1-sph{left:21.979cqw;top:15.208cqw;width:4.01cqw;height:4.049cqw}
+.s5 .p1-glow{left:23.297cqw;top:15.714cqw;width:3.526cqw;height:3.526cqw}
+.s5 .p1-sph{left:22.943cqw;top:15.333cqw;width:4.219cqw;height:4.26cqw}
 .s5 .pill1-title{left:27.604cqw;top:16.406cqw;width:30cqw;z-index:4;color:#fff;font-weight:500;
   font-size:1.25cqw;line-height:1.25;text-transform:uppercase}
 
-.s5 .p2-glow{left:22.357cqw;top:26.249cqw;width:3.359cqw;height:3.359cqw;mix-blend-mode:screen}
-.s5 .p2-sph{left:21.979cqw;top:25.937cqw;width:4.01cqw;height:4.049cqw}
+.s5 .p2-glow{left:23.333cqw;top:25.87cqw;width:3.526cqw;height:3.526cqw;mix-blend-mode:screen}
+.s5 .p2-sph{left:22.974cqw;top:25.495cqw;width:4.219cqw;height:4.26cqw}
 .s5 .pill2-title{left:27.604cqw;top:25.833cqw;width:34cqw;z-index:4;color:#fff;font-weight:500;
   font-size:1.25cqw;line-height:1.25;text-transform:uppercase}
 
@@ -495,7 +508,7 @@ a{color:inherit;text-decoration:none}
 /* ==================== ЭКРАН 9: ШАМПУНИ ==================== */
 /* Высота увеличена на 5.365cqw (103px): в макете 10.08 добавлены плашки «нажмите на
    изображение…» под подписями объёмов в обоих блоках (см. .r-more/.v-more) */
-.s9{height:101.615cqw;overflow:hidden}              /* 1951/19.2 */
+.s9{height:103.386cqw;overflow:hidden}              /* 1985/19.2, сверено с Figma-спекой 11.08 */
 .s9 .s9-duo{left:17.552cqw;top:0;width:8.698cqw;height:6.094cqw;z-index:2}
 .s9 .s9-title{left:27.5cqw;top:0;width:27.708cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
@@ -601,10 +614,10 @@ a{color:inherit;text-decoration:none}
    (fill-opacity на каждом path), габарит группы 1432.8x193.9 при 248.7,10936.0 */
 .s9 .wm-svg{position:absolute;display:block}
 .s9 .wm-intensive{left:13.63cqw;top:-0.156cqw;width:74.625cqw;height:10.099cqw}
-/* top увеличен на 4.896cqw (унаследованный сдвиг от красного блока), высота — ещё на
-   0.469cqw сверх исходной (собственная плашка «нажмите на изображение…» этого блока);
-   низ полосы = 101.615cqw, вплотную к нижней границе секции */
-.s9 .v-band{left:-0.208cqw;top:79.948cqw;width:100.573cqw;height:21.667cqw;z-index:1;overflow:hidden;
+/* top увеличен на 4.896cqw (унаследованный сдвиг от красного блока); высота сверена
+   напрямую с Figma-спекой 11.08 (узел «Group violet base») — 23.4375cqw, низ полосы
+   вплотную к нижней границе секции */
+.s9 .v-band{left:-0.208cqw;top:79.948cqw;width:100.573cqw;height:23.4375cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,#604283 15%,#745F9A 100%)}
 /* «Biome» — точный вектор из 5 контуров (137:394), непрозрачность у узлов/заливок не задана
    (полная). Габарит 875.8x190.8 при 246.0,11837.6 */
@@ -616,7 +629,7 @@ a{color:inherit;text-decoration:none}
   padding-left:2.083cqw;background:rgba(0,0,0,.08);border-radius:1.25cqw}
 .s9 .more-txt b{font-weight:500;color:#fff;margin-left:.313cqw}
 .s9 .r-more{left:40.26cqw;top:49.063cqw;width:42.656cqw;height:2.5cqw}
-.s9 .v-more{left:31.979cqw;top:98.333cqw;width:46.406cqw;height:2.5cqw}
+.s9 .v-more{left:31.458cqw;top:98.385cqw;width:47.917cqw;height:2.552cqw}
 
 /* ==================== ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ (12246..13535) ==================== */
 /* Экран 10 НЕ обрезается по высоте: базовая белая плашка, вторая строка финального заголовка и
@@ -736,6 +749,11 @@ a{color:inherit;text-decoration:none}
 .m-s1 .m-ic1{top:190.313cqw}
 .m-s1 .m-ic2{top:227.813cqw}
 .m-s1 .m-ic3{top:265.625cqw}
+/* доля иконки от круга у каждой разная, единый процент 58% (общее правило .m-ic-circ img)
+   занижал вторую иконку — размеры сверены с Figma-спекой 11.08 */
+.m-s1 .m-ic1 img{width:7.656cqw;height:10.5cqw}
+.m-s1 .m-ic2 img{width:11.281cqw;height:11.094cqw}
+.m-s1 .m-ic3 img{width:7.875cqw;height:8.063cqw}
 .m-s1 .m-adv-item{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center}
 .m-s1 .m-i1{left:4.375cqw;top:208.438cqw;width:90cqw}
 .m-s1 .m-i2{left:14.063cqw;top:245.938cqw;width:70.625cqw}
@@ -753,18 +771,21 @@ a{color:inherit;text-decoration:none}
 .m-s2 .m-card{left:0;top:105.625cqw;width:100cqw;height:93.75cqw;z-index:2;
   background:linear-gradient(120deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 .m-s2 .m-icon{left:36.875cqw;top:116.875cqw;width:25.625cqw;height:25.625cqw}
+.m-s2 .m-icon img{width:17.775cqw;height:15.381cqw}
 .m-s2 .m-txt{left:19.688cqw;top:152.188cqw;width:63.75cqw}
 
 .m-s3{height:190.938cqw}
 .m-s3 .m-photo{height:108.438cqw}
 .m-s3 .m-card{left:-0.625cqw;top:108.438cqw;width:100cqw;height:82.5cqw;z-index:2}
 .m-s3 .m-icon{left:35.938cqw;top:120cqw;width:25.625cqw;height:25.625cqw}
+.m-s3 .m-icon img{width:18.156cqw;height:14.656cqw}
 .m-s3 .m-txt{left:17.5cqw;top:155.625cqw;width:64.688cqw}
 
 .m-s4{height:206.25cqw}
 .m-s4 .m-photo{left:-0.313cqw;width:100.625cqw;height:105.938cqw}
 .m-s4 .m-card{left:-0.938cqw;top:105.938cqw;width:100.625cqw;height:100.313cqw;z-index:2}
 .m-s4 .m-icon{left:36.563cqw;top:117.5cqw;width:25.625cqw;height:25.625cqw}
+.m-s4 .m-icon img{width:13.875cqw;height:16.4375cqw}
 .m-s4 .m-txt{left:17.5cqw;top:153.125cqw;width:65cqw}
 
 /* ==================== M-ЭКРАН 5: КАК ДЕЙСТВУЕТ ==================== */
@@ -848,29 +869,30 @@ a{color:inherit;text-decoration:none}
    спеку mobile), пересчёт: left=(-61.7)/3.2, top=(4852-4596)/3.2 */
 .m-s6 .m-s6-edgeglow{left:-19.281cqw;top:267.375cqw;width:40.625cqw;height:39.063cqw;border-radius:50%;
   background:#E96882;filter:blur(13.957cqw);mix-blend-mode:screen;z-index:2}
-.m-s6 .m-s6-plate{left:8.438cqw;top:218.938cqw;width:82.5cqw;height:126.875cqw;z-index:1;
+/* Весь блок ниже сверен напрямую с Figma-спекой 11.08 (узлы 2148:779/781/1017/803/791/792/
+   794/796/799 и потомки) — прежние координаты были получены до появления рабочего API-доступа
+   и разошлись с текущим макетом на 7–30px по разным элементам */
+.m-s6 .m-s6-plate{left:9.156cqw;top:221.125cqw;width:82.5cqw;height:133.094cqw;z-index:1;
   background:linear-gradient(135deg,#F8F8F8,#CACACA)}
-.m-s6 .m-s6-glowbox{left:8.438cqw;top:228cqw;width:82.5cqw;height:117.813cqw;z-index:1;overflow:hidden}
-/* Узлы 186:3798/186:3799 заданы в координатах .m-s6 (родителя glowbox), а не самого glowbox —
-   без пересчёта относительно его top/left (228/8.438cqw) полусфера уходит на 722px ниже
-   видимой обрезанной области и не рендерится вовсе */
-.m-s6 .m-s6-glowlight{left:-0.313cqw;top:54.963cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
+.m-s6 .m-s6-glowbox{left:9.156cqw;top:236.375cqw;width:82.5cqw;height:117.844cqw;z-index:1;overflow:hidden}
+/* Координаты — относительно glowbox (см. предыдущее примечание о системе координат) */
+.m-s6 .m-s6-glowlight{left:8.188cqw;top:44.875cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
   background:#fff;filter:blur(14.29cqw)}
-.m-s6 .m-s6-glowsph{left:-26.251cqw;top:48.713cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
+.m-s6 .m-s6-glowsph{left:-17.75cqw;top:38.469cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
   transform:rotate(180deg)}
-.m-s6 .m-s6-pinkglow-clip{left:8.344cqw;top:236.313cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
-.m-s6 .m-s6-pinkglow{position:absolute;left:4.938cqw;top:86.813cqw;width:35.656cqw;height:34.125cqw;
+.m-s6 .m-s6-pinkglow-clip{left:9.156cqw;top:244.75cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
+.m-s6 .m-s6-pinkglow{position:absolute;left:4.969cqw;top:86.813cqw;width:35.656cqw;height:34.125cqw;
   border-radius:50%;background:rgba(233,104,130,.8);filter:blur(20.157cqw)}
-.m-s6 .m-s6-logo{left:34.063cqw;top:229.875cqw;width:29.688cqw;height:auto;z-index:3}
-.m-s6 .m-s6-peptidman{left:19.063cqw;top:321.438cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
-.m-s6 .m-s6-pack50 {left:29.469cqw;top:295.844cqw;width:26.969cqw;height:58.375cqw;z-index:3;object-fit:contain}
-.m-s6 .m-s6-pack100{left:53.25cqw; top:275.5cqw; width:28.375cqw;height:78.75cqw; z-index:3;object-fit:contain}
-.m-s6 .m-vg50{left:39.375cqw;top:356.75cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
-.m-s6 .m-vs50{left:39.063cqw;top:356.438cqw;width:5.625cqw;height:auto;z-index:4}
-.m-s6 .m-vt50{left:44.688cqw;top:358cqw;font-size:2.5cqw;color:#98123C;z-index:4}
-.m-s6 .m-vg100{left:61.25cqw;top:356.75cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
-.m-s6 .m-vs100{left:60.938cqw;top:356.438cqw;width:5.625cqw;height:auto;z-index:4}
-.m-s6 .m-vt100{left:66.563cqw;top:358cqw;font-size:2.5cqw;color:#98123C;z-index:4}
+.m-s6 .m-s6-logo{left:34.031cqw;top:231.438cqw;width:33.438cqw;height:30cqw;z-index:3}
+.m-s6 .m-s6-peptidman{left:19.875cqw;top:329.875cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
+.m-s6 .m-s6-pack50 {left:30.313cqw;top:304.281cqw;width:26.969cqw;height:58.375cqw;z-index:3;object-fit:contain}
+.m-s6 .m-s6-pack100{left:54.094cqw; top:283.938cqw; width:28.375cqw;height:78.75cqw; z-index:3;object-fit:contain}
+.m-s6 .m-vg50{left:40.375cqw;top:365.25cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
+.m-s6 .m-vs50{left:39.906cqw;top:364.75cqw;width:5.625cqw;height:auto;z-index:4}
+.m-s6 .m-vt50{left:45.688cqw;top:366.5cqw;font-size:2.5cqw;color:#98123C;z-index:4}
+.m-s6 .m-vg100{left:62.25cqw;top:365.25cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3}
+.m-s6 .m-vs100{left:61.781cqw;top:364.75cqw;width:5.625cqw;height:auto;z-index:4}
+.m-s6 .m-vt100{left:67.563cqw;top:366.5cqw;font-size:2.5cqw;color:#98123C;z-index:4}
 
 .m-s6 .m-shopbtn{width:83.125cqw;height:42.5cqw;left:9.063cqw;z-index:2;display:flex;
   align-items:center;justify-content:center;
