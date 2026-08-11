@@ -116,8 +116,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s1 .banner span{position:relative;z-index:1;color:#fff;font-weight:500;font-size:1.875cqw;padding-left:3.073cqw;letter-spacing:.01em;text-transform:uppercase}
 /* капля-сфера, замаскированная под баннер, наложение luminosity — эффект стекла/линзы.
    137:18: кроп (FILL, контейнер 345x340) + фильтры Figma запечены физически в drop-red-pt2-fx.png */
+/* цветокоррекция узла 137:18 (экспозиция −0.15, контраст −0.14, света −0.65, тени −0.78):
+   в ассете drop-red-pt2-fx.png запечена не по актуальным значениям — шар читается заметно
+   контрастнее и «плотнее» микета, добавлена компенсация фильтром */
 .s1 .banner .banner-drop{position:absolute;left:45.052cqw;top:-6.042cqw;width:17.969cqw;height:17.708cqw;
-  mix-blend-mode:luminosity;pointer-events:none}
+  mix-blend-mode:luminosity;pointer-events:none;filter:brightness(.87) contrast(.82)}
 
 /* Флакон (стартовая позиция; едет вниз по скроллу). z-index:10 — выше карточки преимуществ
    (147:30 «Pack 100ml» zi=69 в макете рисуется поверх красного блока 147:29 zi=26/27).
@@ -330,8 +333,12 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    её низ (6360) на 70px ниже нижней кромки бордовой плашки (6290) */
 /* фигура опущена ниже кромки плашки: подставка и нижние шары выходят за неё, как в макете */
 .s5 .man-wrap{left:59.219cqw;top:20.885cqw;width:27.5cqw;height:33cqw;z-index:4}
-/* .man-glow (137:238, декоративное красное пятно) не используется — при размытии 10.417cqw
-   пятно становится видимым красным пятном в правом нижнем углу плашки. */
+/* 137:238 — розовое свечение позади персонажа (LAYER_BLUR 200, цвет #BD3A5A), в разметке
+   отсутствовало полностью. Координаты пересчитаны в долях от бокса .man-wrap (сам .man-wrap —
+   не 1:1 копия бокса узла 137:235: там 693×780px, тут 528×634px), а не в прямом px→cqw, иначе
+   свечение уезжает не в тот угол */
+.s5 .man-glow{left:9.22cqw;top:12.27cqw;width:37.7cqw;height:37.7cqw;border-radius:50%;
+  background:#BD3A5A;filter:blur(7.9cqw);z-index:1;pointer-events:none}
 /* картинка внутри — ровно по боксу растра 137:239 (20.312×27.448cqw), позиция по таблице;
    object-fit:cover — в спецификации узла scaleMode:"FILL", обрезка по краям (в т.ч. снизу,
    маской обёртки) заложена макетом */
