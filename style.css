@@ -116,11 +116,13 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s1 .banner span{position:relative;z-index:1;color:#fff;font-weight:500;font-size:1.875cqw;padding-left:3.073cqw;letter-spacing:.01em;text-transform:uppercase}
 /* капля-сфера, замаскированная под баннер, наложение luminosity — эффект стекла/линзы.
    137:18: кроп (FILL, контейнер 345x340) + фильтры Figma запечены физически в drop-red-pt2-fx.png */
-/* цветокоррекция узла 137:18 (экспозиция −0.15, контраст −0.14, света −0.65, тени −0.78):
-   в ассете drop-red-pt2-fx.png запечена не по актуальным значениям — шар читается заметно
-   контрастнее и «плотнее» микета, добавлена компенсация фильтром */
+/* цветокоррекция узла 137:18: первая попытка (brightness .87 contrast .82) шла в неверную
+   сторону — проверялась на маленьком превью, где потеря контраста не была заметна. При прямом
+   попиксельном сравнении composited-рендера Figma (137:16, наложение luminosity на фон баннера)
+   и сайта на одном масштабе видно, что у нас пузырьки читаются площе и светлее макета —
+   не хватает именно контраста/насыщенности, а не яркости. Подобрано визуальным сравнением. */
 .s1 .banner .banner-drop{position:absolute;left:45.052cqw;top:-6.042cqw;width:17.969cqw;height:17.708cqw;
-  mix-blend-mode:luminosity;pointer-events:none;filter:brightness(.87) contrast(.82)}
+  mix-blend-mode:luminosity;pointer-events:none;filter:contrast(1.35) saturate(1.15)}
 
 /* Флакон (стартовая позиция; едет вниз по скроллу). z-index:10 — выше карточки преимуществ
    (147:30 «Pack 100ml» zi=69 в макете рисуется поверх красного блока 147:29 zi=26/27).
