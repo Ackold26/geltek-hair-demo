@@ -12,9 +12,8 @@
   --gray:#58595B;          /* текст меню */
   --gray2:#54565A;
   --btn:#892245;
-  /* Основной светлый текст — чистый белый: по требованию заказчика цвет шрифта
-     в основном тексте на протяжении всего лендинга белый, без компенсирующей
-     обводки (она приглушала ядро штриха до 236 из 255). */
+  /* Основной светлый текст — чистый белый на протяжении всего лендинга,
+     без компенсирующей обводки (она приглушала ядро штриха до 236 из 255). */
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -493,8 +492,10 @@ a{color:inherit;text-decoration:none}
 .s8 .s8-logo{left:29.115cqw;top:34.479cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1;
   will-change:transform}
 
-/* ==================== ЭКРАН 9: ШАМПУНИ (10398..12246) ==================== */
-.s9{height:96.25cqw;overflow:hidden}              /* 1848/19.2 */
+/* ==================== ЭКРАН 9: ШАМПУНИ ==================== */
+/* Высота увеличена на 5.365cqw (103px): в макете 10.08 добавлены плашки «нажмите на
+   изображение…» под подписями объёмов в обоих блоках (см. .r-more/.v-more) */
+.s9{height:101.615cqw;overflow:hidden}              /* 1951/19.2 */
 .s9 .s9-duo{left:17.552cqw;top:0;width:8.698cqw;height:6.094cqw;z-index:2}
 .s9 .s9-title{left:27.5cqw;top:0;width:27.708cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
@@ -504,10 +505,12 @@ a{color:inherit;text-decoration:none}
 /* подзаголовок в две строки (137:443): ширина бокса увеличена под вторую строку
    «ДЛЯ КОМФОРТА КОЖИ ГОЛОВЫ» — она длиннее первой; перенос задан разметкой */
 .s9 .r-subhat{left:27.552cqw;top:9.271cqw;width:34.375cqw;color:var(--wine)}
-.s9 .v-subhat{left:27.552cqw;top:55.625cqw;width:48.594cqw;color:var(--violet)}
+/* top увеличен на 4.896cqw (94px): рост красного блока (плашка + просвет) сдвигает вниз
+   всё, что идёт после него, — заголовок, баннер, флаконы, подписи и саму полосу */
+.s9 .v-subhat{left:27.552cqw;top:60.521cqw;width:48.594cqw;color:var(--violet)}
 .s9 .sph{z-index:2}
 .s9 .r-sph{left:23.49cqw;top:8.646cqw;width:3.229cqw;height:3.281cqw}
-.s9 .v-sph{left:23.49cqw;top:55.052cqw;width:3.229cqw;height:3.281cqw}
+.s9 .v-sph{left:23.49cqw;top:59.948cqw;width:3.229cqw;height:3.281cqw}
 
 /* --- баннеры с маскированной каплей (glass-lite, luminosity) --- */
 .s9 .banner{z-index:2;overflow:hidden;position:absolute;display:flex;align-items:center}
@@ -524,7 +527,7 @@ a{color:inherit;text-decoration:none}
 /* капля 138:41 остаётся в прежнем положении по странице: смещение вверх увеличено
    ровно на величину сдвига плашки */
 .s9 .r-banner .banner-drop{left:41.25cqw;top:-11.198cqw;width:20.938cqw;height:20.677cqw}
-.s9 .v-banner{left:22.031cqw;top:59.688cqw;width:59.01cqw;height:8.438cqw;
+.s9 .v-banner{left:22.031cqw;top:64.584cqw;width:59.01cqw;height:8.438cqw;
   background:linear-gradient(90deg,rgba(96,66,131,1) 0%,rgba(96,66,131,1) 70%,rgba(116,95,154,1) 100%)}
 .s9 .v-banner .banner-drop{left:37.708cqw;top:-12.292cqw;width:25.833cqw;height:21.094cqw}
 
@@ -551,10 +554,11 @@ a{color:inherit;text-decoration:none}
 .s9 .r-norm390{left:65.729cqw;top:19.115cqw;width:12.552cqw;height:25.156cqw}
 /* Упаковки 30 и 100 мл выровнены по макету: центр тюбика совпадает с центром пары
    «шарик + подпись объёма» (в макете центры 711,5 и 913,5 px) */
-.s9 .v-post30{left:33.646cqw;top:73.073cqw;width:6.927cqw;height:15.469cqw}
-.s9 .v-post100{left:43.385cqw;top:68.802cqw;width:8.49cqw;height:20.104cqw}
-.s9 .v-post250{left:54.167cqw;top:65.833cqw;width:9.583cqw;height:22.865cqw}
-.s9 .v-post390{left:66.354cqw;top:62.656cqw;width:11.146cqw;height:26.042cqw}
+/* top увеличен на 4.896cqw (94px), см. .v-subhat */
+.s9 .v-post30{left:33.646cqw;top:77.969cqw;width:6.927cqw;height:15.469cqw}
+.s9 .v-post100{left:43.385cqw;top:73.698cqw;width:8.49cqw;height:20.104cqw}
+.s9 .v-post250{left:54.167cqw;top:70.729cqw;width:9.583cqw;height:22.865cqw}
+.s9 .v-post390{left:66.354cqw;top:67.552cqw;width:11.146cqw;height:26.042cqw}
 
 /* --- подписи объёма со свечением --- */
 .s9 .vol-glow{width:2.083cqw;height:2.083cqw;border-radius:50%;filter:blur(.26cqw);z-index:3;opacity:.5}
@@ -572,32 +576,47 @@ a{color:inherit;text-decoration:none}
 .s9 .r-t3{left:71.458cqw;top:46.146cqw}
 
 .s9 .v-g1,.s9 .v-g2,.s9 .v-g3,.s9 .v-g4{background:#8E6CC8}
-.s9 .v-g1{left:33.75cqw;top:90.26cqw}
-.s9 .v-s1{left:33.541cqw;top:90.052cqw}
-.s9 .v-t1{left:36.406cqw;top:90.521cqw}
-.s9 .v-g2{left:43.959cqw;top:90.26cqw}
-.s9 .v-s2{left:43.75cqw;top:90.052cqw}
-.s9 .v-t2{left:46.615cqw;top:90.521cqw}
-.s9 .v-g3{left:55.26cqw;top:90.26cqw}
-.s9 .v-s3{left:55.052cqw;top:90.052cqw}
-.s9 .v-t3{left:57.917cqw;top:90.521cqw}
-.s9 .v-g4{left:68.021cqw;top:90.26cqw}
-.s9 .v-s4{left:67.813cqw;top:90.052cqw}
-.s9 .v-t4{left:70.677cqw;top:90.521cqw}
+/* top увеличен на 4.896cqw (94px), см. .v-subhat */
+.s9 .v-g1{left:33.75cqw;top:95.156cqw}
+.s9 .v-s1{left:33.541cqw;top:94.948cqw}
+.s9 .v-t1{left:36.406cqw;top:95.417cqw}
+.s9 .v-g2{left:43.959cqw;top:95.156cqw}
+.s9 .v-s2{left:43.75cqw;top:94.948cqw}
+.s9 .v-t2{left:46.615cqw;top:95.417cqw}
+.s9 .v-g3{left:55.26cqw;top:95.156cqw}
+.s9 .v-s3{left:55.052cqw;top:94.948cqw}
+.s9 .v-t3{left:57.917cqw;top:95.417cqw}
+.s9 .v-g4{left:68.021cqw;top:95.156cqw}
+.s9 .v-s4{left:67.813cqw;top:94.948cqw}
+.s9 .v-t4{left:70.677cqw;top:95.417cqw}
 
 /* --- фоновые полосы с водяными знаками названий линеек --- */
-.s9 .r-band{left:-0.677cqw;top:30.417cqw;width:101.042cqw;height:21.354cqw;z-index:1;overflow:hidden;
+/* Высота увеличена на 2.448cqw: под подписями объёмов добавилась плашка «Нажмите на
+   изображение…» (см. .r-more/.v-more), полоса удлинена, чтобы вместить её и сохранить
+   прежний нижний просвет */
+.s9 .r-band{left:-0.677cqw;top:30.417cqw;width:101.042cqw;height:23.802cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
 /* «Intensive» — точный вектор из 9 контуров (137:450), извлечён из геометрии узла (fillGeometry)
    в обход лимита на растровый экспорт. Непрозрачность 0.5 запечена в сами контуры SVG
    (fill-opacity на каждом path), габарит группы 1432.8x193.9 при 248.7,10936.0 */
 .s9 .wm-svg{position:absolute;display:block}
 .s9 .wm-intensive{left:13.63cqw;top:-0.156cqw;width:74.625cqw;height:10.099cqw}
-.s9 .v-band{left:-0.208cqw;top:75.052cqw;width:100.573cqw;height:21.198cqw;z-index:1;overflow:hidden;
+/* top увеличен на 4.896cqw (унаследованный сдвиг от красного блока), высота — ещё на
+   0.469cqw сверх исходной (собственная плашка «нажмите на изображение…» этого блока);
+   низ полосы = 101.615cqw, вплотную к нижней границе секции */
+.s9 .v-band{left:-0.208cqw;top:79.948cqw;width:100.573cqw;height:21.667cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,#604283 15%,#745F9A 100%)}
 /* «Biome» — точный вектор из 5 контуров (137:394), непрозрачность у узлов/заливок не задана
    (полная). Габарит 875.8x190.8 при 246.0,11837.6 */
 .s9 .wm-biome{left:13.021cqw;top:-0.073cqw;width:45.615cqw;height:9.938cqw}
+
+/* --- плашка «нажмите на изображение…» под подписями объёмов --- */
+.s9 .more-txt{z-index:4;display:flex;align-items:center;white-space:nowrap;
+  font-size:1.25cqw;font-weight:300;color:rgba(255,255,255,.75);
+  padding-left:2.083cqw;background:rgba(0,0,0,.08);border-radius:1.25cqw}
+.s9 .more-txt b{font-weight:500;color:#fff;margin-left:.313cqw}
+.s9 .r-more{left:40.26cqw;top:49.063cqw;width:42.656cqw;height:2.5cqw}
+.s9 .v-more{left:31.979cqw;top:98.333cqw;width:46.406cqw;height:2.5cqw}
 
 /* ==================== ЭКРАН 10: КРЕПКИЕ ВОЛОСЫ + ФИНАЛ (12246..13535) ==================== */
 /* Экран 10 НЕ обрезается по высоте: базовая белая плашка, вторая строка финального заголовка и
@@ -832,9 +851,12 @@ a{color:inherit;text-decoration:none}
 .m-s6 .m-s6-plate{left:8.438cqw;top:218.938cqw;width:82.5cqw;height:126.875cqw;z-index:1;
   background:linear-gradient(135deg,#F8F8F8,#CACACA)}
 .m-s6 .m-s6-glowbox{left:8.438cqw;top:228cqw;width:82.5cqw;height:117.813cqw;z-index:1;overflow:hidden}
-.m-s6 .m-s6-glowlight{left:8.125cqw;top:232.063cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
+/* Узлы 186:3798/186:3799 заданы в координатах .m-s6 (родителя glowbox), а не самого glowbox —
+   без пересчёта относительно его top/left (228/8.438cqw) полусфера уходит на 722px ниже
+   видимой обрезанной области и не рендерится вовсе */
+.m-s6 .m-s6-glowlight{left:-0.313cqw;top:54.963cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
   background:#fff;filter:blur(14.29cqw)}
-.m-s6 .m-s6-glowsph{left:-17.813cqw;top:225.813cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
+.m-s6 .m-s6-glowsph{left:-26.251cqw;top:48.713cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
   transform:rotate(180deg)}
 .m-s6 .m-s6-pinkglow-clip{left:8.344cqw;top:236.313cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
 .m-s6 .m-s6-pinkglow{position:absolute;left:4.938cqw;top:86.813cqw;width:35.656cqw;height:34.125cqw;
