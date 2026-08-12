@@ -977,14 +977,19 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
   border-radius:50%;background:rgba(233,104,130,.8);filter:blur(20.157cqw)}
 .m-s6 .m-s6-logo{left:34.031cqw;top:224.063cqw;width:33.438cqw;height:30cqw;z-index:3}
 .m-s6 .m-s6-peptidman{left:19.875cqw;top:322.5cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
-.m-s6 .m-s6-pack50 {left:30.313cqw;top:304.281cqw;width:26.969cqw;height:58.375cqw;z-index:3;object-fit:contain}
+/* низ обеих упаковок в макете (2148:791 и 2148:792) стоит на одной линии 4824,9;
+   прежний top опускал флакон 50 мл на 23,6 px и подводил его вплотную к подписи */
+.m-s6 .m-s6-pack50 {left:30.303cqw;top:296.906cqw;width:26.969cqw;height:58.375cqw;z-index:3;object-fit:contain}
 .m-s6 .m-s6-pack100{left:54.094cqw; top:276.563cqw; width:28.375cqw;height:78.75cqw; z-index:3;object-fit:contain}
 /* та же скрытая заливка, что и на десктопе (см. .s6 .g50) — узлы «glow» под этими подписями
    помечены в макете visible:false */
-.m-s6 .m-vg50{left:40.375cqw;top:357.687cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3;display:none}
+/* Узлы 2148:796 и 2148:799 в макете есть, но целиком накрыты своими сферами: замер яркости
+   колец вокруг сферы даёт отклонение 0,24 при выключенном свечении против 0,67 при самом
+   слабом включении — на белом фоне витрины включённое свечение видно, а в макете его нет */
+.m-s6 .m-vg50{left:40.375cqw;top:357.875cqw;width:4.656cqw;height:4.656cqw;background:#CC4363;z-index:3;display:none}
 .m-s6 .m-vs50{left:39.906cqw;top:357.187cqw;width:5.625cqw;height:auto;z-index:4}
 .m-s6 .m-vt50{left:45.688cqw;top:358.937cqw;font-size:2.5cqw;color:#98123C;z-index:4}
-.m-s6 .m-vg100{left:62.25cqw;top:357.687cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3;display:none}
+.m-s6 .m-vg100{left:62.25cqw;top:357.875cqw;width:4.656cqw;height:4.656cqw;background:#CC4363;z-index:3;display:none}
 .m-s6 .m-vs100{left:61.781cqw;top:357.187cqw;width:5.625cqw;height:auto;z-index:4}
 .m-s6 .m-vt100{left:67.563cqw;top:358.937cqw;font-size:2.5cqw;color:#98123C;z-index:4}
 
