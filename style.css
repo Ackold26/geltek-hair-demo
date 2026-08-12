@@ -538,11 +538,10 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s7 .ba-after-label{left:66.6cqw;top:42.083cqw;width:8cqw}
 
 /* капля-разделитель по центру */
-/* Линия: по горизонтали — по центру капли (986,0; узел 137:338 стоит на 982,2, то есть левее).
-   По вертикали в макете она несимметрична относительно кругов «до» и «после»: выступает над ними
-   на 7 px и под ними на 22,9. Приведена к симметрии — по 15 px с каждой стороны, длина не
-   изменилась. Оба отступления от макета осознанные */
-.s7 .ba-line{left:51.328cqw;top:17.5cqw;width:1px;height:23.385cqw;background:rgba(255,255,255,.35);z-index:7}
+/* Линия центрирована по капле в обе стороны: по горизонтали 986,0, по вертикали её середина
+   совпадает с серединой капли. Узел 137:338 в макете стоит левее (982,2) и выше, длина не
+   изменялась. Осознанное отступление от макета */
+.s7 .ba-line{left:51.328cqw;top:17.76cqw;width:1px;height:23.385cqw;background:rgba(255,255,255,.35);z-index:7}
 /* блюр вдвое меньше макетного (137:340: radius 100, было 50) */
 .s7 .ba-glow1{left:46.667cqw;top:24.74cqw;width:9.323cqw;height:9.323cqw;border-radius:50%;
   background:#BB2444;filter:blur(5.208cqw);z-index:8}
@@ -821,7 +820,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 
 .m-s1 .m-title-sph{left:4.375cqw;top:0;width:19.063cqw;height:19.375cqw;z-index:4}
 .m-s1 .m-hero-title{left:24.063cqw;top:3.125cqw;width:67.813cqw;z-index:4;color:var(--wine);
-  font-weight:300;font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
+  font-weight:300;font-size:5.625cqw;line-height:1.1;text-transform:uppercase}
 .m-s1 .m-hero-title .b{font-weight:500}
 
 .m-s1 .m-banner{left:4.375cqw;top:32.813cqw;width:90.938cqw;height:44.688cqw;z-index:4;overflow:hidden;
