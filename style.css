@@ -755,7 +755,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 /* ---- хедер (центрированный лого + гамбургер) ---- */
 .m-hdr{height:21.25cqw;background:#fff;display:block;position:relative}
 /* Логотип обёрнут в ссылку — позиционирование на .m-hdr-logo-link */
-.m-hdr-logo-link{position:absolute;left:43.438cqw;top:4.688cqw;width:13.125cqw;display:block}
+.m-hdr-logo-link{position:absolute;left:43.438cqw;top:4.063cqw;width:13.219cqw;display:block}
 .m-hdr-logo-link .m-hdr-logo{display:block;width:100%;height:auto}
 .m-burger{position:absolute;left:87.188cqw;top:9.688cqw;width:7.813cqw;height:5.313cqw;
   display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:31}
@@ -774,10 +774,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-menu a:hover,.m-menu a:active{color:var(--wine)}
 
 /* ==================== M-ЭКРАН 1: HERO + ПРЕИМУЩЕСТВА ==================== */
-.m-s1{height:316.875cqw}
+/* в макете экран начинается на 72, то есть на 4 px ниже шапки (2148:620); высота 1010 */
+.m-s1{height:315.625cqw;margin-top:1.25cqw}
 .m-s1 .m-kv{left:-18.75cqw;top:71.25cqw;width:141.563cqw;height:79.375cqw;object-fit:cover;z-index:1}
 .m-s1 .m-patch{left:69.375cqw;top:67.5cqw;width:38.438cqw;height:81.875cqw;border-radius:50%;
-  background:#fff;filter:blur(2cqw);opacity:.9;z-index:2}
+  background:#fff;filter:blur(15.625cqw);opacity:.9;z-index:2}
 
 .m-s1 .m-title-sph{left:4.375cqw;top:0;width:19.063cqw;height:19.375cqw;z-index:4}
 .m-s1 .m-hero-title{left:24.063cqw;top:3.125cqw;width:67.813cqw;z-index:4;color:var(--wine);
@@ -785,7 +786,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s1 .m-hero-title .b{font-weight:500}
 
 .m-s1 .m-banner{left:4.375cqw;top:32.813cqw;width:90.938cqw;height:44.688cqw;z-index:4;overflow:hidden;
-  background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9));
+  background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%);
   backdrop-filter:blur(1.6cqw);-webkit-backdrop-filter:blur(1.6cqw)}
 /* Цветокоррекция заливки узла 179:1311 (экспозиция −0,15, света −0,65, тени −0,78): без неё
    изображение выходит светлее макета. Значения подобраны сравнением со снимком макета */
@@ -799,9 +800,9 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s1 .m-bottle{left:66.875cqw;top:64.063cqw;width:27.813cqw;height:77.813cqw;z-index:5;
   object-fit:contain;will-change:transform}
 
-.m-s1 .m-adv-card{left:-0.313cqw;top:150cqw;width:100.625cqw;height:166.875cqw;z-index:3;
-  background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
-.m-s1 .m-adv-glow{left:5.625cqw;top:158.125cqw;width:16.25cqw;height:16.25cqw;filter:blur(1.6cqw)}
+.m-s1 .m-adv-card{left:-0.313cqw;top:148.75cqw;width:100.625cqw;height:166.875cqw;z-index:3;
+  background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%)}
+.m-s1 .m-adv-glow{left:5.625cqw;top:158.125cqw;width:16.25cqw;height:16.25cqw;filter:blur(15.625cqw)}
 .m-s1 .m-adv-sph{left:4.063cqw;top:156.25cqw;width:19.375cqw;height:19.688cqw;z-index:5}
 .m-s1 .m-adv-title{left:24.063cqw;top:158.75cqw;width:64.063cqw;z-index:4;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
@@ -838,21 +839,21 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 
 .m-s2{height:199.375cqw}
 .m-s2 .m-card{left:0;top:105.625cqw;width:100cqw;height:93.75cqw;z-index:2;
-  background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
+  background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%)}
 .m-s2 .m-icon{left:36.875cqw;top:116.875cqw;width:25.625cqw;height:25.625cqw}
 .m-s2 .m-icon img{width:17.775cqw;height:15.381cqw}
 .m-s2 .m-txt{left:19.688cqw;top:152.188cqw;width:63.75cqw}
 
-.m-s3{height:190.938cqw}
+.m-s3{height:190.625cqw}
 .m-s3 .m-photo{height:108.438cqw}
-.m-s3 .m-card{left:-0.625cqw;top:108.438cqw;width:100cqw;height:82.5cqw;z-index:2}
+.m-s3 .m-card{background:linear-gradient(180deg,rgba(152,18,60,.9) -0.4%,rgba(94,0,35,.9) 77.6%);left:-0.625cqw;top:108.438cqw;width:100cqw;height:82.5cqw;z-index:2}
 .m-s3 .m-icon{left:35.938cqw;top:120cqw;width:25.625cqw;height:25.625cqw}
 .m-s3 .m-icon img{width:18.156cqw;height:14.656cqw}
 .m-s3 .m-txt{left:17.5cqw;top:155.625cqw;width:64.688cqw}
 
 .m-s4{height:206.25cqw}
 .m-s4 .m-photo{left:-0.313cqw;width:100.625cqw;height:105.938cqw}
-.m-s4 .m-card{left:-0.938cqw;top:105.938cqw;width:100.625cqw;height:100.313cqw;z-index:2}
+.m-s4 .m-card{background:linear-gradient(180deg,rgba(152,18,60,.9) 0.7%,rgba(94,0,35,.9) 99.3%);left:-0.938cqw;top:105.938cqw;width:100.625cqw;height:100.313cqw;z-index:2}
 .m-s4 .m-icon{left:36.563cqw;top:117.5cqw;width:25.625cqw;height:25.625cqw}
 .m-s4 .m-icon img{width:13.875cqw;height:16.4375cqw}
 .m-s4 .m-txt{left:17.5cqw;top:153.125cqw;width:65cqw}
@@ -867,7 +868,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s5.acc-a-closed{--hA:60.75cqw}
 .m-s5.acc-b-closed{--hB:193.662cqw}
 .m-s5.acc-a-closed .acc-a,.m-s5.acc-b-closed .acc-b{display:none}
-.m-s5{height:calc(464.862cqw - var(--hA) - var(--hB))}
+.m-s5{height:calc(472.55cqw - var(--hA) - var(--hB))}
 /* знак раскрытия внутри рамки-пилюли */
 .m-s5 .m-acc-sign{z-index:5;color:#fff;font-weight:300;font-size:6.25cqw;line-height:1;
   display:grid;place-items:center;width:6.25cqw;height:6.25cqw;pointer-events:none}
@@ -876,28 +877,28 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s5 .m-acc-sign-a{left:85.938cqw;top:141.094cqw}
 .m-s5 .m-acc-sign-b{left:85.938cqw;top:calc(235.469cqw - var(--hA))}
 .m-s5 [data-acc]{cursor:pointer}
-.m-s5 .m-s5-bg{left:-0.938cqw;top:0;width:102.813cqw;height:106.875cqw;object-fit:cover;z-index:1}
+.m-s5 .m-s5-bg{left:-0.938cqw;top:0;width:102.813cqw;height:106.875cqw;object-fit:cover;z-index:1;filter:blur(0.938cqw)}
 .m-s5 .m-s5-man-wrap{left:26.25cqw;top:19.375cqw;width:71.875cqw;height:97.5cqw;z-index:4}
-.m-s5 .m-s5-shadow{left:42.188cqw;top:102.188cqw;width:33.75cqw;height:6.25cqw;border-radius:50%;
-  background:#D9D9D9;filter:blur(2cqw);mix-blend-mode:multiply;z-index:1}
-.m-s5 .m-s5-man{left:0;top:0;width:100%;height:auto}
+.m-s5 .m-s5-shadow{left:30.938cqw;top:102.812cqw;width:33.75cqw;height:6.25cqw;border-radius:50%;
+  background:#D9D9D9;filter:blur(3.125cqw);mix-blend-mode:multiply;z-index:1}
+.m-s5 .m-s5-man{left:0;top:0;width:100%;height:100%;object-fit:cover}
 .m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:calc(362.362cqw - var(--hA) - var(--hB));z-index:2;
-  background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
+  background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%)}
 
-.m-s5 .m-s5-title-glow{left:5.625cqw;top:113.438cqw;width:19.375cqw;height:19.375cqw}
+.m-s5 .m-s5-title-glow{left:5.625cqw;top:113.438cqw;width:19.375cqw;height:19.375cqw;filter:blur(15.625cqw)}
 .m-s5 .m-s5-title-sph{left:4.375cqw;top:113.438cqw;width:19.375cqw;height:19.688cqw;z-index:5}
 .m-s5 .m-s5-title{left:24.063cqw;top:116.25cqw;width:67.813cqw;z-index:4;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 
 .m-s5 .m-pill{border:1px solid rgba(255,255,255,.4);z-index:3}
 .m-s5 .m-pill1{left:5cqw;top:135.938cqw;width:90cqw;height:16.563cqw;border-radius:8.281cqw}
-.m-s5 .m-p1-glow{left:6.25cqw;top:136.563cqw;width:15.313cqw;height:15.313cqw}
+.m-s5 .m-p1-glow{left:6.25cqw;top:136.563cqw;width:15.313cqw;height:15.313cqw;filter:blur(15.625cqw)}
 .m-s5 .m-p1-sph{left:6.25cqw;top:136.563cqw;width:15.313cqw;height:15.313cqw;z-index:5}
 .m-s5 .m-pill1-title{left:24.063cqw;top:141.563cqw;width:68.125cqw;z-index:4;color:#fff;font-weight:500;
   font-size:4.688cqw;line-height:1.25;text-transform:uppercase}
 
 .m-s5 .m-pill2{left:5cqw;top:calc(220.313cqw - var(--hA));width:90cqw;height:36.563cqw;border-radius:9.375cqw}
-.m-s5 .m-p2-glow{left:5.938cqw;top:calc(223.75cqw - var(--hA));width:15.313cqw;height:15.313cqw}
+.m-s5 .m-p2-glow{left:5.938cqw;top:calc(223.75cqw - var(--hA));width:15.313cqw;height:15.313cqw;filter:blur(15.625cqw)}
 .m-s5 .m-p2-sph{left:5.938cqw;top:calc(223.75cqw - var(--hA));width:15.313cqw;height:15.313cqw;z-index:5}
 /* Межбуквенное 0,45 px при кегле 15 (узел 181:2209) — от него зависит разбивка на строки */
 .m-s5 .m-pill2-title{left:24.063cqw;top:calc(223.75cqw - var(--hA));width:68.125cqw;z-index:4;color:#fff;font-weight:500;
@@ -920,10 +921,10 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 
 /* ==================== M-ЭКРАН 6: ГДЕ КУПИТЬ + ПРОДУКТ ==================== */
 /* Высота секции не меняется: зазор до следующего экрана держится по макету */
-.m-s6{height:379.501cqw}
-.m-s6 .m-s6-sph{left:4.063cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
+.m-s6{height:372.188cqw}
+.m-s6 .m-s6-sph{left:4.063cqw;top:0cqw;width:19.063cqw;height:19.375cqw;z-index:2}
 /* Узел 181:2258: «Где купить сыворотку» — Light 300, «GELTEK Hair» — Medium 500 */
-.m-s6 .m-s6-title{left:23.75cqw;top:10.938cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:300;
+.m-s6 .m-s6-title{left:23.75cqw;top:3.125cqw;width:68.438cqw;z-index:2;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s6 .m-s6-title .b{font-weight:500}
 
@@ -932,50 +933,50 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s6 .m-s6-fsph{z-index:4;pointer-events:none;height:auto}
 /* позиция и блюр всех трёх шаров сверены напрямую с Figma (2148:806/807/808) — были смещены
    на ~19cqw по left и ~7cqw по top, блюр отсутствовал вовсе */
-.m-s6 .m-fs1{left:94.594cqw;top:230.938cqw;width:40.281cqw;filter:blur(1.551cqw)}
-.m-s6 .m-fs2{left:9.625cqw;top:264.031cqw;width:29.469cqw;filter:blur(.93cqw)}
-.m-s6 .m-fs3{left:33.031cqw;top:232.188cqw;width:16.563cqw;filter:blur(.93cqw)}
+.m-s6 .m-fs1{left:76.156cqw;top:230.938cqw;width:40.281cqw;filter:blur(1.551cqw)}
+.m-s6 .m-fs2{left:-8.813cqw;top:264.031cqw;width:29.469cqw;filter:blur(.93cqw)}
+.m-s6 .m-fs3{left:14.593cqw;top:232.188cqw;width:16.563cqw;filter:blur(.93cqw)}
 
 /* 188:158 «glow», родитель 186:3798 (−61.7/4722) — секция начинается на 4596 (конец экрана 5 по
    спеку mobile), пересчёт: left=(-61.7)/3.2, top=(4852-4596)/3.2 */
-.m-s6 .m-s6-edgeglow{left:-19.281cqw;top:267.375cqw;width:40.625cqw;height:39.063cqw;border-radius:50%;
+.m-s6 .m-s6-edgeglow{left:-18.438cqw;top:260.625cqw;width:40.625cqw;height:39.063cqw;border-radius:50%;
   background:#E96882;filter:blur(13.957cqw);mix-blend-mode:screen;z-index:2}
 /* Весь блок ниже сверен напрямую с Figma-спекой 11.08 (узлы 2148:779/781/1017/803/791/792/
    794/796/799 и потомки) — прежние координаты были получены до появления рабочего API-доступа
    и разошлись с текущим макетом на 7–30px по разным элементам */
-.m-s6 .m-s6-plate{left:9.156cqw;top:221.125cqw;width:82.5cqw;height:133.094cqw;z-index:1;
-  background:linear-gradient(180deg,#F8F8F8,#CACACA)}
-.m-s6 .m-s6-glowbox{left:9.156cqw;top:236.375cqw;width:82.5cqw;height:117.844cqw;z-index:1;overflow:hidden}
+.m-s6 .m-s6-plate{left:9.156cqw;top:213.75cqw;width:82.5cqw;height:133.094cqw;z-index:1;
+  background:linear-gradient(180deg,#F8F8F8 -21.4%,#CACACA 118.5%)}
+.m-s6 .m-s6-glowbox{left:9.156cqw;top:229cqw;width:82.5cqw;height:117.844cqw;z-index:1;overflow:hidden}
 /* Координаты — относительно glowbox (см. предыдущее примечание о системе координат) */
-.m-s6 .m-s6-glowlight{left:8.188cqw;top:44.875cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
+.m-s6 .m-s6-glowlight{left:8.188cqw;top:37.5cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
   background:#fff;filter:blur(14.29cqw)}
-.m-s6 .m-s6-glowsph{left:-17.75cqw;top:38.469cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
+.m-s6 .m-s6-glowsph{left:-17.75cqw;top:31.094cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
   transform:rotate(180deg)}
-.m-s6 .m-s6-pinkglow-clip{left:9.156cqw;top:244.75cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
+.m-s6 .m-s6-pinkglow-clip{left:9.156cqw;top:237.375cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
 .m-s6 .m-s6-pinkglow{position:absolute;left:4.969cqw;top:86.813cqw;width:35.656cqw;height:34.125cqw;
   border-radius:50%;background:rgba(233,104,130,.8);filter:blur(20.157cqw)}
-.m-s6 .m-s6-logo{left:34.031cqw;top:231.438cqw;width:33.438cqw;height:30cqw;z-index:3}
-.m-s6 .m-s6-peptidman{left:19.875cqw;top:329.875cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
+.m-s6 .m-s6-logo{left:34.031cqw;top:224.063cqw;width:33.438cqw;height:30cqw;z-index:3}
+.m-s6 .m-s6-peptidman{left:19.875cqw;top:322.5cqw;width:17.438cqw;height:37.688cqw;z-index:3;transform:scaleX(-1)}
 .m-s6 .m-s6-pack50 {left:30.313cqw;top:304.281cqw;width:26.969cqw;height:58.375cqw;z-index:3;object-fit:contain}
-.m-s6 .m-s6-pack100{left:54.094cqw; top:283.938cqw; width:28.375cqw;height:78.75cqw; z-index:3;object-fit:contain}
+.m-s6 .m-s6-pack100{left:54.094cqw; top:276.563cqw; width:28.375cqw;height:78.75cqw; z-index:3;object-fit:contain}
 /* та же скрытая заливка, что и на десктопе (см. .s6 .g50) — узлы «glow» под этими подписями
    помечены в макете visible:false */
-.m-s6 .m-vg50{left:40.375cqw;top:365.25cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3;display:none}
-.m-s6 .m-vs50{left:39.906cqw;top:364.75cqw;width:5.625cqw;height:auto;z-index:4}
-.m-s6 .m-vt50{left:45.688cqw;top:366.5cqw;font-size:2.5cqw;color:#98123C;z-index:4}
-.m-s6 .m-vg100{left:62.25cqw;top:365.25cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3;display:none}
-.m-s6 .m-vs100{left:61.781cqw;top:364.75cqw;width:5.625cqw;height:auto;z-index:4}
-.m-s6 .m-vt100{left:67.563cqw;top:366.5cqw;font-size:2.5cqw;color:#98123C;z-index:4}
+.m-s6 .m-vg50{left:40.375cqw;top:357.687cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3;display:none}
+.m-s6 .m-vs50{left:39.906cqw;top:357.187cqw;width:5.625cqw;height:auto;z-index:4}
+.m-s6 .m-vt50{left:45.688cqw;top:358.937cqw;font-size:2.5cqw;color:#98123C;z-index:4}
+.m-s6 .m-vg100{left:62.25cqw;top:357.687cqw;width:4.688cqw;height:4.688cqw;background:#CC4363;z-index:3;display:none}
+.m-s6 .m-vs100{left:61.781cqw;top:357.187cqw;width:5.625cqw;height:auto;z-index:4}
+.m-s6 .m-vt100{left:67.563cqw;top:358.937cqw;font-size:2.5cqw;color:#98123C;z-index:4}
 
-.m-s6 .m-shopbtn{width:83.125cqw;height:42.5cqw;left:9.063cqw;z-index:2;display:flex;
+.m-s6 .m-shopbtn{width:82.188cqw;height:42.5cqw;left:8.75cqw;z-index:2;display:flex;
   align-items:center;justify-content:center;
-  background:linear-gradient(180deg,rgba(152,18,60,.9) 0%,rgba(152,18,60,.9) 50%,rgba(94,0,35,.9) 100%)}
+  background:linear-gradient(180deg,rgba(152,18,60,.9) 2.9%,rgba(94,0,35,.9) 100%)}
 /* Плитки магазинов идут сразу под заголовком (зазор 32 px по макету), витрина с продуктом —
    под ними */
-.m-s6 .m-btn1{top:39.563cqw}
-.m-s6 .m-btn2{top:84.876cqw}
-.m-s6 .m-btn3{top:130.501cqw}
-.m-s6 .m-btn4{top:175.813cqw}
+.m-s6 .m-btn1{top:32.188cqw}
+.m-s6 .m-btn2{top:77.501cqw}
+.m-s6 .m-btn3{top:123.126cqw}
+.m-s6 .m-btn4{top:168.438cqw}
 /* Размеры логотипов — точный перевод боксов мобильного фрейма (cqw = px/3.2), а не доля от
    плитки: apteka.ru 112,5×23,9 (195:77), wildberries 133,1×19,5 (195:88), OZON 86,9×18,7
    (195:92), значок «Золотого яблока» 30,4×30,2 (195:84). Прежние доли (60% / 46%) давали
@@ -989,10 +990,10 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s6 .m-shopbtn img.ozon-logo{width:27.156cqw;height:auto}
 
 /* ==================== M-ЭКРАН 7: ДО/ПОСЛЕ ==================== */
-.m-s7{height:260.625cqw}
+.m-s7{height:268.438cqw}
 .m-s7 .m-s7-card{left:0;top:0;width:99.688cqw;height:260.625cqw;z-index:1;
-  background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
-.m-s7 .m-s7-glow{left:4.063cqw;top:7.188cqw;width:19.375cqw;height:19.375cqw}
+  background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%)}
+.m-s7 .m-s7-glow{left:5.688cqw;top:8.938cqw;width:16.188cqw;height:16.188cqw;filter:blur(15.625cqw)}
 .m-s7 .m-s7-sph{left:4.063cqw;top:7.188cqw;width:19.375cqw;height:19.688cqw;z-index:3}
 .m-s7 .m-s7-title{left:23.75cqw;top:9.688cqw;width:67.813cqw;z-index:2;color:#fff;font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
@@ -1016,11 +1017,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 
 .m-s7 .m-ba-line{left:7.5cqw;top:151.563cqw;width:84.688cqw;height:1px;background:rgba(255,255,255,.35);z-index:2}
 .m-s7 .m-ba-glow1{left:33.75cqw;top:134.375cqw;width:33.125cqw;height:32.813cqw;border-radius:50%;
-  background:#BB2444;filter:blur(2.5cqw);z-index:3}
+  background:#BB2444;filter:blur(31.25cqw);z-index:3}
 .m-s7 .m-ba-drop{left:32.188cqw;top:133.125cqw;width:36.563cqw;height:35.938cqw;z-index:4;
   filter:brightness(.78) saturate(1.35) contrast(.92)}
 .m-s7 .m-ba-glow2{left:36.25cqw;top:138.438cqw;width:25.313cqw;height:25cqw;border-radius:50%;
-  background:#BF8A95;filter:blur(2.5cqw);mix-blend-mode:screen;z-index:5}
+  background:#BF8A95;filter:blur(31.25cqw);mix-blend-mode:screen;z-index:5}
 .m-s7 .m-ba-ball{left:32.813cqw;top:132.813cqw;width:34.375cqw;height:34.688cqw;z-index:6}
 
 .m-s7 .m-s7-note{left:8.125cqw;top:248.438cqw;z-index:2;color:#fff;font-weight:300;font-size:3.125cqw}
@@ -1029,7 +1030,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 /* Содержимое ниже заголовка приведено к координатам макета (узлы 184:2614 текст, 184:2616
    кнопка, 184:2620 фотография, 184:2621 логотип): раньше вся группа стояла на 25 px выше,
    отчего текст почти упирался в заголовок и в кнопку */
-.m-s8{height:277.5cqw}
+.m-s8{height:276.875cqw}
 .m-s8 .m-s8-sph{left:4.375cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
 .m-s8 .m-s8-title{left:24.063cqw;top:15cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
@@ -1042,43 +1043,43 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
   display:flex;align-items:center;justify-content:center}
 .m-s8 .m-s8-photo{left:-0.625cqw;top:169.375cqw;width:100.938cqw;height:108.125cqw;object-fit:cover;z-index:1}
 .m-s8 .m-s8-shadow{left:-20.938cqw;top:212.813cqw;width:144.063cqw;height:42.5cqw;border-radius:50%;
-  background:#D9D9D9;filter:blur(2.5cqw);mix-blend-mode:multiply;z-index:1}
+  background:#D9D9D9;filter:blur(31.25cqw);mix-blend-mode:multiply;z-index:1}
 /* Габарит надписи по узлу 184:2621 — 276×40 px, то есть 86.25×12.5cqw: кегль подобран по высоте
    прописных, разрядка — по ширине набора */
 .m-s8 .m-s8-word{left:8.125cqw;top:217.188cqw;width:86.25cqw;z-index:2;color:#fff;font-weight:500;
   font-size:16.875cqw;line-height:1;letter-spacing:.251em;text-transform:uppercase;white-space:nowrap}
 
 /* ==================== M-ЭКРАН 9: ШАМПУНИ ==================== */
-.m-s9{height:303.126cqw}
-.m-s9 .m-s9-title{left:23.75cqw;top:8.125cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:500;
+.m-s9{height:291.875cqw}
+.m-s9 .m-s9-title{left:23.75cqw;top:0cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 /* Узлы 184:2645 и 184:2643: шары стоят на 2px ниже верха заголовка, центры совпадают.
    Заголовок смещён вниз на 8.125cqw относительно макета, поэтому шары повторяют этот сдвиг
    (.625 + 8.125), иначе они оказываются выше первой строки. */
-.m-s9 .m-s9-duo{left:5cqw;top:8.75cqw;width:17.813cqw;height:12.5cqw;z-index:2}
+.m-s9 .m-s9-duo{left:5cqw;top:0.625cqw;width:17.813cqw;height:12.5cqw;z-index:2}
 
 .m-s9 .m-subhat{z-index:2;font-weight:500;line-height:1.25;text-transform:uppercase}
 /* Подзаголовок в четыре строки, кегль и бокс по макету; порядок строк задан переносами */
-.m-s9 .m-r-subhat{left:23.75cqw;top:27.188cqw;width:65cqw;color:var(--wine);font-size:4.688cqw}
-.m-s9 .m-v-subhat{left:23.75cqw;top:171.251cqw;width:62.188cqw;color:var(--violet);font-size:4.688cqw}
+.m-s9 .m-r-subhat{left:23.75cqw;top:19.062cqw;width:65cqw;color:var(--wine);font-size:4.688cqw}
+.m-s9 .m-v-subhat{left:23.75cqw;top:160.938cqw;width:62.188cqw;color:var(--violet);font-size:4.688cqw}
 .m-s9 .m-sph{z-index:2}
-.m-s9 .m-r-sph{left:15.313cqw;top:26.875cqw;width:6.25cqw;height:auto}
-.m-s9 .m-v-sph{left:15.313cqw;top:170.938cqw;width:6.25cqw;height:auto}
+.m-s9 .m-r-sph{left:15.312cqw;top:18.75cqw;width:6.25cqw;height:auto}
+.m-s9 .m-v-sph{left:15.312cqw;top:160.625cqw;width:6.25cqw;height:auto}
 
 .m-s9 .m-banner{z-index:2;overflow:hidden;position:absolute;display:flex;align-items:center}
 .m-s9 .m-banner .banner-drop{position:absolute;mix-blend-mode:luminosity;pointer-events:none}
 .m-s9 .m-banner span{position:relative;z-index:1;color:#fff;font-weight:300;font-size:3.75cqw;
   line-height:1.3;padding:2cqw 40cqw 2cqw 9.063cqw}
-.m-s9 .m-r-banner{left:4.375cqw;top:55.313cqw;width:90.938cqw;height:47.188cqw;
-  background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
+.m-s9 .m-r-banner{left:4.375cqw;top:47.188cqw;width:90.938cqw;height:47.188cqw;
+  background:linear-gradient(90deg,rgba(94,0,35,.9) 30.2%,rgba(152,18,60,.9) 75.5%)}
 /* Правый отступ — точечно: в общем правиле он рассчитан на другой баннер и переставляет
    заданный макетом порядок строк */
 .m-s9 .m-r-banner span{padding-right:30cqw}
 /* Цветокоррекция заливки узла 184:2652 (экспозиция −0,26, света −0,65, тени −0,9) */
 .m-s9 .m-r-banner .banner-drop{left:50.625cqw;top:-5cqw;width:55.313cqw;height:auto;
   filter:brightness(.566) saturate(1.533)}
-.m-s9 .m-v-banner{left:4.375cqw;top:194.688cqw;width:90.938cqw;height:46.875cqw;
-  background:linear-gradient(90deg,rgba(96,66,131,1),rgba(116,95,154,1))}
+.m-s9 .m-v-banner{left:4.375cqw;top:184.375cqw;width:90.938cqw;height:46.875cqw;
+  background:linear-gradient(90deg,#604283 26.5%,#745F9A 66.3%)}
 .m-s9 .m-v-banner span{font-size:3.125cqw;padding:2cqw 32cqw 2cqw 9.063cqw}
 /* Цветокоррекция не была перенесена (в отличие от .m-r-banner выше) — картинка без -fx
    в имени, то есть без запечённых эффектов; подобрано по замеру яркости/насыщенности
@@ -1087,53 +1088,61 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
   filter:brightness(.8) saturate(1.8)}
 
 .m-s9 .m-pack{z-index:3}
-.m-s9 .m-r-norm30 {left:11.906cqw;top:104.063cqw;   width:14.719cqw;height:35.5cqw}
-.m-s9 .m-r-norm100{left:35.219cqw;top:96.751cqw; width:20.531cqw;height:42.938cqw}
-.m-s9 .m-r-norm390{left:60.625cqw;top:80.782cqw; width:29.375cqw;height:58.844cqw}
-.m-s9 .m-v-post30 {left:3.125cqw; top:242.969cqw;width:15.969cqw;height:35.813cqw}
-.m-s9 .m-v-post100{left:23.438cqw;top:235.157cqw;width:18.688cqw;height:44.406cqw}
-.m-s9 .m-v-post250{left:45.938cqw;top:228.501cqw;width:21.313cqw;height:50.844cqw}
-.m-s9 .m-v-post390{left:70.938cqw;top:219.844cqw;width:25.406cqw;height:59.281cqw}
+.m-s9 .m-r-norm30 {left:11.912cqw;top:96.394cqw;   width:14.731cqw;height:35.494cqw}
+.m-s9 .m-r-norm100{left:35.219cqw;top:88.775cqw; width:20.531cqw;height:42.938cqw}
+.m-s9 .m-r-norm390{left:60.631cqw;top:72.812cqw; width:29.375cqw;height:58.844cqw}
+.m-s9 .m-v-post30 {left:3.125cqw; top:233.438cqw;width:15.969cqw;height:35.803cqw}
+.m-s9 .m-v-post100{left:23.438cqw;top:225.312cqw;width:18.697cqw;height:44.422cqw}
+.m-s9 .m-v-post250{left:45.938cqw;top:218.75cqw;width:21.278cqw;height:50.831cqw}
+.m-s9 .m-v-post390{left:71.25cqw;top:209.375cqw;width:25.419cqw;height:59.269cqw}
 
 .m-s9 .m-vol-glow{width:4.688cqw;height:4.688cqw;z-index:3}
 .m-s9 .m-vol-sph{width:5.625cqw;height:auto;z-index:4}
 .m-s9 .m-vol-txt{font-size:2.5cqw;z-index:4}
 .m-s9 .m-rg1,.m-s9 .m-rg2,.m-s9 .m-rg3{background:#CC4363}
 .m-s9 .m-rg1{left:13.438cqw;top:144.688cqw}
-.m-s9 .m-rs1{left:12.813cqw;top:144.063cqw}
-.m-s9 .m-rt1{left:19.375cqw;top:145.001cqw;color:#fff}
+.m-s9 .m-rs1{left:12.812cqw;top:135.956cqw}
+.m-s9 .m-rt1{left:19.344cqw;top:137.025cqw;color:#fff}
 .m-s9 .m-rg2{left:38.125cqw;top:144.688cqw}
-.m-s9 .m-rs2{left:37.813cqw;top:144.376cqw}
-.m-s9 .m-rt2{left:44.063cqw;top:145.313cqw;color:#fff}
+.m-s9 .m-rs2{left:37.725cqw;top:136.109cqw}
+.m-s9 .m-rt2{left:43.941cqw;top:137.125cqw;color:#fff}
 .m-s9 .m-rg3{left:67.188cqw;top:144.376cqw}
-.m-s9 .m-rs3{left:66.563cqw;top:144.063cqw}
-.m-s9 .m-rt3{left:73.125cqw;top:145.001cqw;color:#fff}
+.m-s9 .m-rs3{left:66.662cqw;top:135.897cqw}
+.m-s9 .m-rt3{left:73.191cqw;top:136.966cqw;color:#fff}
 
 .m-s9 .m-vg1,.m-s9 .m-vg2,.m-s9 .m-vg3,.m-s9 .m-vg4{background:#8E6CC8}
 .m-s9 .m-vg1{left:5cqw;top:282.501cqw}
-.m-s9 .m-vs1{left:4.688cqw;top:282.501cqw}
-.m-s9 .m-vt1{left:10.938cqw;top:284.063cqw;color:#fff}
+.m-s9 .m-vs1{left:5.128cqw;top:273.75cqw}
+.m-s9 .m-vt1{left:11.037cqw;top:274.613cqw;color:#fff}
 .m-s9 .m-vg2{left:26.875cqw;top:283.126cqw}
-.m-s9 .m-vs2{left:26.25cqw;top:282.813cqw}
-.m-s9 .m-vt2{left:32.5cqw;top:284.063cqw;color:#fff}
+.m-s9 .m-vs2{left:26.775cqw;top:273.809cqw}
+.m-s9 .m-vt2{left:32.622cqw;top:274.666cqw;color:#fff}
 .m-s9 .m-vg3{left:48.75cqw;top:283.126cqw}
-.m-s9 .m-vs3{left:48.125cqw;top:282.501cqw}
-.m-s9 .m-vt3{left:54.688cqw;top:284.063cqw;color:#fff}
+.m-s9 .m-vs3{left:48.628cqw;top:273.734cqw}
+.m-s9 .m-vt3{left:54.534cqw;top:274.597cqw;color:#fff}
 .m-s9 .m-vg4{left:75.625cqw;top:283.126cqw}
-.m-s9 .m-vs4{left:75cqw;top:282.501cqw}
-.m-s9 .m-vt4{left:81.563cqw;top:283.751cqw;color:#fff}
+.m-s9 .m-vs4{left:75.525cqw;top:273.316cqw}
+.m-s9 .m-vt4{left:81.584cqw;top:274.194cqw;color:#fff}
 
-.m-s9 .m-r-band{left:-22.188cqw;top:119.063cqw;width:122.813cqw;height:43.75cqw;z-index:1;overflow:hidden;
-  background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9))}
+.m-s9 .m-r-band{left:-22.188cqw;top:110.844cqw;width:122.813cqw;height:43.75cqw;z-index:1;overflow:hidden;
+  background:linear-gradient(90deg,rgba(94,0,35,.9) 17.4%,rgba(152,18,60,.9) 110.9%)}
 .m-s9 .m-r-band .wm{position:absolute;left:16.563cqw;top:2cqw;color:#9B274C;opacity:.5;font-weight:500;
   font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
-.m-s9 .m-v-band{left:0;top:257.501cqw;width:100.625cqw;height:45cqw;z-index:1;overflow:hidden;
-  background:linear-gradient(90deg,#604283,#745F9A)}
+/* Плашки «Нажмите на изображение…» — 2194:358 (красная, #781D3D) и 2194:308 (фиолетовая,
+   #624585); текст белый, по центру плашки */
+.m-s9 .m-more-txt{z-index:4;display:flex;align-items:center;justify-content:center;white-space:nowrap;
+  font-size:2.5cqw;font-weight:300;color:#fff;height:5.625cqw;width:90.938cqw;left:4.375cqw}
+.m-s9 .m-more-txt b{font-weight:500;color:#fff;margin-left:.625cqw}
+.m-s9 .m-r-more{top:143.438cqw;background:#781D3D}
+.m-s9 .m-v-more{top:279.688cqw;background:#624585}
+
+.m-s9 .m-v-band{left:-1.562cqw;top:248.125cqw;width:102.188cqw;height:43.75cqw;z-index:1;overflow:hidden;
+  background:linear-gradient(90deg,#604283 15%,#745F9A 100%)}
 .m-s9 .m-v-band .wm{position:absolute;left:7.5cqw;top:2cqw;color:#715B97;font-weight:500;
   font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
 
 /* ==================== M-ЭКРАН 10 + ФИНАЛ + ФУТЕР ==================== */
-.m-s10{height:58.125cqw}
+.m-s10{height:58.438cqw}
 /* Затемнение 20% — как в десктопной ветке */
 .m-s10 .m-s10-photo{left:0;top:0;width:100.313cqw;height:58.125cqw;object-fit:cover;z-index:1;
   filter:brightness(.8)}
