@@ -113,7 +113,8 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
   background:linear-gradient(90deg,rgba(94,0,35,.9),rgba(152,18,60,.9));
   backdrop-filter:blur(1.2cqw);-webkit-backdrop-filter:blur(1.2cqw);
   display:flex;align-items:center}
-.s1 .banner span{position:relative;z-index:1;color:#fff;font-weight:500;font-size:1.875cqw;padding-left:3.073cqw;letter-spacing:.01em;text-transform:uppercase}
+/* letter-spacing убран — в Figma (137:19) 0, лишний разрядка съедала отступ до капли */
+.s1 .banner span{position:relative;z-index:1;color:#fff;font-weight:500;font-size:1.875cqw;padding-left:3.073cqw;text-transform:uppercase}
 /* капля-сфера, замаскированная под баннер, наложение luminosity — эффект стекла/линзы.
    137:18: кроп (FILL, контейнер 345x340) + фильтры Figma запечены физически в drop-red-pt2-fx.png */
 /* НАСТОЯЩАЯ причина расхождения (найдено численно): старый файл drop-red-pt2-fx.png был испечён
@@ -162,12 +163,21 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s1 .adv-item.i1{top:67.292cqw}
 .s1 .adv-item.i2{top:71.458cqw}
 .s1 .adv-item.i3{top:77.552cqw}
-/* иконки-кружки (белый круг + бордовая иконка) — свечение DROP_SHADOW #924A52 r50/spread10 */
+/* иконки-кружки (белый круг + бордовая иконка) — свечение DROP_SHADOW #924A52 r50/spread10,
+   blendMode:LINEAR_DODGE. Раньше стояло box-shadow тем же цветом/размером — но box-shadow
+   рисуется обычным непрозрачным наложением, а LINEAR_DODGE добавляет свет; на тёмно-красной
+   плашке обычная тень того же тона практически не читалась. Заменено на отдельный слой с
+   mix-blend-mode:plus-lighter (CSS-эквивалент Linear Dodge) позади круга. */
 .s1 .adv-ic{z-index:6;left:21.823cqw;width:3.906cqw;height:3.906cqw;border-radius:50%;background:#fff;
-  box-shadow:0 0 2.604cqw .521cqw #924A52;display:grid;place-items:center}
+  display:grid;place-items:center}
 .s1 .adv-ic.c1{top:66.302cqw}
 .s1 .adv-ic.c2{top:71.615cqw}
 .s1 .adv-ic.c3{top:77.708cqw}
+.s1 .adv-glow{z-index:5;width:4.948cqw;height:4.948cqw;border-radius:50%;background:#924A52;
+  filter:blur(2.604cqw);mix-blend-mode:plus-lighter;pointer-events:none}
+.s1 .adv-glow.c1{left:21.302cqw;top:65.781cqw}
+.s1 .adv-glow.c2{left:21.302cqw;top:71.094cqw}
+.s1 .adv-glow.c3{left:21.302cqw;top:77.188cqw}
 /* доля иконки от круга у каждой разная (59%/84%/60%), единый процент 62% на все три
    занижал вторую иконку почти на четверть — размеры сверены с Figma-спекой 11.08 */
 .s1 .adv-ic img{object-fit:contain}
@@ -789,6 +799,13 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s1 .m-ic1{top:190.313cqw}
 .m-s1 .m-ic2{top:227.813cqw}
 .m-s1 .m-ic3{top:265.625cqw}
+/* свечение DROP_SHADOW #924A52 r50/spread10 blendMode:LINEAR_DODGE (2148:639/653/664) — как и на
+   десктопе, отсутствовало полностью */
+.m-s1 .m-ic-glow{z-index:3;left:39.688cqw;width:19.688cqw;height:19.688cqw;border-radius:50%;
+  background:#924A52;filter:blur(15.625cqw);mix-blend-mode:plus-lighter;pointer-events:none}
+.m-s1 .m-ic-glow.g1{top:187.188cqw}
+.m-s1 .m-ic-glow.g2{top:224.688cqw}
+.m-s1 .m-ic-glow.g3{top:262.5cqw}
 /* доля иконки от круга у каждой разная, единый процент 58% (общее правило .m-ic-circ img)
    занижал вторую иконку — размеры сверены с Figma-спекой 11.08 */
 .m-s1 .m-ic1 img{width:7.656cqw;height:10.5cqw}
