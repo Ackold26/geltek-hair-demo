@@ -61,9 +61,13 @@
         toggleMenu(false);
       }
     });
-    /* клик по пункту меню — закрыть после перехода */
-    mHdr.querySelectorAll('.m-menu a').forEach(function (a) {
+    /* клик по пункту меню — пометить выбранный и закрыть после перехода.
+       В макете выбранный пункт показан бордовым (179:1132), остальные серые */
+    var mLinks = mHdr.querySelectorAll('.m-menu a');
+    mLinks.forEach(function (a) {
       a.addEventListener('click', function () {
+        mLinks.forEach(function (b) { b.classList.remove('is-active'); });
+        a.classList.add('is-active');
         toggleMenu(false);
       });
     });

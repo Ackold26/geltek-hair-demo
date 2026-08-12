@@ -97,8 +97,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    оба слоя размывали белым низ фотографии. p8 оставлен макетным: он держит стык с белым фоном,
    при ослаблении нижняя кромка фото начинает проступать полосой. */
 .s1 .patch.p7{left:-9.792cqw;top:56.823cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(4.167cqw);opacity:.5}
-.s1 .patch.p8{left:-9.792cqw;top:53.125cqw;width:118.073cqw;height:10.938cqw;border-radius:0;filter:blur(5.208cqw);opacity:1}
-.s1 .patch.p9{left:-6.042cqw;top:54.115cqw;width:118.073cqw;height:28.75cqw;border-radius:0;filter:blur(4.167cqw);opacity:.28}
+/* высота по группе патчей 137:23 (281 px): прежние 210 оставляли верхнюю кромку фона
+   с пузырями видимой линией */
+.s1 .patch.p8{left:-9.792cqw;top:53.125cqw;width:118.073cqw;height:14.635cqw;border-radius:0;filter:blur(5.208cqw);opacity:1}
+/* непрозрачность по узлу 137:22 — 0,5 (было 0,28, отчего переход читался кромкой) */
+.s1 .patch.p9{left:-6.042cqw;top:54.115cqw;width:118.073cqw;height:28.75cqw;border-radius:0;filter:blur(4.167cqw);opacity:.5}
 
 /* красный шар у заголовка */
 .s1 .sph-title{left:17.188cqw;top:7.188cqw;width:9.271cqw;height:auto;z-index:4}
@@ -285,7 +288,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    снято намеренно: сдвиг вверх оставлял под бордовой плашкой 39px фона вместо макетных 168, а
    сдвиг вниз подводил нижнюю кромку вплотную к шару заголовка «Где купить» (6516). Неподвижное
    макетное положение — единственное, при котором соблюдаются оба расстояния. */
-.s5 .kvbg{left:-0.208cqw;top:-0.104cqw;width:100cqw;height:61.615cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
+/* clip-path обрезает результат размытия ровно по кромке фотографии: без него blur растекается
+   за границы кадра и даёт мягкий ореол сверху и снизу — кромка фотографии должна быть чистой.
+   Радиус: прямой перенос LAYER_BLUR 5 из макета (137:168) размывал фон вдвое сильнее самого
+   макета — по замеру резкости краёв (0,175 против 0,319) подобрано 1,5 px */
+.s5 .kvbg{left:-0.208cqw;top:-0.104cqw;width:100cqw;height:61.615cqw;object-fit:cover;z-index:1;filter:blur(.08cqw);opacity:.6;clip-path:inset(0)}
 /* 137:166 — сплошная белая подложка под кв-фоном (сама секция уже, чем фон) */
 .s5 .white-bg{left:0;top:-0.208cqw;width:100cqw;height:75.677cqw;background:#fff;z-index:0}
 /* тот же паттерн «блюр вдвое меньше макетного» (узел 137:169: radius 120, у нас было 60) —
@@ -326,13 +333,16 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 
 .s5 .p1-glow{left:23.297cqw;top:15.714cqw;width:3.526cqw;height:3.526cqw;filter:blur(1.78cqw)}
 .s5 .p1-sph{left:22.943cqw;top:15.333cqw;width:4.219cqw;height:4.26cqw}
-.s5 .pill1-title{left:27.604cqw;top:16.406cqw;width:30cqw;z-index:4;color:#fff;font-weight:500;
-  font-size:1.25cqw;line-height:1.25;text-transform:uppercase}
+/* узел 2073:70: кегль 25 (было 24) и верх на 5325,4 — заголовок стоял на 4 px выше и потому
+   не попадал в центр рамки */
+.s5 .pill1-title{left:27.604cqw;top:16.635cqw;width:30cqw;z-index:4;color:#fff;font-weight:500;
+  font-size:1.302cqw;line-height:1.258;text-transform:uppercase}
 
 .s5 .p2-glow{left:23.333cqw;top:25.87cqw;width:3.526cqw;height:3.526cqw;filter:blur(1.78cqw);mix-blend-mode:screen}
 .s5 .p2-sph{left:22.974cqw;top:25.495cqw;width:4.219cqw;height:4.26cqw}
-.s5 .pill2-title{left:27.604cqw;top:25.833cqw;width:34cqw;z-index:4;color:#fff;font-weight:500;
-  font-size:1.25cqw;line-height:1.25;text-transform:uppercase}
+/* то же по узлу 2073:52 */
+.s5 .pill2-title{left:27.604cqw;top:25.917cqw;width:34cqw;z-index:4;color:#fff;font-weight:500;
+  font-size:1.302cqw;line-height:1.258;text-transform:uppercase}
 
 /* Пункты: каждый — самостоятельный абзац со своей координатой (расстояния между ними заданы
    позициями, а не пустой строкой внутри общего текста) */
@@ -518,7 +528,9 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s7 .ba-after-label{left:66.6cqw;top:42.083cqw;width:8cqw}
 
 /* капля-разделитель по центру */
-.s7 .ba-line{left:51.146cqw;top:17.917cqw;width:1px;height:23.385cqw;background:rgba(255,255,255,.35);z-index:7}
+/* по узлу 137:338 линия стоит на 982,2 — на 3,7 px левее центра капли; выровнена по центру
+   капли (986,0). Осознанное отступление от макета */
+.s7 .ba-line{left:51.328cqw;top:17.917cqw;width:1px;height:23.385cqw;background:rgba(255,255,255,.35);z-index:7}
 /* блюр вдвое меньше макетного (137:340: radius 100, было 50) */
 .s7 .ba-glow1{left:46.667cqw;top:24.74cqw;width:9.323cqw;height:9.323cqw;border-radius:50%;
   background:#BB2444;filter:blur(5.208cqw);z-index:8}
@@ -526,8 +538,10 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    тени −0,6) применяется Figma к исходнику, который светлее нашего файла: прежняя компенсация
    brightness(.78) уводила каплю в пересвет наоборот — тёмную. Подобрано по эталону: яркость зоны
    капли 99,7 против 99,1 в макете, ореол вокруг 97,8 против 97,8 */
+/* смягчено по замеру против макета: контраст зоны был выше макетного
+   на 10 единиц, насыщенность на 6,2 — стало +6,9 и 0,0 при совпадающей яркости */
 .s7 .ba-drop{left:46.198cqw;top:24.375cqw;width:10.313cqw;height:10.156cqw;z-index:9;
-  filter:brightness(1.12) saturate(.9)}
+  filter:brightness(1.12) saturate(.85) contrast(.82)}
 /* режим наложения был screen, в макете (137:342) — color; плюс тот же блюр ×2 (100 вместо 50) */
 .s7 .ba-glow2{left:47.396cqw;top:25.833cqw;width:7.135cqw;height:7.135cqw;border-radius:50%;
   background:#BF8A95;filter:blur(5.208cqw);mix-blend-mode:color;z-index:10}
@@ -564,9 +578,8 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    конечная y1=42.448cqw (559,9995 абс. — центр совпадает с центром фото-подложки 137:355). */
 .s8 .s8-logo{left:29.115cqw;top:34.479cqw;width:41.771cqw;height:6.054cqw;z-index:3;opacity:1;
   will-change:transform}
-/* 137:373 — вторая, полупрозрачная статичная копия того же логотипа (opacity 0.3), в макете
-   стоит на 153px (7.969cqw) ниже первой; раньше в разметке отсутствовала */
-.s8 .s8-logo-echo{top:42.448cqw;opacity:.3}
+/* полупрозрачная копия 137:373 в вёрстке не воспроизводится: это конечный кадр движения
+   логотипа, а не самостоятельный слой — та же координата служит конечной точкой прокрутки */
 
 /* ==================== ЭКРАН 9: ШАМПУНИ ==================== */
 /* Высота увеличена на 5.365cqw (103px): в макете 10.08 добавлены плашки «нажмите на
@@ -764,9 +777,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 /* Логотип обёрнут в ссылку — позиционирование на .m-hdr-logo-link */
 .m-hdr-logo-link{position:absolute;left:43.438cqw;top:4.063cqw;width:13.219cqw;display:block}
 .m-hdr-logo-link .m-hdr-logo{display:block;width:100%;height:auto}
-.m-burger{position:absolute;left:87.188cqw;top:9.688cqw;width:7.813cqw;height:5.313cqw;
+/* Группа «menu sign» 2148:963 — 25×12,5 px при 280,31; линии 2148:964–966 обводкой 2 px
+   цвета #BC294B. Прежние полосы были чёрные толщиной 1 px и на 4,5 px выше по разбегу */
+.m-burger{position:absolute;left:87.188cqw;top:9.688cqw;width:7.813cqw;height:3.906cqw;
   display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;z-index:31}
-.m-burger i{display:block;height:1px;background:#000}
+.m-burger i{display:block;height:.625cqw;background:var(--wine)}
 
 /* Выпадающее меню — фрейм 188:155 (spec_v2_menu.json), 159x177 при базе 320 (cqw=px/3.2). Панель
    #F4F4F4, правый край выровнен под бургер (left 87.188+7.813=95cqw от левого края → 5cqw от
@@ -778,13 +793,18 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
   display:none;flex-direction:column;gap:3.125cqw}
 .m-hdr.menu-open .m-menu{display:flex}
 .m-menu a{color:var(--gray);font-weight:500;font-size:4.375cqw;line-height:1.26;white-space:nowrap;transition:color .2s}
-.m-menu a:hover,.m-menu a:active{color:var(--wine)}
+/* выбранный пункт остаётся бордовым — в макете (179:1132) он показан именно так,
+   остальные серые; класс ставится по нажатию (main.js), :hover на телефоне не работает */
+.m-menu a:hover,.m-menu a:active,.m-menu a.is-active{color:var(--wine)}
 
 /* ==================== M-ЭКРАН 1: HERO + ПРЕИМУЩЕСТВА ==================== */
 /* в макете экран начинается на 72, то есть на 4 px ниже шапки (2148:620); высота 1010 */
 .m-s1{height:315.625cqw;margin-top:1.25cqw}
 .m-s1 .m-kv{left:-18.75cqw;top:71.25cqw;width:141.563cqw;height:79.375cqw;object-fit:cover;z-index:1}
-.m-s1 .m-patch{left:69.375cqw;top:67.5cqw;width:38.438cqw;height:81.875cqw;border-radius:50%;
+/* Патч растворяет низ КВ-фото в белый под флаконом. По макету (2148:623) он 122,6×262 при
+   221,8 / 288; здесь увеличен на 20 % с сохранением центра, чтобы переход под флаконом был
+   мягче. Осознанное отступление от макета */
+.m-s1 .m-patch{left:65.594cqw;top:62.438cqw;width:46cqw;height:92cqw;border-radius:50%;
   background:#fff;filter:blur(15.625cqw);z-index:2}
 
 .m-s1 .m-title-sph{left:4.375cqw;top:0;width:19.063cqw;height:19.375cqw;z-index:4}
@@ -925,6 +945,9 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 /* центрирование по метрикам шрифта поднимает цифру на 1,25 px выше макетной — замер по всем
    пяти кружкам дал одну и ту же величину, поэтому она возвращается сдвигом, а не кеглем */
 .m-s5 .m-num-circ span{position:relative;top:.391cqw}
+/* тройка — единственная цифра, чей визуальный центр уходит левее центра круга: 0,485 доли
+   против 0,491–0,494 у соседей и 0,497 в макете. Возвращена сдвигом на 0,5 px */
+.m-s5 .m-n3 span{left:.156cqw}
 /* Пункты списка в макете выровнены по центру (узлы 181:2162, 181:2175, 181:2221, 181:2227,
    181:2234, 181:2240 — textAlignHorizontal CENTER) */
 .m-s5 .m-body{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center}
@@ -1025,18 +1048,20 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s7 .m-s7-title .b{font-weight:500}
 
-.m-s7 .m-ba-ring{width:55cqw;height:55cqw;border-radius:50%;background:#fff;z-index:2}
+/* круги «до» и «после» в макете лежат ПОВЕРХ капли и её свечений (zi 244 и 254 против 236
+   у группы капли) — из-за обратного порядка розовое свечение красило верх круга «после» */
+.m-s7 .m-ba-ring{width:55cqw;height:55cqw;border-radius:50%;background:#fff;z-index:7}
 .m-s7 .m-ba-before{left:23.75cqw;top:60.313cqw}
 .m-s7 .m-ba-after{left:23.75cqw;top:177.188cqw}
-.m-s7 .m-ba-mask{width:51.875cqw;height:51.875cqw;border-radius:50%;overflow:hidden;z-index:3}
+.m-s7 .m-ba-mask{width:51.875cqw;height:51.875cqw;border-radius:50%;overflow:hidden;z-index:8}
 .m-s7 .m-ba-before-m{left:25.313cqw;top:61.875cqw}
 .m-s7 .m-ba-before-m img{position:relative;left:-0.313cqw;top:3.438cqw;width:56.25cqw;height:57.5cqw;max-width:none}
 .m-s7 .m-ba-after-m{left:25.313cqw;top:178.75cqw}
 .m-s7 .m-ba-after-m img{position:relative;left:-0.938cqw;top:3.438cqw;width:55.938cqw;height:57.188cqw;max-width:none}
-.m-s7 .m-ba-dot{width:10cqw;height:10cqw;border-radius:50%;border:1px solid rgba(255,255,255,.8);z-index:4}
+.m-s7 .m-ba-dot{width:10cqw;height:10cqw;border-radius:50%;border:1px solid rgba(255,255,255,.8);z-index:9}
 .m-s7 .m-ba-before-dot{left:46.563cqw;top:82.813cqw}
 .m-s7 .m-ba-after-dot{left:46.25cqw;top:199.688cqw}
-.m-s7 .m-ba-label{z-index:4;color:#fff;font-weight:300;font-size:3.75cqw;text-transform:uppercase;
+.m-s7 .m-ba-label{z-index:9;color:#fff;font-weight:300;font-size:3.75cqw;text-transform:uppercase;
   text-align:center;white-space:nowrap}
 .m-s7 .m-ba-before-label{left:8.125cqw;top:120cqw;width:83.75cqw}
 .m-s7 .m-ba-after-label{left:8.125cqw;top:236.875cqw;width:84.063cqw}
