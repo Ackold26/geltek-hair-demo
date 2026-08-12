@@ -519,10 +519,12 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 /* блюр вдвое меньше макетного (137:340: radius 100, было 50) */
 .s7 .ba-glow1{left:46.667cqw;top:24.74cqw;width:9.323cqw;height:9.323cqw;border-radius:50%;
   background:#BB2444;filter:blur(5.208cqw);z-index:8}
-/* цветокоррекция узла 137:341 (экспозиция −0.19, контраст −0.16, насыщенность +0.23, тени −0.6):
-   ассет drop-small.png без суффикса -fx — без фильтра выходит заметно светлее и бледнее макета */
+/* Цветокоррекция заливки 137:341 в макете (экспозиция −0,19, контраст −0,16, насыщенность +0,23,
+   тени −0,6) применяется Figma к исходнику, который светлее нашего файла: прежняя компенсация
+   brightness(.78) уводила каплю в пересвет наоборот — тёмную. Подобрано по эталону: яркость зоны
+   капли 99,7 против 99,1 в макете, ореол вокруг 97,8 против 97,8 */
 .s7 .ba-drop{left:46.198cqw;top:24.375cqw;width:10.313cqw;height:10.156cqw;z-index:9;
-  filter:brightness(.78) saturate(1.35) contrast(.92)}
+  filter:brightness(1.12) saturate(.9)}
 /* режим наложения был screen, в макете (137:342) — color; плюс тот же блюр ×2 (100 вместо 50) */
 .s7 .ba-glow2{left:47.396cqw;top:25.833cqw;width:7.135cqw;height:7.135cqw;border-radius:50%;
   background:#BF8A95;filter:blur(5.208cqw);mix-blend-mode:color;z-index:10}
@@ -1019,7 +1021,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s7 .m-ba-glow1{left:33.75cqw;top:134.375cqw;width:33.125cqw;height:32.813cqw;border-radius:50%;
   background:#BB2444;filter:blur(31.25cqw);z-index:3}
 .m-s7 .m-ba-drop{left:32.188cqw;top:133.125cqw;width:36.563cqw;height:35.938cqw;z-index:4;
-  filter:brightness(.78) saturate(1.35) contrast(.92)}
+  filter:brightness(1.12) saturate(.9)}
 .m-s7 .m-ba-glow2{left:36.25cqw;top:138.438cqw;width:25.313cqw;height:25cqw;border-radius:50%;
   background:#BF8A95;filter:blur(31.25cqw);mix-blend-mode:screen;z-index:5}
 .m-s7 .m-ba-ball{left:32.813cqw;top:132.813cqw;width:34.375cqw;height:34.688cqw;z-index:6}
