@@ -948,9 +948,9 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
   background:linear-gradient(180deg,#F8F8F8 -21.4%,#CACACA 118.5%)}
 .m-s6 .m-s6-glowbox{left:9.156cqw;top:229cqw;width:82.5cqw;height:117.844cqw;z-index:1;overflow:hidden}
 /* Координаты — относительно glowbox (см. предыдущее примечание о системе координат) */
-.m-s6 .m-s6-glowlight{left:8.188cqw;top:37.5cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
+.m-s6 .m-s6-glowlight{left:8.188cqw;top:44.875cqw;width:158.438cqw;height:291.469cqw;border-radius:50%;
   background:#fff;filter:blur(14.29cqw)}
-.m-s6 .m-s6-glowsph{left:-17.75cqw;top:31.094cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
+.m-s6 .m-s6-glowsph{left:-17.75cqw;top:38.469cqw;width:129.063cqw;height:129.063cqw;filter:blur(2.716cqw);
   transform:rotate(180deg)}
 .m-s6 .m-s6-pinkglow-clip{left:9.156cqw;top:237.375cqw;width:82.5cqw;height:109.469cqw;overflow:hidden;z-index:1}
 .m-s6 .m-s6-pinkglow{position:absolute;left:4.969cqw;top:86.813cqw;width:35.656cqw;height:34.125cqw;
