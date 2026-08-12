@@ -229,7 +229,9 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s2 .card{left:51.667cqw;top:8.333cqw;width:29.375cqw;height:31.094cqw;z-index:2}
 .s2 .icon{left:61.042cqw;top:12.344cqw;width:10.052cqw;height:10.052cqw;z-index:3}
 /* 137:87: точный размер 133.5x115.6 (соотношение 1.155) вместо доли круга — запрещает
-   искажение пропорции; смещение центра относительно круга (-3.85,-2.5)px — так в макете */
+   искажение пропорции; смещение центра относительно круга (-3.85,-2.5)px — так в макете.
+   Файл иконки переэкспортирован кадром: прежний был обрезан по контуру (соотношение 1,107)
+   и вписывался по высоте, теряя 4 % ширины */
 .s2 .icon img{width:6.953cqw;height:6.021cqw;transform:translate(-0.201cqw,-0.13cqw)}
 /* Порядок строк задан переносами по макету; ширина работает только ограничителем —
    строка «рекомендуем использовать» набирается на 2 px шире прежнего бокса */
@@ -263,7 +265,8 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s4 .icon{left:61.302cqw;top:12.344cqw;width:10.052cqw;height:10.052cqw;z-index:3}
 /* точный размер иконки от круга (54%×64%), сверено с Figma-спекой 11.08 — раньше опиралась
    на общее правило .ic-circ img{62%} и была занижена по ширине */
-.s4 .icon img{width:5.427cqw;height:6.417cqw;object-fit:contain}
+/* смещение кадра относительно центра круга (-2,26; +0,98) px — по макету (156:114) */
+.s4 .icon img{width:5.427cqw;height:6.417cqw;object-fit:contain;transform:translate(-.118cqw,.051cqw)}
 /* ширина бокса чуть больше макетных 437px: строка «плотности и толщины волос» набирается
    в 439px и без запаса разрывалась на две — в макете она идёт цельной строкой */
 .s4 .txt{left:55.208cqw;top:24.844cqw;width:23.542cqw;z-index:3;color:#fff;font-weight:300;
@@ -746,7 +749,9 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
   backdrop-filter:blur(2cqw);-webkit-backdrop-filter:blur(2cqw)}
 .stage--mobile .m-ic-circ{border-radius:50%;background:#fff;display:grid;place-items:center}
 .stage--mobile .m-ic-circ img{width:58%;height:58%;object-fit:contain}
-.stage--mobile .m-sph-glow{border-radius:50%;background:#CC4363;opacity:.5;filter:blur(1.5cqw)}
+/* z-index обязателен: в макете свечение лежит над карточкой блока и под своей сферой,
+   без него стеклянная карточка (z-index 3) закрывает свечение целиком */
+.stage--mobile .m-sph-glow{border-radius:50%;background:#CC4363;opacity:.5;filter:blur(1.5cqw);z-index:4}
 .stage--mobile .m-num-circ{border-radius:50%;background:#fff;display:grid;place-items:center;
   font-weight:300;color:var(--wine);line-height:1}
 /* тот же паттерн «блюр вдвое меньше макетного», см. .sph-glow */
@@ -780,7 +785,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s1{height:315.625cqw;margin-top:1.25cqw}
 .m-s1 .m-kv{left:-18.75cqw;top:71.25cqw;width:141.563cqw;height:79.375cqw;object-fit:cover;z-index:1}
 .m-s1 .m-patch{left:69.375cqw;top:67.5cqw;width:38.438cqw;height:81.875cqw;border-radius:50%;
-  background:#fff;filter:blur(15.625cqw);opacity:.9;z-index:2}
+  background:#fff;filter:blur(15.625cqw);z-index:2}
 
 .m-s1 .m-title-sph{left:4.375cqw;top:0;width:19.063cqw;height:19.375cqw;z-index:4}
 .m-s1 .m-hero-title{left:24.063cqw;top:3.125cqw;width:67.813cqw;z-index:4;color:var(--wine);
@@ -790,10 +795,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s1 .m-banner{left:4.375cqw;top:32.813cqw;width:90.938cqw;height:44.688cqw;z-index:4;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%);
   backdrop-filter:blur(1.6cqw);-webkit-backdrop-filter:blur(1.6cqw)}
-/* Цветокоррекция заливки узла 179:1311 (экспозиция −0,15, света −0,65, тени −0,78): без неё
-   изображение выходит светлее макета. Значения подобраны сравнением со снимком макета */
+/* Цветокоррекция заливки узла 2148:629 (экспозиция −0,15, контраст −0,14, подкраска 0,23,
+   света −0,65, тени −0,78) запечена в сам файл переэкспортом узла: подбор CSS-фильтра
+   восстанавливал яркость, но не контраст — он выходил на 8 единиц ниже макетного */
 .m-s1 .m-banner .banner-drop{position:absolute;left:49.375cqw;top:-13.438cqw;width:70.625cqw;height:auto;
-  mix-blend-mode:luminosity;pointer-events:none;filter:brightness(.584) saturate(1.4)}
+  mix-blend-mode:luminosity;pointer-events:none;filter:brightness(1.02)}
 .m-s1 .m-banner span{position:relative;z-index:1;display:block;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;padding:6cqw 30cqw 6cqw 9.375cqw;text-transform:uppercase}
 /* drop-shadow не задан — см. .s1 .bottle выше */
@@ -804,7 +810,10 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 
 .m-s1 .m-adv-card{left:-0.313cqw;top:148.75cqw;width:100.625cqw;height:166.875cqw;z-index:3;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%)}
-.m-s1 .m-adv-glow{left:5.625cqw;top:158.125cqw;width:16.25cqw;height:16.25cqw;filter:blur(15.625cqw)}
+/* радиус 50 из спеки на кружке 52 px CSS-размытие размазывает до невидимости — значение
+   подобрано замером яркости колец против рендера макета (pitfalls.md, п. 41);
+   заливка узла сплошная, поэтому opacity не половинная */
+.m-s1 .m-adv-glow{left:5.625cqw;top:158.125cqw;width:16.25cqw;height:16.25cqw;filter:blur(6.25cqw);opacity:1}
 .m-s1 .m-adv-sph{left:4.063cqw;top:156.25cqw;width:19.375cqw;height:19.688cqw;z-index:5}
 .m-s1 .m-adv-title{left:24.063cqw;top:158.75cqw;width:64.063cqw;z-index:4;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
@@ -843,21 +852,27 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s2 .m-card{left:0;top:105.625cqw;width:100cqw;height:93.75cqw;z-index:2;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%)}
 .m-s2 .m-icon{left:36.875cqw;top:116.875cqw;width:25.625cqw;height:25.625cqw}
-.m-s2 .m-icon img{width:17.775cqw;height:15.381cqw}
+/* прежний файл иконки был обрезан по контуру рисунка (соотношение 1,107), а кадр макета
+   2148:689 — 1,156, поэтому object-fit:contain вписывал её по высоте и сужал на 4 %;
+   иконка переэкспортирована кадром. Смещение — из макета: рисунок стоит не по центру круга */
+.m-s2 .m-icon img{width:17.719cqw;height:15.344cqw;transform:translate(-.516cqw,-.328cqw)}
 .m-s2 .m-txt{left:19.688cqw;top:152.188cqw;width:63.75cqw}
 
 .m-s3{height:190.625cqw}
 .m-s3 .m-photo{height:108.438cqw}
 .m-s3 .m-card{background:linear-gradient(180deg,rgba(152,18,60,.9) -0.4%,rgba(94,0,35,.9) 77.6%);left:-0.625cqw;top:108.438cqw;width:100cqw;height:82.5cqw;z-index:2}
 .m-s3 .m-icon{left:35.938cqw;top:120cqw;width:25.625cqw;height:25.625cqw}
-.m-s3 .m-icon img{width:18.156cqw;height:14.656cqw}
+/* иконка переэкспортирована кадром 2148:717 — прежний файл был обрезан по контуру и
+   вписывался по высоте, теряя 12 % ширины; смещение внутри круга — из макета */
+.m-s3 .m-icon img{width:18.156cqw;height:14.656cqw;transform:translate(.172cqw,-1.734cqw)}
 .m-s3 .m-txt{left:17.5cqw;top:155.625cqw;width:64.688cqw}
 
 .m-s4{height:206.25cqw}
 .m-s4 .m-photo{left:-0.313cqw;width:100.625cqw;height:105.938cqw}
 .m-s4 .m-card{background:linear-gradient(180deg,rgba(152,18,60,.9) 0.7%,rgba(94,0,35,.9) 99.3%);left:-0.938cqw;top:105.938cqw;width:100.625cqw;height:100.313cqw;z-index:2}
 .m-s4 .m-icon{left:36.563cqw;top:117.5cqw;width:25.625cqw;height:25.625cqw}
-.m-s4 .m-icon img{width:13.875cqw;height:16.4375cqw}
+/* то же, кадр 2148:743 */
+.m-s4 .m-icon img{width:13.875cqw;height:16.4375cqw;transform:translate(-.344cqw,.094cqw)}
 .m-s4 .m-txt{left:17.5cqw;top:153.125cqw;width:65cqw}
 
 /* ==================== M-ЭКРАН 5: КАК ДЕЙСТВУЕТ ==================== */
@@ -887,26 +902,29 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s5 .m-s5-card{left:-0.313cqw;top:105.625cqw;width:102.188cqw;height:calc(362.362cqw - var(--hA) - var(--hB));z-index:2;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%)}
 
-.m-s5 .m-s5-title-glow{left:5.625cqw;top:113.438cqw;width:19.375cqw;height:19.375cqw;filter:blur(15.625cqw)}
+.m-s5 .m-s5-title-glow{left:6.063cqw;top:115.125cqw;width:16.156cqw;height:16.156cqw;filter:blur(6.25cqw);opacity:1}
 .m-s5 .m-s5-title-sph{left:4.375cqw;top:113.438cqw;width:19.375cqw;height:19.688cqw;z-index:5}
 .m-s5 .m-s5-title{left:24.063cqw;top:116.25cqw;width:67.813cqw;z-index:4;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 
 .m-s5 .m-pill{border:1px solid rgba(255,255,255,.4);z-index:3}
 .m-s5 .m-pill1{left:5cqw;top:135.938cqw;width:90cqw;height:16.563cqw;border-radius:8.281cqw}
-.m-s5 .m-p1-glow{left:6.25cqw;top:136.563cqw;width:15.313cqw;height:15.313cqw;filter:blur(15.625cqw)}
+.m-s5 .m-p1-glow{left:7.531cqw;top:137.938cqw;width:12.75cqw;height:12.75cqw;filter:blur(6.875cqw);opacity:1}
 .m-s5 .m-p1-sph{left:6.25cqw;top:136.563cqw;width:15.313cqw;height:15.313cqw;z-index:5}
 .m-s5 .m-pill1-title{left:24.063cqw;top:141.563cqw;width:68.125cqw;z-index:4;color:#fff;font-weight:500;
   font-size:4.688cqw;line-height:1.25;text-transform:uppercase}
 
 .m-s5 .m-pill2{left:5cqw;top:calc(220.313cqw - var(--hA));width:90cqw;height:36.563cqw;border-radius:9.375cqw}
-.m-s5 .m-p2-glow{left:5.938cqw;top:calc(223.75cqw - var(--hA));width:15.313cqw;height:15.313cqw;filter:blur(15.625cqw)}
+.m-s5 .m-p2-glow{left:7.219cqw;top:calc(225.125cqw - var(--hA));width:12.719cqw;height:12.719cqw;filter:blur(6.875cqw);opacity:1}
 .m-s5 .m-p2-sph{left:5.938cqw;top:calc(223.75cqw - var(--hA));width:15.313cqw;height:15.313cqw;z-index:5}
 /* Межбуквенное 0,45 px при кегле 15 (узел 181:2209) — от него зависит разбивка на строки */
 .m-s5 .m-pill2-title{left:24.063cqw;top:calc(223.75cqw - var(--hA));width:68.125cqw;z-index:4;color:#fff;font-weight:500;
   font-size:4.688cqw;line-height:1.25;text-transform:uppercase;letter-spacing:.03em}
 
 .m-s5 .m-num-circ{width:13.438cqw;height:13.438cqw;font-size:8.75cqw;z-index:5}
+/* центрирование по метрикам шрифта поднимает цифру на 1,25 px выше макетной — замер по всем
+   пяти кружкам дал одну и ту же величину, поэтому она возвращается сдвигом, а не кеглем */
+.m-s5 .m-num-circ span{position:relative;top:.391cqw}
 /* Пункты списка в макете выровнены по центру (узлы 181:2162, 181:2175, 181:2221, 181:2227,
    181:2234, 181:2240 — textAlignHorizontal CENTER) */
 .m-s5 .m-body{z-index:4;color:#fff;font-weight:300;font-size:4.688cqw;line-height:1.25;text-align:center}
@@ -995,7 +1013,8 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s7{height:268.438cqw}
 .m-s7 .m-s7-card{left:0;top:0;width:99.688cqw;height:260.625cqw;z-index:1;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 18.4%,rgba(152,18,60,.9) 85%)}
-.m-s7 .m-s7-glow{left:5.688cqw;top:8.938cqw;width:16.188cqw;height:16.188cqw;filter:blur(15.625cqw)}
+/* карточка этого экрана лежит на z-index 1, сфера на 3 — свечению остаётся 2 */
+.m-s7 .m-s7-glow{left:5.688cqw;top:8.938cqw;width:16.188cqw;height:16.188cqw;filter:blur(6.25cqw);opacity:1;z-index:2}
 .m-s7 .m-s7-sph{left:4.063cqw;top:7.188cqw;width:19.375cqw;height:19.688cqw;z-index:3}
 .m-s7 .m-s7-title{left:23.75cqw;top:9.688cqw;width:67.813cqw;z-index:2;color:#fff;font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
@@ -1020,8 +1039,10 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s7 .m-ba-line{left:7.5cqw;top:151.563cqw;width:84.688cqw;height:1px;background:rgba(255,255,255,.35);z-index:2}
 .m-s7 .m-ba-glow1{left:33.75cqw;top:134.375cqw;width:33.125cqw;height:32.813cqw;border-radius:50%;
   background:#BB2444;filter:blur(31.25cqw);z-index:3}
+/* фильтр десктопной капли (brightness 1.12) на мобильной давал пересвет: яркость зоны 98,2
+   против макетных 85,0 и контраст 55,2 против 40,5 — подобрано отдельно по своему эталону */
 .m-s7 .m-ba-drop{left:32.188cqw;top:133.125cqw;width:36.563cqw;height:35.938cqw;z-index:4;
-  filter:brightness(1.12) saturate(.9)}
+  filter:brightness(.85) saturate(.95)}
 .m-s7 .m-ba-glow2{left:36.25cqw;top:138.438cqw;width:25.313cqw;height:25cqw;border-radius:50%;
   background:#BF8A95;filter:blur(31.25cqw);mix-blend-mode:screen;z-index:5}
 .m-s7 .m-ba-ball{left:32.813cqw;top:132.813cqw;width:34.375cqw;height:34.688cqw;z-index:6}
@@ -1029,27 +1050,30 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s7 .m-s7-note{left:8.125cqw;top:248.438cqw;z-index:2;color:#fff;font-weight:300;font-size:3.125cqw}
 
 /* ==================== M-ЭКРАН 8: ДОВЕРИЕ + ПРОИЗВОДСТВО ==================== */
-/* Содержимое ниже заголовка приведено к координатам макета (узлы 184:2614 текст, 184:2616
-   кнопка, 184:2620 фотография, 184:2621 логотип): раньше вся группа стояла на 25 px выше,
-   отчего текст почти упирался в заголовок и в кнопку */
+/* Содержимое секции — по узлам актуального мобильного кадра (2148:857 сфера, 2148:856 заголовок,
+   2148:854 текст, 2148:852 кнопка, 2148:849 фотография, 2148:850 тень, 2148:1040 логотип).
+   Прежние координаты были сняты со старого макета (узлы 184:*, в нынешнем файле их нет) и давали
+   общий сдвиг всей группы на 25 px вниз */
 .m-s8{height:276.875cqw}
-.m-s8 .m-s8-sph{left:4.375cqw;top:7.813cqw;width:19.063cqw;height:19.375cqw;z-index:2}
-.m-s8 .m-s8-title{left:24.063cqw;top:15cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:300;
+.m-s8 .m-s8-sph{left:4.375cqw;top:0;width:19.063cqw;height:19.375cqw;z-index:2}
+.m-s8 .m-s8-title{left:24.063cqw;top:7.188cqw;width:68.125cqw;z-index:2;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-s8 .m-s8-title .b{font-weight:500}
-.m-s8 .m-s8-body{left:13.438cqw;top:33.125cqw;width:78.125cqw;z-index:2;color:var(--gray2);font-weight:300;
+/* бокс на 5 px шире макетных 250: строка «ского геля, GELTEK превратилась» набирается у нас на
+   3 px шире и уезжала на отдельную строку. Остальные строки заданы жёсткими переносами,
+   поэтому расширение бокса на них не влияет, а текст выровнен по левому краю */
+.m-s8 .m-s8-body{left:13.438cqw;top:25.313cqw;width:79.688cqw;z-index:2;color:var(--gray2);font-weight:300;
   font-size:4.688cqw;line-height:1.25}
 .m-s8 .m-s8-body .b{font-weight:500}
-.m-s8 .m-s8-btn{left:26.563cqw;top:149.688cqw;width:46.563cqw;height:11.875cqw;z-index:2;border-radius:5.938cqw;
+.m-s8 .m-s8-btn{left:26.563cqw;top:141.875cqw;width:46.563cqw;height:11.875cqw;z-index:2;border-radius:5.938cqw;
   background:var(--btn);color:#fff;font-weight:500;font-size:3.125cqw;text-transform:uppercase;
   display:flex;align-items:center;justify-content:center}
-.m-s8 .m-s8-photo{left:-0.625cqw;top:169.375cqw;width:100.938cqw;height:108.125cqw;object-fit:cover;z-index:1}
-.m-s8 .m-s8-shadow{left:-20.938cqw;top:212.813cqw;width:144.063cqw;height:42.5cqw;border-radius:50%;
+.m-s8 .m-s8-photo{left:-0.625cqw;top:161.563cqw;width:100.938cqw;height:108.125cqw;object-fit:cover;z-index:1}
+.m-s8 .m-s8-shadow{left:-20.938cqw;top:205cqw;width:144.063cqw;height:42.5cqw;border-radius:50%;
   background:#D9D9D9;filter:blur(31.25cqw);mix-blend-mode:multiply;z-index:1}
-/* Габарит надписи по узлу 184:2621 — 276×40 px, то есть 86.25×12.5cqw: кегль подобран по высоте
-   прописных, разрядка — по ширине набора */
-.m-s8 .m-s8-word{left:8.125cqw;top:217.188cqw;width:86.25cqw;z-index:2;color:#fff;font-weight:500;
-  font-size:16.875cqw;line-height:1;letter-spacing:.251em;text-transform:uppercase;white-space:nowrap}
+/* Узел 2148:1040 «Geltek main logo» — векторный логотип 276×40 px, а не набранный текст:
+   прежняя текстовая имитация не совпадала с фирменным начертанием */
+.m-s8 .m-s8-logo{left:8.125cqw;top:209.375cqw;width:86.25cqw;height:12.5cqw;z-index:2}
 
 /* ==================== M-ЭКРАН 9: ШАМПУНИ ==================== */
 .m-s9{height:291.875cqw}
@@ -1077,17 +1101,15 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 /* Правый отступ — точечно: в общем правиле он рассчитан на другой баннер и переставляет
    заданный макетом порядок строк */
 .m-s9 .m-r-banner span{padding-right:30cqw}
-/* Цветокоррекция заливки узла 184:2652 (экспозиция −0,26, света −0,65, тени −0,9) */
-.m-s9 .m-r-banner .banner-drop{left:50.625cqw;top:-5cqw;width:55.313cqw;height:auto;
-  filter:brightness(.566) saturate(1.533)}
+/* Цветокоррекция и кадрирование узла 2194:320 запечены в файл переэкспортом: заливка узла
+   растянута матрицей (STRETCH), поэтому целая картинка давала другой кадр */
+.m-s9 .m-r-banner .banner-drop{left:50.625cqw;top:-5cqw;width:55.156cqw;height:54.406cqw}
 .m-s9 .m-v-banner{left:4.375cqw;top:184.375cqw;width:90.938cqw;height:46.875cqw;
   background:linear-gradient(90deg,#604283 26.5%,#745F9A 66.3%)}
 .m-s9 .m-v-banner span{font-size:3.125cqw;padding:2cqw 32cqw 2cqw 9.063cqw}
-/* Цветокоррекция не была перенесена (в отличие от .m-r-banner выше) — картинка без -fx
-   в имени, то есть без запечённых эффектов; подобрано по замеру яркости/насыщенности
-   зоны против макета (0,807/~1,8) */
-.m-s9 .m-v-banner .banner-drop{left:48.438cqw;top:-67.813cqw;width:143.438cqw;height:auto;
-  filter:brightness(.8) saturate(1.8)}
+/* То же для узла 2194:277: у него матрица сжимает картинку по вертикали (2,62 против 2,17),
+   поэтому высота при height:auto выходила на 78 px больше макетной */
+.m-s9 .m-v-banner .banner-drop{left:48.125cqw;top:-67.188cqw;width:143.688cqw;height:117.344cqw}
 
 .m-s9 .m-pack{z-index:3}
 .m-s9 .m-r-norm30 {left:11.912cqw;top:96.394cqw;   width:14.731cqw;height:35.494cqw}
@@ -1098,56 +1120,64 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s9 .m-v-post250{left:45.938cqw;top:218.75cqw;width:21.278cqw;height:50.831cqw}
 .m-s9 .m-v-post390{left:71.25cqw;top:209.375cqw;width:25.419cqw;height:59.269cqw}
 
-.m-s9 .m-vol-glow{width:4.688cqw;height:4.688cqw;z-index:3}
+/* свечения стояли под подписями объёмов, хотя в макете (2194:340/347/354, 290/297/283/304)
+   лежат под самими сферами — расхождение по вертикали доходило до 31 px;
+   размер у каждого свой, поэтому общий габарит из правила убран */
+.m-s9 .m-vol-glow{z-index:3}
 .m-s9 .m-vol-sph{width:5.625cqw;height:auto;z-index:4}
 .m-s9 .m-vol-txt{font-size:2.5cqw;z-index:4}
 .m-s9 .m-rg1,.m-s9 .m-rg2,.m-s9 .m-rg3{background:#CC4363}
-.m-s9 .m-rg1{left:13.438cqw;top:144.688cqw}
+.m-s9 .m-rg1{left:13.284cqw;top:136.459cqw;width:4.697cqw;height:4.697cqw}
 .m-s9 .m-rs1{left:12.812cqw;top:135.956cqw}
 .m-s9 .m-rt1{left:19.344cqw;top:137.025cqw;color:#fff}
-.m-s9 .m-rg2{left:38.125cqw;top:144.688cqw}
+.m-s9 .m-rg2{left:38.175cqw;top:136.587cqw;width:4.472cqw;height:4.472cqw}
 .m-s9 .m-rs2{left:37.725cqw;top:136.109cqw}
 .m-s9 .m-rt2{left:43.941cqw;top:137.125cqw;color:#fff}
-.m-s9 .m-rg3{left:67.188cqw;top:144.376cqw}
+.m-s9 .m-rg3{left:67.134cqw;top:136.403cqw;width:4.697cqw;height:4.697cqw}
 .m-s9 .m-rs3{left:66.662cqw;top:135.897cqw}
 .m-s9 .m-rt3{left:73.191cqw;top:136.966cqw;color:#fff}
 
 .m-s9 .m-vg1,.m-s9 .m-vg2,.m-s9 .m-vg3,.m-s9 .m-vg4{background:#8E6CC8}
-.m-s9 .m-vg1{left:5cqw;top:282.501cqw}
+.m-s9 .m-vg1{left:5.128cqw;top:273.75cqw;width:4.581cqw;height:4.581cqw}
 .m-s9 .m-vs1{left:5.128cqw;top:273.75cqw}
 .m-s9 .m-vt1{left:11.037cqw;top:274.613cqw;color:#fff}
-.m-s9 .m-vg2{left:26.875cqw;top:283.126cqw}
+.m-s9 .m-vg2{left:26.775cqw;top:273.809cqw;width:4.534cqw;height:4.534cqw}
 .m-s9 .m-vs2{left:26.775cqw;top:273.809cqw}
 .m-s9 .m-vt2{left:32.622cqw;top:274.666cqw;color:#fff}
-.m-s9 .m-vg3{left:48.75cqw;top:283.126cqw}
+.m-s9 .m-vg3{left:48.628cqw;top:273.734cqw;width:4.581cqw;height:4.581cqw}
 .m-s9 .m-vs3{left:48.628cqw;top:273.734cqw}
 .m-s9 .m-vt3{left:54.534cqw;top:274.597cqw;color:#fff}
-.m-s9 .m-vg4{left:75.625cqw;top:283.126cqw}
+.m-s9 .m-vg4{left:75.525cqw;top:273.316cqw;width:4.7cqw;height:4.7cqw}
 .m-s9 .m-vs4{left:75.525cqw;top:273.316cqw}
 .m-s9 .m-vt4{left:81.584cqw;top:274.194cqw;color:#fff}
 
 .m-s9 .m-r-band{left:-22.188cqw;top:110.844cqw;width:122.813cqw;height:43.75cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 17.4%,rgba(152,18,60,.9) 110.9%)}
-.m-s9 .m-r-band .wm{position:absolute;left:16.563cqw;top:2cqw;color:#9B274C;opacity:.5;font-weight:500;
-  font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+/* «Intensive» в макете (2194:326) — не текст, а группа контуров 263,7×35,7: набранная надпись
+   не совпадала ни по начертанию, ни по ширине (163,8 против 263,7). Тот же вектор, что в
+   десктопной ветке; непрозрачность 0,5 запечена в сами контуры */
+.m-s9 .m-wm-svg{position:absolute;display:block}
+.m-s9 .m-wm-intensive{left:30.938cqw;top:.094cqw;width:82.406cqw;height:11.156cqw}
 /* Плашки «Нажмите на изображение…» — 2194:358 (красная, #781D3D) и 2194:308 (фиолетовая,
    #624585); текст белый, по центру плашки */
+/* плашка — скруглённая пилюля (cornerRadius 37,2 у групп 2194:358 и 2194:308), кегль 7,364 px */
 .m-s9 .m-more-txt{z-index:4;display:flex;align-items:center;justify-content:center;white-space:nowrap;
-  font-size:2.5cqw;font-weight:300;color:#fff;height:5.625cqw;width:90.938cqw;left:4.375cqw}
+  font-size:2.301cqw;font-weight:300;color:#fff;height:5.625cqw;width:90.938cqw;left:4.375cqw;
+  border-radius:11.625cqw}
 .m-s9 .m-more-txt b{font-weight:500;color:#fff;margin-left:.625cqw}
 .m-s9 .m-r-more{top:143.438cqw;background:#781D3D}
 .m-s9 .m-v-more{top:279.688cqw;background:#624585}
 
 .m-s9 .m-v-band{left:-1.562cqw;top:248.125cqw;width:102.188cqw;height:43.75cqw;z-index:1;overflow:hidden;
   background:linear-gradient(90deg,#604283 15%,#745F9A 100%)}
-.m-s9 .m-v-band .wm{position:absolute;left:7.5cqw;top:2cqw;color:#715B97;font-weight:500;
-  font-size:9cqw;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+/* «Biome» — вектор 2194:266, габарит 256×55,8 */
+.m-s9 .m-wm-biome{left:5.938cqw;top:0;width:80cqw;height:17.438cqw}
 
 /* ==================== M-ЭКРАН 10 + ФИНАЛ + ФУТЕР ==================== */
 .m-s10{height:58.438cqw}
-/* Затемнение 20% — как в десктопной ветке */
-.m-s10 .m-s10-photo{left:0;top:0;width:100.313cqw;height:58.125cqw;object-fit:cover;z-index:1;
-  filter:brightness(.8)}
+/* Затемнения нет: у заливки узла 2194:366 режим MULTIPLY поверх белого, то есть картинка
+   без изменений. Прежний brightness(.8) уводил кадр на 15 единиц яркости ниже макета */
+.m-s10 .m-s10-photo{left:0;top:0;width:100.313cqw;height:58.125cqw;object-fit:cover;z-index:1}
 .m-s10 .m-s10-title{left:13.75cqw;top:21.875cqw;width:58.125cqw;z-index:2;color:#fff;font-weight:500;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 
@@ -1155,18 +1185,20 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-base .m-cta{left:8.75cqw;top:9.375cqw;width:83.125cqw;z-index:1;color:var(--wine);font-weight:300;
   font-size:5.625cqw;line-height:1.25;text-transform:uppercase}
 .m-base .m-cta .b{font-weight:500}
-/* Кегль 13px и бокс 292px подобраны так, чтобы надпись укладывалась в две строки: при 14px
-   самая короткая разбивка («Отсутствуют противопоказания» / «при беременности и грудном
-   вскармливании») требует 314px, а на экране 320 при левом отступе 20 доступно 292. */
-.m-base .m-cta-note{left:6.25cqw;top:40.313cqw;width:91.25cqw;z-index:1;color:var(--wine);font-weight:300;
-  font-size:4.063cqw;line-height:1.2}
+/* Узел 2194:371: бокс 188×42 при x 28, кегль 12, межстрочное 14,4, трекинг −0,12 и три строки —
+   разрывы заданы в макете символами U+2028 и переводом строки. Прежние кегль и ширина были
+   подобраны под двухстрочную разбивку и расходились с макетом */
+.m-base .m-cta-note{left:8.75cqw;top:40.313cqw;width:58.75cqw;z-index:1;color:var(--wine);font-weight:300;
+  font-size:3.75cqw;line-height:1.2;letter-spacing:-.01em}
 
 .m-foot{height:28.125cqw;background:#F4F4F4}
 .m-foot-logo{left:9.063cqw;top:10.625cqw;width:20.938cqw;height:auto}
 .m-foot-text{left:9.063cqw;top:19.375cqw;color:#000;font-weight:300;font-size:2.5cqw}
-.m-foot-vk{left:82.188cqw;top:5.938cqw;width:10cqw;height:10cqw;border-radius:50%;background:#921D36;
+/* Узел 2194:390: кружок 26,2×26,2 при 266,9 / 7966,8 — прежний был на 5,8 px крупнее и на 32 px
+   левее. Доля монограммы в кружке — как в десктопной ветке (14×9 при кружке 32) */
+.m-foot-vk{left:83.409cqw;top:7.763cqw;width:8.175cqw;height:8.175cqw;border-radius:50%;background:#921D36;
   display:grid;place-items:center}
-.m-foot-vk-mono{width:44%;height:auto}
+.m-foot-vk-mono{width:43.75%;height:28.125%}
 
 
 
