@@ -174,7 +174,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s1 .adv-ic.c2{top:71.615cqw}
 .s1 .adv-ic.c3{top:77.708cqw}
 .s1 .adv-glow{z-index:5;width:4.948cqw;height:4.948cqw;border-radius:50%;background:#924A52;
-  filter:blur(2.604cqw);mix-blend-mode:plus-lighter;pointer-events:none}
+  filter:blur(2.604cqw);mix-blend-mode:plus-lighter;opacity:.8;pointer-events:none}
 .s1 .adv-glow.c1{left:21.302cqw;top:65.781cqw}
 .s1 .adv-glow.c2{left:21.302cqw;top:71.094cqw}
 .s1 .adv-glow.c3{left:21.302cqw;top:77.188cqw}
@@ -802,7 +802,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 /* свечение DROP_SHADOW #924A52 r50/spread10 blendMode:LINEAR_DODGE (2148:639/653/664) — как и на
    десктопе, отсутствовало полностью */
 .m-s1 .m-ic-glow{z-index:3;left:39.688cqw;width:19.688cqw;height:19.688cqw;border-radius:50%;
-  background:#924A52;filter:blur(15.625cqw);mix-blend-mode:plus-lighter;pointer-events:none}
+  background:#924A52;filter:blur(15.625cqw);mix-blend-mode:plus-lighter;opacity:.8;pointer-events:none}
 .m-s1 .m-ic-glow.g1{top:187.188cqw}
 .m-s1 .m-ic-glow.g2{top:224.688cqw}
 .m-s1 .m-ic-glow.g3{top:262.5cqw}
