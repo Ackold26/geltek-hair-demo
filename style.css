@@ -282,7 +282,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    снято намеренно: сдвиг вверх оставлял под бордовой плашкой 39px фона вместо макетных 168, а
    сдвиг вниз подводил нижнюю кромку вплотную к шару заголовка «Где купить» (6516). Неподвижное
    макетное положение — единственное, при котором соблюдаются оба расстояния. */
-.s5 .kvbg{left:0;top:-6.771cqw;width:100cqw;height:68.073cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
+.s5 .kvbg{left:-0.208cqw;top:-0.104cqw;width:100cqw;height:61.615cqw;object-fit:cover;z-index:1;filter:blur(.26cqw);opacity:.6}
 /* 137:166 — сплошная белая подложка под кв-фоном (сама секция уже, чем фон) */
 .s5 .white-bg{left:0;top:-0.208cqw;width:100cqw;height:75.677cqw;background:#fff;z-index:0}
 /* тот же паттерн «блюр вдвое меньше макетного» (узел 137:169: radius 120, у нас было 60) —
