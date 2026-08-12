@@ -82,7 +82,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    в белый обеспечивают патчи p7/p8/p9 из макета, они закрывают физический край картинки. */
 .s1 .kv{left:-0.208cqw;top:8.021cqw;width:100cqw;height:52.396cqw;object-fit:cover;z-index:1}
 /* пузырьки снизу — наложение luminosity, едва заметны. Кроп 137:4 запечён (bubbles-crop.jpg, 1920x694) */
-.s1 .bubbles{left:-0.208cqw;top:55.885cqw;width:100cqw;height:36.146cqw;object-fit:cover;z-index:1;opacity:.13;mix-blend-mode:luminosity}
+/* верхняя кромка фона с пузырями растворяется маской на 120 px: патчи растворения дают общий
+   переход, но саму кромку кадра всё равно видно тонкой линией слева от плашки
+   (расхождение с макетом 4,6 единицы, после маски 2,9) */
+.s1 .bubbles{left:-0.208cqw;top:55.885cqw;width:100cqw;height:36.146cqw;object-fit:cover;z-index:1;opacity:.13;mix-blend-mode:luminosity;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 120px);mask-image:linear-gradient(180deg,transparent 0,#000 120px)}
 
 /* ---- blur-патчи переходов (растворяют края KV-фото в белый, "wt blur patch") ---- */
 /* У p1-p6 размытие в макете (137:8/10/9/11 + 147:47/137:5) переносится 1:1: радиусы p1/p3
@@ -292,12 +296,16 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    за границы кадра и даёт мягкий ореол сверху и снизу — кромка фотографии должна быть чистой.
    Радиус: прямой перенос LAYER_BLUR 5 из макета (137:168) размывал фон вдвое сильнее самого
    макета — по замеру резкости краёв (0,175 против 0,319) подобрано 1,5 px */
-.s5 .kvbg{left:-0.208cqw;top:-0.104cqw;width:100cqw;height:61.615cqw;object-fit:cover;z-index:1;filter:blur(.08cqw);opacity:.6;clip-path:inset(0)}
-/* 137:166 — сплошная белая подложка под кв-фоном (сама секция уже, чем фон) */
-.s5 .white-bg{left:0;top:-0.208cqw;width:100cqw;height:75.677cqw;background:#fff;z-index:0}
+.s5 .kvbg{left:-0.208cqw;top:-0.104cqw;width:100cqw;height:61.615cqw;object-fit:cover;filter:blur(.08cqw);opacity:.6;clip-path:inset(0);z-index:3}
+/* 137:166 — сплошная белая подложка под кв-фоном (сама секция уже, чем фон). Верх по узлу
+   (5006), слой выше фотографии предыдущего экрана: в макете группа screen 5 целиком перекрывает
+   screen 4, а в вёрстке секции лежат в общем контексте наложения, и хвост фото экрана 4
+   просвечивал в стыке тёмной полосой (223 против 253 у макета) */
+.s5 .white-bg{left:0;top:0;width:100cqw;height:75.677cqw;background:#fff;z-index:2}
 /* тот же паттерн «блюр вдвое меньше макетного» (узел 137:169: radius 120, у нас было 60) —
    недостаточное размытие оставляло резкий край перехода вместо мягкого растворения в фон */
-.s5 .s5-patch{left:74.531cqw;top:41.146cqw;width:34.063cqw;height:43.438cqw;filter:blur(6.25cqw);opacity:.9}
+/* патч 137:169 в макете лежит выше фона — после подъёма подложки и фона ему нужен свой слой */
+.s5 .s5-patch{left:74.531cqw;top:41.146cqw;width:34.063cqw;height:43.438cqw;filter:blur(6.25cqw);opacity:.9;z-index:4}
 /* фон плашки сделан непрозрачным (без альфы reusable .glass): полупрозрачная версия
    пропускала через backdrop-filter яркую верхнюю часть кв-фона, что читалось как
    светлая полоса за заголовком и текстом пилюли 1 */
@@ -481,20 +489,18 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    translateX(-50%) центрирования выше и сломает обрезку по краю окна */
 .s6 .deco-par{position:absolute;top:0;left:0;width:100%;height:100%}
 .s6 .float{z-index:5;pointer-events:none}
-/* блюр всех шаров f1-f9 был занижен вдвое (тот же паттерн «blur ÷2») — сверено с Figma
-   LAYER_BLUR: radius=10 у f1-f6/f8 (→ .521cqw), radius=20 у f7/f9 (→ 1.042cqw) */
-.s6 .f1{left:calc(-3.073cqw + (100vw - 100cqw)/2);top:55.729cqw;width:10.469cqw;height:auto;filter:blur(.521cqw)}
-.s6 .f2{left:calc(13.906cqw + (100vw - 100cqw)/2);top:62.813cqw;width:7.188cqw;height:auto;filter:blur(.521cqw)}
-.s6 .f3{left:calc(89.219cqw + (100vw - 100cqw)/2);top:48.229cqw;width:8.906cqw;height:auto;filter:blur(.521cqw)}
-.s6 .f4{left:calc(11.302cqw + (100vw - 100cqw)/2);top:44.896cqw;width:4.583cqw;height:auto;filter:blur(.521cqw);opacity:.8}
-.s6 .f5{left:calc(29.063cqw + (100vw - 100cqw)/2);top:68.49cqw;width:16.667cqw;height:auto;filter:blur(.521cqw)}
-.s6 .f6{left:calc(94.115cqw + (100vw - 100cqw)/2);top:65.885cqw;width:11.719cqw;height:auto;filter:blur(.521cqw)}
-/* f7 вынесен из .deco-layer в разметке, чтобы не обрезаться по нижней границе .s6 (overflow:hidden
-   у .deco-layer). z-index ниже .s7 .s7card (6): шар уходит под бордовую плашку следующего
-   экрана, а не рисуется поверх неё */
-.s6 .f7{left:calc(-13.646cqw + (100vw - 100cqw)/2);top:69.844cqw;width:33.646cqw;height:auto;filter:blur(1.042cqw);z-index:5}
-.s6 .f8{left:calc(84.427cqw + (100vw - 100cqw)/2);top:61.25cqw;width:5.365cqw;height:auto;filter:blur(.521cqw);opacity:.8}
-.s6 .f9{left:calc(74.583cqw + (100vw - 100cqw)/2);top:74.167cqw;width:25.521cqw;height:auto;filter:blur(1.042cqw)}
+/* Прямой перенос LAYER_BLUR (10 у f1-f6/f8, 20 у f7/f9) размывает шары сильнее, чем композитный
+   рендер макета: по замеру резкости зон 0,90 против 1,58 у макета. Значение подобрано —
+   половина макетного радиуса, при ней резкость 1,15 (см. тот же приём для фона витрины) */
+.s6 .f1{left:calc(-3.073cqw + (100vw - 100cqw)/2);top:55.729cqw;width:10.469cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f2{left:calc(13.906cqw + (100vw - 100cqw)/2);top:62.813cqw;width:7.188cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f3{left:calc(89.219cqw + (100vw - 100cqw)/2);top:48.229cqw;width:8.906cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f4{left:calc(11.302cqw + (100vw - 100cqw)/2);top:44.896cqw;width:4.583cqw;height:auto;filter:blur(.26cqw);opacity:.8}
+.s6 .f5{left:calc(29.063cqw + (100vw - 100cqw)/2);top:68.49cqw;width:16.667cqw;height:auto;filter:blur(.26cqw)}
+.s6 .f6{left:calc(94.115cqw + (100vw - 100cqw)/2);top:65.885cqw;width:11.719cqw;height:auto;filter:blur(.26cqw)}
+/* правило шара f7 (137:298) снято вместе с элементом — см. комментарий в разметке */
+.s6 .f8{left:calc(84.427cqw + (100vw - 100cqw)/2);top:61.25cqw;width:5.365cqw;height:auto;filter:blur(.26cqw);opacity:.8}
+.s6 .f9{left:calc(74.583cqw + (100vw - 100cqw)/2);top:74.167cqw;width:25.521cqw;height:auto;filter:blur(.521cqw)}
 
 /* ==================== ЭКРАН 7: ДО/ПОСЛЕ (8213..9180) ==================== */
 .s7{height:50.365cqw}              /* 967/19.2 */
@@ -528,9 +534,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s7 .ba-after-label{left:66.6cqw;top:42.083cqw;width:8cqw}
 
 /* капля-разделитель по центру */
-/* по узлу 137:338 линия стоит на 982,2 — на 3,7 px левее центра капли; выровнена по центру
-   капли (986,0). Осознанное отступление от макета */
-.s7 .ba-line{left:51.328cqw;top:17.917cqw;width:1px;height:23.385cqw;background:rgba(255,255,255,.35);z-index:7}
+/* Линия: по горизонтали — по центру капли (986,0; узел 137:338 стоит на 982,2, то есть левее).
+   По вертикали в макете она несимметрична относительно кругов «до» и «после»: выступает над ними
+   на 7 px и под ними на 22,9. Приведена к симметрии — по 15 px с каждой стороны, длина не
+   изменилась. Оба отступления от макета осознанные */
+.s7 .ba-line{left:51.328cqw;top:17.5cqw;width:1px;height:23.385cqw;background:rgba(255,255,255,.35);z-index:7}
 /* блюр вдвое меньше макетного (137:340: radius 100, было 50) */
 .s7 .ba-glow1{left:46.667cqw;top:24.74cqw;width:9.323cqw;height:9.323cqw;border-radius:50%;
   background:#BB2444;filter:blur(5.208cqw);z-index:8}
@@ -882,9 +890,11 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s3 .m-photo{height:108.438cqw}
 .m-s3 .m-card{background:linear-gradient(180deg,rgba(152,18,60,.9) -0.4%,rgba(94,0,35,.9) 77.6%);left:-0.625cqw;top:108.438cqw;width:100cqw;height:82.5cqw;z-index:2}
 .m-s3 .m-icon{left:35.938cqw;top:120cqw;width:25.625cqw;height:25.625cqw}
-/* иконка переэкспортирована кадром 2148:717 — прежний файл был обрезан по контуру и
-   вписывался по высоте, теряя 12 % ширины; смещение внутри круга — из макета */
-.m-s3 .m-icon img{width:18.156cqw;height:14.656cqw;transform:translate(.172cqw,-1.734cqw)}
+/* Кадр этой иконки в свёрнутом мобильном фрейме (2148:717) деформирован: рисунок сжат по
+   вертикали, соотношение 1,36 против 1,24 в раскрытом фрейме (2082:100) и на настольной версии
+   (137:128). Взят неискажённый кадр и его габарит 58,1×51,7 — осознанное отступление от
+   свёрнутого фрейма макета в пользу неискажённых пропорций */
+.m-s3 .m-icon img{width:18.156cqw;height:16.156cqw;transform:translate(.172cqw,-.484cqw)}
 .m-s3 .m-txt{left:17.5cqw;top:155.625cqw;width:64.688cqw}
 
 .m-s4{height:206.25cqw}
@@ -1125,7 +1135,7 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s9 .m-banner{z-index:2;overflow:hidden;position:absolute;display:flex;align-items:center}
 .m-s9 .m-banner .banner-drop{position:absolute;mix-blend-mode:luminosity;pointer-events:none}
 .m-s9 .m-banner span{position:relative;z-index:1;color:#fff;font-weight:300;font-size:3.75cqw;
-  line-height:1.3;padding:2cqw 40cqw 2cqw 9.063cqw}
+  line-height:1.258;padding:2cqw 40cqw 2cqw 9.063cqw}
 .m-s9 .m-r-banner{left:4.375cqw;top:47.188cqw;width:90.938cqw;height:47.188cqw;
   background:linear-gradient(90deg,rgba(94,0,35,.9) 30.2%,rgba(152,18,60,.9) 75.5%)}
 /* Правый отступ — точечно: в общем правиле он рассчитан на другой баннер и переставляет
@@ -1136,7 +1146,9 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .m-s9 .m-r-banner .banner-drop{left:50.625cqw;top:-5cqw;width:55.156cqw;height:54.406cqw}
 .m-s9 .m-v-banner{left:4.375cqw;top:184.375cqw;width:90.938cqw;height:46.875cqw;
   background:linear-gradient(90deg,#604283 26.5%,#745F9A 66.3%)}
-.m-s9 .m-v-banner span{font-size:3.125cqw;padding:2cqw 32cqw 2cqw 9.063cqw}
+/* кегль обоих баннеров экрана в макете одинаковый — 12 px (узлы 2194:321 и 2194:274),
+   у фиолетового стояло 10; межстрочное 15,096 при кегле 12 — это 1,258 */
+.m-s9 .m-v-banner span{padding:2cqw 32cqw 2cqw 9.063cqw}
 /* То же для узла 2194:277: у него матрица сжимает картинку по вертикали (2,62 против 2,17),
    поэтому высота при height:auto выходила на 78 px больше макетной */
 .m-s9 .m-v-banner .banner-drop{left:48.125cqw;top:-67.188cqw;width:143.688cqw;height:117.344cqw}
