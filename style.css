@@ -298,11 +298,16 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    подложку витрины: заливка остаётся непрозрачной, но тон совпадает с макетом */
 .s5 .card{left:12.604cqw;top:5.313cqw;width:74.167cqw;height:46.146cqw;z-index:3;background:linear-gradient(180deg,#6B1535,#9F254B)}
 
-/* цветное свечение под сферами (#CC4363, blur r50→1.302cqw) */
-.s5 .sph-glow{border-radius:50%;background:#CC4363;opacity:.5;filter:blur(1.302cqw);z-index:4}
+/* цветное свечение под сферами (#CC4363) — блюр стоял вполовину макетного (паттерн «÷2» из
+   старого прохода до доступа к Figma API); у title-glow (137:233, r50) и p1/p2-glow (2073:67/54,
+   r34.1625) радиусы РАЗНЫЕ, общий блюр на класс .sph-glow был не только заниженным, но и неточным
+   для одной из групп — вынесено в отдельные правила */
+.s5 .sph-glow{border-radius:50%;background:#CC4363;opacity:.5;z-index:4}
 .s5 .sph{z-index:5}
 
-.s5 .title-glow{left:19.31cqw;top:7.495cqw;width:6.742cqw;height:6.742cqw}
+/* позиция и размер пересверены напрямую (137:233) — расходились на ~20px, вероятно ещё с
+   прохода до Figma API */
+.s5 .title-glow{left:18.246cqw;top:7.206cqw;width:7.932cqw;height:7.932cqw;filter:blur(2.604cqw)}
 .s5 .title-sph{left:18.542cqw;top:6.771cqw;width:8.073cqw;height:8.145cqw}
 .s5 .title{left:27.448cqw;top:9.375cqw;width:53.958cqw;z-index:4;color:#fff;font-weight:500;
   font-size:2.5cqw;line-height:1.25;text-transform:uppercase}
@@ -316,12 +321,12 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
 .s5 .pill1{left:22.656cqw;top:15.052cqw;width:27.354cqw;height:4.635cqw;border-radius:2.188cqw}
 .s5 .pill2{left:22.656cqw;top:25.156cqw;width:41.813cqw;height:4.635cqw;border-radius:2.656cqw}
 
-.s5 .p1-glow{left:23.297cqw;top:15.714cqw;width:3.526cqw;height:3.526cqw}
+.s5 .p1-glow{left:23.297cqw;top:15.714cqw;width:3.526cqw;height:3.526cqw;filter:blur(1.78cqw)}
 .s5 .p1-sph{left:22.943cqw;top:15.333cqw;width:4.219cqw;height:4.26cqw}
 .s5 .pill1-title{left:27.604cqw;top:16.406cqw;width:30cqw;z-index:4;color:#fff;font-weight:500;
   font-size:1.25cqw;line-height:1.25;text-transform:uppercase}
 
-.s5 .p2-glow{left:23.333cqw;top:25.87cqw;width:3.526cqw;height:3.526cqw;mix-blend-mode:screen}
+.s5 .p2-glow{left:23.333cqw;top:25.87cqw;width:3.526cqw;height:3.526cqw;filter:blur(1.78cqw);mix-blend-mode:screen}
 .s5 .p2-sph{left:22.974cqw;top:25.495cqw;width:4.219cqw;height:4.26cqw}
 .s5 .pill2-title{left:27.604cqw;top:25.833cqw;width:34cqw;z-index:4;color:#fff;font-weight:500;
   font-size:1.25cqw;line-height:1.25;text-transform:uppercase}
@@ -546,8 +551,9 @@ sup.fn{font-size:.55em;line-height:0;vertical-align:.55em}
    закрывало бы штатный 138px-й зазор до s9, а поскольку логотип рисуется поверх этого фото,
    центр фото должен совпадать с центром логотипа */
 .s8 .s8-photo{left:-0.104cqw;top:34.635cqw;width:100cqw;height:21.615cqw;object-fit:cover;z-index:1}
+/* блюр был вдвое слабее макетного (узел «deep» 191:21, r=100) — тот же паттерн «÷2» */
 .s8 .s8-shadow{left:5cqw;top:38.073cqw;width:90.156cqw;height:15.208cqw;border-radius:50%;
-  background:#D9D9D9;filter:blur(2.604cqw);mix-blend-mode:multiply;z-index:1}
+  background:#D9D9D9;filter:blur(5.208cqw);mix-blend-mode:multiply;z-index:1}
 /* Текстовая имитация водяного знака "GELTEK" (.s8-word/.s8-word1) не используется — накладывалась
    бы на векторный логотип. Логотип 137:359 — один элемент, движется (data-scroll-y0/y1 в
    разметке): исходная позиция y0=34.479cqw (top ниже, база для JS-фолбэка/reduced-motion),
